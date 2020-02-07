@@ -1,0 +1,43 @@
+# (PART) ML online  resources {-} 
+
+```{r setupMlResources, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(gganimate)
+library(SimilarityMeasures) # for frechet and dtw
+library(tidyverse)
+library(DT)
+library(tidyverse)
+library(grid)
+library(animation)
+library(gridExtra)
+library(knitr)
+library(kableExtra)
+```
+
+
+# ML online  resources {#MlResources}
+
+## In-depth introduction to machine learning in 15 hours of expert videos
+
+https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/ 
+
+### An Introduction to Statistical Learning
+
+This book provides an introduction to statistical learning methods.  
+http://faculty.marshall.usc.edu/gareth-james/ISL/
+
+
+
+## The learning machine
+
+https://www.thelearningmachine.ai
+
+WELCOME TO TLM
+TLM is a new open-source project that aims to create an interactive textbook containing A-Z explanations of concepts and methods, algorithms and their code implementations from the fields of data science, machine learning, deep learning, natural language processing, statistics, and more.
+
+## DeepAI: The front page of A.I.
+https://deepai.org
+
+The most popular research, guides, news
+and more in artificial intelligence
+

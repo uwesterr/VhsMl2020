@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.1 Starting with the need the process can be split up in phases as shown below: | Machine learning orientation</title>
+  <meta name="description" content="A guide to machine learning" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.1 Starting with the need the process can be split up in phases as shown below: | Machine learning orientation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A guide to machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.1 Starting with the need the process can be split up in phases as shown below: | Machine learning orientation" />
+  
+  <meta name="twitter:description" content="A guide to machine learning" />
+  
+
+<meta name="author" content="Uwe Sterr" />
+
+
+<meta name="date" content="2020-02-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ml-project-process.html"/>
+<link rel="next" href="after-data-gathering-iteration-is-trump.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/uweBookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning orientation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="want-to-meet-ml-people-from-academia-and-industrie.html"><a href="want-to-meet-ml-people-from-academia-and-industrie.html"><i class="fa fa-check"></i><b>1.1</b> Want to meet ML people from academia and industrie</a></li>
+</ul></li>
+<li class="part"><span><b>I Machine learning: Shall we?</b></span><ul>
+<li class="chapter" data-level="1.2" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html"><i class="fa fa-check"></i><b>1.2</b> What is intelligence?</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html#definition-of-artificial-intelligence-sub-domains"><i class="fa fa-check"></i><b>1.2.1</b> Definition of artificial intelligence sub domains</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html"><i class="fa fa-check"></i><b>1.3</b> Is AI smarter than humans?</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html#thinking-fast-and-slow-kahneman2011thinking"><i class="fa fa-check"></i><b>1.3.1</b> Thinking, fast and slow <span class="citation">(Kahneman <span>2011</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html"><i class="fa fa-check"></i><b>1.4</b> Comparisons between AI and humans</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#breast-cancer-detection"><i class="fa fa-check"></i><b>1.4.1</b> Breast cancer detection</a></li>
+<li class="chapter" data-level="1.4.2" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#working-together-lung-cancer-detection"><i class="fa fa-check"></i><b>1.4.2</b> Working together: Lung cancer detection</a></li>
+<li class="chapter" data-level="1.4.3" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#imagenet-large-scale-visual-recognition-challenge-ilsvrc"><i class="fa fa-check"></i><b>1.4.3</b> ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</a></li>
+<li class="chapter" data-level="1.4.4" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#alphago-zero"><i class="fa fa-check"></i><b>1.4.4</b> AlphaGo Zero</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="ml-models-with-bias.html"><a href="ml-models-with-bias.html"><i class="fa fa-check"></i><b>1.5</b> ML models with bias</a></li>
+<li class="chapter" data-level="1.6" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html"><i class="fa fa-check"></i><b>1.6</b> Attacks on ML models</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#adding-noise-to-image-leads-to-misclassification"><i class="fa fa-check"></i><b>1.6.1</b> Adding noise to image leads to misclassification</a></li>
+<li class="chapter" data-level="1.6.2" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#but-what-about-attacks-on-human-perception"><i class="fa fa-check"></i><b>1.6.2</b> But what about attacks on human perception?</a></li>
+<li class="chapter" data-level="" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#is-this-a-picture-of-a-real-person"><i class="fa fa-check"></i>Is this a picture of a real person?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="development-of-life.html"><a href="development-of-life.html"><i class="fa fa-check"></i><b>1.7</b> Development of life</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="development-of-life.html"><a href="development-of-life.html#when-will-superhuman-ai-come-and-will-it-be-good"><i class="fa fa-check"></i><b>1.7.1</b> When will superhuman AI come, and will it be good?</a></li>
+<li class="chapter" data-level="1.7.2" data-path="development-of-life.html"><a href="development-of-life.html#ai-aftermath-scenario"><i class="fa fa-check"></i><b>1.7.2</b> AI aftermath scenario</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="data-religion-dataism.html"><a href="data-religion-dataism.html"><i class="fa fa-check"></i><b>1.8</b> Data religion: Dataism</a></li>
+<li class="chapter" data-level="1.9" data-path="career-oxford-seeks-ai-ethics-professor.html"><a href="career-oxford-seeks-ai-ethics-professor.html"><i class="fa fa-check"></i><b>1.9</b> Career: Oxford seeks AI ethics professor</a></li>
+</ul></li>
+<li class="part"><span><b>II Machine learning fundamentals</b></span></li>
+<li class="chapter" data-level="2" data-path="MachineLearningFundamentals.html"><a href="MachineLearningFundamentals.html"><i class="fa fa-check"></i><b>2</b> Machine learning fundamentals</a></li>
+<li class="chapter" data-level="3" data-path="ml-project-process.html"><a href="ml-project-process.html"><i class="fa fa-check"></i><b>3</b> ML project process</a><ul>
+<li class="chapter" data-level="" data-path="ml-project-process.html"><a href="ml-project-process.html#the-main-project-phases-are"><i class="fa fa-check"></i>The main project phases are:</a></li>
+<li class="chapter" data-level="3.1" data-path="starting-with-the-need-the-process-can-be-split-up-in-phases-as-shown-below.html"><a href="starting-with-the-need-the-process-can-be-split-up-in-phases-as-shown-below.html"><i class="fa fa-check"></i><b>3.1</b> Starting with the need the process can be split up in phases as shown below:</a></li>
+<li class="chapter" data-level="" data-path="after-data-gathering-iteration-is-trump.html"><a href="after-data-gathering-iteration-is-trump.html"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="3.2" data-path="feature-engineering.html"><a href="feature-engineering.html"><i class="fa fa-check"></i><b>3.2</b> Feature engineering</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ml-types.html"><a href="ml-types.html"><i class="fa fa-check"></i><b>4</b> ML types</a></li>
+<li class="chapter" data-level="5" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>5</b> ML algorithms</a><ul>
+<li class="chapter" data-level="5.1" data-path="MlAlgoLogReg.html"><a href="MlAlgoLogReg.html"><i class="fa fa-check"></i><b>5.1</b> Logistic regression</a></li>
+<li class="chapter" data-level="5.2" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html"><i class="fa fa-check"></i><b>5.2</b> Tree based TBD</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesRandomForest"><i class="fa fa-check"></i><b>5.2.1</b> Random forest TBD</a></li>
+<li class="chapter" data-level="5.2.2" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesGBM"><i class="fa fa-check"></i><b>5.2.2</b> Gradient boosted trees TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="MlAlgoSvm.html"><a href="MlAlgoSvm.html"><i class="fa fa-check"></i><b>5.3</b> Support Vector Machine (SVM) TBD</a></li>
+<li class="chapter" data-level="5.4" data-path="gans.html"><a href="gans.html"><i class="fa fa-check"></i><b>5.4</b> GANs</a></li>
+<li class="chapter" data-level="5.5" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html"><i class="fa fa-check"></i><b>5.5</b> A Gentle Introduction to CycleGAN for Image Translation</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html#examples-for-gans"><i class="fa fa-check"></i><b>5.5.1</b> Examples for GANs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><a href="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><i class="fa fa-check"></i><b>5.6</b> Software that can generate photos from paintings, turn horses into zebras, perform style transfer, and more.</a></li>
+<li class="chapter" data-level="5.7" data-path="transformers-tbd.html"><a href="transformers-tbd.html"><i class="fa fa-check"></i><b>5.7</b> Transformers TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="food-for-the-algorithms-data.html"><a href="food-for-the-algorithms-data.html"><i class="fa fa-check"></i><b>6</b> Food for the algorithms: Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="discovering-millions-of-datasets-on-the-web.html"><a href="discovering-millions-of-datasets-on-the-web.html"><i class="fa fa-check"></i><b>6.1</b> Discovering millions of datasets on the web</a></li>
+</ul></li>
+<li class="part"><span><b>III Explainable ML</b></span><ul>
+<li class="chapter" data-level="6.2" data-path="lime-tbd.html"><a href="lime-tbd.html"><i class="fa fa-check"></i><b>6.2</b> Lime tbd</a></li>
+<li class="chapter" data-level="6.3" data-path="alibi-tbd.html"><a href="alibi-tbd.html"><i class="fa fa-check"></i><b>6.3</b> alibi tbd</a></li>
+<li class="chapter" data-level="6.4" data-path="tf-explain-tbd.html"><a href="tf-explain-tbd.html"><i class="fa fa-check"></i><b>6.4</b> tf-explain tbd</a></li>
+<li class="chapter" data-level="6.5" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html"><i class="fa fa-check"></i><b>6.5</b> keras-salient-object-visualization</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html#explaining-how-a-deep-neural-network-trained-with-end-to-end-learning-steers-a-car"><i class="fa fa-check"></i><b>6.5.1</b> Explaining How a Deep Neural Network Trained with End-to-End Learning Steers a Car</a></li>
+<li class="chapter" data-level="6.5.2" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html#visualbackprop-efficient-visualization-of-cnns"><i class="fa fa-check"></i><b>6.5.2</b> VisualBackProp: efficient visualization of CNNs</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV ML online resources</b></span></li>
+<li class="chapter" data-level="7" data-path="MlResources.html"><a href="MlResources.html"><i class="fa fa-check"></i><b>7</b> ML online resources</a><ul>
+<li class="chapter" data-level="7.1" data-path="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><a href="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><i class="fa fa-check"></i><b>7.1</b> In-depth introduction to machine learning in 15 hours of expert videos</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><a href="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html#an-introduction-to-statistical-learning"><i class="fa fa-check"></i><b>7.1.1</b> An Introduction to Statistical Learning</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Examples from Kaggle</b></span><ul>
+<li class="chapter" data-level="7.2" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html"><i class="fa fa-check"></i><b>7.2</b> Winning solution (1st)</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#alex-gilberto-models"><i class="fa fa-check"></i><b>7.2.1</b> Alex / Gilberto models</a></li>
+<li class="chapter" data-level="7.2.2" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#feng-models"><i class="fa fa-check"></i><b>7.2.2</b> Feng models</a></li>
+<li class="chapter" data-level="7.2.3" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#andriy-models"><i class="fa fa-check"></i><b>7.2.3</b> Andriy models</a></li>
+<li class="chapter" data-level="7.2.4" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#code-on-github"><i class="fa fa-check"></i><b>7.2.4</b> Code on GitHub</a></li>
+<li class="chapter" data-level="7.2.5" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#input-features-and-embeddings"><i class="fa fa-check"></i><b>7.2.5</b> Input features and embeddings</a></li>
+<li class="chapter" data-level="7.2.6" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#ensembling"><i class="fa fa-check"></i><b>7.2.6</b> Ensembling</a></li>
+<li class="chapter" data-level="7.2.7" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#hardware"><i class="fa fa-check"></i><b>7.2.7</b> Hardware</a></li>
+<li class="chapter" data-level="7.2.8" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#software-1"><i class="fa fa-check"></i><b>7.2.8</b> Software</a></li>
+<li class="chapter" data-level="7.2.9" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#code-on-github-1"><i class="fa fa-check"></i><b>7.2.9</b> Code on GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html"><i class="fa fa-check"></i><b>7.3</b> #2 solution 🤖 Quantum Uncertainty 🤖</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#overall-architecture"><i class="fa fa-check"></i><b>7.3.1</b> Overall architecture</a></li>
+<li class="chapter" data-level="7.3.2" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#input-features-and-embeddings-1"><i class="fa fa-check"></i><b>7.3.2</b> Input features and embeddings</a></li>
+<li class="chapter" data-level="7.3.3" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#data-augmentation"><i class="fa fa-check"></i><b>7.3.3</b> Data augmentation</a></li>
+<li class="chapter" data-level="7.3.4" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#ensembling-1"><i class="fa fa-check"></i><b>7.3.4</b> Ensembling</a></li>
+<li class="chapter" data-level="7.3.5" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#hardware-1"><i class="fa fa-check"></i><b>7.3.5</b> Hardware</a></li>
+<li class="chapter" data-level="7.3.6" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#software-2"><i class="fa fa-check"></i><b>7.3.6</b> Software</a></li>
+<li class="chapter" data-level="7.3.7" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#code-on-github-2"><i class="fa fa-check"></i><b>7.3.7</b> Code on GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="university-suttgart-indoor-ortung-mit-mobilfunk.html"><a href="university-suttgart-indoor-ortung-mit-mobilfunk.html"><i class="fa fa-check"></i><b>7.4</b> University Suttgart: Indoor-Ortung mit Mobilfunk</a></li>
+<li class="chapter" data-level="7.5" data-path="bionic-learning-network.html"><a href="bionic-learning-network.html"><i class="fa fa-check"></i><b>7.5</b> Bionic Learning Network</a></li>
+</ul></li>
+<li class="part"><span><b>VI Real world example</b></span><ul>
+<li class="chapter" data-level="7.6" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html"><i class="fa fa-check"></i><b>7.6</b> Subject of the project</a><ul>
+<li class="chapter" data-level="" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html#depending-from-where-you-were-looking"><i class="fa fa-check"></i>Depending from where you were looking:</a></li>
+<li class="chapter" data-level="" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html#looking-from-the-perspective-of-machine-learning-expert"><i class="fa fa-check"></i>Looking from the perspective of machine learning expert</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="project-phases.html"><a href="project-phases.html"><i class="fa fa-check"></i><b>7.7</b> Project phases</a><ul>
+<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#the-main-project-phases-are-1"><i class="fa fa-check"></i>The main project phases are:</a></li>
+<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#after-data-gathering-iteration-is-trump-1"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="7.7.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-1"><i class="fa fa-check"></i><b>7.7.1</b> Feature engineering</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="algorithm-selection.html"><a href="algorithm-selection.html"><i class="fa fa-check"></i><b>7.8</b> Algorithm selection</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="algorithm-selection.html"><a href="algorithm-selection.html#logistic-regression"><i class="fa fa-check"></i><b>7.8.1</b> Logistic regression</a></li>
+<li class="chapter" data-level="7.8.2" data-path="algorithm-selection.html"><a href="algorithm-selection.html#tree-based-tbd"><i class="fa fa-check"></i><b>7.8.2</b> Tree based TBD</a></li>
+<li class="chapter" data-level="7.8.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html#support-vector-machine-svm-tbd"><i class="fa fa-check"></i><b>7.8.3</b> Support Vector Machine (SVM) TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="performance-measurement.html"><a href="performance-measurement.html"><i class="fa fa-check"></i><b>7.9</b> Performance measurement</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="performance-measurement.html"><a href="performance-measurement.html#sensitivity-and-specificity"><i class="fa fa-check"></i><b>7.9.1</b> Sensitivity and specificity</a></li>
+<li class="chapter" data-level="7.9.2" data-path="performance-measurement.html"><a href="performance-measurement.html#receiver-operating-characteristic-roc"><i class="fa fa-check"></i><b>7.9.2</b> Receiver operating characteristic (ROC)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html"><i class="fa fa-check"></i><b>7.10</b> Confusion matrix and ROC for pulse</a><ul>
+<li class="chapter" data-level="7.10.1" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html#r-plots"><i class="fa fa-check"></i><b>7.10.1</b> R Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="create-augmented-labeled-data.html"><a href="create-augmented-labeled-data.html"><i class="fa fa-check"></i><b>7.11</b> Create augmented labeled data</a><ul>
+<li class="chapter" data-level="7.11.1" data-path="create-augmented-labeled-data.html"><a href="create-augmented-labeled-data.html#features-of-time-signals"><i class="fa fa-check"></i><b>7.11.1</b> Features of time signals</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="features-generated.html"><a href="features-generated.html"><i class="fa fa-check"></i><b>7.12</b> Features generated</a><ul>
+<li class="chapter" data-level="7.12.1" data-path="features-generated.html"><a href="features-generated.html#analysis-of-generated-features"><i class="fa fa-check"></i><b>7.12.1</b> Analysis of generated features</a></li>
+<li class="chapter" data-level="7.12.2" data-path="features-generated.html"><a href="features-generated.html#dynamic-time-warp-dtw-for-signal"><i class="fa fa-check"></i><b>7.12.2</b> Dynamic time warp (DTW) for signal</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="algorithm.html"><a href="algorithm.html"><i class="fa fa-check"></i><b>7.13</b> Algorithm</a></li>
+<li class="chapter" data-level="7.14" data-path="confusion-matrix-results-logistic-regression-for-measured-data.html"><a href="confusion-matrix-results-logistic-regression-for-measured-data.html"><i class="fa fa-check"></i><b>7.14</b> Confusion matrix results logistic regression for measured data</a><ul>
+<li class="chapter" data-level="7.14.1" data-path="confusion-matrix-results-logistic-regression-for-measured-data.html"><a href="confusion-matrix-results-logistic-regression-for-measured-data.html#roc-results-for-measured-data"><i class="fa fa-check"></i><b>7.14.1</b> ROC results for measured data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.15" data-path="several-algorithms-results-for-snr-18db.html"><a href="several-algorithms-results-for-snr-18db.html"><i class="fa fa-check"></i><b>7.15</b> Several algorithms results for SNR = 18dB</a><ul>
+<li class="chapter" data-level="7.15.1" data-path="several-algorithms-results-for-snr-18db.html"><a href="several-algorithms-results-for-snr-18db.html#roc-results-for-snr-18db"><i class="fa fa-check"></i><b>7.15.1</b> ROC results for SNR 18dB</a></li>
+</ul></li>
+<li class="chapter" data-level="7.16" data-path="compare-models-for-snr-18db.html"><a href="compare-models-for-snr-18db.html"><i class="fa fa-check"></i><b>7.16</b> Compare models for SNR = 18dB</a></li>
+<li class="chapter" data-level="7.17" data-path="optimize-ml-hyper-parameter.html"><a href="optimize-ml-hyper-parameter.html"><i class="fa fa-check"></i><b>7.17</b> Optimize ML hyper parameter</a></li>
+</ul></li>
+<li class="part"><span><b>VII Cloud-based machine learning</b></span></li>
+<li class="chapter" data-level="8" data-path="CloudBasedMl.html"><a href="CloudBasedMl.html"><i class="fa fa-check"></i><b>8</b> Cloud-based machine learning</a></li>
+<li class="part"><span><b>VIII Kaggle Survey</b></span><ul>
+<li class="chapter" data-level="8.1" data-path="kaggle-survey-details.html"><a href="kaggle-survey-details.html"><i class="fa fa-check"></i><b>8.1</b> Kaggle survey details</a></li>
+<li class="chapter" data-level="8.2" data-path="purpose.html"><a href="purpose.html"><i class="fa fa-check"></i><b>8.2</b> Purpose</a></li>
+<li class="chapter" data-level="8.3" data-path="navigation-and-handling.html"><a href="navigation-and-handling.html"><i class="fa fa-check"></i><b>8.3</b> Navigation and handling</a></li>
+<li class="chapter" data-level="8.4" data-path="survey-participants-education-level.html"><a href="survey-participants-education-level.html"><i class="fa fa-check"></i><b>8.4</b> Survey participants education level</a></li>
+<li class="chapter" data-level="8.5" data-path="who-uses-which-algorithm.html"><a href="who-uses-which-algorithm.html"><i class="fa fa-check"></i><b>8.5</b> Who uses which algorithm</a></li>
+<li class="chapter" data-level="8.6" data-path="machine-learning-experience-and-algorithms.html"><a href="machine-learning-experience-and-algorithms.html"><i class="fa fa-check"></i><b>8.6</b> Machine learning experience and algorithms</a></li>
+<li class="chapter" data-level="8.7" data-path="experience-and-new-algorithms.html"><a href="experience-and-new-algorithms.html"><i class="fa fa-check"></i><b>8.7</b> Experience and new algorithms</a></li>
+<li class="chapter" data-level="8.8" data-path="role-of-participants.html"><a href="role-of-participants.html"><i class="fa fa-check"></i><b>8.8</b> Role of participants</a></li>
+<li class="chapter" data-level="8.9" data-path="company-size.html"><a href="company-size.html"><i class="fa fa-check"></i><b>8.9</b> Company size</a></li>
+<li class="chapter" data-level="8.10" data-path="company-incorporation-of-machine-learning.html"><a href="company-incorporation-of-machine-learning.html"><i class="fa fa-check"></i><b>8.10</b> Company incorporation of machine learning</a></li>
+<li class="chapter" data-level="8.11" data-path="favourite-media-sources-on-data-science-topics.html"><a href="favourite-media-sources-on-data-science-topics.html"><i class="fa fa-check"></i><b>8.11</b> Favourite media sources on data science topics</a></li>
+<li class="chapter" data-level="8.12" data-path="favourite-online-course-platform.html"><a href="favourite-online-course-platform.html"><i class="fa fa-check"></i><b>8.12</b> Favourite online course platform</a></li>
+<li class="chapter" data-level="8.13" data-path="favourite-data-analyzing-tool.html"><a href="favourite-data-analyzing-tool.html"><i class="fa fa-check"></i><b>8.13</b> Favourite data analyzing tool</a></li>
+<li class="chapter" data-level="8.14" data-path="experience-in-data-analysis-coding.html"><a href="experience-in-data-analysis-coding.html"><i class="fa fa-check"></i><b>8.14</b> Experience in data analysis coding</a></li>
+<li class="chapter" data-level="8.15" data-path="favourite-integrated-development-environments-ides.html"><a href="favourite-integrated-development-environments-ides.html"><i class="fa fa-check"></i><b>8.15</b> Favourite integrated development environments (IDE’s)</a></li>
+<li class="chapter" data-level="8.16" data-path="favourite-hosted-notebook-products.html"><a href="favourite-hosted-notebook-products.html"><i class="fa fa-check"></i><b>8.16</b> Favourite hosted notebook products</a></li>
+<li class="chapter" data-level="8.17" data-path="favourite-programming-languages.html"><a href="favourite-programming-languages.html"><i class="fa fa-check"></i><b>8.17</b> Favourite programming languages</a></li>
+<li class="chapter" data-level="8.18" data-path="recommended-entry-programming-language.html"><a href="recommended-entry-programming-language.html"><i class="fa fa-check"></i><b>8.18</b> Recommended entry programming language</a></li>
+<li class="chapter" data-level="8.19" data-path="favourite-data-visualization-libraries-or-tools.html"><a href="favourite-data-visualization-libraries-or-tools.html"><i class="fa fa-check"></i><b>8.19</b> Favourite data visualization libraries or tools</a></li>
+<li class="chapter" data-level="8.20" data-path="favourite-specialized-hardware.html"><a href="favourite-specialized-hardware.html"><i class="fa fa-check"></i><b>8.20</b> Favourite specialized hardware</a></li>
+<li class="chapter" data-level="8.21" data-path="favourite-machine-learning-frameworks.html"><a href="favourite-machine-learning-frameworks.html"><i class="fa fa-check"></i><b>8.21</b> Favourite machine learning frameworks</a></li>
+<li class="chapter" data-level="8.22" data-path="favourite-cloud-computing-platforms.html"><a href="favourite-cloud-computing-platforms.html"><i class="fa fa-check"></i><b>8.22</b> Favourite cloud computing platforms</a></li>
+<li class="chapter" data-level="8.23" data-path="favourite-big-data-analytics-products.html"><a href="favourite-big-data-analytics-products.html"><i class="fa fa-check"></i><b>8.23</b> Favourite big data / analytics products</a></li>
+<li class="chapter" data-level="8.24" data-path="favourite-automated-machine-learning-tools-or-partial-automl-tools.html"><a href="favourite-automated-machine-learning-tools-or-partial-automl-tools.html"><i class="fa fa-check"></i><b>8.24</b> Favourite automated machine learning tools (or partial AutoML tools)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine learning orientation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="starting-with-the-need-the-process-can-be-split-up-in-phases-as-shown-below" class="section level2">
+<h2><span class="header-section-number">3.1</span> Starting with the need the process can be split up in phases as shown below:</h2>
+<p><img src="images/MlProsess.png" style="width:50.0%" /></p>
+<hr />
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ml-project-process.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="after-data-gathering-iteration-is-trump.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MlOrienttionBookDown.pdf", "MlOrienttionBookDown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

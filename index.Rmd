@@ -1,0 +1,86 @@
+--- 
+title: "Machine learning orientation"
+author: "Uwe Sterr"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/bibliographyGeneral.bib]
+biblio-style: apalike
+link-citations: yes
+description: "A guide to machine learning"
+---
+
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE, cache = TRUE)
+
+```
+
+# Introduction
+
+This document gives on overview of
+
+```{block2 echo=TRUE, type='rmdtip'}
+- Machine learing: Shall we? in chapter \@ref(whatML)
+- Analysis of the 2019 Kaggle member survey in chapter \@ref(KaggleSurvey)
+- Machine learning fundamentals in chapter \@ref(MachineLearningFundamentals)
+- Overview of online courses
+- Overview online resources in chapter \@ref(MlResources)MlResources
+- Real world example on signal detection in chapter \@ref(RealWorld) 
+- How to understand ML models: Explainable machine learing in chapter \@ref(ExplainableMl)
+- Further examples from Kaggle  in chapter \@ref(KaggleExamples) 
+- ML examples in the area
+
+vialytics
+https://vialytics.de 
+
+enbw
+https://www.enbw.com/infrastruktur/sicherheitsinfrastruktur/geschaeftskunden/produkte/safeplaces 
+
+- How to get quickly started with cloud based machine learning platforms in chapter \@ref(CloudBasedMl) 
+
+
+```
+
+
+<embed src="../MachineLearningOrientierung.pdf" width="800" height="875" 
+ type="application/pdf">
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gG6WnMb9Fho?start=1946" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4MOx2_e5tug" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+<video width="320" height="240" loop controls>
+  <source src="images/VaihingenTubMovieV3WithSteeringAndSalient.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+
+## Want to meet ML people from academia and industrie
+
+- Machine Learning User Group Stuttgart MLUGS  
+    - Technically oriented
+    - 419 members
+    - https://www.meetup.com/Machine-Learning-UserGroup-Stuttgart/
+    
+
+- Build selfdrving RoboCar  
+    - hands on, build a real world system
+    - 153 members
+    - https://www.meetup.com/Esslingen-Makerspace/
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AFHtBDaqQqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    
+- Stuttgart AI
+    - More concepts and industrie presenting themself
+    - 979 members
+    - https://www.meetup.com/StuttgartAI/
+    
+

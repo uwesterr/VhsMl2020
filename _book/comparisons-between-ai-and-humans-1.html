@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12.3 Comparisons between AI and humans | Machine learning orientation</title>
+  <meta name="description" content="A guide to machine learning" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12.3 Comparisons between AI and humans | Machine learning orientation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A guide to machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12.3 Comparisons between AI and humans | Machine learning orientation" />
+  
+  <meta name="twitter:description" content="A guide to machine learning" />
+  
+
+<meta name="author" content="Uwe Sterr" />
+
+
+<meta name="date" content="2020-01-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="is-ai-smarter-than-humans-1.html"/>
+<link rel="next" href="bias-1.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.49.4/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.49.4/plotly-latest.min.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.11/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/uweBookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning orientation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I Machine learning: Shall we?</b></span></li>
+<li class="chapter" data-level="2" data-path="whatML.html"><a href="whatML.html"><i class="fa fa-check"></i><b>2</b> What is machine learning?</a><ul>
+<li class="chapter" data-level="2.1" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html"><i class="fa fa-check"></i><b>2.1</b> What is intelligence?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html#definition-of-artificial-intelligence-sub-domains"><i class="fa fa-check"></i><b>2.1.1</b> Definition of artificial intelligence sub domains</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html"><i class="fa fa-check"></i><b>2.2</b> Is AI smarter than humans?</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html#thinking-fast-and-slow-kahneman2011thinking"><i class="fa fa-check"></i><b>2.2.1</b> Thinking, fast and slow <span class="citation">(Kahneman <span>2011</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html"><i class="fa fa-check"></i><b>2.3</b> Comparisons between AI and humans</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#breast-cancer-detection"><i class="fa fa-check"></i><b>2.3.1</b> Breast cancer detection</a></li>
+<li class="chapter" data-level="2.3.2" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#working-together-lung-cancer-detection"><i class="fa fa-check"></i><b>2.3.2</b> Working together: Lung cancer detection</a></li>
+<li class="chapter" data-level="2.3.3" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#imagenet-large-scale-visual-recognition-challenge-ilsvrc"><i class="fa fa-check"></i><b>2.3.3</b> ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#alphago-zero"><i class="fa fa-check"></i><b>2.3.4</b> AlphaGo Zero</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="bias.html"><a href="bias.html"><i class="fa fa-check"></i><b>2.4</b> Bias</a></li>
+<li class="chapter" data-level="2.5" data-path="attacks.html"><a href="attacks.html"><i class="fa fa-check"></i><b>2.5</b> Attacks</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="attacks.html"><a href="attacks.html#adding-noise-to-image-leads-to-misclassification"><i class="fa fa-check"></i><b>2.5.1</b> Adding noise to image leads to misclassification</a></li>
+<li class="chapter" data-level="2.5.2" data-path="attacks.html"><a href="attacks.html#but-what-about-attacks-on-human-perception"><i class="fa fa-check"></i><b>2.5.2</b> But what about attacks on human perception?</a></li>
+<li class="chapter" data-level="" data-path="attacks.html"><a href="attacks.html#is-this-a-picture-of-a-real-person"><i class="fa fa-check"></i>Is this a picture of a real person?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>3</b> Outlook</a><ul>
+<li class="chapter" data-level="3.1" data-path="development-of-life.html"><a href="development-of-life.html"><i class="fa fa-check"></i><b>3.1</b> Development of life</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="development-of-life.html"><a href="development-of-life.html#when-will-superhuman-ai-come-and-will-it-be-good"><i class="fa fa-check"></i><b>3.1.1</b> When will superhuman AI come, and will it be good?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="development-of-life.html"><a href="development-of-life.html#ai-aftermath-scenario"><i class="fa fa-check"></i><b>3.1.2</b> AI aftermath scenario</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-religion-dataism.html"><a href="data-religion-dataism.html"><i class="fa fa-check"></i><b>3.2</b> Data religion: Dataism</a></li>
+<li class="chapter" data-level="3.3" data-path="career-oxford-seeks-ai-ethics-professor.html"><a href="career-oxford-seeks-ai-ethics-professor.html"><i class="fa fa-check"></i><b>3.3</b> Career: Oxford seeks AI ethics professor</a></li>
+</ul></li>
+<li class="part"><span><b>II Machine learning fundamentals</b></span></li>
+<li class="chapter" data-level="4" data-path="MachineLearningFundamentals.html"><a href="MachineLearningFundamentals.html"><i class="fa fa-check"></i><b>4</b> Machine learning fundamentals</a><ul>
+<li class="chapter" data-level="4.1" data-path="gans.html"><a href="gans.html"><i class="fa fa-check"></i><b>4.1</b> GANs</a></li>
+<li class="chapter" data-level="4.2" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html"><i class="fa fa-check"></i><b>4.2</b> A Gentle Introduction to CycleGAN for Image Translation</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html#examples-for-gans"><i class="fa fa-check"></i><b>4.2.1</b> Examples for GANs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><a href="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><i class="fa fa-check"></i><b>4.3</b> Software that can generate photos from paintings, turn horses into zebras, perform style transfer, and more.</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="food-for-the-algorithms-data.html"><a href="food-for-the-algorithms-data.html"><i class="fa fa-check"></i><b>5</b> Food for the algorithms: Data</a><ul>
+<li class="chapter" data-level="5.1" data-path="discovering-millions-of-datasets-on-the-web.html"><a href="discovering-millions-of-datasets-on-the-web.html"><i class="fa fa-check"></i><b>5.1</b> Discovering millions of datasets on the web</a></li>
+</ul></li>
+<li class="part"><span><b>III Explainable ML</b></span></li>
+<li class="chapter" data-level="6" data-path="ExplainableMl.html"><a href="ExplainableMl.html"><i class="fa fa-check"></i><b>6</b> Explainable ML</a><ul>
+<li class="chapter" data-level="6.1" data-path="lime.html"><a href="lime.html"><i class="fa fa-check"></i><b>6.1</b> Lime</a></li>
+</ul></li>
+<li class="part"><span><b>IV Examples from Kaggle</b></span></li>
+<li class="chapter" data-level="7" data-path="KaggleExamples.html"><a href="KaggleExamples.html"><i class="fa fa-check"></i><b>7</b> Examples in Kaggle</a><ul>
+<li class="chapter" data-level="7.1" data-path="bosch-production-line-performance.html"><a href="bosch-production-line-performance.html"><i class="fa fa-check"></i><b>7.1</b> Bosch Production Line Performance</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="bosch-production-line-performance.html"><a href="bosch-production-line-performance.html#st-place-solution"><i class="fa fa-check"></i><b>7.1.1</b> 1st place solution</a></li>
+<li class="chapter" data-level="7.1.2" data-path="bosch-production-line-performance.html"><a href="bosch-production-line-performance.html#rd-place-solution"><i class="fa fa-check"></i><b>7.1.2</b> 3rd place solution</a></li>
+<li class="chapter" data-level="7.1.3" data-path="bosch-production-line-performance.html"><a href="bosch-production-line-performance.html#th-place-solution-with-github"><i class="fa fa-check"></i><b>7.1.3</b> 8th place solution with GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="melbourne-university-aesmathworksnih-seizure-prediction.html"><a href="melbourne-university-aesmathworksnih-seizure-prediction.html"><i class="fa fa-check"></i><b>7.2</b> Melbourne University AES/MathWorks/NIH Seizure Prediction</a></li>
+<li class="chapter" data-level="7.3" data-path="corporación-favorita-grocery-sales-forecasting.html"><a href="corporación-favorita-grocery-sales-forecasting.html"><i class="fa fa-check"></i><b>7.3</b> Corporación Favorita Grocery Sales Forecasting</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="corporación-favorita-grocery-sales-forecasting.html"><a href="corporación-favorita-grocery-sales-forecasting.html#st-place-solution-1"><i class="fa fa-check"></i><b>7.3.1</b> 1st place solution</a></li>
+<li class="chapter" data-level="7.3.2" data-path="corporación-favorita-grocery-sales-forecasting.html"><a href="corporación-favorita-grocery-sales-forecasting.html#th-place-solution-overview"><i class="fa fa-check"></i><b>7.3.2</b> 4th-Place Solution Overview</a></li>
+<li class="chapter" data-level="7.3.3" data-path="corporación-favorita-grocery-sales-forecasting.html"><a href="corporación-favorita-grocery-sales-forecasting.html#th-place-solution"><i class="fa fa-check"></i><b>7.3.3</b> 5th Place Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="severstal-steel-defect-detection.html"><a href="severstal-steel-defect-detection.html"><i class="fa fa-check"></i><b>7.4</b> Severstal: Steel Defect Detection</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="local-examples.html"><a href="local-examples.html"><i class="fa fa-check"></i><b>8</b> Local examples</a><ul>
+<li class="chapter" data-level="8.1" data-path="university-suttgart-indoor-ortung-mit-mobilfunk.html"><a href="university-suttgart-indoor-ortung-mit-mobilfunk.html"><i class="fa fa-check"></i><b>8.1</b> University Suttgart: Indoor-Ortung mit Mobilfunk</a></li>
+<li class="chapter" data-level="8.2" data-path="bionic-learning-network.html"><a href="bionic-learning-network.html"><i class="fa fa-check"></i><b>8.2</b> Bionic Learning Network</a></li>
+</ul></li>
+<li class="part"><span><b>V Cloud-based machine learning</b></span></li>
+<li class="chapter" data-level="9" data-path="CloudBasedMl.html"><a href="CloudBasedMl.html"><i class="fa fa-check"></i><b>9</b> Cloud-based machine learning</a></li>
+<li class="part"><span><b>VI Kaggle Survey</b></span></li>
+<li class="chapter" data-level="10" data-path="KaggleSurvey.html"><a href="KaggleSurvey.html"><i class="fa fa-check"></i><b>10</b> Kaggle suryvey introduction</a><ul>
+<li class="chapter" data-level="10.1" data-path="purpose.html"><a href="purpose.html"><i class="fa fa-check"></i><b>10.1</b> Purpose</a></li>
+<li class="chapter" data-level="10.2" data-path="navigation-and-handling.html"><a href="navigation-and-handling.html"><i class="fa fa-check"></i><b>10.2</b> Navigation and handling</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>11</b> Results</a><ul>
+<li class="chapter" data-level="11.1" data-path="survey-participants-education-level.html"><a href="survey-participants-education-level.html"><i class="fa fa-check"></i><b>11.1</b> Survey participants education level</a></li>
+<li class="chapter" data-level="11.2" data-path="who-uses-which-algorithm.html"><a href="who-uses-which-algorithm.html"><i class="fa fa-check"></i><b>11.2</b> Who uses which algorithm</a></li>
+<li class="chapter" data-level="11.3" data-path="machine-learning-experience-and-algorithms.html"><a href="machine-learning-experience-and-algorithms.html"><i class="fa fa-check"></i><b>11.3</b> Machine learning experience and algorithms</a></li>
+<li class="chapter" data-level="11.4" data-path="experience-and-new-algorithms.html"><a href="experience-and-new-algorithms.html"><i class="fa fa-check"></i><b>11.4</b> Experience and new algorithms</a></li>
+<li class="chapter" data-level="11.5" data-path="role-of-participants.html"><a href="role-of-participants.html"><i class="fa fa-check"></i><b>11.5</b> Role of participants</a></li>
+<li class="chapter" data-level="11.6" data-path="company-size.html"><a href="company-size.html"><i class="fa fa-check"></i><b>11.6</b> Company size</a></li>
+<li class="chapter" data-level="11.7" data-path="company-incorporation-of-machine-learning.html"><a href="company-incorporation-of-machine-learning.html"><i class="fa fa-check"></i><b>11.7</b> Company incorporation of machine learning</a></li>
+<li class="chapter" data-level="11.8" data-path="favorite-media-sources-on-data-science-topics.html"><a href="favorite-media-sources-on-data-science-topics.html"><i class="fa fa-check"></i><b>11.8</b> Favorite media sources on data science topics</a></li>
+<li class="chapter" data-level="11.9" data-path="favorite-online-course-platform.html"><a href="favorite-online-course-platform.html"><i class="fa fa-check"></i><b>11.9</b> Favorite online course platform</a></li>
+<li class="chapter" data-level="11.10" data-path="favorite-data-analyzing-tool.html"><a href="favorite-data-analyzing-tool.html"><i class="fa fa-check"></i><b>11.10</b> Favorite data analyzing tool</a></li>
+<li class="chapter" data-level="11.11" data-path="experience-in-data-analysis-coding.html"><a href="experience-in-data-analysis-coding.html"><i class="fa fa-check"></i><b>11.11</b> Experience in data analysis coding</a></li>
+<li class="chapter" data-level="11.12" data-path="favorite-integrated-development-environments-ides.html"><a href="favorite-integrated-development-environments-ides.html"><i class="fa fa-check"></i><b>11.12</b> Favorite integrated development environments (IDE’s)</a></li>
+<li class="chapter" data-level="11.13" data-path="favorite-hosted-notebook-products.html"><a href="favorite-hosted-notebook-products.html"><i class="fa fa-check"></i><b>11.13</b> Favorite hosted notebook products</a></li>
+<li class="chapter" data-level="11.14" data-path="favorite-programming-languages.html"><a href="favorite-programming-languages.html"><i class="fa fa-check"></i><b>11.14</b> Favorite programming languages</a></li>
+<li class="chapter" data-level="11.15" data-path="recommended-entry-programming-language.html"><a href="recommended-entry-programming-language.html"><i class="fa fa-check"></i><b>11.15</b> Recommended entry programming language</a></li>
+<li class="chapter" data-level="11.16" data-path="favorite-data-visualization-libraries-or-tools.html"><a href="favorite-data-visualization-libraries-or-tools.html"><i class="fa fa-check"></i><b>11.16</b> Favorite data visualization libraries or tools</a></li>
+<li class="chapter" data-level="11.17" data-path="favorite-specialized-hardware.html"><a href="favorite-specialized-hardware.html"><i class="fa fa-check"></i><b>11.17</b> Favorite specialized hardware</a></li>
+<li class="chapter" data-level="11.18" data-path="favorite-machine-learning-frameworks.html"><a href="favorite-machine-learning-frameworks.html"><i class="fa fa-check"></i><b>11.18</b> Favorite machine learning frameworks</a></li>
+<li class="chapter" data-level="11.19" data-path="favorite-cloud-computing-platforms.html"><a href="favorite-cloud-computing-platforms.html"><i class="fa fa-check"></i><b>11.19</b> Favorite cloud computing platforms</a></li>
+<li class="chapter" data-level="11.20" data-path="favorite-big-data-analytics-products.html"><a href="favorite-big-data-analytics-products.html"><i class="fa fa-check"></i><b>11.20</b> Favorite big data / analytics products</a></li>
+<li class="chapter" data-level="11.21" data-path="favorite-automated-machine-learning-tools-or-partial-automl-tools.html"><a href="favorite-automated-machine-learning-tools-or-partial-automl-tools.html"><i class="fa fa-check"></i><b>11.21</b> Favorite automated machine learning tools (or partial AutoML tools)</a></li>
+</ul></li>
+<li class="part"><span><b>VII Real world example</b></span></li>
+<li class="chapter" data-level="12" data-path="whlatML.html"><a href="whlatML.html"><i class="fa fa-check"></i><b>12</b> What is machine learning?</a><ul>
+<li class="chapter" data-level="12.1" data-path="what-is-intelligence-1.html"><a href="what-is-intelligence-1.html"><i class="fa fa-check"></i><b>12.1</b> What is intelligence?</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="what-is-intelligence-1.html"><a href="what-is-intelligence-1.html#definition-of-artificial-intelligence-sub-domains-1"><i class="fa fa-check"></i><b>12.1.1</b> Definition of artificial intelligence sub domains</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="is-ai-smarter-than-humans-1.html"><a href="is-ai-smarter-than-humans-1.html"><i class="fa fa-check"></i><b>12.2</b> Is AI smarter than humans?</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="is-ai-smarter-than-humans-1.html"><a href="is-ai-smarter-than-humans-1.html#thinking-fast-and-slow-kahneman2011thinking-1"><i class="fa fa-check"></i><b>12.2.1</b> Thinking, fast and slow <span class="citation">(Kahneman <span>2011</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="comparisons-between-ai-and-humans-1.html"><a href="comparisons-between-ai-and-humans-1.html"><i class="fa fa-check"></i><b>12.3</b> Comparisons between AI and humans</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="comparisons-between-ai-and-humans-1.html"><a href="comparisons-between-ai-and-humans-1.html#breast-cancer-detection-1"><i class="fa fa-check"></i><b>12.3.1</b> Breast cancer detection</a></li>
+<li class="chapter" data-level="12.3.2" data-path="comparisons-between-ai-and-humans-1.html"><a href="comparisons-between-ai-and-humans-1.html#working-together-lung-cancer-detection-1"><i class="fa fa-check"></i><b>12.3.2</b> Working together: Lung cancer detection</a></li>
+<li class="chapter" data-level="12.3.3" data-path="comparisons-between-ai-and-humans-1.html"><a href="comparisons-between-ai-and-humans-1.html#imagenet-large-scale-visual-recognition-challenge-ilsvrc-1"><i class="fa fa-check"></i><b>12.3.3</b> ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</a></li>
+<li class="chapter" data-level="12.3.4" data-path="comparisons-between-ai-and-humans-1.html"><a href="comparisons-between-ai-and-humans-1.html#alphago-zero-1"><i class="fa fa-check"></i><b>12.3.4</b> AlphaGo Zero</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="bias-1.html"><a href="bias-1.html"><i class="fa fa-check"></i><b>12.4</b> Bias</a></li>
+<li class="chapter" data-level="12.5" data-path="attacks-1.html"><a href="attacks-1.html"><i class="fa fa-check"></i><b>12.5</b> Attacks</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="attacks-1.html"><a href="attacks-1.html#adding-noise-to-image-leads-to-misclassification-1"><i class="fa fa-check"></i><b>12.5.1</b> Adding noise to image leads to misclassification</a></li>
+<li class="chapter" data-level="12.5.2" data-path="attacks-1.html"><a href="attacks-1.html#but-what-about-attacks-on-human-perception-1"><i class="fa fa-check"></i><b>12.5.2</b> But what about attacks on human perception?</a></li>
+<li class="chapter" data-level="" data-path="attacks-1.html"><a href="attacks-1.html#is-this-a-picture-of-a-real-person-1"><i class="fa fa-check"></i>Is this a picture of a real person?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="outlook-1.html"><a href="outlook-1.html"><i class="fa fa-check"></i><b>13</b> Outlook</a><ul>
+<li class="chapter" data-level="13.1" data-path="development-of-life-1.html"><a href="development-of-life-1.html"><i class="fa fa-check"></i><b>13.1</b> Development of life</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="development-of-life-1.html"><a href="development-of-life-1.html#when-will-superhuman-ai-come-and-will-it-be-good-1"><i class="fa fa-check"></i><b>13.1.1</b> When will superhuman AI come, and will it be good?</a></li>
+<li class="chapter" data-level="13.1.2" data-path="development-of-life-1.html"><a href="development-of-life-1.html#ai-aftermath-scenario-1"><i class="fa fa-check"></i><b>13.1.2</b> AI aftermath scenario</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="data-religion-dataism-1.html"><a href="data-religion-dataism-1.html"><i class="fa fa-check"></i><b>13.2</b> Data religion: Dataism</a></li>
+<li class="chapter" data-level="13.3" data-path="career-oxford-seeks-ai-ethics-professor-1.html"><a href="career-oxford-seeks-ai-ethics-professor-1.html"><i class="fa fa-check"></i><b>13.3</b> Career: Oxford seeks AI ethics professor</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine learning orientation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="comparisons-between-ai-and-humans-1" class="section level2">
+<h2><span class="header-section-number">12.3</span> Comparisons between AI and humans</h2>
+<div id="breast-cancer-detection-1" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> Breast cancer detection</h3>
+<p>
+In a Google Health project<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a> the following results were achieved: <img src="images/Stetoscope.svg" alt="Smiley face" align="right" style="width:10%;">
+</p>
+
+<div class="rmdtip">
+<ul>
+<li>Absolute reduction of 5.7% and 1.2% (USA and UK) in false positives</li>
+<li>Absolute reduction 9.4% and 2.7% (USA and UK)in false negatives.
+</div></li>
+</ul>
+<p>In an independent study of six radiologists, the AI system outperformed all of the human readers.
+More on the study at <a href="https://www.nature.com/articles/s41586-019-1799-6" class="uri">https://www.nature.com/articles/s41586-019-1799-6</a></p>
+</div>
+<div id="working-together-lung-cancer-detection-1" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> Working together: Lung cancer detection</h3>
+<p>With an estimated 160,000 deaths in 2018, lung cancer is the most common cause of cancer death in the United States</p>
+<p><img src="images/lung.svg" width="20%" /></p>
+<p>A study published in Nature medicine<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> a team of members of Google AI and several hospitals reported</p>
+<p>When prior computed tomography imaging was not available</p>
+
+<div class="rmdtip">
+<ul>
+<li>Model outperformed all six radiologists</li>
+<li>Absolute reductions of 11% in false positives</li>
+<li>Absolute reductions 5% in false negatives
+</div></li>
+</ul>
+</div>
+<div id="imagenet-large-scale-visual-recognition-challenge-ilsvrc-1" class="section level3">
+<h3><span class="header-section-number">12.3.3</span> ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</h3>
+<p>The ImageNet Large Scale Visual Recognition Challenge<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a> (ILSVRC) <span class="citation">(Russakovsky et al. <a href="#ref-ILSVRC15">2015</a>)</span> evaluates algorithms for object recognition and image classification on a large scale.</p>
+<p>Facts of ImageNet:<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a></p>
+
+<div class="rmdtip">
+<ul>
+<li>14 million images</li>
+<li>20,000 image categories</li>
+<li>1000 image categories used for ILSVRC</li>
+</ul>
+</div>
+
+<p>The development of the results is shown in the graph below. The number of layers is a indication of model complexity</p>
+<hr />
+<div id="htmlwidget-88cedbcec0fcc75d095c" style="width:80%;height:80%;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-88cedbcec0fcc75d095c">{"x":{"data":[{"orientation":"v","width":[0.900000000000091,0.900000000000091],"base":[0,0],"x":[2010,2011],"y":[28.2,25.8],"text":["NumberOfLayers:   1<br />Year: 2010<br />ErrorRate: 28.2","NumberOfLayers:   1<br />Year: 2011<br />ErrorRate: 25.8"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(19,43,67,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.900000000000091,0.900000000000091],"base":[0,0],"x":[2012,2013],"y":[16.4,11.7],"text":["NumberOfLayers:   8<br />Year: 2012<br />ErrorRate: 16.4","NumberOfLayers:   8<br />Year: 2013<br />ErrorRate: 11.7"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(22,48,74,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.900000000000091,"base":0,"x":[2014],"y":[7.3],"text":"NumberOfLayers:  19<br />Year: 2014<br />ErrorRate:  7.3","type":"bar","marker":{"autocolorscale":false,"color":"rgba(26,57,86,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.900000000000091,"base":0,"x":[2015],"y":[3.6],"text":"NumberOfLayers: 152<br />Year: 2015<br />ErrorRate:  3.6","type":"bar","marker":{"autocolorscale":false,"color":"rgba(86,177,247,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2009.255,2015.745],"y":[5,5],"text":"yintercept: 5","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2010],"y":[0],"name":"99_ed70c628b1aebce1fde2f6a30239c72d","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#132B43"],[0.0526315789473684,"#16314B"],[0.105263157894737,"#193754"],[0.157894736842105,"#1D3E5C"],[0.210526315789474,"#204465"],[0.263157894736842,"#234B6E"],[0.315789473684211,"#275277"],[0.368421052631579,"#2A5980"],[0.421052631578947,"#2E608A"],[0.473684210526316,"#316793"],[0.526315789473684,"#356E9D"],[0.578947368421053,"#3875A6"],[0.631578947368421,"#3C7CB0"],[0.684210526315789,"#3F83BA"],[0.736842105263158,"#438BC4"],[0.789473684210526,"#4792CE"],[0.842105263157895,"#4B9AD8"],[0.894736842105263,"#4EA2E2"],[0.947368421052632,"#52A9ED"],[1,"#56B1F7"]],"colorbar":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"thickness":23.04,"title":"NumberOfLayers","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":23.9103362391034},"tickmode":"array","ticktext":["50","100","150"],"tickvals":[0.324503311258278,0.655629139072848,0.986754966887417],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":19.1282689912827},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":55.6513075965131,"r":7.30593607305936,"b":57.6504773765048,"l":53.9975093399751},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":23.9103362391034},"title":{"text":"Error rate of ILSVRC, human error rate = 5% (red line)","font":{"color":"rgba(0,0,0,1)","family":"","size":28.692403486924},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2009.255,2015.745],"tickmode":"array","ticktext":["2010","2012","2014"],"tickvals":[2010,2012,2014],"categoryorder":"array","categoryarray":["2010","2012","2014"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":19.1282689912827},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Year","font":{"color":"rgba(0,0,0,1)","family":"","size":23.9103362391034}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.41,29.61],"tickmode":"array","ticktext":["0","10","20"],"tickvals":[0,10,20],"categoryorder":"array","categoryarray":["0","10","20"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":19.1282689912827},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Error Rate [%]","font":{"color":"rgba(0,0,0,1)","family":"","size":23.9103362391034}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":19.1282689912827}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"140637b42878":{"fill":{},"x":{},"y":{},"type":"bar"},"1406344cce23b":{"yintercept":{}}},"cur_data":"140637b42878","visdat":{"140637b42878":["function (y) ","x"],"1406344cce23b":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<hr />
+<p>In 2017 the problem set to status “solved”</p>
+
+<div class="rmdtip">
+<ul>
+<li>29 of 38 competing teams had an accuracy of more than 95%<br />
+</li>
+<li>ImageNet stopped competition</li>
+</ul>
+</div>
+
+</div>
+<div id="alphago-zero-1" class="section level3">
+<h3><span class="header-section-number">12.3.4</span> AlphaGo Zero</h3>
+<p>Go is a strategy game <strong>invented 2500 years ago</strong> and has an estimated number of <strong>possible board configuration of 10¹⁷⁴</strong> compared to chess which has is 10¹²º. A detailed description is given by DeepMind’s blog post “AlphaGo Zero: Starting from scratch”<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a></p>
+<p><strong>AlphaGo Zero</strong> is a version of DeepMind’s<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a> Go software AlphaGo</p>
+
+<div class="rmdtip">
+<ul>
+<li><p>
+No human intervention<img src="images/Chess.svg" alt="Smiley face" align="right" style="width:30%;">
+</p></li>
+<li>No usage of historical data</li>
+<li>After 3 days of training as good as AlphaGo which beat world champion in 4 out of 5</li>
+<li>After 40 days of training becomes best Go player in the world</li>
+</ul>
+</div>
+
+<p>AlphaZero learned three games,</p>
+<p><img src="images/AlphaZeroTrainingTime.png" width="70%" /></p>
+<p>The capability progress of Alpha Zero during training is shown below</p>
+<div class="figure">
+<img src="images/AlphaZeroTraining.gif" alt="Figure from https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go" class="external" style="width:100.0%" />
+<p class="caption">Figure from <a href="https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go" class="uri">https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go</a></p>
+</div>
+<p>NOTE: EACH TRAINING STEP REPRESENTS 4,096 BOARD POSITIONS.</p>
+<p>At the end of the training Alpha Zero achieved the following performance:</p>
+<div class="figure">
+<img src="images/AlphaZeroPerformance.png" alt="Figure from https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go" class="external" style="width:100.0%" />
+<p class="caption">Figure from <a href="https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go" class="uri">https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go</a></p>
+</div>
+<p>Implications are wider than just playing a game, as Garry Kasparov, a former world chess champion puts it:</p>
+<blockquote>
+<p>The implications go far beyond my beloved chessboard… Not only do these self-taught expert machines perform incredibly well, but we can actually learn from the new knowledge they produce.&quot;</p>
+</blockquote>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-ILSVRC15">
+<p>Russakovsky, Olga, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, et al. 2015. “ImageNet Large Scale Visual Recognition Challenge.” <em>International Journal of Computer Vision (IJCV)</em> 115 (3): 211–52. <a href="https://doi.org/10.1007/s11263-015-0816-y">https://doi.org/10.1007/s11263-015-0816-y</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="25">
+<li id="fn25"><p>Screening mammography aims to identify breast cancer at earlier stages of the disease, when treatment can be more successful. Despite the existence of screening programmes worldwide, the interpretation of mammograms is affected by high rates of false positives and false negatives. Here we present an artificial intelligence (AI) system that is capable of surpassing human experts in breast cancer prediction. To assess its performance in the clinical setting, we curated a large representative dataset from the UK and a large enriched dataset from the USA. We show an absolute reduction of 5.7% and 1.2% (USA and UK) in false positives and 9.4% and 2.7% in false negatives. We provide evidence of the ability of the system to generalize from the UK to the USA. In an independent study of six radiologists, the AI system outperformed all of the human readers: the area under the receiver operating characteristic curve (AUC-ROC) for the AI system was greater than the AUC-ROC for the average radiologist by an absolute margin of 11.5%. We ran a simulation in which the AI system participated in the double-reading process that is used in the UK, and found that the AI system maintained non-inferior performance and reduced the workload of the second reader by 88%. This robust assessment of the AI system paves the way for clinical trials to improve the accuracy and efficiency of breast cancer screening. <a href="https://www.nature.com/articles/s41586-019-1799-6" class="uri">https://www.nature.com/articles/s41586-019-1799-6</a><a href="comparisons-between-ai-and-humans-1.html#fnref25" class="footnote-back">↩</a></p></li>
+<li id="fn26"><p>Abstract With an estimated 160,000 deaths in 2018, lung cancer is the most common cause of cancer death in the United States1. Lung cancer screening using low-dose computed tomography has been shown to reduce mortality by 20–43% and is now included in US screening guidelines. Existing challenges include inter-grader variability and high false-positive and false-negative rates. We propose a deep learning algorithm that uses a patient’s current and prior computed tomography volumes to predict the risk of lung cancer. Our model achieves a state-of-the-art performance (94.4% area under the curve) on 6,716 National Lung Cancer Screening Trial cases, and performs similarly on an independent clinical validation set of 1,139 cases. We conducted two reader studies. When prior computed tomography imaging was not available, our model outperformed all six radiologists with absolute reductions of 11% in false positives and 5% in false negatives. Where prior computed tomography imaging was available, the model performance was on-par with the same radiologists. This creates an opportunity to optimize the screening process via computer assistance and automation. While the vast majority of patients remain unscreened, we show the potential for deep learning models to increase the accuracy, consistency and adoption of lung cancer screening worldwide. Website: <a href="https://www.nature.com/articles/s41591-019-0447-x" class="uri">https://www.nature.com/articles/s41591-019-0447-x</a><a href="comparisons-between-ai-and-humans-1.html#fnref26" class="footnote-back">↩</a></p></li>
+<li id="fn27"><p>Homepage of ILSVRC <a href="http://www.image-net.org/challenges/LSVRC/" class="uri">http://www.image-net.org/challenges/LSVRC/</a><a href="comparisons-between-ai-and-humans-1.html#fnref27" class="footnote-back">↩</a></p></li>
+<li id="fn28"><p> Homepage of ImageNet <a href="http://www.image-net.org" class="uri">http://www.image-net.org</a><a href="comparisons-between-ai-and-humans-1.html#fnref28" class="footnote-back">↩</a></p></li>
+<li id="fn29"><p><a href="https://deepmind.com/blog/article/alphago-zero-starting-scratch" class="uri">https://deepmind.com/blog/article/alphago-zero-starting-scratch</a><a href="comparisons-between-ai-and-humans-1.html#fnref29" class="footnote-back">↩</a></p></li>
+<li id="fn30"><p>Homepage of DeepMind <a href="https://deepmind.com" class="uri">https://deepmind.com</a><a href="comparisons-between-ai-and-humans-1.html#fnref30" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="is-ai-smarter-than-humans-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bias-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MlOrienttionBookDown.pdf", "MlOrienttionBookDown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

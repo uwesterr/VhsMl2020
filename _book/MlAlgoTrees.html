@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7.3 Tree based methods TBD | Machine learning orientation</title>
+  <meta name="description" content="A guide to machine learning" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7.3 Tree based methods TBD | Machine learning orientation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A guide to machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7.3 Tree based methods TBD | Machine learning orientation" />
+  
+  <meta name="twitter:description" content="A guide to machine learning" />
+  
+
+<meta name="author" content="Uwe Sterr" />
+
+
+<meta name="date" content="2020-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="MlAlgoLogReg.html"/>
+<link rel="next" href="MlAlgoSvm.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.49.4/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.49.4/plotly-latest.min.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.11/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/uweBookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning orientation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="want-to-meet-ml-people-from-academia-and-industrie.html"><a href="want-to-meet-ml-people-from-academia-and-industrie.html"><i class="fa fa-check"></i><b>1.1</b> Want to meet ML people from academia and industrie</a></li>
+</ul></li>
+<li class="part"><span><b>I Machine learning: Shall we?</b></span></li>
+<li class="chapter" data-level="2" data-path="whatML.html"><a href="whatML.html"><i class="fa fa-check"></i><b>2</b> What is machine learning?</a><ul>
+<li class="chapter" data-level="2.1" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html"><i class="fa fa-check"></i><b>2.1</b> What is intelligence?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html#definition-of-artificial-intelligence-sub-domains"><i class="fa fa-check"></i><b>2.1.1</b> Definition of artificial intelligence sub domains</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html"><i class="fa fa-check"></i><b>2.2</b> Is AI smarter than humans?</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html#thinking-fast-and-slow-kahneman2011thinking"><i class="fa fa-check"></i><b>2.2.1</b> Thinking, fast and slow <span class="citation">(Kahneman <span>2011</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html"><i class="fa fa-check"></i><b>2.3</b> Comparisons between AI and humans</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#breast-cancer-detection"><i class="fa fa-check"></i><b>2.3.1</b> Breast cancer detection</a></li>
+<li class="chapter" data-level="2.3.2" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#working-together-lung-cancer-detection"><i class="fa fa-check"></i><b>2.3.2</b> Working together: Lung cancer detection</a></li>
+<li class="chapter" data-level="2.3.3" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#imagenet-large-scale-visual-recognition-challenge-ilsvrc"><i class="fa fa-check"></i><b>2.3.3</b> ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#alphago-zero"><i class="fa fa-check"></i><b>2.3.4</b> AlphaGo Zero</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="ml-models-with-bias.html"><a href="ml-models-with-bias.html"><i class="fa fa-check"></i><b>2.4</b> ML models with bias</a></li>
+<li class="chapter" data-level="2.5" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html"><i class="fa fa-check"></i><b>2.5</b> Attacks on ML models</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#adding-noise-to-image-leads-to-misclassification"><i class="fa fa-check"></i><b>2.5.1</b> Adding noise to image leads to misclassification</a></li>
+<li class="chapter" data-level="2.5.2" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#but-what-about-attacks-on-human-perception"><i class="fa fa-check"></i><b>2.5.2</b> But what about attacks on human perception?</a></li>
+<li class="chapter" data-level="" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#is-this-a-picture-of-a-real-person"><i class="fa fa-check"></i>Is this a picture of a real person?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>3</b> Outlook</a><ul>
+<li class="chapter" data-level="3.1" data-path="development-of-life.html"><a href="development-of-life.html"><i class="fa fa-check"></i><b>3.1</b> Development of life</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="development-of-life.html"><a href="development-of-life.html#when-will-superhuman-ai-come-and-will-it-be-good"><i class="fa fa-check"></i><b>3.1.1</b> When will superhuman AI come, and will it be good?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="development-of-life.html"><a href="development-of-life.html#ai-aftermath-scenario"><i class="fa fa-check"></i><b>3.1.2</b> AI aftermath scenario</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-religion-dataism.html"><a href="data-religion-dataism.html"><i class="fa fa-check"></i><b>3.2</b> Data religion: Dataism</a></li>
+<li class="chapter" data-level="3.3" data-path="career-oxford-seeks-ai-ethics-professor.html"><a href="career-oxford-seeks-ai-ethics-professor.html"><i class="fa fa-check"></i><b>3.3</b> Career: Oxford seeks AI ethics professor</a></li>
+</ul></li>
+<li class="part"><span><b>II Machine learning fundamentals</b></span></li>
+<li class="chapter" data-level="4" data-path="MachineLearningFundamentals.html"><a href="MachineLearningFundamentals.html"><i class="fa fa-check"></i><b>4</b> Machine learning fundamentals</a></li>
+<li class="chapter" data-level="5" data-path="ml-project-process.html"><a href="ml-project-process.html"><i class="fa fa-check"></i><b>5</b> ML project process</a><ul>
+<li class="chapter" data-level="5.1" data-path="identify-ml-suited-to-fulfill-need.html"><a href="identify-ml-suited-to-fulfill-need.html"><i class="fa fa-check"></i><b>5.1</b> Identify ML suited to fulfill need</a></li>
+<li class="chapter" data-level="5.2" data-path="gather-data-tbc.html"><a href="gather-data-tbc.html"><i class="fa fa-check"></i><b>5.2</b> Gather data TBC</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="gather-data-tbc.html"><a href="gather-data-tbc.html#how-much-data-is-necessary"><i class="fa fa-check"></i><b>5.2.1</b> How much data is necessary?</a></li>
+<li class="chapter" data-level="5.2.2" data-path="gather-data-tbc.html"><a href="gather-data-tbc.html#which-data-is-useful"><i class="fa fa-check"></i><b>5.2.2</b> Which data is useful?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5.3</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="5.4" data-path="qunatitiave-anaylsis.html"><a href="qunatitiave-anaylsis.html"><i class="fa fa-check"></i><b>5.4</b> Qunatitiave anaylsis</a></li>
+<li class="chapter" data-level="5.5" data-path="feature-engineering.html"><a href="feature-engineering.html"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a></li>
+<li class="chapter" data-level="5.6" data-path="model-fit.html"><a href="model-fit.html"><i class="fa fa-check"></i><b>5.6</b> Model fit</a></li>
+<li class="chapter" data-level="5.7" data-path="model-tuning.html"><a href="model-tuning.html"><i class="fa fa-check"></i><b>5.7</b> Model tuning</a></li>
+<li class="chapter" data-level="" data-path="after-data-gathering-iteration-is-trump.html"><a href="after-data-gathering-iteration-is-trump.html"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="5.8" data-path="feature-engineering-1.html"><a href="feature-engineering-1.html"><i class="fa fa-check"></i><b>5.8</b> Feature engineering</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ml-types.html"><a href="ml-types.html"><i class="fa fa-check"></i><b>6</b> ML types</a></li>
+<li class="chapter" data-level="7" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>7</b> ML algorithms</a><ul>
+<li class="chapter" data-level="7.1" data-path="MlAlgoLinReg.html"><a href="MlAlgoLinReg.html"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a></li>
+<li class="chapter" data-level="7.2" data-path="MlAlgoLogReg.html"><a href="MlAlgoLogReg.html"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a></li>
+<li class="chapter" data-level="7.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html"><i class="fa fa-check"></i><b>7.3</b> Tree based methods TBD</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#splitting-metrics"><i class="fa fa-check"></i><b>7.3.1</b> Splitting metrics</a></li>
+<li class="chapter" data-level="7.3.2" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#ensembles"><i class="fa fa-check"></i><b>7.3.2</b> Ensembles</a></li>
+<li class="chapter" data-level="7.3.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesRandomForest"><i class="fa fa-check"></i><b>7.3.3</b> Random forest TBD</a></li>
+<li class="chapter" data-level="7.3.4" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesGBM"><i class="fa fa-check"></i><b>7.3.4</b> Boosted trees TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="MlAlgoSvm.html"><a href="MlAlgoSvm.html"><i class="fa fa-check"></i><b>7.4</b> Support Vector Machine (SVM) TBD</a></li>
+<li class="chapter" data-level="7.5" data-path="neural-networks.html"><a href="neural-networks.html"><i class="fa fa-check"></i><b>7.5</b> Neural networks</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="neural-networks.html"><a href="neural-networks.html#convolutional-neural-network-cnn-tbd"><i class="fa fa-check"></i><b>7.5.1</b> Convolutional Neural Network (CNN) TBD</a></li>
+<li class="chapter" data-level="7.5.2" data-path="neural-networks.html"><a href="neural-networks.html#rnn-tbd"><i class="fa fa-check"></i><b>7.5.2</b> RNN TBD</a></li>
+<li class="chapter" data-level="7.5.3" data-path="neural-networks.html"><a href="neural-networks.html#gans"><i class="fa fa-check"></i><b>7.5.3</b> GANs</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html"><i class="fa fa-check"></i><b>7.6</b> A Gentle Introduction to CycleGAN for Image Translation</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html#examples-for-gans"><i class="fa fa-check"></i><b>7.6.1</b> Examples for GANs</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><a href="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><i class="fa fa-check"></i><b>7.7</b> Software that can generate photos from paintings, turn horses into zebras, perform style transfer, and more.</a></li>
+<li class="chapter" data-level="7.8" data-path="transformers-tbd.html"><a href="transformers-tbd.html"><i class="fa fa-check"></i><b>7.8</b> Transformers TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="food-for-the-algorithms-data.html"><a href="food-for-the-algorithms-data.html"><i class="fa fa-check"></i><b>8</b> Food for the algorithms: Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="discovering-millions-of-datasets-on-the-web.html"><a href="discovering-millions-of-datasets-on-the-web.html"><i class="fa fa-check"></i><b>8.1</b> Discovering millions of datasets on the web</a></li>
+</ul></li>
+<li class="part"><span><b>III Explainable ML</b></span></li>
+<li class="chapter" data-level="9" data-path="ExplainableMl.html"><a href="ExplainableMl.html"><i class="fa fa-check"></i><b>9</b> Explainable ML tbd</a><ul>
+<li class="chapter" data-level="9.1" data-path="lime-tbd.html"><a href="lime-tbd.html"><i class="fa fa-check"></i><b>9.1</b> Lime tbd</a></li>
+<li class="chapter" data-level="9.2" data-path="alibi-tbd.html"><a href="alibi-tbd.html"><i class="fa fa-check"></i><b>9.2</b> alibi tbd</a></li>
+<li class="chapter" data-level="9.3" data-path="tf-explain-tbd.html"><a href="tf-explain-tbd.html"><i class="fa fa-check"></i><b>9.3</b> tf-explain tbd</a></li>
+<li class="chapter" data-level="9.4" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html"><i class="fa fa-check"></i><b>9.4</b> keras-salient-object-visualization</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html#explaining-how-a-deep-neural-network-trained-with-end-to-end-learning-steers-a-car"><i class="fa fa-check"></i><b>9.4.1</b> Explaining How a Deep Neural Network Trained with End-to-End Learning Steers a Car</a></li>
+<li class="chapter" data-level="9.4.2" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html#visualbackprop-efficient-visualization-of-cnns"><i class="fa fa-check"></i><b>9.4.2</b> VisualBackProp: efficient visualization of CNNs</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV ML online resources</b></span></li>
+<li class="chapter" data-level="10" data-path="MlResources.html"><a href="MlResources.html"><i class="fa fa-check"></i><b>10</b> ML online resources</a><ul>
+<li class="chapter" data-level="10.1" data-path="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><a href="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><i class="fa fa-check"></i><b>10.1</b> In-depth introduction to machine learning in 15 hours of expert videos</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><a href="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html#an-introduction-to-statistical-learning"><i class="fa fa-check"></i><b>10.1.1</b> An Introduction to Statistical Learning</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="the-learning-machine.html"><a href="the-learning-machine.html"><i class="fa fa-check"></i><b>10.2</b> The learning machine</a></li>
+<li class="chapter" data-level="10.3" data-path="deepai-the-front-page-of-a-i-.html"><a href="deepai-the-front-page-of-a-i-.html"><i class="fa fa-check"></i><b>10.3</b> DeepAI: The front page of A.I.</a></li>
+</ul></li>
+<li class="part"><span><b>V Examples from Kaggle</b></span></li>
+<li class="chapter" data-level="11" data-path="KaggleExamples.html"><a href="KaggleExamples.html"><i class="fa fa-check"></i><b>11</b> Examples in Kaggle</a></li>
+<li class="chapter" data-level="12" data-path="melbourne-university-aesmathworksnih-seizure-prediction.html"><a href="melbourne-university-aesmathworksnih-seizure-prediction.html"><i class="fa fa-check"></i><b>12</b> Melbourne University AES/MathWorks/NIH Seizure Prediction</a><ul>
+<li class="chapter" data-level="12.1" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html"><i class="fa fa-check"></i><b>12.1</b> Winning solution (1st)</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#alex-gilberto-models"><i class="fa fa-check"></i><b>12.1.1</b> Alex / Gilberto models</a></li>
+<li class="chapter" data-level="12.1.2" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#feng-models"><i class="fa fa-check"></i><b>12.1.2</b> Feng models</a></li>
+<li class="chapter" data-level="12.1.3" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#andriy-models"><i class="fa fa-check"></i><b>12.1.3</b> Andriy models</a></li>
+<li class="chapter" data-level="12.1.4" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#code-on-github"><i class="fa fa-check"></i><b>12.1.4</b> Code on GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="solution4th-place.html"><a href="solution4th-place.html"><i class="fa fa-check"></i><b>12.2</b> Solution(4th place)</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="solution4th-place.html"><a href="solution4th-place.html#pre-processing-6"><i class="fa fa-check"></i><b>12.2.1</b> Pre-processing</a></li>
+<li class="chapter" data-level="12.2.2" data-path="solution4th-place.html"><a href="solution4th-place.html#features-3"><i class="fa fa-check"></i><b>12.2.2</b> Features</a></li>
+<li class="chapter" data-level="12.2.3" data-path="solution4th-place.html"><a href="solution4th-place.html#model"><i class="fa fa-check"></i><b>12.2.3</b> Model</a></li>
+<li class="chapter" data-level="12.2.4" data-path="solution4th-place.html"><a href="solution4th-place.html#github-code"><i class="fa fa-check"></i><b>12.2.4</b> GitHub code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="bosch-production-line-performance.html"><a href="bosch-production-line-performance.html"><i class="fa fa-check"></i><b>13</b> Bosch Production Line Performance</a><ul>
+<li class="chapter" data-level="13.1" data-path="st-place-solution.html"><a href="st-place-solution.html"><i class="fa fa-check"></i><b>13.1</b> 1st place solution</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="st-place-solution.html"><a href="st-place-solution.html#data-exploration"><i class="fa fa-check"></i><b>13.1.1</b> Data exploration</a></li>
+<li class="chapter" data-level="13.1.2" data-path="st-place-solution.html"><a href="st-place-solution.html#hand-crafted-features"><i class="fa fa-check"></i><b>13.1.2</b> Hand crafted features</a></li>
+<li class="chapter" data-level="13.1.3" data-path="st-place-solution.html"><a href="st-place-solution.html#hardware"><i class="fa fa-check"></i><b>13.1.3</b> Hardware</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="rd-place-solution-tbd.html"><a href="rd-place-solution-tbd.html"><i class="fa fa-check"></i><b>13.2</b> 3rd place solution TBD</a></li>
+<li class="chapter" data-level="13.3" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html"><i class="fa fa-check"></i><b>13.3</b> 8th place solution with GitHub</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#overall-architecture"><i class="fa fa-check"></i><b>13.3.1</b> Overall architecture</a></li>
+<li class="chapter" data-level="13.3.2" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#input-data-sets"><i class="fa fa-check"></i><b>13.3.2</b> Input data sets</a></li>
+<li class="chapter" data-level="13.3.3" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#ensembling"><i class="fa fa-check"></i><b>13.3.3</b> Ensembling</a></li>
+<li class="chapter" data-level="13.3.4" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#features-4"><i class="fa fa-check"></i><b>13.3.4</b> Features</a></li>
+<li class="chapter" data-level="13.3.5" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#validation-method"><i class="fa fa-check"></i><b>13.3.5</b> Validation method</a></li>
+<li class="chapter" data-level="13.3.6" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#software-1"><i class="fa fa-check"></i><b>13.3.6</b> Software</a></li>
+<li class="chapter" data-level="13.3.7" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#code-on-github-1"><i class="fa fa-check"></i><b>13.3.7</b> Code on GitHub</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="corporación-favorita-grocery-sales-forecasting.html"><a href="corporación-favorita-grocery-sales-forecasting.html"><i class="fa fa-check"></i><b>14</b> Corporación Favorita Grocery Sales Forecasting</a><ul>
+<li class="chapter" data-level="14.1" data-path="st-place-solution-1.html"><a href="st-place-solution-1.html"><i class="fa fa-check"></i><b>14.1</b> 1st place solution</a></li>
+<li class="chapter" data-level="14.2" data-path="th-place-solution-overview.html"><a href="th-place-solution-overview.html"><i class="fa fa-check"></i><b>14.2</b> 4th-Place Solution Overview</a></li>
+<li class="chapter" data-level="14.3" data-path="th-place-solution.html"><a href="th-place-solution.html"><i class="fa fa-check"></i><b>14.3</b> 5th Place Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="severstal-steel-defect-detection.html"><a href="severstal-steel-defect-detection.html"><i class="fa fa-check"></i><b>15</b> Severstal: Steel Defect Detection</a></li>
+<li class="chapter" data-level="16" data-path="lyft-3d-object-detection-for-autonomous-vehicles.html"><a href="lyft-3d-object-detection-for-autonomous-vehicles.html"><i class="fa fa-check"></i><b>16</b> Lyft 3D Object Detection for Autonomous Vehicles</a><ul>
+<li class="chapter" data-level="16.1" data-path="rd-place-solution.html"><a href="rd-place-solution.html"><i class="fa fa-check"></i><b>16.1</b> 3rd place solution</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="aptos-2019-blindness-detection.html"><a href="aptos-2019-blindness-detection.html"><i class="fa fa-check"></i><b>17</b> APTOS 2019 Blindness Detection</a><ul>
+<li class="chapter" data-level="17.1" data-path="st-place-solution-summary.html"><a href="st-place-solution-summary.html"><i class="fa fa-check"></i><b>17.1</b> 1st place solution summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="predicting-molecular-properties.html"><a href="predicting-molecular-properties.html"><i class="fa fa-check"></i><b>18</b> Predicting Molecular Properties</a><ul>
+<li class="chapter" data-level="18.1" data-path="solution-hybrid.html"><a href="solution-hybrid.html"><i class="fa fa-check"></i><b>18.1</b> #1 Solution - hybrid</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="solution-hybrid.html"><a href="solution-hybrid.html#overall-architecture-1"><i class="fa fa-check"></i><b>18.1.1</b> Overall architecture</a></li>
+<li class="chapter" data-level="18.1.2" data-path="solution-hybrid.html"><a href="solution-hybrid.html#ensembling-1"><i class="fa fa-check"></i><b>18.1.2</b> Ensembling</a></li>
+<li class="chapter" data-level="18.1.3" data-path="solution-hybrid.html"><a href="solution-hybrid.html#hardware-1"><i class="fa fa-check"></i><b>18.1.3</b> Hardware</a></li>
+<li class="chapter" data-level="18.1.4" data-path="solution-hybrid.html"><a href="solution-hybrid.html#software-2"><i class="fa fa-check"></i><b>18.1.4</b> Software</a></li>
+<li class="chapter" data-level="18.1.5" data-path="solution-hybrid.html"><a href="solution-hybrid.html#code-on-github-2"><i class="fa fa-check"></i><b>18.1.5</b> Code on GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html"><i class="fa fa-check"></i><b>18.2</b> #2 solution 🤖 Quantum Uncertainty 🤖</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#overall-architecture-2"><i class="fa fa-check"></i><b>18.2.1</b> Overall architecture</a></li>
+<li class="chapter" data-level="18.2.2" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#input-features-and-embeddings-1"><i class="fa fa-check"></i><b>18.2.2</b> Input features and embeddings</a></li>
+<li class="chapter" data-level="18.2.3" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#data-augmentation"><i class="fa fa-check"></i><b>18.2.3</b> Data augmentation</a></li>
+<li class="chapter" data-level="18.2.4" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#ensembling-2"><i class="fa fa-check"></i><b>18.2.4</b> Ensembling</a></li>
+<li class="chapter" data-level="18.2.5" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#hardware-2"><i class="fa fa-check"></i><b>18.2.5</b> Hardware</a></li>
+<li class="chapter" data-level="18.2.6" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#software-3"><i class="fa fa-check"></i><b>18.2.6</b> Software</a></li>
+<li class="chapter" data-level="18.2.7" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#code-on-github-3"><i class="fa fa-check"></i><b>18.2.7</b> Code on GitHub</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="local-examples.html"><a href="local-examples.html"><i class="fa fa-check"></i><b>19</b> Local examples</a><ul>
+<li class="chapter" data-level="19.1" data-path="university-suttgart-indoor-ortung-mit-mobilfunk.html"><a href="university-suttgart-indoor-ortung-mit-mobilfunk.html"><i class="fa fa-check"></i><b>19.1</b> University Suttgart: Indoor-Ortung mit Mobilfunk</a></li>
+<li class="chapter" data-level="19.2" data-path="bionic-learning-network.html"><a href="bionic-learning-network.html"><i class="fa fa-check"></i><b>19.2</b> Bionic Learning Network</a></li>
+</ul></li>
+<li class="part"><span><b>VI Real world example</b></span></li>
+<li class="chapter" data-level="20" data-path="RealWorld.html"><a href="RealWorld.html"><i class="fa fa-check"></i><b>20</b> Real world example</a><ul>
+<li class="chapter" data-level="20.1" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html"><i class="fa fa-check"></i><b>20.1</b> Subject of the project</a><ul>
+<li class="chapter" data-level="" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html#depending-from-where-you-were-looking"><i class="fa fa-check"></i>Depending from where you were looking:</a></li>
+<li class="chapter" data-level="" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html#looking-from-the-perspective-of-machine-learning-expert"><i class="fa fa-check"></i>Looking from the perspective of machine learning expert</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="project-phases.html"><a href="project-phases.html"><i class="fa fa-check"></i><b>20.2</b> Project phases</a><ul>
+<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#the-main-project-phases-are"><i class="fa fa-check"></i>The main project phases are:</a></li>
+<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#after-data-gathering-iteration-is-trump-1"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-2"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html"><i class="fa fa-check"></i><b>20.3</b> Algorithm selection</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="algorithm-selection.html"><a href="algorithm-selection.html#logistic-regression"><i class="fa fa-check"></i><b>20.3.1</b> Logistic regression</a></li>
+<li class="chapter" data-level="20.3.2" data-path="algorithm-selection.html"><a href="algorithm-selection.html#tree-based-tbd"><i class="fa fa-check"></i><b>20.3.2</b> Tree based TBD</a></li>
+<li class="chapter" data-level="20.3.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html#support-vector-machine-svm-tbd"><i class="fa fa-check"></i><b>20.3.3</b> Support Vector Machine (SVM) TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="performance-measurement.html"><a href="performance-measurement.html"><i class="fa fa-check"></i><b>20.4</b> Performance measurement</a><ul>
+<li class="chapter" data-level="20.4.1" data-path="performance-measurement.html"><a href="performance-measurement.html#sensitivity-and-specificity"><i class="fa fa-check"></i><b>20.4.1</b> Sensitivity and specificity</a></li>
+<li class="chapter" data-level="20.4.2" data-path="performance-measurement.html"><a href="performance-measurement.html#receiver-operating-characteristic-roc"><i class="fa fa-check"></i><b>20.4.2</b> Receiver operating characteristic (ROC)</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html"><i class="fa fa-check"></i><b>20.5</b> Confusion matrix and ROC for pulse</a><ul>
+<li class="chapter" data-level="20.5.1" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html#r-plots"><i class="fa fa-check"></i><b>20.5.1</b> R Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="create-augmented-labeled-data.html"><a href="create-augmented-labeled-data.html"><i class="fa fa-check"></i><b>20.6</b> Create augmented labeled data</a><ul>
+<li class="chapter" data-level="20.6.1" data-path="create-augmented-labeled-data.html"><a href="create-augmented-labeled-data.html#features-of-time-signals"><i class="fa fa-check"></i><b>20.6.1</b> Features of time signals</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="features-generated.html"><a href="features-generated.html"><i class="fa fa-check"></i><b>20.7</b> Features generated</a><ul>
+<li class="chapter" data-level="20.7.1" data-path="features-generated.html"><a href="features-generated.html#analysis-of-generated-features"><i class="fa fa-check"></i><b>20.7.1</b> Analysis of generated features</a></li>
+<li class="chapter" data-level="20.7.2" data-path="features-generated.html"><a href="features-generated.html#dynamic-time-warp-dtw-for-signal"><i class="fa fa-check"></i><b>20.7.2</b> Dynamic time warp (DTW) for signal</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="algorithm.html"><a href="algorithm.html"><i class="fa fa-check"></i><b>20.8</b> Algorithm</a></li>
+<li class="chapter" data-level="20.9" data-path="confusion-matrix-results-logistic-regression-for-measured-data.html"><a href="confusion-matrix-results-logistic-regression-for-measured-data.html"><i class="fa fa-check"></i><b>20.9</b> Confusion matrix results logistic regression for measured data</a><ul>
+<li class="chapter" data-level="20.9.1" data-path="confusion-matrix-results-logistic-regression-for-measured-data.html"><a href="confusion-matrix-results-logistic-regression-for-measured-data.html#roc-results-for-measured-data"><i class="fa fa-check"></i><b>20.9.1</b> ROC results for measured data</a></li>
+</ul></li>
+<li class="chapter" data-level="20.10" data-path="several-algorithms-results-for-snr-18db.html"><a href="several-algorithms-results-for-snr-18db.html"><i class="fa fa-check"></i><b>20.10</b> Several algorithms results for SNR = 18dB</a><ul>
+<li class="chapter" data-level="20.10.1" data-path="several-algorithms-results-for-snr-18db.html"><a href="several-algorithms-results-for-snr-18db.html#roc-results-for-snr-18db"><i class="fa fa-check"></i><b>20.10.1</b> ROC results for SNR 18dB</a></li>
+</ul></li>
+<li class="chapter" data-level="20.11" data-path="compare-models-for-snr-18db.html"><a href="compare-models-for-snr-18db.html"><i class="fa fa-check"></i><b>20.11</b> Compare models for SNR = 18dB</a></li>
+<li class="chapter" data-level="20.12" data-path="optimize-ml-hyper-parameter.html"><a href="optimize-ml-hyper-parameter.html"><i class="fa fa-check"></i><b>20.12</b> Optimize ML hyper parameter</a></li>
+</ul></li>
+<li class="part"><span><b>VII Cloud-based machine learning</b></span></li>
+<li class="chapter" data-level="21" data-path="CloudBasedMl.html"><a href="CloudBasedMl.html"><i class="fa fa-check"></i><b>21</b> Cloud-based machine learning</a></li>
+<li class="part"><span><b>VIII Kaggle Survey</b></span></li>
+<li class="chapter" data-level="22" data-path="KaggleSurvey.html"><a href="KaggleSurvey.html"><i class="fa fa-check"></i><b>22</b> Kaggle survey introduction</a><ul>
+<li class="chapter" data-level="22.1" data-path="kaggle-survey-details.html"><a href="kaggle-survey-details.html"><i class="fa fa-check"></i><b>22.1</b> Kaggle survey details</a></li>
+<li class="chapter" data-level="22.2" data-path="purpose.html"><a href="purpose.html"><i class="fa fa-check"></i><b>22.2</b> Purpose</a></li>
+<li class="chapter" data-level="22.3" data-path="navigation-and-handling.html"><a href="navigation-and-handling.html"><i class="fa fa-check"></i><b>22.3</b> Navigation and handling</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>23</b> Results</a><ul>
+<li class="chapter" data-level="23.1" data-path="survey-participants-education-level.html"><a href="survey-participants-education-level.html"><i class="fa fa-check"></i><b>23.1</b> Survey participants education level</a></li>
+<li class="chapter" data-level="23.2" data-path="who-uses-which-algorithm.html"><a href="who-uses-which-algorithm.html"><i class="fa fa-check"></i><b>23.2</b> Who uses which algorithm</a></li>
+<li class="chapter" data-level="23.3" data-path="machine-learning-experience-and-algorithms.html"><a href="machine-learning-experience-and-algorithms.html"><i class="fa fa-check"></i><b>23.3</b> Machine learning experience and algorithms</a></li>
+<li class="chapter" data-level="23.4" data-path="experience-and-new-algorithms.html"><a href="experience-and-new-algorithms.html"><i class="fa fa-check"></i><b>23.4</b> Experience and new algorithms</a></li>
+<li class="chapter" data-level="23.5" data-path="role-of-participants.html"><a href="role-of-participants.html"><i class="fa fa-check"></i><b>23.5</b> Role of participants</a></li>
+<li class="chapter" data-level="23.6" data-path="company-size.html"><a href="company-size.html"><i class="fa fa-check"></i><b>23.6</b> Company size</a></li>
+<li class="chapter" data-level="23.7" data-path="company-incorporation-of-machine-learning.html"><a href="company-incorporation-of-machine-learning.html"><i class="fa fa-check"></i><b>23.7</b> Company incorporation of machine learning</a></li>
+<li class="chapter" data-level="23.8" data-path="favourite-media-sources-on-data-science-topics.html"><a href="favourite-media-sources-on-data-science-topics.html"><i class="fa fa-check"></i><b>23.8</b> Favourite media sources on data science topics</a></li>
+<li class="chapter" data-level="23.9" data-path="favourite-online-course-platform.html"><a href="favourite-online-course-platform.html"><i class="fa fa-check"></i><b>23.9</b> Favourite online course platform</a></li>
+<li class="chapter" data-level="23.10" data-path="favourite-data-analyzing-tool.html"><a href="favourite-data-analyzing-tool.html"><i class="fa fa-check"></i><b>23.10</b> Favourite data analyzing tool</a></li>
+<li class="chapter" data-level="23.11" data-path="experience-in-data-analysis-coding.html"><a href="experience-in-data-analysis-coding.html"><i class="fa fa-check"></i><b>23.11</b> Experience in data analysis coding</a></li>
+<li class="chapter" data-level="23.12" data-path="favourite-integrated-development-environments-ides.html"><a href="favourite-integrated-development-environments-ides.html"><i class="fa fa-check"></i><b>23.12</b> Favourite integrated development environments (IDE’s)</a></li>
+<li class="chapter" data-level="23.13" data-path="favourite-hosted-notebook-products.html"><a href="favourite-hosted-notebook-products.html"><i class="fa fa-check"></i><b>23.13</b> Favourite hosted notebook products</a></li>
+<li class="chapter" data-level="23.14" data-path="favourite-programming-languages.html"><a href="favourite-programming-languages.html"><i class="fa fa-check"></i><b>23.14</b> Favourite programming languages</a></li>
+<li class="chapter" data-level="23.15" data-path="recommended-entry-programming-language.html"><a href="recommended-entry-programming-language.html"><i class="fa fa-check"></i><b>23.15</b> Recommended entry programming language</a></li>
+<li class="chapter" data-level="23.16" data-path="favourite-data-visualization-libraries-or-tools.html"><a href="favourite-data-visualization-libraries-or-tools.html"><i class="fa fa-check"></i><b>23.16</b> Favourite data visualization libraries or tools</a></li>
+<li class="chapter" data-level="23.17" data-path="favourite-specialized-hardware.html"><a href="favourite-specialized-hardware.html"><i class="fa fa-check"></i><b>23.17</b> Favourite specialized hardware</a></li>
+<li class="chapter" data-level="23.18" data-path="favourite-machine-learning-frameworks.html"><a href="favourite-machine-learning-frameworks.html"><i class="fa fa-check"></i><b>23.18</b> Favourite machine learning frameworks</a></li>
+<li class="chapter" data-level="23.19" data-path="favourite-cloud-computing-platforms.html"><a href="favourite-cloud-computing-platforms.html"><i class="fa fa-check"></i><b>23.19</b> Favourite cloud computing platforms</a></li>
+<li class="chapter" data-level="23.20" data-path="favourite-big-data-analytics-products.html"><a href="favourite-big-data-analytics-products.html"><i class="fa fa-check"></i><b>23.20</b> Favourite big data / analytics products</a></li>
+<li class="chapter" data-level="23.21" data-path="favourite-automated-machine-learning-tools-or-partial-automl-tools.html"><a href="favourite-automated-machine-learning-tools-or-partial-automl-tools.html"><i class="fa fa-check"></i><b>23.21</b> Favourite automated machine learning tools (or partial AutoML tools)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine learning orientation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="MlAlgoTrees" class="section level2">
+<h2><span class="header-section-number">7.3</span> Tree based methods TBD</h2>
+<p>Tree based methods can be used for different predictions:</p>
+
+<div class="rmdtip">
+<p>Types of predictions:</p>
+<ul>
+<li>Regression trees
+<ul>
+<li>predict quantitative response</li>
+</ul></li>
+<li>Classification trees
+<ul>
+<li>predict qualitative response</li>
+</ul></li>
+</ul>
+</div>
+
+<hr />
+<p><img src="images/typesOfTrees.png" style="width:90.0%" /></p>
+<hr />
+<p>Depending on the task the metric to decide how to split the data is different:</p>
+
+<div class="rmdtip">
+<p>Metric for splits:</p>
+<ul>
+<li>Regression
+<ul>
+<li>Residual sum of squares (<a href="https://en.wikipedia.org/wiki/Residual_sum_of_squares">RSS</a>)</li>
+<li>Goal is to minimize the value</li>
+</ul></li>
+<li>Classification
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Decision_tree">Gini index</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cross_entropy">Cross entropy</a></li>
+<li>Both metrics are numerically very similar</li>
+<li>Goal is to minimize the value</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="splitting-metrics" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Splitting metrics</h3>
+<p>Deciding how to split the data at a node is done based on metrics which shall be minimal for the split</p>
+
+<div class="rmdtip">
+<p>Residual sum of squares (RSS):</p>
+<ul>
+<li>Regression trees</li>
+<li>How close are the samples to the mean of all samples in the resulting node<br />
+</li>
+<li><span class="math inline">\(RSS = \sum_{k=1}^{K}\sum_{bi€R_j}(y_i-\hat{y}_{Rj})^2\)</span></li>
+</ul>
+<p>Gini index:</p>
+<ul>
+<li>Classification</li>
+<li>How pure is are the resulting leafs<br />
+</li>
+<li><span class="math inline">\(G = \sum_{k=1}^{K}p_i(1-p_i)\)</span></li>
+</ul>
+<p>Cross-entropy:</p>
+<ul>
+<li><p>How pure is are the resulting leafs</p></li>
+<li><p><span class="math inline">\(D = - \sum_{k=1}^{K}p_i \log_{10}(p_i)\)</span></p>
+</div></li>
+</ul>
+<p>An example on how the gini value changes
+<img src="images/giniTreeExample.png" style="width:100.0%" /></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="MlAlgoTrees.html#cb1-1"></a><span class="co"># source: https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html#sphx-glr-auto-examples-tree-plot-iris-dtc-py</span></span>
+<span id="cb1-2"><a href="MlAlgoTrees.html#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="MlAlgoTrees.html#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="MlAlgoTrees.html#cb1-4"></a></span>
+<span id="cb1-5"><a href="MlAlgoTrees.html#cb1-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb1-6"><a href="MlAlgoTrees.html#cb1-6"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
+<span id="cb1-7"><a href="MlAlgoTrees.html#cb1-7"></a></span>
+<span id="cb1-8"><a href="MlAlgoTrees.html#cb1-8"></a><span class="co"># Parameters</span></span>
+<span id="cb1-9"><a href="MlAlgoTrees.html#cb1-9"></a>n_classes <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-10"><a href="MlAlgoTrees.html#cb1-10"></a>plot_colors <span class="op">=</span> <span class="st">&quot;ryb&quot;</span></span>
+<span id="cb1-11"><a href="MlAlgoTrees.html#cb1-11"></a>plot_step <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb1-12"><a href="MlAlgoTrees.html#cb1-12"></a></span>
+<span id="cb1-13"><a href="MlAlgoTrees.html#cb1-13"></a><span class="co"># Load data</span></span>
+<span id="cb1-14"><a href="MlAlgoTrees.html#cb1-14"></a>iris <span class="op">=</span> load_iris()</span>
+<span id="cb1-15"><a href="MlAlgoTrees.html#cb1-15"></a></span>
+<span id="cb1-16"><a href="MlAlgoTrees.html#cb1-16"></a><span class="cf">for</span> pairidx, pair <span class="kw">in</span> <span class="bu">enumerate</span>([[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">3</span>],</span>
+<span id="cb1-17"><a href="MlAlgoTrees.html#cb1-17"></a>                                [<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">3</span>]]):</span>
+<span id="cb1-18"><a href="MlAlgoTrees.html#cb1-18"></a>    <span class="co"># We only take the two corresponding features</span></span>
+<span id="cb1-19"><a href="MlAlgoTrees.html#cb1-19"></a>    X <span class="op">=</span> iris.data[:, pair]</span>
+<span id="cb1-20"><a href="MlAlgoTrees.html#cb1-20"></a>    y <span class="op">=</span> iris.target</span>
+<span id="cb1-21"><a href="MlAlgoTrees.html#cb1-21"></a></span>
+<span id="cb1-22"><a href="MlAlgoTrees.html#cb1-22"></a>    <span class="co"># Train</span></span>
+<span id="cb1-23"><a href="MlAlgoTrees.html#cb1-23"></a>    clf <span class="op">=</span> DecisionTreeClassifier().fit(X, y)</span>
+<span id="cb1-24"><a href="MlAlgoTrees.html#cb1-24"></a></span>
+<span id="cb1-25"><a href="MlAlgoTrees.html#cb1-25"></a>    <span class="co"># Plot the decision boundary</span></span>
+<span id="cb1-26"><a href="MlAlgoTrees.html#cb1-26"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">3</span>, pairidx <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-27"><a href="MlAlgoTrees.html#cb1-27"></a></span>
+<span id="cb1-28"><a href="MlAlgoTrees.html#cb1-28"></a>    x_min, x_max <span class="op">=</span> X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-29"><a href="MlAlgoTrees.html#cb1-29"></a>    y_min, y_max <span class="op">=</span> X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-30"><a href="MlAlgoTrees.html#cb1-30"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.arange(x_min, x_max, plot_step),</span>
+<span id="cb1-31"><a href="MlAlgoTrees.html#cb1-31"></a>                         np.arange(y_min, y_max, plot_step))</span>
+<span id="cb1-32"><a href="MlAlgoTrees.html#cb1-32"></a>    plt.tight_layout(h_pad<span class="op">=</span><span class="fl">0.5</span>, w_pad<span class="op">=</span><span class="fl">0.5</span>, pad<span class="op">=</span><span class="fl">2.5</span>)</span>
+<span id="cb1-33"><a href="MlAlgoTrees.html#cb1-33"></a></span>
+<span id="cb1-34"><a href="MlAlgoTrees.html#cb1-34"></a>    Z <span class="op">=</span> clf.predict(np.c_[xx.ravel(), yy.ravel()])</span>
+<span id="cb1-35"><a href="MlAlgoTrees.html#cb1-35"></a>    Z <span class="op">=</span> Z.reshape(xx.shape)</span>
+<span id="cb1-36"><a href="MlAlgoTrees.html#cb1-36"></a>    cs <span class="op">=</span> plt.contourf(xx, yy, Z, cmap<span class="op">=</span>plt.cm.RdYlBu)</span>
+<span id="cb1-37"><a href="MlAlgoTrees.html#cb1-37"></a></span>
+<span id="cb1-38"><a href="MlAlgoTrees.html#cb1-38"></a>    plt.xlabel(iris.feature_names[pair[<span class="dv">0</span>]])</span>
+<span id="cb1-39"><a href="MlAlgoTrees.html#cb1-39"></a>    plt.ylabel(iris.feature_names[pair[<span class="dv">1</span>]])</span>
+<span id="cb1-40"><a href="MlAlgoTrees.html#cb1-40"></a></span>
+<span id="cb1-41"><a href="MlAlgoTrees.html#cb1-41"></a>    <span class="co"># Plot the training points</span></span>
+<span id="cb1-42"><a href="MlAlgoTrees.html#cb1-42"></a>    <span class="cf">for</span> i, color <span class="kw">in</span> <span class="bu">zip</span>(<span class="bu">range</span>(n_classes), plot_colors):</span>
+<span id="cb1-43"><a href="MlAlgoTrees.html#cb1-43"></a>        idx <span class="op">=</span> np.where(y <span class="op">==</span> i)</span>
+<span id="cb1-44"><a href="MlAlgoTrees.html#cb1-44"></a>        plt.scatter(X[idx, <span class="dv">0</span>], X[idx, <span class="dv">1</span>], c<span class="op">=</span>color, label<span class="op">=</span>iris.target_names[i],</span>
+<span id="cb1-45"><a href="MlAlgoTrees.html#cb1-45"></a>                    cmap<span class="op">=</span>plt.cm.RdYlBu, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, s<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb1-46"><a href="MlAlgoTrees.html#cb1-46"></a></span>
+<span id="cb1-47"><a href="MlAlgoTrees.html#cb1-47"></a>plt.suptitle(<span class="st">&quot;Decision surface of a decision tree using paired features&quot;</span>)</span>
+<span id="cb1-48"><a href="MlAlgoTrees.html#cb1-48"></a>plt.legend(loc<span class="op">=</span><span class="st">&#39;lower right&#39;</span>, borderpad<span class="op">=</span><span class="dv">0</span>, handletextpad<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-49"><a href="MlAlgoTrees.html#cb1-49"></a>plt.axis(<span class="st">&quot;tight&quot;</span>)</span>
+<span id="cb1-50"><a href="MlAlgoTrees.html#cb1-50"></a></span>
+<span id="cb1-51"><a href="MlAlgoTrees.html#cb1-51"></a>plt.figure(dpi <span class="op">=</span> <span class="dv">300</span>) <span class="co"># Uwe Sterr added dpi argument for better readability of plot</span></span>
+<span id="cb1-52"><a href="MlAlgoTrees.html#cb1-52"></a>clf <span class="op">=</span> DecisionTreeClassifier().fit(iris.data, iris.target)</span>
+<span id="cb1-53"><a href="MlAlgoTrees.html#cb1-53"></a>plot_tree(clf, filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-54"><a href="MlAlgoTrees.html#cb1-54"></a>plt.show()</span></code></pre></div>
+</div>
+<div id="ensembles" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Ensembles</h3>
+<p>Prediction ability of a single decision tree is limited, several techniques are employed to enhance the ability. All of them are aimed at buidling a ensemble of trees which combined have a higher prediction ability than a single tree.</p>
+
+<div class="rmdtip">
+<p>Ensembling methods:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrap</a>
+<ul>
+<li>random sample with replacement</li>
+</ul></li>
+<li><a href="https://en.wikipedia.org/wiki/Bootstrap_aggregating">Bagging</a>
+<ul>
+<li>short for <strong>b</strong>ootstrap and <strong>agg</strong>regation</li>
+<li>used for example with random forests</li>
+</ul></li>
+<li><a href="https://en.wikipedia.org/wiki/Gradient_boosting">Boosting</a>
+<ul>
+<li>build several trees</li>
+<li>trees learn from errors of previous trees</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="bootstrap" class="section level4">
+<h4><span class="header-section-number">7.3.2.1</span> Bootstrap</h4>
+<p><a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrapping</a> is resembling method that relies on sampling with replacement as shown in the image below</p>
+<hr />
+<p><img src="images/bootstrap.png" style="width:60.0%" /></p>
+<hr />
+<p>Bootstrap is a widely applicable and extremely powerful statistical tool that allow assigning measures of accuracy associated with a given estimator or statistical learning method.<br />
+It is used by the random forest algorithm as described in chapter <a href="MlAlgoTrees.html#MlAlgoTreesRandomForest">7.3.3</a></p>
+</div>
+<div id="bagging" class="section level4">
+<h4><span class="header-section-number">7.3.2.2</span> Bagging</h4>
+<p><a href="https://en.wikipedia.org/wiki/Bootstrap_aggregating">Bagging</a> is short for <strong>b</strong>ootstrap and <strong>agg</strong>regation and is a general purpose procedure for reducing the variance of a machine learning algorithm. It is particularly useful and frequently used in the context of decision trees.</p>
+<p>For random forests the method works as follows:</p>
+
+<div class="rmdtip">
+<p>Bootstrapping for random forest:</p>
+<ul>
+<li>Generate training data by bootstrapping from the original training data set</li>
+<li>Generate a tree</li>
+<li>Repeat this M times</li>
+<li>Predict by averaging the predictions of all trees</li>
+</ul>
+</div>
+
+</div>
+<div id="boosting" class="section level4">
+<h4><span class="header-section-number">7.3.2.3</span> Boosting</h4>
+<p><a href="https://en.wikipedia.org/wiki/Gradient_boosting">Boosting</a> can be utilized for regression and classification problems. It produces an ensemble of weak learners, typically decision trees. The models are build sequentially allowing optimization of an arbitrary differentiable loss function.
+An example on how boosting works for tree is given in chapter <a href="MlAlgoTrees.html#MlAlgoTreesGBM">7.3.4</a></p>
+</div>
+<div id="types-of-decision-trees" class="section level4">
+<h4><span class="header-section-number">7.3.2.4</span> Types of decision trees</h4>
+<p>Two dominant decision tree concepts are:</p>
+<hr />
+<p><img src="images/TreeAlogo.png" style="width:90.0%" /></p>
+<hr />
+<p>Two dominant concepts used for ensemble trees are described at:</p>
+<ul>
+<li>Random forest in chapter <a href="MlAlgoTrees.html#MlAlgoTreesRandomForest">7.3.3</a></li>
+<li>Gradient boosted trees in chapter <a href="MlAlgoTrees.html#MlAlgoTreesGBM">7.3.4</a></li>
+</ul>
+</div>
+</div>
+<div id="MlAlgoTreesRandomForest" class="section level3">
+<h3><span class="header-section-number">7.3.3</span> Random forest TBD</h3>
+<p>Random forest has its name from the randomly selected predictors at each split. The Algorithm is described in <span class="citation">(Kuhn and Johnson <a href="#ref-kuhn2013applied" role="doc-biblioref">2013</a>)</span> p. 200:</p>
+
+<div class="rmdtip">
+<p>Random forest algorithm:</p>
+<ul>
+<li>Select number of models to build <em>m</em></li>
+<li>for each model
+<ul>
+<li>generate bootstrap sample of the original data</li>
+<li>train a tree model for this sample
+<ul>
+<li>at each split</li>
+<li>select randomly <em>k</em> of the original predictors</li>
+<li>select best predictor</li>
+<li>partition the data</li>
+</ul></li>
+<li>until model stop criteria is meet</li>
+</ul></li>
+<li>average prediction of all trees for new samples<br />
+</li>
+</ul>
+</div>
+
+<p>The algorithm can be depicted as below</p>
+<p><img src="images/randomForest.png" style="width:90.0%" /></p>
+<p>Random forests have weaknesses and strengths</p>
+
+<div class="rmdtip">
+<p>Pros and cons of random forest:</p>
+<ul>
+<li>Pro
+<ul>
+<li>Handle higher dimensionality data very well</li>
+<li>Handles missing values well</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Due to aggregation of all trees no precise values for regression</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="python-example-for-random-forest" class="section level4">
+<h4><span class="header-section-number">7.3.3.1</span> Python example for random forest</h4>
+<p>The sample code for a random forest classifier produces a ROC image as shown below</p>
+<p><img src="images/rocRfPython.png" style="width:60.0%" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="MlAlgoTrees.html#cb2-1"></a></span>
+<span id="cb2-2"><a href="MlAlgoTrees.html#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="MlAlgoTrees.html#cb2-3"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb2-4"><a href="MlAlgoTrees.html#cb2-4"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> plot_roc_curve</span>
+<span id="cb2-5"><a href="MlAlgoTrees.html#cb2-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_wine</span>
+<span id="cb2-6"><a href="MlAlgoTrees.html#cb2-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb2-7"><a href="MlAlgoTrees.html#cb2-7"></a></span>
+<span id="cb2-8"><a href="MlAlgoTrees.html#cb2-8"></a>X, y <span class="op">=</span> load_wine(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-9"><a href="MlAlgoTrees.html#cb2-9"></a>y <span class="op">=</span> y <span class="op">==</span> <span class="dv">2</span></span>
+<span id="cb2-10"><a href="MlAlgoTrees.html#cb2-10"></a></span>
+<span id="cb2-11"><a href="MlAlgoTrees.html#cb2-11"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb2-12"><a href="MlAlgoTrees.html#cb2-12"></a></span>
+<span id="cb2-13"><a href="MlAlgoTrees.html#cb2-13"></a>rfc <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb2-14"><a href="MlAlgoTrees.html#cb2-14"></a>rfc.fit(X_train, y_train)</span>
+<span id="cb2-15"><a href="MlAlgoTrees.html#cb2-15"></a>ax <span class="op">=</span> plt.gca()</span>
+<span id="cb2-16"><a href="MlAlgoTrees.html#cb2-16"></a>rfc_disp <span class="op">=</span> plot_roc_curve(rfc, X_test, y_test, ax<span class="op">=</span>ax, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb2-17"><a href="MlAlgoTrees.html#cb2-17"></a>plt.show()</span></code></pre></div>
+</div>
+<div id="parameters-for-random-forest" class="section level4">
+<h4><span class="header-section-number">7.3.3.2</span> Parameters for random forest</h4>
+<p>The parameters are from the scikit-learn webpage <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" class="uri">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier</a></p>
+<dd class="field-odd">
+<dl>
+<dt>
+<strong>n_estimators</strong><span class="classifier">integer, optional (default=100)</span>
+</dt>
+<dd>
+<p>
+The number of trees in the forest.
+</p>
+<div class="versionchanged">
+<p>
+<span class="versionmodified changed">Changed in version 0.22: </span>The default value of <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> changed from 10 to 100
+in 0.22.
+</p>
+</div>
+</dd>
+<dt>
+<strong>criterion</strong><span class="classifier">string, optional (default=”gini”)</span>
+</dt>
+<dd>
+<p>
+The function to measure the quality of a split. Supported criteria are
+“gini” for the Gini impurity and “entropy” for the information gain.
+Note: this parameter is tree-specific.
+</p>
+</dd>
+<dt>
+<strong>max_depth</strong><span class="classifier">integer or None, optional (default=None)</span>
+</dt>
+<dd>
+<p>
+The maximum depth of the tree. If None, then nodes are expanded until
+all leaves are pure or until all leaves contain less than
+min_samples_split samples.
+</p>
+</dd>
+<dt>
+<strong>min_samples_split</strong><span class="classifier">int, float, optional (default=2)</span>
+</dt>
+<dd>
+<p>
+The minimum number of samples required to split an internal node:
+</p>
+<ul class="simple">
+<li>
+<p>
+If int, then consider <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> as the minimum number.
+</p>
+</li>
+<li>
+<p>
+If float, then <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code> is a fraction and
+<code class="docutils literal notranslate"><span class="pre">ceil(min_samples_split</span> <span class="pre">*</span> <span class="pre">n_samples)</span></code> are the minimum
+number of samples for each split.
+</p>
+</li>
+</ul>
+<div class="versionchanged">
+<p>
+<span class="versionmodified changed">Changed in version 0.18: </span>Added float values for fractions.
+</p>
+</div>
+</dd>
+<dt>
+<strong>min_samples_leaf</strong><span class="classifier">int, float, optional (default=1)</span>
+</dt>
+<dd>
+<p>
+The minimum number of samples required to be at a leaf node.
+A split point at any depth will only be considered if it leaves at
+least <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> training samples in each of the left and
+right branches. This may have the effect of smoothing the model,
+especially in regression.
+</p>
+<ul class="simple">
+<li>
+<p>
+If int, then consider <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> as the minimum number.
+</p>
+</li>
+<li>
+<p>
+If float, then <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> is a fraction and
+<code class="docutils literal notranslate"><span class="pre">ceil(min_samples_leaf</span> <span class="pre">*</span> <span class="pre">n_samples)</span></code> are the minimum
+number of samples for each node.
+</p>
+</li>
+</ul>
+<div class="versionchanged">
+<p>
+<span class="versionmodified changed">Changed in version 0.18: </span>Added float values for fractions.
+</p>
+</div>
+</dd>
+<dt>
+<strong>min_weight_fraction_leaf</strong><span class="classifier">float, optional (default=0.)</span>
+</dt>
+<dd>
+<p>
+The minimum weighted fraction of the sum total of weights (of all
+the input samples) required to be at a leaf node. Samples have
+equal weight when sample_weight is not provided.
+</p>
+</dd>
+<dt>
+<strong>max_features</strong><span class="classifier">int, float, string or None, optional (default=”auto”)</span>
+</dt>
+<dd>
+<p>
+The number of features to consider when looking for the best split:
+</p>
+<ul class="simple">
+<li>
+<p>
+If int, then consider <code class="docutils literal notranslate"><span class="pre">max_features</span></code> features at each split.
+</p>
+</li>
+<li>
+<p>
+If float, then <code class="docutils literal notranslate"><span class="pre">max_features</span></code> is a fraction and
+<code class="docutils literal notranslate"><span class="pre">int(max_features</span> <span class="pre">*</span> <span class="pre">n_features)</span></code> features are considered at each
+split.
+</p>
+</li>
+<li>
+<p>
+If “auto”, then <code class="docutils literal notranslate"><span class="pre">max_features=sqrt(n_features)</span></code>.
+</p>
+</li>
+<li>
+<p>
+If “sqrt”, then <code class="docutils literal notranslate"><span class="pre">max_features=sqrt(n_features)</span></code> (same as “auto”).
+</p>
+</li>
+<li>
+<p>
+If “log2”, then <code class="docutils literal notranslate"><span class="pre">max_features=log2(n_features)</span></code>.
+</p>
+</li>
+<li>
+<p>
+If None, then <code class="docutils literal notranslate"><span class="pre">max_features=n_features</span></code>.
+</p>
+</li>
+</ul>
+<p>
+Note: the search for a split does not stop until at least one
+valid partition of the node samples is found, even if it requires to
+effectively inspect more than <code class="docutils literal notranslate"><span class="pre">max_features</span></code> features.
+</p>
+</dd>
+<dt>
+<strong>max_leaf_nodes</strong><span class="classifier">int or None, optional (default=None)</span>
+</dt>
+<dd>
+<p>
+Grow trees with <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> in best-first fashion.
+Best nodes are defined as relative reduction in impurity.
+If None then unlimited number of leaf nodes.
+</p>
+</dd>
+<dt>
+<strong>min_impurity_decrease</strong><span class="classifier">float, optional (default=0.)</span>
+</dt>
+<dd>
+<p>
+A node will be split if this split induces a decrease of the impurity
+greater than or equal to this value.
+</p>
+<p>
+The weighted impurity decrease equation is the following:
+</p>
+<div class="highlight-default notranslate" style="position: relative;">
+<div class="highlight">
+<pre><span></span><span class="n">N_t</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">impurity</span> <span class="o">-</span> <span class="n">N_t_R</span> <span class="o">/</span> <span class="n">N_t</span> <span class="o">*</span> <span class="n">right_impurity</span>
+                    <span class="o">-</span> <span class="n">N_t_L</span> <span class="o">/</span> <span class="n">N_t</span> <span class="o">*</span> <span class="n">left_impurity</span><span class="p">)</span>
+</pre>
+</div>
+</div>
+<p>
+where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the total number of samples, <code class="docutils literal notranslate"><span class="pre">N_t</span></code> is the number of
+samples at the current node, <code class="docutils literal notranslate"><span class="pre">N_t_L</span></code> is the number of samples in the
+left child, and <code class="docutils literal notranslate"><span class="pre">N_t_R</span></code> is the number of samples in the right child.
+</p>
+<p>
+<code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">N_t</span></code>, <code class="docutils literal notranslate"><span class="pre">N_t_R</span></code> and <code class="docutils literal notranslate"><span class="pre">N_t_L</span></code> all refer to the weighted sum,
+if <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> is passed.
+</p>
+<div class="versionadded">
+<p>
+<span class="versionmodified added">New in version 0.19.</span>
+</p>
+</div>
+</dd>
+<dt>
+<strong>min_impurity_split</strong><span class="classifier">float, (default=1e-7)</span>
+</dt>
+<dd>
+<p>
+Threshold for early stopping in tree growth. A node will split
+if its impurity is above the threshold, otherwise it is a leaf.
+</p>
+<div class="deprecated">
+<p>
+<span class="versionmodified deprecated">Deprecated since version 0.19: </span><code class="docutils literal notranslate"><span class="pre">min_impurity_split</span></code> has been deprecated in favor of
+<code class="docutils literal notranslate"><span class="pre">min_impurity_decrease</span></code> in 0.19. The default value of
+<code class="docutils literal notranslate"><span class="pre">min_impurity_split</span></code> will change from 1e-7 to 0 in 0.23 and it
+will be removed in 0.25. Use <code class="docutils literal notranslate"><span class="pre">min_impurity_decrease</span></code> instead.
+</p>
+</div>
+</dd>
+<dt>
+<strong>bootstrap</strong><span class="classifier">boolean, optional (default=True)</span>
+</dt>
+<dd>
+<p>
+Whether bootstrap samples are used when building trees. If False, the
+whole datset is used to build each tree.
+</p>
+</dd>
+<dt>
+<strong>oob_score</strong><span class="classifier">bool (default=False)</span>
+</dt>
+<dd>
+<p>
+Whether to use out-of-bag samples to estimate
+the generalization accuracy.
+</p>
+</dd>
+<dt>
+<strong>n_jobs</strong><span class="classifier">int or None, optional (default=None)</span>
+</dt>
+<dd>
+<p>
+The number of jobs to run in parallel. <a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.fit" title="sklearn.ensemble.RandomForestClassifier.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a>, <a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.predict" title="sklearn.ensemble.RandomForestClassifier.predict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">predict</span></code></a>,
+<a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.decision_path" title="sklearn.ensemble.RandomForestClassifier.decision_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">decision_path</span></code></a> and <a class="reference internal" href="#sklearn.ensemble.RandomForestClassifier.apply" title="sklearn.ensemble.RandomForestClassifier.apply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply</span></code></a> are all parallelized over the
+trees. <code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <a class="reference external" href="https://joblib.readthedocs.io/en/latest/parallel.html#joblib.parallel_backend" title="(in joblib v0.14.1.dev0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code></a>
+context. <code class="docutils literal notranslate"><span class="pre">-1</span></code> means using all processors. See <a class="reference internal" href="../../glossary.html#term-n-jobs"><span class="xref std std-term">Glossary</span></a> for more details.
+</p>
+</dd>
+<dt>
+<strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span>
+</dt>
+<dd>
+<p>
+Controls both the randomness of the bootstrapping of the samples used
+when building trees (if <code class="docutils literal notranslate"><span class="pre">bootstrap=True</span></code>) and the sampling of the
+features to consider when looking for the best split at each node
+(if <code class="docutils literal notranslate"><span class="pre">max_features</span> <span class="pre">&lt;</span> <span class="pre">n_features</span></code>).
+See <a class="reference internal" href="../../glossary.html#term-random-state"><span class="xref std std-term">Glossary</span></a> for details.
+</p>
+</dd>
+<dt>
+<strong>verbose</strong><span class="classifier">int, optional (default=0)</span>
+</dt>
+<dd>
+<p>
+Controls the verbosity when fitting and predicting.
+</p>
+</dd>
+<dt>
+<strong>warm_start</strong><span class="classifier">bool, optional (default=False)</span>
+</dt>
+<dd>
+<p>
+When set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, reuse the solution of the previous call to fit
+and add more estimators to the ensemble, otherwise, just fit a whole
+new forest. See <a class="reference internal" href="../../glossary.html#term-warm-start"><span class="xref std std-term">the Glossary</span></a>.
+</p>
+</dd>
+<dt>
+<strong>class_weight</strong><span class="classifier">dict, list of dicts, “balanced”, “balanced_subsample” or None, optional (default=None)</span>
+</dt>
+<dd>
+<p>
+Weights associated with classes in the form <code class="docutils literal notranslate"><span class="pre">{class_label:</span> <span class="pre">weight}</span></code>.
+If not given, all classes are supposed to have weight one. For
+multi-output problems, a list of dicts can be provided in the same
+order as the columns of y.
+</p>
+<p>
+Note that for multioutput (including multilabel) weights should be
+defined for each class of every column in its own dict. For example,
+for four-class multilabel classification weights should be
+[{0: 1, 1: 1}, {0: 1, 1: 5}, {0: 1, 1: 1}, {0: 1, 1: 1}] instead of
+[{1:1}, {2:5}, {3:1}, {4:1}].
+</p>
+<p>
+The “balanced” mode uses the values of y to automatically adjust
+weights inversely proportional to class frequencies in the input data
+as <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">/</span> <span class="pre">(n_classes</span> <span class="pre">*</span> <span class="pre">np.bincount(y))</span></code>
+</p>
+<p>
+The “balanced_subsample” mode is the same as “balanced” except that
+weights are computed based on the bootstrap sample for every tree
+grown.
+</p>
+<p>
+For multi-output, the weights of each column of y will be multiplied.
+</p>
+<p>
+Note that these weights will be multiplied with sample_weight (passed
+through the fit method) if sample_weight is specified.
+</p>
+</dd>
+<dt>
+<strong>ccp_alpha</strong><span class="classifier">non-negative float, optional (default=0.0)</span>
+</dt>
+<dd>
+<p>
+Complexity parameter used for Minimal Cost-Complexity Pruning. The
+subtree with the largest cost complexity that is smaller than
+<code class="docutils literal notranslate"><span class="pre">ccp_alpha</span></code> will be chosen. By default, no pruning is performed. See
+<a class="reference internal" href="../tree.html#minimal-cost-complexity-pruning"><span class="std std-ref">Minimal Cost-Complexity Pruning</span></a> for details.
+</p>
+<div class="versionadded">
+<p>
+<span class="versionmodified added">New in version 0.22.</span>
+</p>
+</div>
+</dd>
+<dt>
+<strong>max_samples</strong><span class="classifier">int or float, default=None</span>
+</dt>
+<dd>
+<p>
+If bootstrap is True, the number of samples to draw from X
+to train each base estimator.
+</p>
+<ul class="simple">
+<li>
+<p>
+If None (default), then draw <code class="docutils literal notranslate"><span class="pre">X.shape[0]</span></code> samples.
+</p>
+</li>
+<li>
+<p>
+If int, then draw <code class="docutils literal notranslate"><span class="pre">max_samples</span></code> samples.
+</p>
+</li>
+<li>
+<p>
+If float, then draw <code class="docutils literal notranslate"><span class="pre">max_samples</span> <span class="pre">*</span> <span class="pre">X.shape[0]</span></code> samples. Thus,
+<code class="docutils literal notranslate"><span class="pre">max_samples</span></code> should be in the interval <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1)</span></code>.
+</p>
+</li>
+</ul>
+<div class="versionadded">
+<p>
+<span class="versionmodified added">New in version 0.22.</span>
+</p>
+</div>
+</dd>
+</dl>
+</dd>
+</div>
+</div>
+<div id="MlAlgoTreesGBM" class="section level3">
+<h3><span class="header-section-number">7.3.4</span> Boosted trees TBD</h3>
+<p>Boosted trees are an ensemble of weak learners where each learner is build on the knowledge gained by all previous learners.</p>
+<p>The following image depicts the algorithm which can be summarized:</p>
+
+<div class="rmdtip">
+<p>Boosted tree algorithm</p>
+<ol style="list-style-type: decimal">
+<li>Generate small tree</li>
+<li>Calculate residuals for all samples</li>
+<li>Use residuals to generate next tree</li>
+<li>Combine all trees to build new model</li>
+<li>Repeat from step 1.</li>
+</ol>
+</div>
+
+<p>The algorithm is depicted below</p>
+<hr />
+<div class="figure">
+<img src="images/gradientBoostedTreesSimple.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure based on <span class="citation">(Zhang et al. <a href="#ref-zhang2018exploring" role="doc-biblioref">2018</a>)</span>, added explanation at the right hand side</p>
+</div>
+<hr />
+<p>Boosted trees have weaknesses and strengths</p>
+
+<div class="rmdtip">
+<p>Pros and cons of boosted trees:</p>
+<ul>
+<li>Pro
+<ul>
+<li>Supports different loss functions</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Prone to overfitting</li>
+<li>Carefully tuning of hyperparameters is required</li>
+</ul></li>
+</ul>
+</div>
+
+<p>The algorithm of boosted trees for regression is described in a rather mathematically way in <span class="citation">(James et al. <a href="#ref-james2013introduction" role="doc-biblioref">2013</a>)</span> p. 323:</p>
+
+<div class="rmdtip">
+<ol style="list-style-type: decimal">
+<li>Set <span class="math inline">\(\hat{f} = 0\)</span> and <span class="math inline">\(r_i = y_i\)</span> for all <span class="math inline">\(i\)</span> in the training set</li>
+<li>For <span class="math inline">\(b=1,2,\dots,B\)</span> repeat:
+<ol style="list-style-type: lower-alpha">
+<li>Fit a tree <span class="math inline">\(\hat{f}^b\)</span> with <span class="math inline">\(d\)</span> splits (<span class="math inline">\(d+1\)</span> terminal nodes) to the training data <span class="math inline">\((X,r)\)</span></li>
+<li>Update <span class="math inline">\(\hat{f}\)</span> by adding in a shrunken version of the new tree <span class="math inline">\(\hat{f}(x) \leftarrow \hat{f}(x) + \lambda \hat{f}^b(x)\)</span></li>
+<li>Update the residuals <span class="math inline">\(r_i \leftarrow r_i + \lambda \hat{f}^b(x_i)\)</span></li>
+</ol></li>
+<li>Output the boosted model <span class="math inline">\(\hat{f}(x) = \sum_{b=1}^{B}\lambda \hat{f}^b(x)\)</span></li>
+</ol>
+</div>
+
+<p>Another introduction to boosted trees is given at the <a href="https://xgboost.readthedocs.io/en/latest/tutorials/model.html">XGBoost Documentation</a> with a thorough mathematical explanation of the approach.</p>
+<div id="python-examples-for-boosted-trees" class="section level4">
+<h4><span class="header-section-number">7.3.4.1</span> Python examples for boosted trees</h4>
+<p>A popular library for boosted trees in Python is <strong>XGBoost</strong>, the documentation is hosted at <a href="https://xgboost.readthedocs.io/en/latest/" class="uri">https://xgboost.readthedocs.io/en/latest/</a>.<br />
+Plenty of examples are on the GitHub page <a href="https://github.com/dmlc/xgboost/tree/master/demo/guide-python" class="uri">https://github.com/dmlc/xgboost/tree/master/demo/guide-python</a>.</p>
+<p>The example script <strong>basic_walkthrough.py</strong> is shown below</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="MlAlgoTrees.html#cb3-1"></a><span class="co">#!/usr/bin/python</span></span>
+<span id="cb3-2"><a href="MlAlgoTrees.html#cb3-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="MlAlgoTrees.html#cb3-3"></a><span class="im">import</span> scipy.sparse</span>
+<span id="cb3-4"><a href="MlAlgoTrees.html#cb3-4"></a><span class="im">import</span> pickle</span>
+<span id="cb3-5"><a href="MlAlgoTrees.html#cb3-5"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
+<span id="cb3-6"><a href="MlAlgoTrees.html#cb3-6"></a></span>
+<span id="cb3-7"><a href="MlAlgoTrees.html#cb3-7"></a><span class="co">### simple example</span></span>
+<span id="cb3-8"><a href="MlAlgoTrees.html#cb3-8"></a><span class="co"># load file from text file, also binary buffer generated by xgboost</span></span>
+<span id="cb3-9"><a href="MlAlgoTrees.html#cb3-9"></a>dtrain <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>)</span>
+<span id="cb3-10"><a href="MlAlgoTrees.html#cb3-10"></a>dtest <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.test&#39;</span>)</span>
+<span id="cb3-11"><a href="MlAlgoTrees.html#cb3-11"></a></span>
+<span id="cb3-12"><a href="MlAlgoTrees.html#cb3-12"></a><span class="co"># specify parameters via map, definition are same as c++ version</span></span>
+<span id="cb3-13"><a href="MlAlgoTrees.html#cb3-13"></a>param <span class="op">=</span> {<span class="st">&#39;max_depth&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;eta&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;silent&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;objective&#39;</span>:<span class="st">&#39;binary:logistic&#39;</span>}</span>
+<span id="cb3-14"><a href="MlAlgoTrees.html#cb3-14"></a></span>
+<span id="cb3-15"><a href="MlAlgoTrees.html#cb3-15"></a><span class="co"># specify validations set to watch performance</span></span>
+<span id="cb3-16"><a href="MlAlgoTrees.html#cb3-16"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb3-17"><a href="MlAlgoTrees.html#cb3-17"></a>num_round <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-18"><a href="MlAlgoTrees.html#cb3-18"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb3-19"><a href="MlAlgoTrees.html#cb3-19"></a></span>
+<span id="cb3-20"><a href="MlAlgoTrees.html#cb3-20"></a><span class="co"># this is prediction</span></span>
+<span id="cb3-21"><a href="MlAlgoTrees.html#cb3-21"></a>preds <span class="op">=</span> bst.predict(dtest)</span>
+<span id="cb3-22"><a href="MlAlgoTrees.html#cb3-22"></a>labels <span class="op">=</span> dtest.get_label()</span>
+<span id="cb3-23"><a href="MlAlgoTrees.html#cb3-23"></a><span class="bu">print</span>(<span class="st">&#39;error=</span><span class="sc">%f</span><span class="st">&#39;</span> <span class="op">%</span> (<span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(preds)) <span class="cf">if</span> <span class="bu">int</span>(preds[i] <span class="op">&gt;</span> <span class="fl">0.5</span>) <span class="op">!=</span> labels[i]) <span class="op">/</span> <span class="bu">float</span>(<span class="bu">len</span>(preds))))</span>
+<span id="cb3-24"><a href="MlAlgoTrees.html#cb3-24"></a>bst.save_model(<span class="st">&#39;0001.model&#39;</span>)</span>
+<span id="cb3-25"><a href="MlAlgoTrees.html#cb3-25"></a><span class="co"># dump model</span></span>
+<span id="cb3-26"><a href="MlAlgoTrees.html#cb3-26"></a>bst.dump_model(<span class="st">&#39;dump.raw.txt&#39;</span>)</span>
+<span id="cb3-27"><a href="MlAlgoTrees.html#cb3-27"></a><span class="co"># dump model with feature map</span></span>
+<span id="cb3-28"><a href="MlAlgoTrees.html#cb3-28"></a>bst.dump_model(<span class="st">&#39;dump.nice.txt&#39;</span>, <span class="st">&#39;../data/featmap.txt&#39;</span>)</span>
+<span id="cb3-29"><a href="MlAlgoTrees.html#cb3-29"></a></span>
+<span id="cb3-30"><a href="MlAlgoTrees.html#cb3-30"></a><span class="co"># save dmatrix into binary buffer</span></span>
+<span id="cb3-31"><a href="MlAlgoTrees.html#cb3-31"></a>dtest.save_binary(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
+<span id="cb3-32"><a href="MlAlgoTrees.html#cb3-32"></a><span class="co"># save model</span></span>
+<span id="cb3-33"><a href="MlAlgoTrees.html#cb3-33"></a>bst.save_model(<span class="st">&#39;xgb.model&#39;</span>)</span>
+<span id="cb3-34"><a href="MlAlgoTrees.html#cb3-34"></a><span class="co"># load model and data in</span></span>
+<span id="cb3-35"><a href="MlAlgoTrees.html#cb3-35"></a>bst2 <span class="op">=</span> xgb.Booster(model_file<span class="op">=</span><span class="st">&#39;xgb.model&#39;</span>)</span>
+<span id="cb3-36"><a href="MlAlgoTrees.html#cb3-36"></a>dtest2 <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
+<span id="cb3-37"><a href="MlAlgoTrees.html#cb3-37"></a>preds2 <span class="op">=</span> bst2.predict(dtest2)</span>
+<span id="cb3-38"><a href="MlAlgoTrees.html#cb3-38"></a><span class="co"># assert they are the same</span></span>
+<span id="cb3-39"><a href="MlAlgoTrees.html#cb3-39"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds2 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb3-40"><a href="MlAlgoTrees.html#cb3-40"></a></span>
+<span id="cb3-41"><a href="MlAlgoTrees.html#cb3-41"></a><span class="co"># alternatively, you can pickle the booster</span></span>
+<span id="cb3-42"><a href="MlAlgoTrees.html#cb3-42"></a>pks <span class="op">=</span> pickle.dumps(bst2)</span>
+<span id="cb3-43"><a href="MlAlgoTrees.html#cb3-43"></a><span class="co"># load model and data in</span></span>
+<span id="cb3-44"><a href="MlAlgoTrees.html#cb3-44"></a>bst3 <span class="op">=</span> pickle.loads(pks)</span>
+<span id="cb3-45"><a href="MlAlgoTrees.html#cb3-45"></a>preds3 <span class="op">=</span> bst3.predict(dtest2)</span>
+<span id="cb3-46"><a href="MlAlgoTrees.html#cb3-46"></a><span class="co"># assert they are the same</span></span>
+<span id="cb3-47"><a href="MlAlgoTrees.html#cb3-47"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds3 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb3-48"><a href="MlAlgoTrees.html#cb3-48"></a></span>
+<span id="cb3-49"><a href="MlAlgoTrees.html#cb3-49"></a><span class="co">###</span></span>
+<span id="cb3-50"><a href="MlAlgoTrees.html#cb3-50"></a><span class="co"># build dmatrix from scipy.sparse</span></span>
+<span id="cb3-51"><a href="MlAlgoTrees.html#cb3-51"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSR Matrix&#39;</span>)</span>
+<span id="cb3-52"><a href="MlAlgoTrees.html#cb3-52"></a>labels <span class="op">=</span> []</span>
+<span id="cb3-53"><a href="MlAlgoTrees.html#cb3-53"></a>row <span class="op">=</span> []<span class="op">;</span> col <span class="op">=</span> []<span class="op">;</span> dat <span class="op">=</span> []</span>
+<span id="cb3-54"><a href="MlAlgoTrees.html#cb3-54"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-55"><a href="MlAlgoTrees.html#cb3-55"></a><span class="cf">for</span> l <span class="kw">in</span> <span class="bu">open</span>(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>):</span>
+<span id="cb3-56"><a href="MlAlgoTrees.html#cb3-56"></a>    arr <span class="op">=</span> l.split()</span>
+<span id="cb3-57"><a href="MlAlgoTrees.html#cb3-57"></a>    labels.append(<span class="bu">int</span>(arr[<span class="dv">0</span>]))</span>
+<span id="cb3-58"><a href="MlAlgoTrees.html#cb3-58"></a>    <span class="cf">for</span> it <span class="kw">in</span> arr[<span class="dv">1</span>:]:</span>
+<span id="cb3-59"><a href="MlAlgoTrees.html#cb3-59"></a>        k,v <span class="op">=</span> it.split(<span class="st">&#39;:&#39;</span>)</span>
+<span id="cb3-60"><a href="MlAlgoTrees.html#cb3-60"></a>        row.append(i)<span class="op">;</span> col.append(<span class="bu">int</span>(k))<span class="op">;</span> dat.append(<span class="bu">float</span>(v))</span>
+<span id="cb3-61"><a href="MlAlgoTrees.html#cb3-61"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-62"><a href="MlAlgoTrees.html#cb3-62"></a>csr <span class="op">=</span> scipy.sparse.csr_matrix((dat, (row, col)))</span>
+<span id="cb3-63"><a href="MlAlgoTrees.html#cb3-63"></a>dtrain <span class="op">=</span> xgb.DMatrix(csr, label<span class="op">=</span>labels)</span>
+<span id="cb3-64"><a href="MlAlgoTrees.html#cb3-64"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb3-65"><a href="MlAlgoTrees.html#cb3-65"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb3-66"><a href="MlAlgoTrees.html#cb3-66"></a></span>
+<span id="cb3-67"><a href="MlAlgoTrees.html#cb3-67"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSC Matrix&#39;</span>)</span>
+<span id="cb3-68"><a href="MlAlgoTrees.html#cb3-68"></a><span class="co"># we can also construct from csc matrix</span></span>
+<span id="cb3-69"><a href="MlAlgoTrees.html#cb3-69"></a>csc <span class="op">=</span> scipy.sparse.csc_matrix((dat, (row, col)))</span>
+<span id="cb3-70"><a href="MlAlgoTrees.html#cb3-70"></a>dtrain <span class="op">=</span> xgb.DMatrix(csc, label<span class="op">=</span>labels)</span>
+<span id="cb3-71"><a href="MlAlgoTrees.html#cb3-71"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb3-72"><a href="MlAlgoTrees.html#cb3-72"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb3-73"><a href="MlAlgoTrees.html#cb3-73"></a></span>
+<span id="cb3-74"><a href="MlAlgoTrees.html#cb3-74"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from numpy array&#39;</span>)</span>
+<span id="cb3-75"><a href="MlAlgoTrees.html#cb3-75"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: npymat is numpy array, we will convert it into scipy.sparse.csr_matrix in internal implementation</span></span>
+<span id="cb3-76"><a href="MlAlgoTrees.html#cb3-76"></a><span class="co"># then convert to DMatrix</span></span>
+<span id="cb3-77"><a href="MlAlgoTrees.html#cb3-77"></a>npymat <span class="op">=</span> csr.todense()</span>
+<span id="cb3-78"><a href="MlAlgoTrees.html#cb3-78"></a>dtrain <span class="op">=</span> xgb.DMatrix(npymat, label<span class="op">=</span>labels)</span>
+<span id="cb3-79"><a href="MlAlgoTrees.html#cb3-79"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb3-80"><a href="MlAlgoTrees.html#cb3-80"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span></code></pre></div>
+<p>The parameters below are from their webpage <a href="https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters" class="uri">https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters</a></p>
+<div id="learning-task-parameters" class="section">
+<h2>
+Learning Task Parameters<a class="headerlink" href="#learning-task-parameters" title="Permalink to this headline">¶</a>
+</h2>
+<p>
+Specify the learning task and the corresponding learning objective. The objective options are below:
+</p>
+<ul class="simple">
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">objective</span></code> [default=reg:squarederror]
+</p>
+<ul>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">reg:squarederror</span></code>: regression with squared loss.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">reg:squaredlogerror</span></code>: regression with squared log loss <span class="math notranslate nohighlight"><span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-1-Frame" class="MathJax" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span id="MathJax-Span-1" class="math" style="width: 17.593em; display: inline-block;"><span style="display: inline-block; position: relative; width: 14.163em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.587em, 1014.16em, 3.155em, -1000em); top: -2.621em; left: 0em;"><span id="MathJax-Span-2" class="mrow"><span id="MathJax-Span-3" class="mfrac"><span style="display: inline-block; position: relative; width: 0.474em; height: 0px; margin-right: 0.12em; margin-left: 0.12em;"><span style="position: absolute; clip: rect(3.353em, 1000.28em, 4.133em, -1000em); top: -4.386em; left: 50%; margin-left: -0.177em;"><span id="MathJax-Span-4" class="mn" style="font-size: 70.7%; font-family: STIXGeneral;">1</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; clip: rect(3.353em, 1000.34em, 4.133em, -1000em); top: -3.599em; left: 50%; margin-left: -0.177em;"><span id="MathJax-Span-5" class="mn" style="font-size: 70.7%; font-family: STIXGeneral;">2</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; clip: rect(0.844em, 1000.47em, 1.21em, -1000em); top: -1.278em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 0.474em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.058em;"></span></span></span></span><span id="MathJax-Span-6" class="mo" style="font-family: STIXGeneral;">[</span><span id="MathJax-Span-7" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑙</span><span id="MathJax-Span-8" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑜</span><span id="MathJax-Span-9" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑔</span><span id="MathJax-Span-10" class="mo" style="font-family: STIXGeneral;">(</span><span id="MathJax-Span-11" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑝</span><span id="MathJax-Span-12" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑟</span><span id="MathJax-Span-13" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑒</span><span id="MathJax-Span-14" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑑</span><span id="MathJax-Span-15" class="mo" style="font-family: STIXGeneral; padding-left: 0.25em;">+</span><span id="MathJax-Span-16" class="mn" style="font-family: STIXGeneral; padding-left: 0.25em;">1</span><span id="MathJax-Span-17" class="mo" style="font-family: STIXGeneral;">)</span><span id="MathJax-Span-18" class="mo" style="font-family: STIXGeneral; padding-left: 0.25em;">−</span><span id="MathJax-Span-19" class="mi" style="font-family: STIXGeneral; font-style: italic; padding-left: 0.25em;">𝑙</span><span id="MathJax-Span-20" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑜</span><span id="MathJax-Span-21" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑔</span><span id="MathJax-Span-22" class="mo" style="font-family: STIXGeneral;">(</span><span id="MathJax-Span-23" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑙</span><span id="MathJax-Span-24" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑎</span><span id="MathJax-Span-25" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑏</span><span id="MathJax-Span-26" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑒</span><span id="MathJax-Span-27" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑙</span><span id="MathJax-Span-28" class="mo" style="font-family: STIXGeneral; padding-left: 0.25em;">+</span><span id="MathJax-Span-29" class="mn" style="font-family: STIXGeneral; padding-left: 0.25em;">1</span><span id="MathJax-Span-30" class="mo" style="font-family: STIXGeneral;">)</span><span class="msubsup" id="MathJax-Span-31"><span style="display: inline-block; position: relative; width: 0.762em; height: 0px;"><span style="position: absolute; clip: rect(3.169em, 1000.25em, 4.289em, -1000em); top: -3.982em; left: 0em;"><span class="mo" id="MathJax-Span-32" style="font-family: STIXGeneral;">]</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; top: -4.345em; left: 0.333em;"><span id="MathJax-Span-33" class="mn" style="font-size: 70.7%; font-family: STIXGeneral;">2</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.621em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.537em; border-left: 0px solid; width: 0px; height: 1.694em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">[</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>p</mi><mi>r</mi><mi>e</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>−</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>l</mi><mi>a</mi><mi>b</mi><mi>e</mi><mi>l</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mo stretchy="false">]</mo><mn>2</mn></msup></math></span></span>
+<script type="math/tex" id="MathJax-Element-1">\frac{1}{2}[log(pred + 1) - log(label + 1)]^2</script>
+</span>. All input labels are required to be greater than -1. Also, see metric <code class="docutils literal notranslate"><span class="pre">rmsle</span></code> for possible issue with this objective.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">reg:logistic</span></code>: logistic regression
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">binary:logistic</span></code>: logistic regression for binary classification, output probability
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">binary:logitraw</span></code>: logistic regression for binary classification, output score before logistic transformation
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">binary:hinge</span></code>: hinge loss for binary classification. This makes predictions of 0 or 1, rather than producing probabilities.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">count:poisson</span></code> –poisson regression for count data, output mean of poisson distribution
+</p>
+<ul>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">max_delta_step</span></code> is set to 0.7 by default in poisson regression (used to safeguard optimization)
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">survival:cox</span></code>: Cox regression for right censored survival time data (negative values are considered right censored).
+Note that predictions are returned on the hazard ratio scale (i.e., as HR = exp(marginal_prediction) in the proportional hazard function <code class="docutils literal notranslate"><span class="pre">h(t)</span> <span class="pre">=</span> <span class="pre">h0(t)</span> <span class="pre">*</span> <span class="pre">HR</span></code>).
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">multi:softmax</span></code>: set XGBoost to do multiclass classification using the softmax objective, you also need to set num_class(number of classes)
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">multi:softprob</span></code>: same as softmax, but output a vector of <code class="docutils literal notranslate"><span class="pre">ndata</span> <span class="pre"><em></span> <span class="pre">nclass</span></code>, which can be further reshaped to <code class="docutils literal notranslate"><span class="pre">ndata</span> <span class="pre"></em></span> <span class="pre">nclass</span></code> matrix. The result contains predicted probability of each data point belonging to each class.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">rank:pairwise</span></code>: Use LambdaMART to perform pairwise ranking where the pairwise loss is minimized
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">rank:ndcg</span></code>: Use LambdaMART to perform list-wise ranking where <a class="reference external" href="http://en.wikipedia.org/wiki/NDCG">Normalized Discounted Cumulative Gain (NDCG)</a> is maximized
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">rank:map</span></code>: Use LambdaMART to perform list-wise ranking where <a class="reference external" href="http://en.wikipedia.org/wiki/Mean_average_precision#Mean_average_precision">Mean Average Precision (MAP)</a> is maximized
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">reg:gamma</span></code>: gamma regression with log-link. Output is a mean of gamma distribution. It might be useful, e.g., for modeling insurance claims severity, or for any outcome that might be <a class="reference external" href="https://en.wikipedia.org/wiki/Gamma_distribution#Applications">gamma-distributed</a>.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">reg:tweedie</span></code>: Tweedie regression with log-link. It might be useful, e.g., for modeling total loss in insurance, or for any outcome that might be <a class="reference external" href="https://en.wikipedia.org/wiki/Tweedie_distribution#Applications">Tweedie-distributed</a>.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">base_score</span></code> [default=0.5]
+</p>
+<ul>
+<li>
+<p>
+The initial prediction score of all instances, global bias
+</p>
+</li>
+<li>
+<p>
+For sufficient number of iterations, changing this value will not have too much effect.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">eval_metric</span></code> [default according to objective]
+</p>
+<ul>
+<li>
+<p>
+Evaluation metrics for validation data, a default metric will be assigned according to objective (rmse for regression, and error for classification, mean average precision for ranking)
+</p>
+</li>
+<li>
+<p>
+User can add multiple evaluation metrics. Python users: remember to pass the metrics in as list of parameters pairs instead of map, so that latter <code class="docutils literal notranslate"><span class="pre">eval_metric</span></code> won’t override previous one
+</p>
+</li>
+<li>
+<p>
+The choices are listed below:
+</p>
+<ul>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">rmse</span></code>: <a class="reference external" href="http://en.wikipedia.org/wiki/Root_mean_square_error">root mean square error</a>
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">rmsle</span></code>: root mean square log error: <span class="math notranslate nohighlight"><span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-2-Frame" class="MathJax" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msqrt&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/mfrac&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/msqrt&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span id="MathJax-Span-34" class="math" style="width: 19.257em; display: inline-block;"><span style="display: inline-block; position: relative; width: 15.524em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.074em, 1015.52em, 3.223em, -1000em); top: -2.419em; left: 0em;"><span id="MathJax-Span-35" class="mrow"><span id="MathJax-Span-36" class="msqrt"><span style="display: inline-block; position: relative; width: 15.524em; height: 0px;"><span style="position: absolute; clip: rect(2.948em, 1014.44em, 4.499em, -1000em); top: -3.982em; left: 1.057em;"><span id="MathJax-Span-37" class="mrow"><span id="MathJax-Span-38" class="mfrac"><span style="display: inline-block; position: relative; width: 0.757em; height: 0px; margin-right: 0.12em; margin-left: 0.12em;"><span style="position: absolute; clip: rect(3.353em, 1000.28em, 4.133em, -1000em); top: -4.386em; left: 50%; margin-left: -0.177em;"><span id="MathJax-Span-39" class="mn" style="font-size: 70.7%; font-family: STIXGeneral;">1</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; clip: rect(3.369em, 1000.64em, 4.133em, -1000em); top: -3.616em; left: 50%; margin-left: -0.319em;"><span id="MathJax-Span-40" class="mi" style="font-size: 70.7%; font-family: STIXGeneral; font-style: italic;">𝑁<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.035em;"></span></span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; clip: rect(0.844em, 1000.76em, 1.21em, -1000em); top: -1.278em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 0.757em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.058em;"></span></span></span></span><span id="MathJax-Span-41" class="mo" style="font-family: STIXGeneral;">[</span><span id="MathJax-Span-42" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑙</span><span id="MathJax-Span-43" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑜</span><span id="MathJax-Span-44" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑔</span><span id="MathJax-Span-45" class="mo" style="font-family: STIXGeneral;">(</span><span id="MathJax-Span-46" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑝</span><span id="MathJax-Span-47" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑟</span><span id="MathJax-Span-48" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑒</span><span id="MathJax-Span-49" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑑</span><span id="MathJax-Span-50" class="mo" style="font-family: STIXGeneral; padding-left: 0.25em;">+</span><span id="MathJax-Span-51" class="mn" style="font-family: STIXGeneral; padding-left: 0.25em;">1</span><span id="MathJax-Span-52" class="mo" style="font-family: STIXGeneral;">)</span><span id="MathJax-Span-53" class="mo" style="font-family: STIXGeneral; padding-left: 0.25em;">−</span><span id="MathJax-Span-54" class="mi" style="font-family: STIXGeneral; font-style: italic; padding-left: 0.25em;">𝑙</span><span id="MathJax-Span-55" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑜</span><span id="MathJax-Span-56" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑔</span><span id="MathJax-Span-57" class="mo" style="font-family: STIXGeneral;">(</span><span id="MathJax-Span-58" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑙</span><span id="MathJax-Span-59" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑎</span><span id="MathJax-Span-60" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑏</span><span id="MathJax-Span-61" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑒</span><span id="MathJax-Span-62" class="mi" style="font-family: STIXGeneral; font-style: italic;">𝑙</span><span id="MathJax-Span-63" class="mo" style="font-family: STIXGeneral; padding-left: 0.25em;">+</span><span id="MathJax-Span-64" class="mn" style="font-family: STIXGeneral; padding-left: 0.25em;">1</span><span id="MathJax-Span-65" class="mo" style="font-family: STIXGeneral;">)</span><span class="msubsup" id="MathJax-Span-66"><span style="display: inline-block; position: relative; width: 0.762em; height: 0px;"><span style="position: absolute; clip: rect(3.169em, 1000.25em, 4.289em, -1000em); top: -3.982em; left: 0em;"><span class="mo" id="MathJax-Span-67" style="font-family: STIXGeneral;">]</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; top: -4.271em; left: 0.333em;"><span id="MathJax-Span-68" class="mn" style="font-size: 70.7%; font-family: STIXGeneral;">2</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; clip: rect(3.011em, 1014.47em, 3.363em, -1000em); top: -4.356em; left: 1.057em;"><span style="display: inline-block; position: relative; width: 14.467em; height: 0px;"><span style="position: absolute; font-family: STIXGeneral; top: -3.982em; left: 0em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; font-family: STIXGeneral; top: -3.982em; left: 13.967em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 0.426em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 0.878em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 1.329em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 1.78em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 2.232em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 2.683em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 3.134em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 3.586em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 4.037em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 4.488em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 4.94em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 5.391em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 5.842em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 6.294em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 6.745em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 7.197em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 7.648em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 8.099em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 8.551em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 9.002em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 9.453em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 9.905em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 10.356em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 10.807em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 11.259em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 11.71em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 12.161em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 12.613em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 13.064em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="font-family: STIXGeneral; position: absolute; top: -3.982em; left: 13.515em;">‾<span style="display: inline-block; width: 0px; height: 3.982em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span><span style="position: absolute; clip: rect(2.279em, 1001.09em, 4.428em, -1000em); top: -3.624em; left: 0em;"><span style="font-family: STIXSizeOneSym;">√</span><span style="display: inline-block; width: 0px; height: 3.982em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.419em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.872em; border-left: 0px solid; width: 0px; height: 2.415em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mfrac><mn>1</mn><mi>N</mi></mfrac><mo stretchy="false">[</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>p</mi><mi>r</mi><mi>e</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>−</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mi>l</mi><mi>a</mi><mi>b</mi><mi>e</mi><mi>l</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mo stretchy="false">]</mo><mn>2</mn></msup></msqrt></math></span></span>
+<script type="math/tex" id="MathJax-Element-2">\sqrt{\frac{1}{N}[log(pred + 1) - log(label + 1)]^2}</script>
+</span>. Default metric of <code class="docutils literal notranslate"><span class="pre">reg:squaredlogerror</span></code> objective. This metric reduces errors generated by outliers in dataset. But because <code class="docutils literal notranslate"><span class="pre">log</span></code> function is employed, <code class="docutils literal notranslate"><span class="pre">rmsle</span></code> might output <code class="docutils literal notranslate"><span class="pre">nan</span></code> when prediction value is less than -1. See <code class="docutils literal notranslate"><span class="pre">reg:squaredlogerror</span></code> for other requirements.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">mae</span></code>: <a class="reference external" href="https://en.wikipedia.org/wiki/Mean_absolute_error">mean absolute error</a>
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">logloss</span></code>: <a class="reference external" href="http://en.wikipedia.org/wiki/Log-likelihood">negative log-likelihood</a>
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">error</span></code>: Binary classification error rate. It is calculated as <code class="docutils literal notranslate"><span class="pre">#(wrong</span> <span class="pre">cases)/#(all</span> <span class="pre">cases)</span></code>. For the predictions, the evaluation will regard the instances with prediction value larger than 0.5 as positive instances, and the others as negative instances.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre"><a href="mailto:error@t" class="email">error@t</a></span></code>: a different than 0.5 binary classification threshold value could be specified by providing a numerical value through ‘t’.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">merror</span></code>: Multiclass classification error rate. It is calculated as <code class="docutils literal notranslate"><span class="pre">#(wrong</span> <span class="pre">cases)/#(all</span> <span class="pre">cases)</span></code>.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">mlogloss</span></code>: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html">Multiclass logloss</a>.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">auc</span></code>: <a class="reference external" href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_curve">Area under the curve</a>
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">aucpr</span></code>: <a class="reference external" href="https://en.wikipedia.org/wiki/Precision_and_recall">Area under the PR curve</a>
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">ndcg</span></code>: <a class="reference external" href="http://en.wikipedia.org/wiki/NDCG">Normalized Discounted Cumulative Gain</a>
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">map</span></code>: <a class="reference external" href="http://en.wikipedia.org/wiki/Mean_average_precision#Mean_average_precision">Mean Average Precision</a>
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre"><a href="mailto:ndcg@n" class="email">ndcg@n</a></span></code>, <code class="docutils literal notranslate"><span class="pre"><a href="mailto:map@n" class="email">map@n</a></span></code>: ‘n’ can be assigned as an integer to cut off the top positions in the lists for evaluation.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">ndcg-</span></code>, <code class="docutils literal notranslate"><span class="pre">map-</span></code>, <code class="docutils literal notranslate"><span class="pre"><a href="mailto:ndcg@n-" class="email">ndcg@n-</a></span></code>, <code class="docutils literal notranslate"><span class="pre"><a href="mailto:map@n-" class="email">map@n-</a></span></code>: In XGBoost, NDCG and MAP will evaluate the score of a list without any positive samples as 1. By adding “-” in the evaluation metric XGBoost will evaluate these score as 0 to be consistent under some conditions.
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">poisson-nloglik</span></code>: negative log-likelihood for Poisson regression
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">gamma-nloglik</span></code>: negative log-likelihood for gamma regression
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">cox-nloglik</span></code>: negative partial log-likelihood for Cox proportional hazards regression
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">gamma-deviance</span></code>: residual deviance for gamma regression
+</p>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">tweedie-nloglik</span></code>: negative log-likelihood for Tweedie regression (at a specified value of the <code class="docutils literal notranslate"><span class="pre">tweedie_variance_power</span></code> parameter)
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>
+<code class="docutils literal notranslate"><span class="pre">seed</span></code> [default=0]
+</p>
+<ul>
+<li>
+<p>
+Random number seed. This parameter is ignored in R package, use <cite>set.seed()</cite> instead.
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-james2013introduction">
+<p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2013. <em>An Introduction to Statistical Learning</em>. Vol. 112. Springer.</p>
+</div>
+<div id="ref-kuhn2013applied">
+<p>Kuhn, Max, and Kjell Johnson. 2013. <em>Applied Predictive Modeling</em>. Vol. 26. Springer.</p>
+</div>
+<div id="ref-zhang2018exploring">
+<p>Zhang, Zhongxing, Geert Mayer, Yves Dauvilliers, Giuseppe Plazzi, Fabio Pizza, Rolf Fronczek, Joan Santamaria, et al. 2018. “Exploring the Clinical Features of Narcolepsy Type 1 Versus Narcolepsy Type 2 from European Narcolepsy Network Database with Machine Learning.” <em>Scientific Reports</em> 8 (1): 1–11.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="MlAlgoLogReg.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="MlAlgoSvm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MlOrienttionBookDown.pdf", "MlOrienttionBookDown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

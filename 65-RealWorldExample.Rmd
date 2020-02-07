@@ -1,0 +1,698 @@
+# (PART) Real world example {-} 
+
+```{r setupRealWorldFunda, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(gganimate)
+library(SimilarityMeasures) # for frechet and dtw
+library(tidyverse)
+library(DT)
+library(tidyverse)
+library(grid)
+library(animation)
+library(gridExtra)
+library(knitr) 
+library(kableExtra)
+```
+
+
+# Real world example {#RealWorld}
+
+This ESA funded project was conducted in 2018/19. 
+The question asked was: **How can the system be made faster and more reliable?**
+
+
+
+
+## Subject of the project
+
+###  Depending from where you were looking: {-}
+
+---
+
+ ![](images/AimSignalDetection.png){width=60% }
+
+---
+
+### Looking from the perspective of machine learning expert {-}
+
+
+---
+
+ ![](images/TaskDesc.png){width=90% }
+
+
+---
+
+
+## Project phases 
+
+### The main project phases are: {-}
+
+---
+
+ ![](images/MlProsess.png){width=50% }
+
+
+---
+
+### After data gathering iteration is trump   {-}
+
+---
+
+ ![Figure from http://www.feat.engineering/intro-intro.html#the-model-versus-the-modeling-process (Image Credit: Owlsmcgee [Public domain] )](images/MLprocess.svg){width=100% .external}
+ 
+---
+
+
+EDA => exploratory data analysis  
+source http://www.feat.engineering/intro-intro.html#the-model-versus-the-modeling-process]
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- <p>Exploratory data analysis </p>
+    - Find correlations or mutial depence
+- Quantiative analysis
+    - Check distribution
+        - Long tail => log of variable
+- Feature engineering ^[Good source for feature engineering: http://www.feat.engineering/index.html]
+    - Create and select meaningful features
+- Model fit
+    - Selecting a few suited models
+- Model tuning
+    - Vary model **hyperpparameters**
+
+
+```
+
+
+### Feature engineering
+
+Variables that go into model are called:
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- <p>Predictors<img src="images/In.png" alt="Smiley face" align="right" style="width:10%;"></p>
+- Features
+- Independent variables
+
+```
+
+
+Quantity being modeled called: 
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- <p>Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width:10%;"></p>
+- Outcome
+- Response
+- Dependent variable
+
+```
+
+
+From input to output
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+$$ outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)  $$
+
+$$ \hat{Y} = \hat{f}(X)$$
+
+```
+
+
+## Algorithm selection
+
+The following algorithms were meant to be investigated following the rule to start with the least complex one. This is even more important since the algorithm was to be run on a satellite which where computing power is more limited than on earth
+
+
+ ![](images/AlgorithmSubset.png){width=90% }
+
+```{block2 echo=TRUE, type='important'}
+
+Start with **simple model**
+
+```
+
+
+
+### Logistic regression
+
+Logistic regression is the algorithm with the lowest computational complexity and therefore it was the algorithm with which the investigation for the suitable model would start
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- Lowest computational complexity
+- Start algorithm to determine suitable algorithm
+- Details of algorithm are given in chapter \@ref(MlAlgoLogReg)
+
+```
+
+```{r logsiticFunciton, echo=FALSE, fig.height=5, message=FALSE, warning=FALSE}
+library(ggplot2)
+eq = function(x) {
+  
+  1/(1+exp(-x))
+}
+
+ggplot(data.frame(x=c(-6,6)), aes(x=x)) + stat_function(fun=eq, geom = "line") + xlab(expression(eta)) + ylab(expression(logsitic(eta)))
+```
+
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+
+$$ logistic(\eta) = \frac{1}{1+exp^{-\eta}}$$
+
+$$P(Y = 1 \vert X_i = x_i) = \frac{1}{1+exp^{-(\beta_0 + \beta_1X_1+ \dots \beta_n X_n)}}$$
+
+  
+where:
+
+- $\beta_n$ are the coeffcients we are searching
+- $X_n$ are the features
+
+```
+
+### Tree based TBD
+
+Two dominant concepts are used for tree based algorithms:
+
+---
+
+ ![](images/TreeAlogo.png){width=90% }
+
+Details on the algorithms are given at
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- Random forest in chapter \@ref(MlAlgoTreesRandomForest)
+- Gradient boosted trees in chapter \@ref(MlAlgoTreesGBM)
+
+```
+ 
+### Support Vector Machine (SVM) TBD
+ 
+ 
+
+- Support vector machine in chapter \@ref(MlAlgoSvm)
+
+
+$$maximize \(M\) \(\beta_{0}, \beta_{1}, \ldots, \beta_{p}\)
+subject to \(\sum_{j=1}^{p} \beta_{j}^{2}=1\)
+\(y_{i}\left(\beta_{0}+\beta_{1} x_{i 1}+\ldots+\beta_{p} x_{i p}\right) \geq M\)
+for all \(i=1, \dots, N\)$$ 
+
+
+---
+
+
+ ![Figure from Alisneaky, svg version by User:Zirguezi [CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)]](images/2880px-Kernel_Machine.svg.png){width=100% .external}
+
+
+$〖  𝑅〗_𝑡=∑_(𝑖=𝑡)^∞▒〖γ^𝑖 𝑟_𝑖 〗=γ^𝑡 𝑟_𝑡+γ^(𝑡+1) 𝑟_(𝑡+1)…+γ^(𝑡+𝑛) 𝑟_(𝑡+𝑛)+ …$
+
+
+## Performance measurement
+
+The performance for a classification task is measured with a confusion matrix
+
+ ![](images/ConfusionMatrix.png){width=90% }
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+For more serios scenarios the false predictions can have severe impact:
+
+- FP: False prediction
+    - Healthy person is unesseary troubled
+- FN: False negative
+    - Ill person does not get necessary treatment
+
+```
+
+Based on the four elements of the confusion matrix **various metrics are defined**, for details check https://en.wikipedia.org/wiki/Confusion_matrix 
+
+### Sensitivity and specificity
+
+Two metrics which are derived from the confusion matrix are:
+
+**Sensitivity** is the proportion of cats which have been identified as cats, or the proportion of people with the illness that have been identified as being ill. It is therefore also called **probability of detection**
+
+```{block2 echo=TRUE, type='rmdmath'}
+
+**Sensitivity** => P(cat predicted | cat given)
+
+---
+
+$$
+\
+Sensitivity = \frac
+{\text{Sample with cat and predicted cat}}
+{\text{Samples having cat}} = \frac{TP}{TP+FN}
+$$
+
+```
+
+
+**Specificity** is the proportion of non-cats which have been identified as non-cats, or the proportion of healthy people which have been identified as healthy.
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+
+**Specificity** => P(non-cat predicted | non-cat observed)
+
+---
+
+
+$$
+\
+Specificity = \frac
+{\text{Sample with non-cat and predicted as non-cat}}
+{\text{Samples with non-cat}} = \frac{TN}{TN+FP}
+$$
+
+
+```
+
+### Receiver operating characteristic (ROC)
+
+The result of a classification with two classes (binary classification) is given as a percentage value of how sure the algorithm is that the sample belongs to a class. Depending on the the overall project  target the threshold upon which the class is rated as identified is set. If a false positive is to be avoided than the threshold for classifying a positive is set high
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- Used to set the probability threshold of detection
+- Visual representation of confusion matrix
+- Includes for various probability thresholds
+    - Sensitivity
+    - Specificity
+- AUC => area under curve
+    - The higher the better
+    - 0 < AUC < 1
+
+```    
+    
+    
+
+```{r rocImage, echo=FALSE, fig.height=13, fig.width=20, message=FALSE, warning=FALSE, comment='#'}
+library(tidyverse)
+## define colors
+colorFP <- "#ff9999"
+colorTP <- "#cc0000"
+colorTN <- "blue"
+colorFN <- "lightblue"
+colorThreshold <- "#006600"
+
+
+funcShadedFP <- function(x,threshold, noHitMean, noHitSd) {
+  y <- dnorm(x, mean = noHitMean, sd = noHitSd)
+  y[x < threshold | x > (threshold + 180 * noHitSd)] <- NA
+  return(y)
+}
+
+funcShadedTP <- function(x,threshold, HitMean, HitSd) {
+  y <- dnorm(x, mean = HitMean, sd = HitSd)
+  y[x < threshold | x > (threshold + 180 * HitSd)] <- NA
+  return(y)
+}
+
+
+funcShadedTN <- function(x,threshold, noHitMean, noHitSd) {
+  y <- dnorm(x,  mean = noHitMean, sd = noHitSd)
+  y[x > threshold | x < -(threshold + 180 * noHitSd)] <- NA
+  return(y)
+}
+
+
+funcShadedFN <- function(x,threshold,  HitMean, HitSd) {
+  y <- dnorm(x, mean = HitMean, sd = HitSd)
+  y[x > threshold | x < -(threshold + 180 * HitSd)] <- NA
+  return(y)
+}
+
+
+plotErrorDistr <- function(threshold, noHitMean, noHitSd, HitMean, HitSd) {
+
+
+probPlot <-   ggplot(data.frame(x = c(0, 1)), aes(x = x)) +
+
+    scale_x_continuous(name = "Predicted Probability of being positive",
+                       breaks = seq(0, 1, 0.2),
+                       limits=c(0, 1)) +
+    scale_y_continuous(name = "Frequency") +
+    scale_colour_brewer(palette="Accent") +
+    theme_bw() +
+    theme(axis.line = element_line(size=1, colour = "black"),
+          #panel.grid.major = element_line(colour = "#d3d3d3"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.border = element_blank(), panel.background = element_blank(),
+          plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+          text=element_text(family="Tahoma"),
+          axis.text.x=element_text(colour="black", size = 10),
+          axis.text.y=element_text(colour="black", size = 10)) + 
+    stat_function(fun=funcShadedFP, geom="area", fill=colorFP, alpha=0.7, args = list(threshold, noHitMean, noHitSd))  + 
+    stat_function(fun=funcShadedTP, geom="area", fill=colorTP, alpha=0.7, args = list(threshold, HitMean, HitSd)) + 
+    stat_function(fun=funcShadedTN, geom="area", fill=colorTN, alpha=0.7, args = list(threshold, noHitMean, noHitSd)) + 
+    stat_function(fun=funcShadedFN, geom="area", fill=colorFN, alpha=.7, args = list(threshold,  HitMean, HitSd))  + 
+    geom_vline(xintercept = threshold, col = colorThreshold, size = 2) +
+    labs(title= "Density plot of predicted probability") + theme(plot.title = element_text(hjust = 0.5)) + theme(legend.position="top") +
+  annotate("text", x = .39 , y = 2.5, label = "TN", size = 10) +
+  annotate("text", x = .46 , y = 2.5, label = "FP", size = 10) +
+  annotate("text", x = .39 , y = 0.3, label = "FN", size = 10) +
+  annotate("text", x = .46 , y = 0.3, label = "TP", size = 10) +
+  annotate("text", x = .2 , y = 3.5, label = "Ground truth = Negative", size = 10) +
+  annotate("text", x = .79 , y = 3, label = "Ground truth = Positive", size = 10) + theme(plot.title = element_text(hjust = 0.5, color="green", size=34, face="bold.italic"),legend.position ="none",axis.title = element_text(size=22, face="bold")) 
+ 
+ rocCurve <- data.frame(threshold= seq(0,1,length.out = 100 )) %>% mutate( xRoc = 1-pnorm(threshold,noHitMean, noHitSd),
+                       yRoc =  1-pnorm(threshold,HitMean, HitSd))
+ 
+annoStartX <- 0.375
+annoStartY <- 0
+blockSizeX = .25
+blockSizeY = .375
+textOffsetX <- 0.125
+textOffsetY <- blockSizeY/2
+alphaValue <- 0.7
+
+
+RocPlot <- rocCurve %>% ggplot(aes(x=xRoc, y = yRoc)) + geom_line() + geom_area(fill = "lightgreen", alpha = 0.3) +
+      scale_x_continuous(name = "P(FP) = 1 - Specificity",
+                       breaks = seq(0, 1, 0.2),
+                       limits=c(0, 1)) +
+    scale_y_continuous(name = "P(TP) = Sensitivity",  limits=c(0, 1)) +
+      theme_bw() +
+    theme(axis.line = element_line(size=1, colour = "black"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.border = element_blank(), panel.background = element_blank(),
+          plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+          text=element_text(family="Tahoma"),
+          axis.text.x=element_text(colour="black", size = 9),
+          axis.text.y=element_text(colour="black", size = 9)) +  
+  annotate("point", x = 1-pnorm(threshold,noHitMean, noHitSd), y = 1-pnorm(threshold,HitMean, HitSd),colour = colorThreshold, size = 6) + 
+  #annotate("text",x = 1-pnorm(threshold,noHitMean, noHitSd) +0.0, y = 1-pnorm(threshold,HitMean, HitSd)-0.1, label =  paste0("threshold: ", round(threshold,3)), color = colorThreshold, size = 7) +
+annotate("text",x = 0.2, y = 0.375, label =  paste0("threshold: ", round(threshold,3)), color = colorThreshold, size = 10) +  
+   
+  annotate("text", x = annoStartX + blockSizeX , y = 0.81, label = "Confusion Matrix", size = 10) +
+  
+  annotate("rect", xmin = annoStartX, xmax = annoStartX + blockSizeX , ymin = annoStartY + blockSizeY, ymax = annoStartY + 2*blockSizeY, alpha = alphaValue, fill = colorTP) + 
+  annotate("text", x = annoStartX + textOffsetX , y = annoStartY + blockSizeY + textOffsetY, label = paste0("TP Rate: ", round(1-pnorm(threshold,HitMean, HitSd),2)), size = 10) +
+  annotate("rect", xmin = annoStartX, xmax = annoStartX + blockSizeX , ymin = annoStartY, ymax = annoStartY + blockSizeY, alpha = alphaValue, fill = colorFN) +
+  annotate("text", x = annoStartX + textOffsetX, y = annoStartY + textOffsetY,  label = paste0("FN Rate: ", round(pnorm(threshold,HitMean, HitSd),2)), size = 10) +
+
+  annotate("rect", xmin = annoStartX + blockSizeX , xmax = annoStartX + 2*blockSizeX , ymin = annoStartY + blockSizeY, ymax = annoStartY + 2*blockSizeY, alpha = alphaValue, fill = colorFP) +   annotate("text", x = annoStartX + blockSizeX + textOffsetX, y = annoStartY + blockSizeY + textOffsetY, label = paste0("FP Rate: ", round(1-pnorm(threshold,noHitMean, noHitSd),2)) , size = 10) + 
+
+  annotate("rect", xmin = annoStartX + blockSizeX , xmax = annoStartX + 2*blockSizeX  , ymin = annoStartY, ymax = annoStartY + blockSizeY, alpha = alphaValue, fill = colorTN) +
+  annotate("text", x = annoStartX + blockSizeX + textOffsetX , y = annoStartY + textOffsetY, label = paste0("TN Rate: ", round(pnorm(threshold,noHitMean, noHitSd),2)), size = 10) +
+  labs(title= "Receiver Operating Characteristic (ROC) ") + theme(plot.title = element_text(hjust = 0.5, color="green", size=34),legend.position ="none",axis.title = element_text( size=22, face="bold")) 
+
+
+grid.arrange(probPlot, RocPlot)
+#grid.arrange( RocPlot)
+
+}
+
+
+plotErrorDistr(threshold = 0.43, noHitMean = 0.4, noHitSd = 0.1, HitMean = 0.6, HitSd = 0.12)
+
+```
+
+
+## Confusion matrix and ROC for pulse
+
+```{r echo=FALSE, fig.height=13, fig.width=20, message=FALSE, warning=FALSE, comment='#'}
+
+
+## define colors
+colorFP <- "#ff9999"
+colorTP <- "#cc0000"
+colorTN <- "blue"
+colorFN <- "lightblue"
+colorThreshold <- "#006600"
+
+
+funcShadedFP <- function(x,threshold, noHitMean, noHitSd) {
+  y <- dnorm(x, mean = noHitMean, sd = noHitSd)
+  y[x < threshold | x > (threshold + 180 * noHitSd)] <- NA
+  return(y)
+}
+
+funcShadedTP <- function(x,threshold, HitMean, HitSd) {
+  y <- dnorm(x, mean = HitMean, sd = HitSd)
+  y[x < threshold | x > (threshold + 180 * HitSd)] <- NA
+  return(y)
+}
+
+
+funcShadedTN <- function(x,threshold, noHitMean, noHitSd) {
+  y <- dnorm(x,  mean = noHitMean, sd = noHitSd)
+  y[x > threshold | x < -(threshold + 180 * noHitSd)] <- NA
+  return(y)
+}
+
+
+funcShadedFN <- function(x,threshold,  HitMean, HitSd) {
+  y <- dnorm(x, mean = HitMean, sd = HitSd)
+  y[x > threshold | x < -(threshold + 180 * HitSd)] <- NA
+  return(y)
+}
+
+
+plotErrorDistr <- function(threshold, noHitMean, noHitSd, HitMean, HitSd) {
+
+
+probPlot <-   ggplot(data.frame(x = c(0, 1)), aes(x = x)) +
+
+    scale_x_continuous(name = "Predicted Probability of being positive",
+                       breaks = seq(0, 1, 0.2),
+                       limits=c(0, 1)) +
+    scale_y_continuous(name = "Frequency") +
+    scale_colour_brewer(palette="Accent") +
+    theme_bw() +
+    theme(axis.line = element_line(size=1, colour = "black"),
+          #panel.grid.major = element_line(colour = "#d3d3d3"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.border = element_blank(), panel.background = element_blank(),
+          plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+          text=element_text(family="Tahoma"),
+          axis.text.x=element_text(colour="black", size = 10),
+          axis.text.y=element_text(colour="black", size = 10)) + 
+    stat_function(fun=funcShadedFP, geom="area", fill=colorFP, alpha=0.7, args = list(threshold, noHitMean, noHitSd))  + 
+    stat_function(fun=funcShadedTP, geom="area", fill=colorTP, alpha=0.7, args = list(threshold, HitMean, HitSd)) + 
+    stat_function(fun=funcShadedTN, geom="area", fill=colorTN, alpha=0.7, args = list(threshold, noHitMean, noHitSd)) + 
+    stat_function(fun=funcShadedFN, geom="area", fill=colorFN, alpha=.7, args = list(threshold,  HitMean, HitSd))  + 
+    geom_vline(xintercept = threshold, col = colorThreshold, size = 2) +
+    labs(title= "Density plot of predicted probability") + theme(plot.title = element_text(hjust = 0.5)) + theme(legend.position="top") +
+  annotate("text", x = .36 , y = 2.5, label = "No Pulse", size = 10) +
+  annotate("text", x = .48 , y = 2.5, label = "False Pulse", size = 10) +
+  annotate("text", x = .36 , y = 0.3, label = "Missed Pulse", size = 10) +
+  annotate("text", x = .48 , y = 0.3, label = "Pulse", size = 10) +
+  annotate("text", x = .2 , y = 3.5, label = "Ground truth = No Pulse", size = 10) +
+  annotate("text", x = .79 , y = 3, label = "Ground truth = Pulse", size = 10) + theme(plot.title = element_text(hjust = 0.5, color="green", size=34, face="bold.italic"),legend.position ="none",axis.title = element_text(size=22, face="bold")) 
+ 
+ rocCurve <- data.frame(threshold= seq(0,1,length.out = 100 )) %>% mutate( xRoc = 1-pnorm(threshold,noHitMean, noHitSd),
+                       yRoc =  1-pnorm(threshold,HitMean, HitSd))
+ 
+annoStartX <- 0.375
+annoStartY <- 0
+blockSizeX = .25
+blockSizeY = .375
+textOffsetX <- 0.125
+textOffsetY <- blockSizeY/2
+alphaValue <- 0.7
+
+
+RocPlot <- rocCurve %>% ggplot(aes(x=xRoc, y = yRoc)) + geom_line() + geom_area(fill = "lightgreen", alpha = 0.3) +
+      scale_x_continuous(name = "P(FP) => P(False Pulse)",
+                       breaks = seq(0, 1, 0.2),
+                       limits=c(0, 1)) +
+    scale_y_continuous(name = "P(TP) => (P(Pulse detection)",  limits=c(0, 1)) +
+      theme_bw() +
+    theme(axis.line = element_line(size=1, colour = "black"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.border = element_blank(), panel.background = element_blank(),
+          plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+          text=element_text(family="Tahoma"),
+          axis.text.x=element_text(colour="black", size = 9),
+          axis.text.y=element_text(colour="black", size = 9)) +  
+  annotate("point", x = 1-pnorm(threshold,noHitMean, noHitSd), y = 1-pnorm(threshold,HitMean, HitSd),colour = colorThreshold, size = 6) + 
+  #annotate("text",x = 1-pnorm(threshold,noHitMean, noHitSd) +0.0, y = 1-pnorm(threshold,HitMean, HitSd)-0.1, label =  paste0("threshold: ", round(threshold,3)), color = colorThreshold, size = 7) +
+annotate("text",x = 0.2, y = 0.375, label =  paste0("threshold: ", round(threshold,3)), color = colorThreshold, size = 10) +  
+   
+  annotate("text", x = annoStartX + blockSizeX , y = 0.81, label = "Confusion Matrix", size = 10) +
+  
+  annotate("rect", xmin = annoStartX, xmax = annoStartX + blockSizeX , ymin = annoStartY + blockSizeY, ymax = annoStartY + 2*blockSizeY, alpha = alphaValue, fill = colorTP) + 
+  annotate("text", x = annoStartX + textOffsetX , y = annoStartY + blockSizeY + textOffsetY, label = paste0("Pulse Rate: ", round(1-pnorm(threshold,HitMean, HitSd),2)), size = 10) +
+  annotate("rect", xmin = annoStartX, xmax = annoStartX + blockSizeX , ymin = annoStartY, ymax = annoStartY + blockSizeY, alpha = alphaValue, fill = colorFN) +
+  annotate("text", x = annoStartX + textOffsetX, y = annoStartY + textOffsetY,  label = paste0("Missed Pulse Rate: ", round(pnorm(threshold,HitMean, HitSd),2)), size = 10) +
+
+  annotate("rect", xmin = annoStartX + blockSizeX , xmax = annoStartX + 2*blockSizeX , ymin = annoStartY + blockSizeY, ymax = annoStartY + 2*blockSizeY, alpha = alphaValue, fill = colorFP) +   annotate("text", x = annoStartX + blockSizeX + textOffsetX, y = annoStartY + blockSizeY + textOffsetY, label = paste0("False Pulse Rate: ", round(1-pnorm(threshold,noHitMean, noHitSd),2)) , size = 10) + 
+
+  annotate("rect", xmin = annoStartX + blockSizeX , xmax = annoStartX + 2*blockSizeX  , ymin = annoStartY, ymax = annoStartY + blockSizeY, alpha = alphaValue, fill = colorTN) +
+  annotate("text", x = annoStartX + blockSizeX + textOffsetX , y = annoStartY + textOffsetY, label = paste0("No Pulse Rate: ", round(pnorm(threshold,noHitMean, noHitSd),2)), size = 10) +
+  labs(title= "Receiver Operating Characteristic (ROC) ") + theme(plot.title = element_text(hjust = 0.5, color="green", size=34),legend.position ="none",axis.title = element_text( size=22, face="bold")) 
+
+
+grid.arrange(probPlot, RocPlot)
+#grid.arrange( RocPlot)
+
+}
+
+
+plotErrorDistr(threshold = 0.43, noHitMean = 0.4, noHitSd = 0.1, HitMean = 0.6, HitSd = 0.12)
+
+```
+
+
+### R Plots
+
+ ![](images/rocAnimation.gif){width=100%}
+
+
+## Create augmented labeled data 
+
+
+How to label data as being positive?
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+
+- Create augmented hits
+
+- Vary parameters
+
+```
+
+On the left hand side are the pulses which have to be detected amid noise as shown in the right hand side image. **Note**, the y-axis have the same scaling, i.e. the pulse signal strengths is lower than the noise.
+
+
+ ![](images/HitZoomed.png){width=45%}  ![](images/NoHitPlot.png){width=45%}
+
+
+
+### Features of time signals
+
+
+ ![](images/SlidingWindow.gif){width=100%}  
+
+## Features generated
+
+```{block2 echo=TRUE, type='rmdtip'}
+- Sample values of window
+
+- Dynamic time warp (window)
+
+- Min(window)
+
+- Max(window)
+
+- Median(window)
+
+- Variance(window)
+
+```
+
+### Analysis of generated features
+
+
+ ![](images/ExtraFeaturesViolinPlot.png){width=100%}  
+
+
+### Dynamic time warp (DTW) for signal
+
+ ![](images/windowingDtw-1.gif){width=100%}  
+
+## Algorithm
+
+
+Determination which algorithm is best suited depends on 
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- Start with simplest algorithm
+
+- Use simple algorithm for feature engineering
+
+- Use more complex algorithm if result is unsatisfactory
+
+```
+
+
+## Confusion matrix results logistic regression for measured data
+
+ ![](images/RealValData.png){width=80%}  
+
+
+
+ ![](images/RealTestData.png){width=80%}  
+
+ ![](images/RealTestData.png){width=80%}  
+
+
+### ROC results for measured data 
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- ROC of logistic regression
+
+- Perfect separation of two classes
+
+- No need for more complex algorithm
+
+```
+
+ ![](images/RocForLogisticRegression.png){width=100%}  
+
+## Several algorithms results for SNR = 18dB
+
+ ![](images/snr18Results.png){width=100%}  
+
+
+### ROC results for SNR 18dB
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- ROC of logistic regression
+
+    - Not perfect separation of two classes
+
+    - Need more complex algorithm => Gradient boosted trees
+
+```
+
+ ![](images/Snr18GlmRoc.png){width=100%}  
+
+
+Depending on ROC characteristic choosing the threshold value which leads to the **highest available profit** is not easy
+
+ ![](images/ProfitAninmation.gif){width=100%}  
+
+
+ ![](images/ProfitAninmation.gif){width=100%}  
+
+## Compare models for SNR = 18dB
+
+- **ROC, Sensitivity and Specificity** for gradient boosted trees (GBM) and logistic regression (LogReg) and support vector machine (SVM) vs cross validation
+
+ ![](images/ModelCompBoxPlot.png){width=100%}  
+
+## Optimize ML hyper parameter
+
+
+ ![](images/OptHyperPara.png){width=80%}  
+
+
+
+
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+
+
+```

@@ -1,0 +1,21 @@
+# (PART) Cloud-based machine learning{-} 
+
+# Cloud-based machine learning {#CloudBasedMl} 
+
+Build your own Robust Deep Learning Environment in Minutes
+
+https://towardsdatascience.com/build-your-own-robust-deep-learning-environment-in-minutes-354cf140a5a6 
+
+- [Google Colaboratory](https://colab.research.google.com/) 
+    - Pricing information => For free
+- [Paperspace Gradient](https://www.paperspace.com/gradient) 
+    - [Pricing information](https://gradient.paperspace.com/pricing)
+- [FloydHub Workspace](https://www.floydhub.com/product/build)
+    - [Pricing information](https://www.floydhub.com/pricing)
+- [Lambda GPU Cloud](https://lambdalabs.com/service/gpu-cloud)
+    - [Pricing information](https://lambdalabs.com/service/gpu-cloud)
+- [AWS Deep Learning AMIs](https://aws.amazon.com/machine-learning/amis/)
+    - [Pricing information](https://aws.amazon.com/sagemaker/pricing/), select **EU (Frankfurt)**
+- [GCP Deep Learning VM Images](https://cloud.google.com/deep-learning-vm)
+    - [Pricing information](https://cloud.google.com/pricing)
+

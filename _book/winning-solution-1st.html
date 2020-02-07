@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12.1 Winning solution (1st) | Machine learning orientation</title>
+  <meta name="description" content="A guide to machine learning" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12.1 Winning solution (1st) | Machine learning orientation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A guide to machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12.1 Winning solution (1st) | Machine learning orientation" />
+  
+  <meta name="twitter:description" content="A guide to machine learning" />
+  
+
+<meta name="author" content="Uwe Sterr" />
+
+
+<meta name="date" content="2020-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="melbourne-university-aesmathworksnih-seizure-prediction.html"/>
+<link rel="next" href="solution4th-place.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.49.4/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.49.4/plotly-latest.min.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.11/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/uweBookdown.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Machine Learning orientation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="want-to-meet-ml-people-from-academia-and-industrie.html"><a href="want-to-meet-ml-people-from-academia-and-industrie.html"><i class="fa fa-check"></i><b>1.1</b> Want to meet ML people from academia and industrie</a></li>
+</ul></li>
+<li class="part"><span><b>I Machine learning: Shall we?</b></span></li>
+<li class="chapter" data-level="2" data-path="whatML.html"><a href="whatML.html"><i class="fa fa-check"></i><b>2</b> What is machine learning?</a><ul>
+<li class="chapter" data-level="2.1" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html"><i class="fa fa-check"></i><b>2.1</b> What is intelligence?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="what-is-intelligence.html"><a href="what-is-intelligence.html#definition-of-artificial-intelligence-sub-domains"><i class="fa fa-check"></i><b>2.1.1</b> Definition of artificial intelligence sub domains</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html"><i class="fa fa-check"></i><b>2.2</b> Is AI smarter than humans?</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="is-ai-smarter-than-humans.html"><a href="is-ai-smarter-than-humans.html#thinking-fast-and-slow-kahneman2011thinking"><i class="fa fa-check"></i><b>2.2.1</b> Thinking, fast and slow <span class="citation">(Kahneman <span>2011</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html"><i class="fa fa-check"></i><b>2.3</b> Comparisons between AI and humans</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#breast-cancer-detection"><i class="fa fa-check"></i><b>2.3.1</b> Breast cancer detection</a></li>
+<li class="chapter" data-level="2.3.2" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#working-together-lung-cancer-detection"><i class="fa fa-check"></i><b>2.3.2</b> Working together: Lung cancer detection</a></li>
+<li class="chapter" data-level="2.3.3" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#imagenet-large-scale-visual-recognition-challenge-ilsvrc"><i class="fa fa-check"></i><b>2.3.3</b> ImageNet Large Scale Visual Recognition Challenge (ILSVRC)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="comparisons-between-ai-and-humans.html"><a href="comparisons-between-ai-and-humans.html#alphago-zero"><i class="fa fa-check"></i><b>2.3.4</b> AlphaGo Zero</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="ml-models-with-bias.html"><a href="ml-models-with-bias.html"><i class="fa fa-check"></i><b>2.4</b> ML models with bias</a></li>
+<li class="chapter" data-level="2.5" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html"><i class="fa fa-check"></i><b>2.5</b> Attacks on ML models</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#adding-noise-to-image-leads-to-misclassification"><i class="fa fa-check"></i><b>2.5.1</b> Adding noise to image leads to misclassification</a></li>
+<li class="chapter" data-level="2.5.2" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#but-what-about-attacks-on-human-perception"><i class="fa fa-check"></i><b>2.5.2</b> But what about attacks on human perception?</a></li>
+<li class="chapter" data-level="" data-path="attacks-on-ml-models.html"><a href="attacks-on-ml-models.html#is-this-a-picture-of-a-real-person"><i class="fa fa-check"></i>Is this a picture of a real person?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>3</b> Outlook</a><ul>
+<li class="chapter" data-level="3.1" data-path="development-of-life.html"><a href="development-of-life.html"><i class="fa fa-check"></i><b>3.1</b> Development of life</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="development-of-life.html"><a href="development-of-life.html#when-will-superhuman-ai-come-and-will-it-be-good"><i class="fa fa-check"></i><b>3.1.1</b> When will superhuman AI come, and will it be good?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="development-of-life.html"><a href="development-of-life.html#ai-aftermath-scenario"><i class="fa fa-check"></i><b>3.1.2</b> AI aftermath scenario</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-religion-dataism.html"><a href="data-religion-dataism.html"><i class="fa fa-check"></i><b>3.2</b> Data religion: Dataism</a></li>
+<li class="chapter" data-level="3.3" data-path="career-oxford-seeks-ai-ethics-professor.html"><a href="career-oxford-seeks-ai-ethics-professor.html"><i class="fa fa-check"></i><b>3.3</b> Career: Oxford seeks AI ethics professor</a></li>
+</ul></li>
+<li class="part"><span><b>II Machine learning fundamentals</b></span></li>
+<li class="chapter" data-level="4" data-path="MachineLearningFundamentals.html"><a href="MachineLearningFundamentals.html"><i class="fa fa-check"></i><b>4</b> Machine learning fundamentals</a></li>
+<li class="chapter" data-level="5" data-path="ml-project-process.html"><a href="ml-project-process.html"><i class="fa fa-check"></i><b>5</b> ML project process</a><ul>
+<li class="chapter" data-level="5.1" data-path="identify-ml-suited-to-fulfill-need.html"><a href="identify-ml-suited-to-fulfill-need.html"><i class="fa fa-check"></i><b>5.1</b> Identify ML suited to fulfill need</a></li>
+<li class="chapter" data-level="5.2" data-path="gather-data-tbc.html"><a href="gather-data-tbc.html"><i class="fa fa-check"></i><b>5.2</b> Gather data TBC</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="gather-data-tbc.html"><a href="gather-data-tbc.html#how-much-data-is-necessary"><i class="fa fa-check"></i><b>5.2.1</b> How much data is necessary?</a></li>
+<li class="chapter" data-level="5.2.2" data-path="gather-data-tbc.html"><a href="gather-data-tbc.html#which-data-is-useful"><i class="fa fa-check"></i><b>5.2.2</b> Which data is useful?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5.3</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="5.4" data-path="qunatitiave-anaylsis.html"><a href="qunatitiave-anaylsis.html"><i class="fa fa-check"></i><b>5.4</b> Qunatitiave anaylsis</a></li>
+<li class="chapter" data-level="5.5" data-path="feature-engineering.html"><a href="feature-engineering.html"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a></li>
+<li class="chapter" data-level="5.6" data-path="model-fit.html"><a href="model-fit.html"><i class="fa fa-check"></i><b>5.6</b> Model fit</a></li>
+<li class="chapter" data-level="5.7" data-path="model-tuning.html"><a href="model-tuning.html"><i class="fa fa-check"></i><b>5.7</b> Model tuning</a></li>
+<li class="chapter" data-level="" data-path="after-data-gathering-iteration-is-trump.html"><a href="after-data-gathering-iteration-is-trump.html"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="5.8" data-path="feature-engineering-1.html"><a href="feature-engineering-1.html"><i class="fa fa-check"></i><b>5.8</b> Feature engineering</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ml-types.html"><a href="ml-types.html"><i class="fa fa-check"></i><b>6</b> ML types</a></li>
+<li class="chapter" data-level="7" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>7</b> ML algorithms</a><ul>
+<li class="chapter" data-level="7.1" data-path="MlAlgoLinReg.html"><a href="MlAlgoLinReg.html"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a></li>
+<li class="chapter" data-level="7.2" data-path="MlAlgoLogReg.html"><a href="MlAlgoLogReg.html"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a></li>
+<li class="chapter" data-level="7.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html"><i class="fa fa-check"></i><b>7.3</b> Tree based methods TBD</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#splitting-metrics"><i class="fa fa-check"></i><b>7.3.1</b> Splitting metrics</a></li>
+<li class="chapter" data-level="7.3.2" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#ensembles"><i class="fa fa-check"></i><b>7.3.2</b> Ensembles</a></li>
+<li class="chapter" data-level="7.3.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesRandomForest"><i class="fa fa-check"></i><b>7.3.3</b> Random forest TBD</a></li>
+<li class="chapter" data-level="7.3.4" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesGBM"><i class="fa fa-check"></i><b>7.3.4</b> Boosted trees TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="MlAlgoSvm.html"><a href="MlAlgoSvm.html"><i class="fa fa-check"></i><b>7.4</b> Support Vector Machine (SVM) TBD</a></li>
+<li class="chapter" data-level="7.5" data-path="neural-networks.html"><a href="neural-networks.html"><i class="fa fa-check"></i><b>7.5</b> Neural networks</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="neural-networks.html"><a href="neural-networks.html#convolutional-neural-network-cnn-tbd"><i class="fa fa-check"></i><b>7.5.1</b> Convolutional Neural Network (CNN) TBD</a></li>
+<li class="chapter" data-level="7.5.2" data-path="neural-networks.html"><a href="neural-networks.html#rnn-tbd"><i class="fa fa-check"></i><b>7.5.2</b> RNN TBD</a></li>
+<li class="chapter" data-level="7.5.3" data-path="neural-networks.html"><a href="neural-networks.html#gans"><i class="fa fa-check"></i><b>7.5.3</b> GANs</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html"><i class="fa fa-check"></i><b>7.6</b> A Gentle Introduction to CycleGAN for Image Translation</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="a-gentle-introduction-to-cyclegan-for-image-translation.html"><a href="a-gentle-introduction-to-cyclegan-for-image-translation.html#examples-for-gans"><i class="fa fa-check"></i><b>7.6.1</b> Examples for GANs</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><a href="software-that-can-generate-photos-from-paintings-turn-horses-into-zebras-perform-style-transfer-and-more-.html"><i class="fa fa-check"></i><b>7.7</b> Software that can generate photos from paintings, turn horses into zebras, perform style transfer, and more.</a></li>
+<li class="chapter" data-level="7.8" data-path="transformers-tbd.html"><a href="transformers-tbd.html"><i class="fa fa-check"></i><b>7.8</b> Transformers TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="food-for-the-algorithms-data.html"><a href="food-for-the-algorithms-data.html"><i class="fa fa-check"></i><b>8</b> Food for the algorithms: Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="discovering-millions-of-datasets-on-the-web.html"><a href="discovering-millions-of-datasets-on-the-web.html"><i class="fa fa-check"></i><b>8.1</b> Discovering millions of datasets on the web</a></li>
+</ul></li>
+<li class="part"><span><b>III Explainable ML</b></span></li>
+<li class="chapter" data-level="9" data-path="ExplainableMl.html"><a href="ExplainableMl.html"><i class="fa fa-check"></i><b>9</b> Explainable ML tbd</a><ul>
+<li class="chapter" data-level="9.1" data-path="lime-tbd.html"><a href="lime-tbd.html"><i class="fa fa-check"></i><b>9.1</b> Lime tbd</a></li>
+<li class="chapter" data-level="9.2" data-path="alibi-tbd.html"><a href="alibi-tbd.html"><i class="fa fa-check"></i><b>9.2</b> alibi tbd</a></li>
+<li class="chapter" data-level="9.3" data-path="tf-explain-tbd.html"><a href="tf-explain-tbd.html"><i class="fa fa-check"></i><b>9.3</b> tf-explain tbd</a></li>
+<li class="chapter" data-level="9.4" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html"><i class="fa fa-check"></i><b>9.4</b> keras-salient-object-visualization</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html#explaining-how-a-deep-neural-network-trained-with-end-to-end-learning-steers-a-car"><i class="fa fa-check"></i><b>9.4.1</b> Explaining How a Deep Neural Network Trained with End-to-End Learning Steers a Car</a></li>
+<li class="chapter" data-level="9.4.2" data-path="keras-salient-object-visualization.html"><a href="keras-salient-object-visualization.html#visualbackprop-efficient-visualization-of-cnns"><i class="fa fa-check"></i><b>9.4.2</b> VisualBackProp: efficient visualization of CNNs</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV ML online resources</b></span></li>
+<li class="chapter" data-level="10" data-path="MlResources.html"><a href="MlResources.html"><i class="fa fa-check"></i><b>10</b> ML online resources</a><ul>
+<li class="chapter" data-level="10.1" data-path="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><a href="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><i class="fa fa-check"></i><b>10.1</b> In-depth introduction to machine learning in 15 hours of expert videos</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html"><a href="in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos.html#an-introduction-to-statistical-learning"><i class="fa fa-check"></i><b>10.1.1</b> An Introduction to Statistical Learning</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="the-learning-machine.html"><a href="the-learning-machine.html"><i class="fa fa-check"></i><b>10.2</b> The learning machine</a></li>
+<li class="chapter" data-level="10.3" data-path="deepai-the-front-page-of-a-i-.html"><a href="deepai-the-front-page-of-a-i-.html"><i class="fa fa-check"></i><b>10.3</b> DeepAI: The front page of A.I.</a></li>
+</ul></li>
+<li class="part"><span><b>V Examples from Kaggle</b></span></li>
+<li class="chapter" data-level="11" data-path="KaggleExamples.html"><a href="KaggleExamples.html"><i class="fa fa-check"></i><b>11</b> Examples in Kaggle</a></li>
+<li class="chapter" data-level="12" data-path="melbourne-university-aesmathworksnih-seizure-prediction.html"><a href="melbourne-university-aesmathworksnih-seizure-prediction.html"><i class="fa fa-check"></i><b>12</b> Melbourne University AES/MathWorks/NIH Seizure Prediction</a><ul>
+<li class="chapter" data-level="12.1" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html"><i class="fa fa-check"></i><b>12.1</b> Winning solution (1st)</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#alex-gilberto-models"><i class="fa fa-check"></i><b>12.1.1</b> Alex / Gilberto models</a></li>
+<li class="chapter" data-level="12.1.2" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#feng-models"><i class="fa fa-check"></i><b>12.1.2</b> Feng models</a></li>
+<li class="chapter" data-level="12.1.3" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#andriy-models"><i class="fa fa-check"></i><b>12.1.3</b> Andriy models</a></li>
+<li class="chapter" data-level="12.1.4" data-path="winning-solution-1st.html"><a href="winning-solution-1st.html#code-on-github"><i class="fa fa-check"></i><b>12.1.4</b> Code on GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="solution4th-place.html"><a href="solution4th-place.html"><i class="fa fa-check"></i><b>12.2</b> Solution(4th place)</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="solution4th-place.html"><a href="solution4th-place.html#pre-processing-6"><i class="fa fa-check"></i><b>12.2.1</b> Pre-processing</a></li>
+<li class="chapter" data-level="12.2.2" data-path="solution4th-place.html"><a href="solution4th-place.html#features-3"><i class="fa fa-check"></i><b>12.2.2</b> Features</a></li>
+<li class="chapter" data-level="12.2.3" data-path="solution4th-place.html"><a href="solution4th-place.html#model"><i class="fa fa-check"></i><b>12.2.3</b> Model</a></li>
+<li class="chapter" data-level="12.2.4" data-path="solution4th-place.html"><a href="solution4th-place.html#github-code"><i class="fa fa-check"></i><b>12.2.4</b> GitHub code</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="bosch-production-line-performance.html"><a href="bosch-production-line-performance.html"><i class="fa fa-check"></i><b>13</b> Bosch Production Line Performance</a><ul>
+<li class="chapter" data-level="13.1" data-path="st-place-solution.html"><a href="st-place-solution.html"><i class="fa fa-check"></i><b>13.1</b> 1st place solution</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="st-place-solution.html"><a href="st-place-solution.html#data-exploration"><i class="fa fa-check"></i><b>13.1.1</b> Data exploration</a></li>
+<li class="chapter" data-level="13.1.2" data-path="st-place-solution.html"><a href="st-place-solution.html#hand-crafted-features"><i class="fa fa-check"></i><b>13.1.2</b> Hand crafted features</a></li>
+<li class="chapter" data-level="13.1.3" data-path="st-place-solution.html"><a href="st-place-solution.html#hardware"><i class="fa fa-check"></i><b>13.1.3</b> Hardware</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="rd-place-solution-tbd.html"><a href="rd-place-solution-tbd.html"><i class="fa fa-check"></i><b>13.2</b> 3rd place solution TBD</a></li>
+<li class="chapter" data-level="13.3" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html"><i class="fa fa-check"></i><b>13.3</b> 8th place solution with GitHub</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#overall-architecture"><i class="fa fa-check"></i><b>13.3.1</b> Overall architecture</a></li>
+<li class="chapter" data-level="13.3.2" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#input-data-sets"><i class="fa fa-check"></i><b>13.3.2</b> Input data sets</a></li>
+<li class="chapter" data-level="13.3.3" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#ensembling"><i class="fa fa-check"></i><b>13.3.3</b> Ensembling</a></li>
+<li class="chapter" data-level="13.3.4" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#features-4"><i class="fa fa-check"></i><b>13.3.4</b> Features</a></li>
+<li class="chapter" data-level="13.3.5" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#validation-method"><i class="fa fa-check"></i><b>13.3.5</b> Validation method</a></li>
+<li class="chapter" data-level="13.3.6" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#software-1"><i class="fa fa-check"></i><b>13.3.6</b> Software</a></li>
+<li class="chapter" data-level="13.3.7" data-path="th-place-solution-with-github.html"><a href="th-place-solution-with-github.html#code-on-github-1"><i class="fa fa-check"></i><b>13.3.7</b> Code on GitHub</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="corporación-favorita-grocery-sales-forecasting.html"><a href="corporación-favorita-grocery-sales-forecasting.html"><i class="fa fa-check"></i><b>14</b> Corporación Favorita Grocery Sales Forecasting</a><ul>
+<li class="chapter" data-level="14.1" data-path="st-place-solution-1.html"><a href="st-place-solution-1.html"><i class="fa fa-check"></i><b>14.1</b> 1st place solution</a></li>
+<li class="chapter" data-level="14.2" data-path="th-place-solution-overview.html"><a href="th-place-solution-overview.html"><i class="fa fa-check"></i><b>14.2</b> 4th-Place Solution Overview</a></li>
+<li class="chapter" data-level="14.3" data-path="th-place-solution.html"><a href="th-place-solution.html"><i class="fa fa-check"></i><b>14.3</b> 5th Place Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="severstal-steel-defect-detection.html"><a href="severstal-steel-defect-detection.html"><i class="fa fa-check"></i><b>15</b> Severstal: Steel Defect Detection</a></li>
+<li class="chapter" data-level="16" data-path="lyft-3d-object-detection-for-autonomous-vehicles.html"><a href="lyft-3d-object-detection-for-autonomous-vehicles.html"><i class="fa fa-check"></i><b>16</b> Lyft 3D Object Detection for Autonomous Vehicles</a><ul>
+<li class="chapter" data-level="16.1" data-path="rd-place-solution.html"><a href="rd-place-solution.html"><i class="fa fa-check"></i><b>16.1</b> 3rd place solution</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="aptos-2019-blindness-detection.html"><a href="aptos-2019-blindness-detection.html"><i class="fa fa-check"></i><b>17</b> APTOS 2019 Blindness Detection</a><ul>
+<li class="chapter" data-level="17.1" data-path="st-place-solution-summary.html"><a href="st-place-solution-summary.html"><i class="fa fa-check"></i><b>17.1</b> 1st place solution summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="predicting-molecular-properties.html"><a href="predicting-molecular-properties.html"><i class="fa fa-check"></i><b>18</b> Predicting Molecular Properties</a><ul>
+<li class="chapter" data-level="18.1" data-path="solution-hybrid.html"><a href="solution-hybrid.html"><i class="fa fa-check"></i><b>18.1</b> #1 Solution - hybrid</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="solution-hybrid.html"><a href="solution-hybrid.html#overall-architecture-1"><i class="fa fa-check"></i><b>18.1.1</b> Overall architecture</a></li>
+<li class="chapter" data-level="18.1.2" data-path="solution-hybrid.html"><a href="solution-hybrid.html#ensembling-1"><i class="fa fa-check"></i><b>18.1.2</b> Ensembling</a></li>
+<li class="chapter" data-level="18.1.3" data-path="solution-hybrid.html"><a href="solution-hybrid.html#hardware-1"><i class="fa fa-check"></i><b>18.1.3</b> Hardware</a></li>
+<li class="chapter" data-level="18.1.4" data-path="solution-hybrid.html"><a href="solution-hybrid.html#software-2"><i class="fa fa-check"></i><b>18.1.4</b> Software</a></li>
+<li class="chapter" data-level="18.1.5" data-path="solution-hybrid.html"><a href="solution-hybrid.html#code-on-github-2"><i class="fa fa-check"></i><b>18.1.5</b> Code on GitHub</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html"><i class="fa fa-check"></i><b>18.2</b> #2 solution 🤖 Quantum Uncertainty 🤖</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#overall-architecture-2"><i class="fa fa-check"></i><b>18.2.1</b> Overall architecture</a></li>
+<li class="chapter" data-level="18.2.2" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#input-features-and-embeddings-1"><i class="fa fa-check"></i><b>18.2.2</b> Input features and embeddings</a></li>
+<li class="chapter" data-level="18.2.3" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#data-augmentation"><i class="fa fa-check"></i><b>18.2.3</b> Data augmentation</a></li>
+<li class="chapter" data-level="18.2.4" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#ensembling-2"><i class="fa fa-check"></i><b>18.2.4</b> Ensembling</a></li>
+<li class="chapter" data-level="18.2.5" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#hardware-2"><i class="fa fa-check"></i><b>18.2.5</b> Hardware</a></li>
+<li class="chapter" data-level="18.2.6" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#software-3"><i class="fa fa-check"></i><b>18.2.6</b> Software</a></li>
+<li class="chapter" data-level="18.2.7" data-path="solution-quantum-uncertainty.html"><a href="solution-quantum-uncertainty.html#code-on-github-3"><i class="fa fa-check"></i><b>18.2.7</b> Code on GitHub</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="local-examples.html"><a href="local-examples.html"><i class="fa fa-check"></i><b>19</b> Local examples</a><ul>
+<li class="chapter" data-level="19.1" data-path="university-suttgart-indoor-ortung-mit-mobilfunk.html"><a href="university-suttgart-indoor-ortung-mit-mobilfunk.html"><i class="fa fa-check"></i><b>19.1</b> University Suttgart: Indoor-Ortung mit Mobilfunk</a></li>
+<li class="chapter" data-level="19.2" data-path="bionic-learning-network.html"><a href="bionic-learning-network.html"><i class="fa fa-check"></i><b>19.2</b> Bionic Learning Network</a></li>
+</ul></li>
+<li class="part"><span><b>VI Real world example</b></span></li>
+<li class="chapter" data-level="20" data-path="RealWorld.html"><a href="RealWorld.html"><i class="fa fa-check"></i><b>20</b> Real world example</a><ul>
+<li class="chapter" data-level="20.1" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html"><i class="fa fa-check"></i><b>20.1</b> Subject of the project</a><ul>
+<li class="chapter" data-level="" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html#depending-from-where-you-were-looking"><i class="fa fa-check"></i>Depending from where you were looking:</a></li>
+<li class="chapter" data-level="" data-path="subject-of-the-project.html"><a href="subject-of-the-project.html#looking-from-the-perspective-of-machine-learning-expert"><i class="fa fa-check"></i>Looking from the perspective of machine learning expert</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="project-phases.html"><a href="project-phases.html"><i class="fa fa-check"></i><b>20.2</b> Project phases</a><ul>
+<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#the-main-project-phases-are"><i class="fa fa-check"></i>The main project phases are:</a></li>
+<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#after-data-gathering-iteration-is-trump-1"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-2"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html"><i class="fa fa-check"></i><b>20.3</b> Algorithm selection</a><ul>
+<li class="chapter" data-level="20.3.1" data-path="algorithm-selection.html"><a href="algorithm-selection.html#logistic-regression"><i class="fa fa-check"></i><b>20.3.1</b> Logistic regression</a></li>
+<li class="chapter" data-level="20.3.2" data-path="algorithm-selection.html"><a href="algorithm-selection.html#tree-based-tbd"><i class="fa fa-check"></i><b>20.3.2</b> Tree based TBD</a></li>
+<li class="chapter" data-level="20.3.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html#support-vector-machine-svm-tbd"><i class="fa fa-check"></i><b>20.3.3</b> Support Vector Machine (SVM) TBD</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="performance-measurement.html"><a href="performance-measurement.html"><i class="fa fa-check"></i><b>20.4</b> Performance measurement</a><ul>
+<li class="chapter" data-level="20.4.1" data-path="performance-measurement.html"><a href="performance-measurement.html#sensitivity-and-specificity"><i class="fa fa-check"></i><b>20.4.1</b> Sensitivity and specificity</a></li>
+<li class="chapter" data-level="20.4.2" data-path="performance-measurement.html"><a href="performance-measurement.html#receiver-operating-characteristic-roc"><i class="fa fa-check"></i><b>20.4.2</b> Receiver operating characteristic (ROC)</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html"><i class="fa fa-check"></i><b>20.5</b> Confusion matrix and ROC for pulse</a><ul>
+<li class="chapter" data-level="20.5.1" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html#r-plots"><i class="fa fa-check"></i><b>20.5.1</b> R Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="create-augmented-labeled-data.html"><a href="create-augmented-labeled-data.html"><i class="fa fa-check"></i><b>20.6</b> Create augmented labeled data</a><ul>
+<li class="chapter" data-level="20.6.1" data-path="create-augmented-labeled-data.html"><a href="create-augmented-labeled-data.html#features-of-time-signals"><i class="fa fa-check"></i><b>20.6.1</b> Features of time signals</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="features-generated.html"><a href="features-generated.html"><i class="fa fa-check"></i><b>20.7</b> Features generated</a><ul>
+<li class="chapter" data-level="20.7.1" data-path="features-generated.html"><a href="features-generated.html#analysis-of-generated-features"><i class="fa fa-check"></i><b>20.7.1</b> Analysis of generated features</a></li>
+<li class="chapter" data-level="20.7.2" data-path="features-generated.html"><a href="features-generated.html#dynamic-time-warp-dtw-for-signal"><i class="fa fa-check"></i><b>20.7.2</b> Dynamic time warp (DTW) for signal</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="algorithm.html"><a href="algorithm.html"><i class="fa fa-check"></i><b>20.8</b> Algorithm</a></li>
+<li class="chapter" data-level="20.9" data-path="confusion-matrix-results-logistic-regression-for-measured-data.html"><a href="confusion-matrix-results-logistic-regression-for-measured-data.html"><i class="fa fa-check"></i><b>20.9</b> Confusion matrix results logistic regression for measured data</a><ul>
+<li class="chapter" data-level="20.9.1" data-path="confusion-matrix-results-logistic-regression-for-measured-data.html"><a href="confusion-matrix-results-logistic-regression-for-measured-data.html#roc-results-for-measured-data"><i class="fa fa-check"></i><b>20.9.1</b> ROC results for measured data</a></li>
+</ul></li>
+<li class="chapter" data-level="20.10" data-path="several-algorithms-results-for-snr-18db.html"><a href="several-algorithms-results-for-snr-18db.html"><i class="fa fa-check"></i><b>20.10</b> Several algorithms results for SNR = 18dB</a><ul>
+<li class="chapter" data-level="20.10.1" data-path="several-algorithms-results-for-snr-18db.html"><a href="several-algorithms-results-for-snr-18db.html#roc-results-for-snr-18db"><i class="fa fa-check"></i><b>20.10.1</b> ROC results for SNR 18dB</a></li>
+</ul></li>
+<li class="chapter" data-level="20.11" data-path="compare-models-for-snr-18db.html"><a href="compare-models-for-snr-18db.html"><i class="fa fa-check"></i><b>20.11</b> Compare models for SNR = 18dB</a></li>
+<li class="chapter" data-level="20.12" data-path="optimize-ml-hyper-parameter.html"><a href="optimize-ml-hyper-parameter.html"><i class="fa fa-check"></i><b>20.12</b> Optimize ML hyper parameter</a></li>
+</ul></li>
+<li class="part"><span><b>VII Cloud-based machine learning</b></span></li>
+<li class="chapter" data-level="21" data-path="CloudBasedMl.html"><a href="CloudBasedMl.html"><i class="fa fa-check"></i><b>21</b> Cloud-based machine learning</a></li>
+<li class="part"><span><b>VIII Kaggle Survey</b></span></li>
+<li class="chapter" data-level="22" data-path="KaggleSurvey.html"><a href="KaggleSurvey.html"><i class="fa fa-check"></i><b>22</b> Kaggle survey introduction</a><ul>
+<li class="chapter" data-level="22.1" data-path="kaggle-survey-details.html"><a href="kaggle-survey-details.html"><i class="fa fa-check"></i><b>22.1</b> Kaggle survey details</a></li>
+<li class="chapter" data-level="22.2" data-path="purpose.html"><a href="purpose.html"><i class="fa fa-check"></i><b>22.2</b> Purpose</a></li>
+<li class="chapter" data-level="22.3" data-path="navigation-and-handling.html"><a href="navigation-and-handling.html"><i class="fa fa-check"></i><b>22.3</b> Navigation and handling</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>23</b> Results</a><ul>
+<li class="chapter" data-level="23.1" data-path="survey-participants-education-level.html"><a href="survey-participants-education-level.html"><i class="fa fa-check"></i><b>23.1</b> Survey participants education level</a></li>
+<li class="chapter" data-level="23.2" data-path="who-uses-which-algorithm.html"><a href="who-uses-which-algorithm.html"><i class="fa fa-check"></i><b>23.2</b> Who uses which algorithm</a></li>
+<li class="chapter" data-level="23.3" data-path="machine-learning-experience-and-algorithms.html"><a href="machine-learning-experience-and-algorithms.html"><i class="fa fa-check"></i><b>23.3</b> Machine learning experience and algorithms</a></li>
+<li class="chapter" data-level="23.4" data-path="experience-and-new-algorithms.html"><a href="experience-and-new-algorithms.html"><i class="fa fa-check"></i><b>23.4</b> Experience and new algorithms</a></li>
+<li class="chapter" data-level="23.5" data-path="role-of-participants.html"><a href="role-of-participants.html"><i class="fa fa-check"></i><b>23.5</b> Role of participants</a></li>
+<li class="chapter" data-level="23.6" data-path="company-size.html"><a href="company-size.html"><i class="fa fa-check"></i><b>23.6</b> Company size</a></li>
+<li class="chapter" data-level="23.7" data-path="company-incorporation-of-machine-learning.html"><a href="company-incorporation-of-machine-learning.html"><i class="fa fa-check"></i><b>23.7</b> Company incorporation of machine learning</a></li>
+<li class="chapter" data-level="23.8" data-path="favourite-media-sources-on-data-science-topics.html"><a href="favourite-media-sources-on-data-science-topics.html"><i class="fa fa-check"></i><b>23.8</b> Favourite media sources on data science topics</a></li>
+<li class="chapter" data-level="23.9" data-path="favourite-online-course-platform.html"><a href="favourite-online-course-platform.html"><i class="fa fa-check"></i><b>23.9</b> Favourite online course platform</a></li>
+<li class="chapter" data-level="23.10" data-path="favourite-data-analyzing-tool.html"><a href="favourite-data-analyzing-tool.html"><i class="fa fa-check"></i><b>23.10</b> Favourite data analyzing tool</a></li>
+<li class="chapter" data-level="23.11" data-path="experience-in-data-analysis-coding.html"><a href="experience-in-data-analysis-coding.html"><i class="fa fa-check"></i><b>23.11</b> Experience in data analysis coding</a></li>
+<li class="chapter" data-level="23.12" data-path="favourite-integrated-development-environments-ides.html"><a href="favourite-integrated-development-environments-ides.html"><i class="fa fa-check"></i><b>23.12</b> Favourite integrated development environments (IDE’s)</a></li>
+<li class="chapter" data-level="23.13" data-path="favourite-hosted-notebook-products.html"><a href="favourite-hosted-notebook-products.html"><i class="fa fa-check"></i><b>23.13</b> Favourite hosted notebook products</a></li>
+<li class="chapter" data-level="23.14" data-path="favourite-programming-languages.html"><a href="favourite-programming-languages.html"><i class="fa fa-check"></i><b>23.14</b> Favourite programming languages</a></li>
+<li class="chapter" data-level="23.15" data-path="recommended-entry-programming-language.html"><a href="recommended-entry-programming-language.html"><i class="fa fa-check"></i><b>23.15</b> Recommended entry programming language</a></li>
+<li class="chapter" data-level="23.16" data-path="favourite-data-visualization-libraries-or-tools.html"><a href="favourite-data-visualization-libraries-or-tools.html"><i class="fa fa-check"></i><b>23.16</b> Favourite data visualization libraries or tools</a></li>
+<li class="chapter" data-level="23.17" data-path="favourite-specialized-hardware.html"><a href="favourite-specialized-hardware.html"><i class="fa fa-check"></i><b>23.17</b> Favourite specialized hardware</a></li>
+<li class="chapter" data-level="23.18" data-path="favourite-machine-learning-frameworks.html"><a href="favourite-machine-learning-frameworks.html"><i class="fa fa-check"></i><b>23.18</b> Favourite machine learning frameworks</a></li>
+<li class="chapter" data-level="23.19" data-path="favourite-cloud-computing-platforms.html"><a href="favourite-cloud-computing-platforms.html"><i class="fa fa-check"></i><b>23.19</b> Favourite cloud computing platforms</a></li>
+<li class="chapter" data-level="23.20" data-path="favourite-big-data-analytics-products.html"><a href="favourite-big-data-analytics-products.html"><i class="fa fa-check"></i><b>23.20</b> Favourite big data / analytics products</a></li>
+<li class="chapter" data-level="23.21" data-path="favourite-automated-machine-learning-tools-or-partial-automl-tools.html"><a href="favourite-automated-machine-learning-tools-or-partial-automl-tools.html"><i class="fa fa-check"></i><b>23.21</b> Favourite automated machine learning tools (or partial AutoML tools)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Machine learning orientation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="winning-solution-1st" class="section level2">
+<h2><span class="header-section-number">12.1</span> Winning solution (1st)</h2>
+<p>The first placed team was a two man show, they present their solution at <a href="https://www.kaggle.com/c/melbourne-university-seizure-prediction/discussion/26310">Kaggle discussion</a></p>
+
+<div class="rmdtip">
+<p>The team consisted of:</p>
+<ul>
+<li>Four ML experts</li>
+<li>Private team</li>
+</ul>
+</div>
+
+<p>The team members build a total of 11 models which were blended by using an average of ranked predictions of each individual model. The weight of all models was 1.</p>
+
+<div class="rmdtip">
+<p>
+Models:<img src="images/Scale.svg" alt="Smiley face" align="right" style="width:20%;">
+</p>
+<ul>
+<li>11 models in total</li>
+<li>Each weighted 1</li>
+</ul>
+</div>
+
+<div id="alex-gilberto-models" class="section level3">
+<h3><span class="header-section-number">12.1.1</span> Alex / Gilberto models</h3>
+<p>The <strong>two created 4 models</strong> which were selected for the final ensemble</p>
+<div id="pre-processing" class="section level4">
+<h4><span class="header-section-number">12.1.1.1</span> Pre-processing</h4>
+<p>For all models of Alex and Gilberto the pre-processing was the same. The code can be found at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/master/Alex_Gilberto/preproc.py">GitHub</a></p>
+
+<div class="rmdtip">
+<p>
+Pre-processing:<img src="images/segmentation.png" alt="Smiley face" align="right" style="width:30%;">
+</p>
+<ul>
+<li>Segmentation of 10min segments into
+<ul>
+<li>non-overlapping</li>
+<li>30 20s segments</li>
+</ul></li>
+<li>No filtering</li>
+</ul>
+</div>
+
+</div>
+<div id="software" class="section level4">
+<h4><span class="header-section-number">12.1.1.2</span> Software</h4>
+<p>The team used Python and several libraries</p>
+
+<div class="rmdtip">
+<p>
+Software:<img src="images/ProgramIcon.svg" alt="Smiley face" align="right" style="width:30%;">
+</p>
+<ul>
+<li>Python</li>
+<li>scikit-learn</li>
+<li>pyRiemann</li>
+<li>xgboost</li>
+<li>mne-python</li>
+<li>pandas</li>
+<li>pyyaml</li>
+</ul>
+</div>
+
+</div>
+<div id="model-1" class="section level4">
+<h4><span class="header-section-number">12.1.1.3</span> Model 1</h4>
+<p>The feature generation code is given at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/master/Alex_Gilberto/generate_features.py">GitHub</a></p>
+<p>Model 1 used <strong>XGB algorithm</strong> and 96 features</p>
+
+<div class="rmdtip">
+<p>96 features:</p>
+<ul>
+<li>normalized log power
+<ul>
+<li>6 different frequency band (0.1 - 4 ; 4- 8 ; 8 - 15 ; 15 - 30 ; 30 - 90 ; 90 - 170 Hz)</li>
+<li>for each channel</li>
+</ul></li>
+<li>Power spectral density
+<ul>
+<li>Welch’s method (window of 512 sample, 25% overlap)</li>
+<li>averaged in each band</li>
+<li>normalized by the total power</li>
+<li>taking logarithm.</li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+<div id="model-2" class="section level4">
+<h4><span class="header-section-number">12.1.1.4</span> Model 2</h4>
+<p>Model 2 used <strong>XGB algorithm</strong> and 336 features</p>
+
+<div class="rmdtip">
+<p>336 features:</p>
+<ul>
+<li>relative log power as described above
+-with the addition of various measures
+-mean
+- min
+- max
+- variance
+- 90th
+- 10th percentiles)</li>
+<li>auto regressive error coefficient (order 5)</li>
+<li><a href="https://en.wikipedia.org/wiki/Fractal_dimension">fractal dimension</a>
+<ul>
+<li>Petrosian</li>
+<li>Higuchi</li>
+</ul></li>
+<li><a href="https://en.wikipedia.org/wiki/Hurst_exponent">Hurst exponent</a></li>
+</ul>
+</div>
+
+</div>
+<div id="model-3" class="section level4">
+<h4><span class="header-section-number">12.1.1.5</span> Model 3</h4>
+<p>Model 3 used <strong>XGB algorithm</strong> and 576 features
+Each of the autocorrelation matrices were projected into their respective riemannian tangent space (see <span class="citation">(Barachant et al. <a href="#ref-barachant2013classification" role="doc-biblioref">2013</a>)</span>, this operation can be seen as a kernel operation that unfold the natural structure of symmetric and positive define matrices) and vectorized to produce a single feature vector of 36 item.</p>
+
+<div class="rmdtip">
+<p>576 features:</p>
+<ul>
+<li>auto-correlation matrix
+<ul>
+<li>projected into their respective riemannian tangent space
+<ul>
+<li>kernel operation that unfold the natural structure of symmetric and positive define matrices</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+<div id="model-4" class="section level4">
+<h4><span class="header-section-number">12.1.1.6</span> Model 4</h4>
+<p>Model 4 used <strong>XGB algorithm</strong> and 336 features
+This feature set is composed by cross-frequency coherence (in the same 6 sub-band as in the relative log power features) of each channels, i.e. the estimation of coherence is achieved between pairs of frequency of the same channel instead to be between pairs of channels for each frequency band. This produce set of 6x6 coherence matrices, that are then projected in their tangent space and vectorized.</p>
+
+<div class="rmdtip">
+<p>336 features:</p>
+<ul>
+<li>cross-frequency coherence
+<ul>
+<li>projected in their tangent space and vectorized</li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+</div>
+<div id="feng-models" class="section level3">
+<h3><span class="header-section-number">12.1.2</span> Feng models</h3>
+<p><strong>Feng created 4 models</strong> which were selected for the final ensemble. Total training time (including feature extraction) is estimated to less than 6 hours for these 4 models on my 8 GB RAM MacBook Pro.</p>
+<div id="pre-processing-1" class="section level4">
+<h4><span class="header-section-number">12.1.2.1</span> Pre-processing</h4>
+<p>The pre-processing was the same for all models</p>
+
+<div class="rmdtip">
+<p>
+Pre-processing:<img src="images/segmentation.png" alt="Smiley face" align="right" style="width:30%;">
+</p>
+<ul>
+<li>Butterworth filter (5th order with 0.1-180 HZ cutoff )</li>
+<li>segmentation of 10min
+-non-overlapping
+<ul>
+<li>30s windows</li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+<div id="features" class="section level4">
+<h4><span class="header-section-number">12.1.2.2</span> Features</h4>
+<p>Two different sets of features were produced and used in different combinations for the models. The script to generate the features can be found at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/00f937cc7710977dc812d9fc675864e2b8288658/Feng/make_features.py">GitHub</a></p>
+<p>The parameters of the feature generation is organized in the json file <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/00f937cc7710977dc812d9fc675864e2b8288658/Feng/kaggle_SETTINGS.json">kaggle_SETTINGS.json</a></p>
+
+<div class="rmdtip">
+<p>Feature set 1:</p>
+<ul>
+<li>bands: (0.1–4 Hz), theta (4–8 Hz), alpha (8–12 Hz), beta (12–30 Hz), low gamma (30–70 Hz) and high gamma (70–180Hz)
+<ul>
+<li>standard deviation</li>
+<li>average spectral power</li>
+</ul></li>
+</ul>
+<p>Feature set 2:</p>
+<ul>
+<li>correlation
+<ul>
+<li>time domain</li>
+<li>frequency domain</li>
+<li>upper triangle values of correlation matrices</li>
+<li>eigenvalues</li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+<div id="models" class="section level4">
+<h4><span class="header-section-number">12.1.2.3</span> Models</h4>
+<p>The models used different algorithms and either feature set 1 or both feature sets</p>
+
+<div class="rmdtip">
+<ul>
+<li><p>Model 1: XGB with feature 1</p></li>
+<li><p>Model 2: KNN with feature1</p></li>
+<li><p>Model 3: KNN with feature1+feature2</p></li>
+<li><p>Model 4: Logistic Regression with L2 penalty with feature1+feature2</p></li>
+</ul>
+</div>
+
+</div>
+</div>
+<div id="andriy-models" class="section level3">
+<h3><span class="header-section-number">12.1.3</span> Andriy models</h3>
+<p><strong>Andriy created 3 models</strong> which were selected for the final ensemble</p>
+<div id="pre-processing-2" class="section level4">
+<h4><span class="header-section-number">12.1.3.1</span> Pre-processing</h4>
+<p>For all models of Andriy the pre-processing was the same</p>
+
+<div class="rmdtip">
+<p>Pre-processing:</p>
+<ul>
+<li>demeaning the EEG signal</li>
+<li>filtering of the EEG signal between 0.5 and 128 Hz with a notch filter set at 60Hz</li>
+<li>downsampling to 256 Hz</li>
+<li>segmentation of the 10 minutes segment
+<ul>
+<li>non-overlapping</li>
+<li>30 seconds segment.</li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+<div id="features-1" class="section level4">
+<h4><span class="header-section-number">12.1.3.2</span> Features</h4>
+<p><strong>Andriy created 1965 features</strong> from which he choose by computing the <strong>feature importance</strong> using an XGB classifier.</p>
+<p>The univarant features have been previously used in several EEG applications, including seizure detection in newborns and adults <span class="citation">(Temko, Thomas, Marnane, Lightbody, and Boylan <a href="#ref-temko2011eeg" role="doc-biblioref">2011</a><a href="#ref-temko2011eeg" role="doc-biblioref">a</a>)</span> and <span class="citation">(Temko, Thomas, Marnane, Lightbody, and Boylan <a href="#ref-temko2011performance" role="doc-biblioref">2011</a><a href="#ref-temko2011performance" role="doc-biblioref">b</a>)</span></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="winning-solution-1st.html#cb8-1"></a>per-channel feature (univariate): </span>
+<span id="cb8-2"><a href="winning-solution-1st.html#cb8-2"></a></span>
+<span id="cb8-3"><a href="winning-solution-1st.html#cb8-3"></a>- <span class="st">111 feature per channel =&gt; 11*16 = 1776</span></span>
+<span id="cb8-4"><a href="winning-solution-1st.html#cb8-4"></a><span class="st">- peak frequency of spectrum</span></span>
+<span id="cb8-5"><a href="winning-solution-1st.html#cb8-5"></a><span class="st">- spectral edge frequency (80%, 90%, 95%)</span></span>
+<span id="cb8-6"><a href="winning-solution-1st.html#cb8-6"></a><span class="st">- fine spectral log-filterbank energies in 2Hz width sub-bands (0-2Hz, 1-3Hz, …30-32Hz)</span></span>
+<span id="cb8-7"><a href="winning-solution-1st.html#cb8-7"></a><span class="st">- coarse log filterbank energies in delta, theta, alpha, beta, gamma frequency bands</span></span>
+<span id="cb8-8"><a href="winning-solution-1st.html#cb8-8"></a><span class="st">- normalised FBE in those sub-bands</span></span>
+<span id="cb8-9"><a href="winning-solution-1st.html#cb8-9"></a><span class="st">- wavelet energy</span></span>
+<span id="cb8-10"><a href="winning-solution-1st.html#cb8-10"></a><span class="st">- curve length</span></span>
+<span id="cb8-11"><a href="winning-solution-1st.html#cb8-11"></a><span class="st">- Number of maxima and minima</span></span>
+<span id="cb8-12"><a href="winning-solution-1st.html#cb8-12"></a><span class="st">- RMS amplitude</span></span>
+<span id="cb8-13"><a href="winning-solution-1st.html#cb8-13"></a><span class="st">- Hjorth parameters</span></span>
+<span id="cb8-14"><a href="winning-solution-1st.html#cb8-14"></a><span class="st">- Zero crossings (raw epoch, Δ, ΔΔ)</span></span>
+<span id="cb8-15"><a href="winning-solution-1st.html#cb8-15"></a><span class="st">- Skewness</span></span>
+<span id="cb8-16"><a href="winning-solution-1st.html#cb8-16"></a><span class="st">- Kurtosis</span></span>
+<span id="cb8-17"><a href="winning-solution-1st.html#cb8-17"></a><span class="st">- Nonlinear energy</span></span>
+<span id="cb8-18"><a href="winning-solution-1st.html#cb8-18"></a><span class="st">- Variance (Δ, ΔΔ)</span></span>
+<span id="cb8-19"><a href="winning-solution-1st.html#cb8-19"></a><span class="st">- Mean frequency</span></span>
+<span id="cb8-20"><a href="winning-solution-1st.html#cb8-20"></a><span class="st">- band-width</span></span>
+<span id="cb8-21"><a href="winning-solution-1st.html#cb8-21"></a><span class="st">- Shannon entropy</span></span>
+<span id="cb8-22"><a href="winning-solution-1st.html#cb8-22"></a><span class="st">- Singular value decomposition entropy</span></span>
+<span id="cb8-23"><a href="winning-solution-1st.html#cb8-23"></a><span class="st">- Fisher information</span></span>
+<span id="cb8-24"><a href="winning-solution-1st.html#cb8-24"></a><span class="st">- Spectral entropy</span></span>
+<span id="cb8-25"><a href="winning-solution-1st.html#cb8-25"></a><span class="st">- Autoregressive modelling error (model order 1-9)</span></span></code></pre></div>
+<p>These multivariate were extracted for the five conventional EEG sub-bands (delta, theta, alpha, beta, gamma) for 6 different montages (horizontal, vertical, diagonal, etc</p>
+
+<div class="rmdtip">
+<p>cross-channel features (multivariate):</p>
+<ul>
+<li>180 features</li>
+<li>lag of maximum cross correlation</li>
+<li>correlation</li>
+<li>brain asymmetry index</li>
+<li>brain synchrony index</li>
+<li>coherence</li>
+<li>frequency of maximum coherence.</li>
+</ul>
+</div>
+
+</div>
+<div id="models-1" class="section level4">
+<h4><span class="header-section-number">12.1.3.3</span> Models</h4>
+<p>Out of the 1965 features listed above the first model computed the <strong>feature importance</strong> which was then used to select features for model 2 and 3</p>
+
+<div class="rmdtip">
+<ul>
+<li><p>Model 1: All features were used in a bagged XGB classifier (XGB).</p></li>
+<li><p>Model 2: Linear SVM was trained with top 300 features (SVM)</p></li>
+<li><p>Model 3: GLM was trained with top 200 features (Glmnet)</p></li>
+</ul>
+</div>
+
+</div>
+</div>
+<div id="code-on-github" class="section level3">
+<h3><span class="header-section-number">12.1.4</span> Code on GitHub</h3>
+<p>A detailed explanation of solution and code is given at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016">GitHub</a></p>
+<div id="alex-gilberto-code" class="section level4">
+<h4><span class="header-section-number">12.1.4.1</span> Alex / Gilberto code</h4>
+<p>The code of Alex / Gilberto is analyzed below</p>
+<div id="pre-processing-3" class="section level5">
+<h5><span class="header-section-number">12.1.4.1.1</span> Pre-processing</h5>
+<p>For all models of Alex and Gilberto the pre-processing was the same. The code can be found at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/master/Alex_Gilberto/preproc.py">GitHub</a></p>
+</div>
+<div id="feature-generation" class="section level5">
+<h5><span class="header-section-number">12.1.4.1.2</span> Feature generation</h5>
+<p>The feature generation code is given at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/master/Alex_Gilberto/generate_features.py">GitHub</a></p>
+</div>
+<div id="models-2" class="section level5">
+<h5><span class="header-section-number">12.1.4.1.3</span> Models</h5>
+<p>They use the XGB algorithm, the XGB hyperparameters are set in .yml files as follows</p>
+<p><img src="images/ymlControl.png"  align="middle" style="width:60%;"></p>
+<p>Yaml file:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yml"><code class="sourceCode yaml"><span id="cb9-1"><a href="winning-solution-1st.html#cb9-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at">  Alex_Gilberto_autocorrmat_TS_XGB</span></span>
+<span id="cb9-2"><a href="winning-solution-1st.html#cb9-2"></a></span>
+<span id="cb9-3"><a href="winning-solution-1st.html#cb9-3"></a><span class="fu">datasets</span><span class="kw">:</span></span>
+<span id="cb9-4"><a href="winning-solution-1st.html#cb9-4"></a><span class="at">  </span><span class="kw">-</span><span class="at"> autocorrmat</span></span>
+<span id="cb9-5"><a href="winning-solution-1st.html#cb9-5"></a></span>
+<span id="cb9-6"><a href="winning-solution-1st.html#cb9-6"></a><span class="fu">n_jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb9-7"><a href="winning-solution-1st.html#cb9-7"></a><span class="fu">safe_old</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span>
+<span id="cb9-8"><a href="winning-solution-1st.html#cb9-8"></a></span>
+<span id="cb9-9"><a href="winning-solution-1st.html#cb9-9"></a><span class="fu">imports</span><span class="kw">:</span></span>
+<span id="cb9-10"><a href="winning-solution-1st.html#cb9-10"></a><span class="at">  </span><span class="fu">models</span><span class="kw">:</span></span>
+<span id="cb9-11"><a href="winning-solution-1st.html#cb9-11"></a><span class="at">    </span><span class="kw">-</span><span class="at"> CoherenceToTangent</span></span>
+<span id="cb9-12"><a href="winning-solution-1st.html#cb9-12"></a><span class="at">  </span><span class="fu">xgboost</span><span class="kw">:</span></span>
+<span id="cb9-13"><a href="winning-solution-1st.html#cb9-13"></a><span class="at">    </span><span class="kw">-</span><span class="at"> XGBClassifier</span></span>
+<span id="cb9-14"><a href="winning-solution-1st.html#cb9-14"></a><span class="at">  </span><span class="fu">sklearn.ensemble</span><span class="kw">:</span></span>
+<span id="cb9-15"><a href="winning-solution-1st.html#cb9-15"></a><span class="at">    </span><span class="kw">-</span><span class="at"> BaggingClassifier</span></span>
+<span id="cb9-16"><a href="winning-solution-1st.html#cb9-16"></a></span>
+<span id="cb9-17"><a href="winning-solution-1st.html#cb9-17"></a><span class="fu">model</span><span class="kw">:</span></span>
+<span id="cb9-18"><a href="winning-solution-1st.html#cb9-18"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">CoherenceToTangent</span><span class="kw">:</span></span>
+<span id="cb9-19"><a href="winning-solution-1st.html#cb9-19"></a><span class="at">      </span><span class="fu">tsupdate</span><span class="kw">:</span><span class="at"> </span><span class="ch">False</span></span>
+<span id="cb9-20"><a href="winning-solution-1st.html#cb9-20"></a><span class="at">      </span><span class="fu">metric</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;&quot;identity&quot;&#39;</span></span>
+<span id="cb9-21"><a href="winning-solution-1st.html#cb9-21"></a><span class="at">      </span><span class="fu">n_jobs</span><span class="kw">:</span><span class="at"> </span><span class="dv">8</span></span>
+<span id="cb9-22"><a href="winning-solution-1st.html#cb9-22"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">BaggingClassifier</span><span class="kw">:</span></span>
+<span id="cb9-23"><a href="winning-solution-1st.html#cb9-23"></a><span class="at">      </span><span class="fu">max_samples</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.99</span></span>
+<span id="cb9-24"><a href="winning-solution-1st.html#cb9-24"></a><span class="at">      </span><span class="fu">max_features</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.99</span></span>
+<span id="cb9-25"><a href="winning-solution-1st.html#cb9-25"></a><span class="at">      </span><span class="fu">random_state</span><span class="kw">:</span><span class="at"> </span><span class="dv">666</span></span>
+<span id="cb9-26"><a href="winning-solution-1st.html#cb9-26"></a><span class="at">      </span><span class="fu">n_estimators</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb9-27"><a href="winning-solution-1st.html#cb9-27"></a><span class="at">      </span><span class="fu">base_estimator</span><span class="kw">:</span><span class="at"> XGBClassifier(n_estimators=500, learning_rate=0.01, max_depth=4, subsample=0.50, colsample_bytree=0.50, colsample_bylevel=1.00, min_child_weight=2, seed=42)</span></span></code></pre></div>
+<p>The models were than called within a shell script:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="winning-solution-1st.html#cb10-1"></a></span>
+<span id="cb10-2"><a href="winning-solution-1st.html#cb10-2"></a><span class="kw">for</span> <span class="ex">entry</span> in <span class="st">&quot;models&quot;</span>/*.yml</span>
+<span id="cb10-3"><a href="winning-solution-1st.html#cb10-3"></a><span class="kw">do</span></span>
+<span id="cb10-4"><a href="winning-solution-1st.html#cb10-4"></a>  <span class="bu">echo</span> config file <span class="st">&quot;</span><span class="va">$entry</span><span class="st">&quot;</span></span>
+<span id="cb10-5"><a href="winning-solution-1st.html#cb10-5"></a>  <span class="ex">python</span> generate_submission.py  -c <span class="st">&quot;</span><span class="va">$entry</span><span class="st">&quot;</span> -p</span>
+<span id="cb10-6"><a href="winning-solution-1st.html#cb10-6"></a><span class="kw">done</span></span></code></pre></div>
+</div>
+</div>
+<div id="feng-code" class="section level4">
+<h4><span class="header-section-number">12.1.4.2</span> Feng code</h4>
+<p>The code of Feng is analyzed below</p>
+<div id="pre-processing-4" class="section level5">
+<h5><span class="header-section-number">12.1.4.2.1</span> Pre-processing</h5>
+<p>The scripts for pre-processing are given at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/tree/00f937cc7710977dc812d9fc675864e2b8288658/Feng/preprocessors">GitHub</a></p>
+</div>
+<div id="features-2" class="section level5">
+<h5><span class="header-section-number">12.1.4.2.2</span> Features</h5>
+<p>The script to generate the features can be found at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/00f937cc7710977dc812d9fc675864e2b8288658/Feng/make_features.py">GitHub</a></p>
+<p>The parameters of the feature generation is organized in the json file <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/00f937cc7710977dc812d9fc675864e2b8288658/Feng/kaggle_SETTINGS.json">kaggle_SETTINGS.json</a></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="winning-solution-1st.html#cb11-1"></a><span class="fu">{</span></span>
+<span id="cb11-2"><a href="winning-solution-1st.html#cb11-2"></a>        <span class="dt">&quot;path&quot;</span><span class="fu">:{</span></span>
+<span id="cb11-3"><a href="winning-solution-1st.html#cb11-3"></a>        <span class="dt">&quot;root&quot;</span> <span class="fu">:</span> <span class="st">&quot;../&quot;</span><span class="fu">,</span></span>
+<span id="cb11-4"><a href="winning-solution-1st.html#cb11-4"></a>        <span class="dt">&quot;raw_data_path&quot;</span> <span class="fu">:</span> <span class="st">&quot;../data&quot;</span><span class="fu">,</span></span>
+<span id="cb11-5"><a href="winning-solution-1st.html#cb11-5"></a>        <span class="dt">&quot;processed_data_path&quot;</span> <span class="fu">:</span><span class="st">&quot;./postprocessedfile&quot;</span><span class="fu">,</span></span>
+<span id="cb11-6"><a href="winning-solution-1st.html#cb11-6"></a>        <span class="dt">&quot;submission_path&quot;</span> <span class="fu">:</span> <span class="st">&quot;../submissions&quot;</span> </span>
+<span id="cb11-7"><a href="winning-solution-1st.html#cb11-7"></a>    <span class="fu">},</span></span>
+<span id="cb11-8"><a href="winning-solution-1st.html#cb11-8"></a></span>
+<span id="cb11-9"><a href="winning-solution-1st.html#cb11-9"></a>    <span class="dt">&quot;preprocessor&quot;</span><span class="fu">:{</span></span>
+<span id="cb11-10"><a href="winning-solution-1st.html#cb11-10"></a>        <span class="dt">&quot;highcut&quot;</span> <span class="fu">:</span> <span class="dv">180</span><span class="fu">,</span></span>
+<span id="cb11-11"><a href="winning-solution-1st.html#cb11-11"></a>        <span class="dt">&quot;lowcut&quot;</span> <span class="fu">:</span> <span class="fl">0.1</span><span class="fu">,</span></span>
+<span id="cb11-12"><a href="winning-solution-1st.html#cb11-12"></a>        <span class="dt">&quot;nfreq_bands&quot;</span><span class="fu">:</span> <span class="dv">6</span><span class="fu">,</span></span>
+<span id="cb11-13"><a href="winning-solution-1st.html#cb11-13"></a>        <span class="dt">&quot;win_length_sec&quot;</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb11-14"><a href="winning-solution-1st.html#cb11-14"></a>        <span class="dt">&quot;features&quot;</span><span class="fu">:</span> <span class="st">&quot;meanlog_std&quot;</span><span class="fu">,</span></span>
+<span id="cb11-15"><a href="winning-solution-1st.html#cb11-15"></a>        <span class="dt">&quot;stride_sec&quot;</span><span class="fu">:</span> <span class="dv">30</span></span>
+<span id="cb11-16"><a href="winning-solution-1st.html#cb11-16"></a>    <span class="fu">}</span></span>
+<span id="cb11-17"><a href="winning-solution-1st.html#cb11-17"></a></span>
+<span id="cb11-18"><a href="winning-solution-1st.html#cb11-18"></a><span class="fu">}</span></span></code></pre></div>
+</div>
+<div id="models-3" class="section level5">
+<h5><span class="header-section-number">12.1.4.2.3</span> Models</h5>
+<p>The code for the <strong>GLM model:</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="winning-solution-1st.html#cb12-1"></a><span class="kw">def</span> train(subject, data_path, plot<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb12-2"><a href="winning-solution-1st.html#cb12-2"></a>    d <span class="op">=</span> load_train_data_lasso(data_path, subject)</span>
+<span id="cb12-3"><a href="winning-solution-1st.html#cb12-3"></a>    x, y <span class="op">=</span> d[<span class="st">&#39;x&#39;</span>], d[<span class="st">&#39;y&#39;</span>]</span>
+<span id="cb12-4"><a href="winning-solution-1st.html#cb12-4"></a>    <span class="bu">print</span> <span class="st">&#39;n_preictal&#39;</span>, np.<span class="bu">sum</span>(y)</span>
+<span id="cb12-5"><a href="winning-solution-1st.html#cb12-5"></a>    <span class="bu">print</span> <span class="st">&#39;n_inetrictal&#39;</span>, np.<span class="bu">sum</span>(<span class="dv">1</span><span class="op">-</span>y)</span>
+<span id="cb12-6"><a href="winning-solution-1st.html#cb12-6"></a>    n_channels <span class="op">=</span> x.shape[<span class="dv">1</span>]</span>
+<span id="cb12-7"><a href="winning-solution-1st.html#cb12-7"></a>    n_fbins <span class="op">=</span> x.shape[<span class="dv">2</span>]</span>
+<span id="cb12-8"><a href="winning-solution-1st.html#cb12-8"></a></span>
+<span id="cb12-9"><a href="winning-solution-1st.html#cb12-9"></a>    x, y <span class="op">=</span> reshape_data(x, y)</span>
+<span id="cb12-10"><a href="winning-solution-1st.html#cb12-10"></a>    x[np.isneginf(x)] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-11"><a href="winning-solution-1st.html#cb12-11"></a>    data_scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb12-12"><a href="winning-solution-1st.html#cb12-12"></a>    x <span class="op">=</span> data_scaler.fit_transform(x) <span class="co">## Normalizaiton</span></span>
+<span id="cb12-13"><a href="winning-solution-1st.html#cb12-13"></a>    logreg <span class="op">=</span> linear_model.LogisticRegression(penalty<span class="op">=</span><span class="st">&#39;l2&#39;</span>,C<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb12-14"><a href="winning-solution-1st.html#cb12-14"></a>    logreg.fit(x, y)</span>
+<span id="cb12-15"><a href="winning-solution-1st.html#cb12-15"></a>    <span class="cf">return</span> logreg, data_scaler</span></code></pre></div>
+<p>The code for the <strong>KNN model:</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="winning-solution-1st.html#cb13-1"></a></span>
+<span id="cb13-2"><a href="winning-solution-1st.html#cb13-2"></a><span class="kw">def</span> train(subject,data_path):</span>
+<span id="cb13-3"><a href="winning-solution-1st.html#cb13-3"></a>    d<span class="op">=</span>load_train_data_knn(data_path,subject)</span>
+<span id="cb13-4"><a href="winning-solution-1st.html#cb13-4"></a>    x,y<span class="op">=</span>reshape_data(d[<span class="st">&#39;x&#39;</span>],d[<span class="st">&#39;y&#39;</span>])</span>
+<span id="cb13-5"><a href="winning-solution-1st.html#cb13-5"></a>    x[np.isneginf(x)] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-6"><a href="winning-solution-1st.html#cb13-6"></a>    x[np.isnan(x)]<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb13-7"><a href="winning-solution-1st.html#cb13-7"></a>    data_scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb13-8"><a href="winning-solution-1st.html#cb13-8"></a>    x <span class="op">=</span> data_scaler.fit_transform(x)</span>
+<span id="cb13-9"><a href="winning-solution-1st.html#cb13-9"></a>    clf <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">40</span>, weights<span class="op">=</span><span class="st">&#39;distance&#39;</span>,metric<span class="op">=</span><span class="st">&#39;manhattan&#39;</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb13-10"><a href="winning-solution-1st.html#cb13-10"></a>    clf.fit(x, y)</span>
+<span id="cb13-11"><a href="winning-solution-1st.html#cb13-11"></a>    <span class="cf">return</span> clf</span></code></pre></div>
+<p>The code for the <strong>XGB model:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="winning-solution-1st.html#cb14-1"></a></span>
+<span id="cb14-2"><a href="winning-solution-1st.html#cb14-2"></a>params <span class="op">=</span> {</span>
+<span id="cb14-3"><a href="winning-solution-1st.html#cb14-3"></a>        <span class="st">&quot;objective&quot;</span>: <span class="st">&quot;binary:logistic&quot;</span>,</span>
+<span id="cb14-4"><a href="winning-solution-1st.html#cb14-4"></a>        <span class="st">&quot;booster&quot;</span> : <span class="st">&quot;gbtree&quot;</span>,</span>
+<span id="cb14-5"><a href="winning-solution-1st.html#cb14-5"></a>        <span class="st">&quot;eval_metric&quot;</span>: <span class="st">&quot;auc&quot;</span>,</span>
+<span id="cb14-6"><a href="winning-solution-1st.html#cb14-6"></a>        <span class="st">&quot;eta&quot;</span>: <span class="fl">0.22</span>,<span class="co">##0.22</span></span>
+<span id="cb14-7"><a href="winning-solution-1st.html#cb14-7"></a>        <span class="st">&quot;max_depth&quot;</span>: <span class="dv">3</span>,</span>
+<span id="cb14-8"><a href="winning-solution-1st.html#cb14-8"></a>        <span class="st">&quot;subsample&quot;</span>: <span class="fl">0.80</span>,</span>
+<span id="cb14-9"><a href="winning-solution-1st.html#cb14-9"></a>        <span class="st">&quot;colsample_bytree&quot;</span>: <span class="fl">0.78</span>,</span>
+<span id="cb14-10"><a href="winning-solution-1st.html#cb14-10"></a>        <span class="st">&quot;silent&quot;</span>: <span class="dv">1</span>,</span>
+<span id="cb14-11"><a href="winning-solution-1st.html#cb14-11"></a>    }</span>
+<span id="cb14-12"><a href="winning-solution-1st.html#cb14-12"></a></span>
+<span id="cb14-13"><a href="winning-solution-1st.html#cb14-13"></a><span class="kw">def</span> train(subject,data_path,params):</span>
+<span id="cb14-14"><a href="winning-solution-1st.html#cb14-14"></a>    d<span class="op">=</span>load_train_data_xgb(data_path,subject)</span>
+<span id="cb14-15"><a href="winning-solution-1st.html#cb14-15"></a>    x,y<span class="op">=</span>reshape_data(d[<span class="st">&#39;x&#39;</span>],d[<span class="st">&#39;y&#39;</span>])</span>
+<span id="cb14-16"><a href="winning-solution-1st.html#cb14-16"></a>    dtrain<span class="op">=</span>xgb.DMatrix(x,y)</span>
+<span id="cb14-17"><a href="winning-solution-1st.html#cb14-17"></a>    gbm<span class="op">=</span>xgb.train(params,dtrain,num_boost_round<span class="op">=</span><span class="dv">500</span>,verbose_eval<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb14-18"><a href="winning-solution-1st.html#cb14-18"></a>    <span class="cf">return</span> gbm</span>
+<span id="cb14-19"><a href="winning-solution-1st.html#cb14-19"></a></span></code></pre></div>
+</div>
+</div>
+<div id="andriy-code" class="section level4">
+<h4><span class="header-section-number">12.1.4.3</span> Andriy code</h4>
+<p>The code of Andriy is analyzed below</p>
+<div id="pre-processing-5" class="section level5">
+<h5><span class="header-section-number">12.1.4.3.1</span> Pre-processing</h5>
+<p>Pre-processing is done in Matlab scripts on <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/blob/00f937cc7710977dc812d9fc675864e2b8288658/Andriy/data_preprocess.m">GitHub</a></p>
+</div>
+<div id="feature-generation-1" class="section level5">
+<h5><span class="header-section-number">12.1.4.3.2</span> Feature generation</h5>
+<p>The feature generation is also done in 4 Matlab scripts at <a href="https://github.com/alexandrebarachant/kaggle-seizure-prediction-challenge-2016/tree/00f937cc7710977dc812d9fc675864e2b8288658/Andriy">GitHub</a></p>
+<ul>
+<li>FE_main_AR.m</li>
+<li>FE_main_CONN.m</li>
+<li>FE_main_CSP_AR.m</li>
+<li>FE_main_F.m</li>
+</ul>
+</div>
+<div id="models-4" class="section level5">
+<h5><span class="header-section-number">12.1.4.3.3</span> Models</h5>
+<p>The files for the models are:</p>
+
+<div class="rmdtip">
+<p>-GLM model
+- mod_glmnet_5_3.R</p>
+<p>Creates SVM model and submission</p>
+<p>-SVM model
+-mod_svm_5_7.R</p>
+<p>-XGB model
+- mod_xgb_7_5.R</p>
+</div>
+
+<p>Code for the XGB model</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="winning-solution-1st.html#cb15-1"></a>  param &lt;-<span class="st"> </span><span class="kw">list</span>(  <span class="dt">objective           =</span> <span class="st">&quot;binary:logistic&quot;</span>, </span>
+<span id="cb15-2"><a href="winning-solution-1st.html#cb15-2"></a>                  <span class="dt">booster             =</span> <span class="st">&quot;gbtree&quot;</span>,</span>
+<span id="cb15-3"><a href="winning-solution-1st.html#cb15-3"></a>                  <span class="dt">eval_metric         =</span> <span class="st">&quot;auc&quot;</span>,</span>
+<span id="cb15-4"><a href="winning-solution-1st.html#cb15-4"></a>                  <span class="dt">eta                 =</span> <span class="fl">0.3</span>,</span>
+<span id="cb15-5"><a href="winning-solution-1st.html#cb15-5"></a>                  <span class="dt">max_depth           =</span> <span class="dv">3</span>,</span>
+<span id="cb15-6"><a href="winning-solution-1st.html#cb15-6"></a>                  <span class="dt">subsample           =</span> <span class="fl">0.8</span>,</span>
+<span id="cb15-7"><a href="winning-solution-1st.html#cb15-7"></a>                  <span class="dt">colsample_bytree    =</span> <span class="dv">1</span>,</span>
+<span id="cb15-8"><a href="winning-solution-1st.html#cb15-8"></a>                  <span class="dt">num_parallel_tree   =</span> <span class="dv">2</span></span>
+<span id="cb15-9"><a href="winning-solution-1st.html#cb15-9"></a>  )</span>
+<span id="cb15-10"><a href="winning-solution-1st.html#cb15-10"></a>  </span>
+<span id="cb15-11"><a href="winning-solution-1st.html#cb15-11"></a>  <span class="kw">cat</span>(<span class="st">&#39;model1...&#39;</span>)</span>
+<span id="cb15-12"><a href="winning-solution-1st.html#cb15-12"></a>  <span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb15-13"><a href="winning-solution-1st.html#cb15-13"></a>  model1 &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(   <span class="dt">params              =</span> param, </span>
+<span id="cb15-14"><a href="winning-solution-1st.html#cb15-14"></a>                         <span class="dt">data                =</span> dtrain, </span>
+<span id="cb15-15"><a href="winning-solution-1st.html#cb15-15"></a>                         <span class="dt">nrounds             =</span>  <span class="dv">1000</span>)</span>
+<span id="cb15-16"><a href="winning-solution-1st.html#cb15-16"></a>                         </span>
+<span id="cb15-17"><a href="winning-solution-1st.html#cb15-17"></a>  importance &lt;-<span class="st"> </span><span class="kw">xgb.importance</span>(<span class="dt">model =</span> model1)</span>
+<span id="cb15-18"><a href="winning-solution-1st.html#cb15-18"></a>  </span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-barachant2013classification">
+<p>Barachant, Alexandre, Stéphane Bonnet, Marco Congedo, and Christian Jutten. 2013. “Classification of Covariance Matrices Using a Riemannian-Based Kernel for Bci Applications.” <em>Neurocomputing</em> 112: 172–78.</p>
+</div>
+<div id="ref-temko2011eeg">
+<p>Temko, A, E Thomas, W Marnane, G Lightbody, and G Boylan. 2011a. “EEG-Based Neonatal Seizure Detection with Support Vector Machines.” <em>Clinical Neurophysiology</em> 122 (3): 464–73.</p>
+</div>
+<div id="ref-temko2011performance">
+<p>Temko, A, E Thomas, W Marnane, G Lightbody, and GB Boylan. 2011b. “Performance Assessment for Eeg-Based Neonatal Seizure Detectors.” <em>Clinical Neurophysiology</em> 122 (3): 474–82.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="melbourne-university-aesmathworksnih-seizure-prediction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="solution4th-place.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MlOrienttionBookDown.pdf", "MlOrienttionBookDown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

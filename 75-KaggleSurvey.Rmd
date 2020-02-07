@@ -1,0 +1,1188 @@
+--- 
+title: "Analysis of 2019 Kaggle ML & DS Survey"
+author: "Uwe Sterr"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/bibliographyGeneral.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Analyzing the survey data to find commonly used software tools."
+---
+# (PART) Kaggle Survey  {-} 
+
+```{r global_optionsKaggle, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE, cache = TRUE)
+
+```
+
+
+```{r loadPackage}
+#install.packages("bookdown")
+# load needed libraries
+suppressPackageStartupMessages ({
+library("tidyverse")
+library("plotly")
+library("ggplot2")
+library("plyr")
+library("dplyr")
+library("stringr")
+library("wordcloud")
+library("RColorBrewer")
+library("reshape2")
+library("gridExtra")  
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+library("DT")
+})
+add_el <- theme_bw() + theme(text = element_text(size = 18))
+
+```
+
+
+
+
+```{r setTheme, cache=FALSE}
+library("ggplot2")
+
+theme_set(add_el) 
+```
+
+
+
+
+```{r loadData }
+# only load the data set neede for this analysis
+qa_df <- read.csv("kaggle-survey-2019/multiple_choice_responses.csv",skip=2,header=FALSE) ## Questions and answers dataset
+df_mcq_questions <- read.csv(file='kaggle-survey-2019/multiple_choice_responses.csv',header=TRUE,nrow = 1) 
+
+colnames(qa_df) <- colnames(df_mcq_questions) 
+
+# external data for population per country
+world <- read_csv("kaggle-survey-2019/countries of the world.csv")
+```
+
+
+
+
+
+```{r reducedFrame}
+####### this code section is devoted to build a dataframe that only holds the features we need
+####### for these features we check if the data quality is good enough to proceed
+
+keep <- c("Q1",   # age
+          "Q2",   # gender
+          "Q3",   # country
+          "Q5",   # role
+          "Q10",  # salary
+          "Q15",  # coding_years
+          "Q23",  # ml_years
+          "Q18_Part_1",  # python
+          "Q18_Part_2")  # R
+
+# only keep listed columns
+short <- qa_df[keep]
+# drop first row that holds questions
+short <- short[-1,] 
+
+# assign meaningful column names
+colnames(short)<- c("age",
+                         "gender",
+                         "country",
+                         "job_title",
+                         "salary",
+                         "coding_years",
+                         "ml_years",
+                         "py",
+                         "r") 
+
+# use abbreviations for too long country names
+short$country <-  plyr::revalue(short$country, c("United States of America"="USA", 
+              "United Kingdom of Great Britain and Northern Ireland"="UK & North Ireland"))
+
+```
+
+
+
+
+
+# Kaggle survey introduction {#KaggleSurvey}
+
+
+Kaggle is a platform for data scientists and machine learning practitioners which allows users to
+
+- [find datasets](https://www.kaggle.com/datasets) 
+- publish datasets
+- [exlplore models on web-based data-science environment](https://www.kaggle.com/notebooks) in
+    - Python
+    - R
+    - SQLite
+    - Julia
+- [work with other machine learning practitioners on competitions](https://www.kaggle.com/competitions)
+- [Host competitions](https://www.kaggle.com/host)
+
+  
+
+## Kaggle survey details
+
+This is an **analysis based on Kaggle survey data**,
+details are at https://www.kaggle.com/c/kaggle-survey-2019. Kaggle is a subsidiary of Google LLC online community of data scientists machine learners with more than 1Mio members.
+
+It offers data sets, a no-setup, customizable, Jupyter Notebooks environment, machine learning competitions and access free GPUs and a huge repository of community published data & code.
+
+- The survey **received 19,717 usable respondents** from **171 countries and territories**. If a country or territory received less than 50 respondents, they were grouped and named “Other” for anonymity.
+
+
+- The survey was live from **October 8th to October 28th 2019.**  
+
+- The median response time for those who participated in the survey was **approximately 10 minutes.**
+
+
+
+An overview of the world wide participation is given in the map below. The first three countries are
+
+- India
+- USA
+- Brazil
+
+```{r histo_age}
+
+map.world <- map_data('world')
+
+short1 <- short %>% mutate(country = ifelse(country == "USA", "USA", ifelse(country == "Viet Nam", "Vietnam", 
+ifelse(country == "UK & North Ireland", "UK", 
+ifelse(country == "Czech Republic", "Czech Republic", 
+ifelse(country == "Hong Kong (S.A.R.)", "China", 
+ifelse(country == "Republic of Korea", "South Korea",
+ifelse(country == "Iran, Islamic Republic of...", "Iran",       as.character(country))))))))) %>% 
+  filter(country != "Other")
+
+# anti_join(short1,map.world, by = c("country" = "region"))%>% distinct(country) # check if all countries are mapped to map
+
+NoCountry <- short1 %>% group_by(country) %>% tally() %>% arrange(-n)
+
+shortRegion <-left_join(map.world, NoCountry, by = c("region" ="country")) 
+
+
+ggplot(data = shortRegion, aes( x = long, y = lat, group = group )) +
+    geom_polygon(aes(fill = n)) +
+    scale_fill_viridis_c(option = "plasma", trans = "sqrt")+ labs(title = "Participants per country", x = NULL, y = NULL, caption = "(based on data from Kaggle survey 2019)") + guides(fill = guide_legend(nrow = 3,title = "Participants", title.position = "top"))
+```
+
+
+--- 
+
+All numbers of all countries are given in the interactive table below. To find a specific country, type the name in the search field.
+Surprising facts:
+
+- Almost as many participants from Saudi Arabia (50) and Norway (51)
+- Peru (74) higher than Belgium (70)
+- Iran (96) higher than Sweden (92)
+
+---
+
+
+```{r tableParticipation}
+
+datatable(data = NoCountry, colnames = c("Country", "No. of participants"), rownames = TRUE)
+```
+
+---
+
+The word frequency **word cloud** shows that software engineers and data scientist are heavily involved the field of machine learning
+
+
+---
+
+
+```{r WordCloud}
+
+####### this code section is devoted to create a word cloud of named occupations
+#set.seed(99)
+# role cloud
+role_df <- data.frame(table(qa_df$Q5))
+names(role_df) <- c("role","respondents")
+
+wordcloud(words = role_df$role, freq = role_df$respondents, min.freq = 1, scale=c(5,.5),
+          max.words=20, random.order=FALSE, rot.per=0.50, 
+          colors=brewer.pal(8, "Dark2"))
+
+
+
+```
+
+---
+
+
+
+
+Easy histogram plots of all questions can be created in R as shown at https://www.kaggle.com/paultimothymooney/how-to-explore-the-2019-kaggle-survey-data 
+
+## Purpose
+
+The purpose of the survey analysis is to create insight into which 
+
+- algorithms
+- tools
+- platforms
+
+are used in the field of machine learning. Contrary to public opinion machine learning is not mainly focused on neural networks.
+
+
+
+## Navigation and handling
+
+To navigate between results use arrow keys or click on sidebar entry
+
+Further information on handling can be obtained by clicking on the **"i"** at the left hand side on top of the page
+
+
+```{r allPlots, eval= FALSE}
+df_mcq_questions <- read.csv(file='kaggle-survey-2019/multiple_choice_responses.csv',header=TRUE,nrow = 1) 
+df_mcq <- read.csv(file='kaggle-survey-2019/multiple_choice_responses.csv',skip=2,header=FALSE) 
+colnames(df_mcq) <- colnames(df_mcq_questions) 
+for(qnum in (1:1)){ 
+    cols2plot <- colnames(df_mcq)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(df_mcq))) & 
+                                  (!grepl('TEXT$',colnames(df_mcq)))] 
+    df2plot <- subset(gather(df_mcq[cols2plot]),value != '') 
+    p <- ggplot(df2plot,aes(x=value)) + geom_histogram(stat="count") +  
+            theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.4)) + 
+            scale_x_discrete(labels = function(x) str_wrap(x, width = 40)) + 
+            labs(title = paste(strwrap(paste0(gsub('_Part.*','',cols2plot[1]),": ", 
+                gsub(' - Selected Choice.*','', df_mcq_questions[cols2plot[1]][[1]])),75), collapse = '\n'), x = '') 
+    print(p)}
+
+
+
+```
+
+```{r, eval= FALSE}
+
+qnum <- 24
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+    
+    df2plot <- subset(gather(qa_df[cols2plot]),value != '') 
+    df2plot <- subset(gather(qa_df[cols2plot]),value != '') %>% group_by(value) %>% tally() %>% arrange(-n)
+    ggplot(df2plot,aes(x=value)) + geom_histogram(stat="count") +  
+            theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.4)) + 
+            scale_x_discrete(labels = function(x) str_wrap(x, width = 40)) + 
+            labs(title = paste(strwrap(paste0(gsub('_Part.*','',cols2plot[1]),": ", 
+                gsub(' - Selected Choice.*','', df_mcq_questions[cols2plot[1]][[1]])),75), collapse = '\n'), x = '') 
+
+    
+        ggplot(df2plot) + geom_bar(aes(reorder(value, n), n), stat = "identitiy") +  
+            theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.4)) + 
+            scale_x_discrete(labels = function(x) str_wrap(x, width = 40)) + 
+            labs(title = paste(strwrap(paste0(gsub('_Part.*','',cols2plot[1]),": ", 
+                gsub(' - Selected Choice.*','', df_mcq_questions[cols2plot[1]][[1]])),75), collapse = '\n'), x = '') 
+       df2plot <- subset(gather(qa_df[cols2plot]),value != '') %>% group_by(value) %>% tally() %>% arrange(-n)
+
+          ggplot(df2plot) + geom_col(aes(reorder(value, n),n), fill = "blue") + coord_flip()
+              df2plot <- subset(gather(qa_df[cols2plot]),value != '') + 
+            labs(title = paste(strwrap(paste0(gsub('_Part.*','',cols2plot[1]),": ", 
+                gsub(' - Selected Choice.*','', df_mcq_questions[cols2plot[1]][[1]])),75), collapse = '\n'), x = '') 
+
+          ggplot(df2plot) +geom_bar()
+          
+          
+test <- qa_df %>% select(cols2plot, Q4) %>% 
+  pivot_longer(-Q4, names_to = "value", values_to = "n")  %>% filter(n !="")  
+
+ggplot(aes(n, fill = Q4)) + geom_histogram(stat="count") +  
+            theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.4)) 
+
+geom_col(aes(reorder(value, n),n), fill = "blue") + coord_flip()      
+         
+```
+
+#  Results
+
+The results are presented by graphs relating parameters either vs time or vs other parameters. 
+
+## Survey participants education level
+The following plot shows survey participants education level. Very few participants have a non-academic background. By **no means a academic background is a pre-requisit to use machine learning,** however, two skills are very helpful
+
+- Coding experience
+- Statistical knowledge  
+
+
+---
+
+```{r Education}
+
+qa_dfEducation <- qa_df %>% select(Q4) %>% # Formal education
+ filter(Q4 !="") %>%  group_by(Q4) %>% add_tally() %>% arrange(-n)
+
+g <- ggplot(qa_dfEducation, aes(reorder(Q4, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="none") + 
+labs(title = "Survey participants education level", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+---
+
+Coding experience speeds up the process to implement the machine learning ideas and concepts. Most effort during a machine learning project will go into
+
+- Data pre-processing
+- Model tuning
+
+The actual implementation of the **algorithm is often a matter of 10 - 20 lines of code**. Below the neural network definition for a self driving RC model car of the [donkey car framework](https://www.donkeycar.com). 
+
+The neural network is defined using the [Keras API](https://keras.io) which sits on top of [Tensorflow](https://www.tensorflow.org), the program is written in [Python](https://www.python.org) 
+
+
+```python
+    img_in = Input(shape=input_shape, name='img_in')          
+    x = img_in
+    x = Convolution2D(24, (5,5), strides=(2,2), activation='relu', name="conv2d_1")(x)      
+    x = Dropout(drop)(x)                                                    
+    x = Convolution2D(32, (5,5), strides=(2,2), activation='relu', name="conv2d_2")(x)     
+    x = Dropout(drop)(x)                                              
+    if input_shape[0] > 32 :
+        x = Convolution2D(64, (5,5), strides=(2,2), activation='relu', name="conv2d_3")(x)    
+    else:
+        x = Convolution2D(64, (3,3), strides=(1,1), activation='relu', name="conv2d_3")(x)    
+    if input_shape[0] > 64 :
+        x = Convolution2D(64, (3,3), strides=(2,2), activation='relu', name="conv2d_4")(x)    
+    elif input_shape[0] > 32 :
+        x = Convolution2D(64, (3,3), strides=(1,1), activation='relu', name="conv2d_4")(x)   
+    x = Dropout(drop)(x)                                             
+    x = Convolution2D(64, (3,3), strides=(1,1), activation='relu', name="conv2d_5")(x)      
+
+    x = Flatten(name='flattened')(x)            
+    x = Dense(100, activation='relu', name="fc_1")(x)  
+    x = Dropout(drop)(x)                              
+    x = Dense(50, activation='relu', name="fc_2")(x)  
+    x = Dropout(drop)(x)            
+    angle_out = Dense(15, activation='softmax', name='angle_out')(x)      
+    throttle_out = Dense(20, activation='softmax', name='throttle_out')(x)      
+    
+    model = Model(inputs=[img_in], outputs=[angle_out, throttle_out])
+
+```
+
+## Who uses which algorithm
+There are plenty of machine learning algorithms in use, some have been around for quite some time already, others are quite new. Especially in the field of **neural networks there is plenty of research ongoing** as can be seen by a search with the keywords ["neural network" on the moderated but not peer reviewed electronic preprint platform **Arxiv**](https://arxiv.org/search/?query=neural+network&searchtype=all&source=header).
+
+
+---   
+
+```{r AlgoEducation}
+qnum <- 24 
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+qa_dfAlgo <- qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(value) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N)
+
+g <- ggplot(qa_dfAlgo, aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Who uses which algorithms", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+
+---
+
+
+
+
+
+Splitting the graphs up for each category of education and plotting the percentage of usage for the given education level gives an insight into how the **usage of algorithms differs over levels of education**
+
+
+---
+
+```{r AlgoEducationPercent, fig.height=11}
+
+ ggplot(qa_dfAlgo %>%  dplyr::group_by(Algo, Q4) %>% dplyr::summarise(Q4PC = max(Q4Percent)), aes(Algo, Q4PC, color = Q4)) +geom_point(size=3) + coord_flip() + theme(legend.position= "NONE") + facet_wrap(~Q4) + labs(title = "Education level and algorithms used", x = NULL, y = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+--- 
+
+The graph above shows that **regression and tree-based algorithms are very popular**
+
+They are:  
+
+
+- Less computationally intensive than neural networks
+- Available in the de facto standard machine learning library in Python, [scikit-learn](https://scikit-learn.org/stable/).   
+
+Below **historical data to some the algorithms** are given, together with links to the Wikipedia article on the algorithm.
+
+
+- [Linear regression](https://en.wikipedia.org/wiki/Linear_regression) 
+    - Legendre, 1805
+    - Gauss, 1809  
+    
+- [Logistic regression](https://en.wikipedia.org/wiki/Logistic_regression)
+    - Pierre Francois Verhulst, 1830s
+
+- [Random forest](https://en.wikipedia.org/wiki/Random_forest)
+    - Ho, 1995
+
+- [Gradient boosting trees](https://en.wikipedia.org/wiki/Gradient_boosting)
+    - L. Breiman, 1997
+
+- [Convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network)
+    - Kunihiko Fukushima, 1980
+
+- [Recurrent neural networks](https://en.wikipedia.org/wiki/Recurrent_neural_network)
+    - David Rumelhart, 1986   
+    
+- [Dense neural networks](https://en.wikipedia.org/wiki/Neural_network)
+    - Independently proposed by Alexander Bain, 1873 and William James, 1890
+
+- [Generative adversarial networks](https://en.wikipedia.org/wiki/Generative_adversarial_network)
+    - Goodfellow, 2010-2014
+
+## Machine learning experience and algorithms
+
+Most of the **survey participants have less than 3 years machine learning experience** as can be seen in the graph below. Due to fact that the number in each category differs a lot a **representation of percentages is beneficial for some analysis.**
+
+---
+
+```{r Experience}
+qa_dfExperience <- qa_df %>% select(Q23) %>% # Formal education
+ filter(Q23 !="") %>%  group_by(Q23) %>% add_tally() %>% arrange(-n)
+
+g <- ggplot(qa_dfExperience, aes(reorder(Q23, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q23))+ coord_flip() + theme(legend.position="none") + 
+labs(title = "Survey participants machine learning experience", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+--- 
+
+The usage of algorithms for different duration of experience is given in the graph below.
+
+
+---  
+
+```{r AlgoExperience}
+g + geom_bar(aes(fill = factor(Q23, levels =c("20+ years", "10-15 years", "5-10 years", "4-5 years", "3-4 years","2-3 years", "1-2 years", "< 1 years" ))))+ coord_flip() + theme(legend.position="bottom") + guides(fill = guide_legend(nrow = 3,title = "ML experience", title.position = "left")) + labs(title = "Who uses which algorithms", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+---  
+
+Splitting the graphs up for each category of experience and plotting the percentage of usage for the given experience level gives an insight into how the usage of algorithms differs over levels of experience
+
+---  
+
+
+```{r AlgoExperienceFacet, fig.height=11}
+Q23Order = c("20+ years", "10-15 years", "5-10 years", "4-5 years", "3-4 years","2-3 years", "1-2 years", "< 1 years" )
+
+qa_dfAlgo$Q23 <- factor(qa_dfAlgo$Q23, levels(factor(qa_dfAlgo$Q23)),Q23Order) 
+
+#qa_dfAlgo1 <- qa_dfAlgo %>% arrange(transform(qa_dfAlgo, Q23 = factor(Q23, levels = Q23Order)),Q23)
+
+ ggplot(qa_dfAlgo %>%  dplyr::group_by(Algo, Q4,Q23) %>% dplyr::summarise(Q23PC = max(Q23Percent)), aes(Algo, Q23PC, color = Q23)) +geom_point(size=3) + coord_flip() + theme(legend.position="NONE") + facet_wrap(~Q23)+ labs(title = "Years of ML experience and algorithms used", x = NULL, y = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+---   
+
+
+- Regression and trees are popular at all level of experience
+- Neural networks are more popular for less experienced
+- 20% of very experienced use no algorithm
+
+
+## Experience and new algorithms 
+
+Newer algorithms there are: 
+
+- Evolutionary Approaches
+- Transformer Networks (BERT, gpt-2, etc)
+- Generative Adversarial Networks
+
+where evolutionary approaches have been around for quite some time but the usage of them in machine learning is rather recent. 
+
+---  
+
+```{r AlgoExperienceReduced, fig.height= 5}
+
+g <- ggplot(qa_dfAlgo %>% filter(Algo == c("Evolutionary Approaches","Transformer Networks (BERT, gpt-2, etc)","Generative Adversarial Networks" )), aes(reorder(Algo, n)))
+
+g + geom_bar(aes(fill = factor(Q23, levels =c("20+ years", "10-15 years", "5-10 years", "4-5 years", "3-4 years","2-3 years", "1-2 years", "< 1 years" ))))+ coord_flip() + theme(legend.position="bottom") + guides(fill = guide_legend(nrow = 3,title = "ML experience", title.position = "left")) + labs(title = "Who uses which newest algorithms", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+--- 
+
+Splitting the graphs up for each category of experience and plotting the percentage of usage for the given experience level gives an insight into how the usage of *new* algorithms differs over levels of experience
+
+---
+
+
+
+```{r AlgoExperienceReducedFacet, fig.height=8}
+
+
+ ggplot(qa_dfAlgo %>% filter(Algo == c("Evolutionary Approaches","Transformer Networks (BERT, gpt-2, etc)","Generative Adversarial Networks" ))  %>%  dplyr::group_by(Algo, Q4,Q23) %>% dplyr::summarise(Q23PC = max(Q23Percent)), aes(Algo, Q23PC, color = Q23)) +geom_point(size=3) + coord_flip() + theme(legend.position="NONE") + facet_wrap(~Q23)+ labs(title = "Years of experience and algorithms used", x = NULL, y = NULL, caption = "(based on data from Kaggle survey 2019)")
+
+```
+
+---
+
+From the above graph it can be deducted that:
+
+- Very experienced use new algorithms less often
+- Newbies embrace them
+- Evolutionary approaches are popular for medium experienced
+
+
+
+
+## Role of participants
+
+
+The role of the participants is shown in the graph below
+
+---
+
+```{r Role}
+qa_dfExperience <- qa_df %>% select(Q5) %>% # Formal education
+ filter(Q5 !="") %>%  group_by(Q5) %>% add_tally() %>% arrange(-n)
+
+g <- ggplot(qa_dfExperience, aes(reorder(Q5, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q5))+ coord_flip() + theme(legend.position="none") + 
+labs(title = "Survey participants current role", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+--- 
+
+The numbers for certain categories certainly have to be taken with a grain of salt since it is not clear how well participants will differentiate e.g. "Data Scientist" and "Data Analyst". However, it is clear that students are quite active on Kaggle. This might influence the later data since students tend to use freeware more than professionals.
+
+Also there are:  
+
+- Many Software engineers
+- Very few Statistician
+
+
+
+## Company size
+
+The company size of the participants is shown in the graph below
+
+---
+
+
+```{r CompanySize}
+qa_dfExperience <- qa_df %>% select(Q6) %>% # Formal education
+ filter(Q6 !="") %>%  group_by(Q6) %>% add_tally() %>% arrange(-n)
+
+g <- ggplot(qa_dfExperience, aes(reorder(Q6, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q6))+ coord_flip() + theme(legend.position="none") + 
+labs(title = "Company size", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+---
+
+- Largest group of participants are from small companies
+- Second largest group of participants are from small companies
+
+
+## Company incorporation of machine learning
+
+The degree of machine learning utilization in the companies of the participants is shown in the graph below
+
+---
+
+
+```{r CompanyIncorporationML, fig.width = 16}
+
+Q6Order = c("> 10,000 employees", "1000-9,999 employees", "250-999 employees", "50-249 employees", "0-49 employees", "" )
+
+qa_df$Q6 <- factor(qa_df$Q6, levels(factor(qa_df$Q6)),Q6Order) 
+
+Q8Order <- c("We have well established ML methods (i.e., models in production for more than 2 years)",
+             "We recently started using ML methods (i.e., models in production for less than 2 years)",
+             "We use ML methods for generating insights (but do not put working models into production)",
+             "We are exploring ML methods (and may one day put a model into production)",
+             "No (we do not use ML methods)",
+             "I do not know",
+             "")
+
+
+qa_df$Q8 <- factor(qa_df$Q8, levels(factor(qa_df$Q8)),Q8Order) 
+
+
+qa_dfExperience <- qa_df %>% select(Q8, Q6) %>% 
+ filter(Q8 !="") %>%  group_by(Q8) %>% add_tally() %>% arrange(-n)
+
+g <- ggplot(qa_dfExperience, aes(Q8))
+
+g + geom_bar(aes(fill = Q6))+ coord_flip() + theme(legend.position="bottom") + 
+labs(title = "Company incorporation of machine learning", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+---
+
+**All participants of companies with > 10,000 employees declare that *"We have well established ML methods (i.e., models in production for more than 2 years)*"**
+
+Splitting the graphs up for each category of company size and plotting the incorporation of machine learning shows this even more clearly
+
+---
+
+
+```{r CompanyIncorporationMLFacet, fig.height= 11}
+
+g <- ggplot(qa_dfExperience, aes(Q8))
+
+g + geom_bar(aes(fill = Q6))+ coord_flip() + theme(legend.position="none") + 
+labs(title = "Company incorporation of machine learning", x = NULL, caption = "(based on data from Kaggle survey 2019)") +facet_wrap(~Q6, ncol = 1)
+
+```
+
+---
+
+
+Leaving out the "> 10,000 employees" category for better comparison
+
+
+---
+
+```{r CompanyIncorporationMLFacetZoom, fig.height= 11}
+
+g <- ggplot(qa_dfExperience %>% filter(Q6!="> 10,000 employees"), aes(Q8))
+
+g + geom_bar(aes(fill = Q6))+ coord_flip() + theme(legend.position="none") + 
+labs(title = "Company incorporation of machine learning", x = NULL, caption = "(based on data from Kaggle survey 2019)") +facet_wrap(~Q6, ncol = 1)
+
+```
+
+---
+
+- More companies explore machine learning than having it established
+- Many companies don't use machine learning
+    - However, their employees invest in ML
+    - Danger of loosing employees
+    - Maybe companies are slow to discover ML potential
+
+
+
+
+## Favourite media sources on data science topics
+
+The Favourite media sources on data science topics are shown in the graph below
+
+---
+
+
+```{r MediaSourcesDataScience}
+qnum <- 12 
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <- qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(value) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite media sources", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+Those sources offer information about: 
+- Algorithms
+- New publications
+- Projects
+- Releases of new software versions
+- Recommended courses, popular platforms see [Favourite online course platform]
+
+
+A few links to sources are given below
+
+- [Kaggle](https://www.kaggle.com)
+- [forums.fast.ai](https://www.fast.ai)
+- [medium blog](https://medium.com)
+
+
+
+## Favourite online course platform
+
+Platforms on which survey participants have begun or completed data science courses are shown in the graph below
+
+---
+
+
+```{r OnlineCourse}
+qnum <- 13 
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <- qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(value) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite online course platform", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+---
+
+All levels of academics are active on online course platforms. Below there are links to some of the platforms:
+
+- [Coursera](https://www.coursera.org)
+- [Kaggle Courses](https://www.kaggle.com/learn/overview)
+- [Udemy](https://www.udemy.com)
+- [Udacity](https://www.udacity.com)
+- [Fast.ai](https://www.fast.ai)
+
+
+
+## Favourite data analyzing tool
+
+Participants primary tool to analyze data are shown in the graph below
+
+---
+
+
+```{r DataAnalyTool}
+qnum <- 14
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q5, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q5, name = "Q5N") %>% # Formal education
+  pivot_longer(cols = -c(Q5, Q23, Q23N, Q5N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q5, name = "Q5PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q5Percent = Q5PerAlgo/Q5N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q5))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite data analyzing tool", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+---
+
+Most like to use free tools using the programming language "R" and "Python"
+
+## Experience in data analysis coding
+
+The duration of participants writing code to analyze data is shown in the graph below
+
+---
+
+
+```{r CodingDataAnal}
+qnum <- 15
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Experience in data analysis coding", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+- Most have less than 5 years coding experience in data analysis
+- Data analysis can be done without writing code
+
+
+## Favourite integrated development environments (IDE's)
+
+Favourite integrated development environments (IDE's) are shown in the graph below
+
+---
+
+
+```{r IDE}
+qnum <- 16
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite (IDE's)", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+----
+
+Below a list of some IDEs, all of them are free except for Matlab.
+
+- [Jupyter Notebook](https://jupyter.org)
+    - Works with Python, R, Julia, C++, Ruby 
+    
+- [Visual Studio Code](https://code.visualstudio.com)
+    - Works with Python, R, Julia, C++, Ruby , SQL, XML, Swift, JSON, Perl, Sass... 
+    - Debugger
+    - Variable viewer
+    - Console
+    
+- [RStudio](https://rstudio.com)
+    - Mainly for R 
+    - Debugger
+    - Variable viewer
+    - Console
+    
+- [PyCharm](https://www.jetbrains.com/pycharm/)
+    - For Python 
+    - Debugger
+    - Variable viewer
+    
+- [Matlab](https://www.mathworks.com/products/matlab.html)
+    - Very well established in industry
+    - Originally for control tasks
+    - Commercial tool 
+    - Own syntax
+
+
+## Favourite hosted notebook products
+
+Favourite hosted notebook products are shown in the graph below
+
+---
+
+
+```{r HostedNotebook}
+qnum <- 17
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite hosted notebooks", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+Hosted notebooks offer a very easy and comfortable start into writing machine learning code. Some of them are free. Some of them provide many examples from which valuable techniques can be learned.
+
+- [Kaggle Notebooks](https://www.kaggle.com/kernels)
+    - Great place to find machine learning examples
+    
+- [Google Colab](https://colab.research.google.com/notebooks/welcome.ipynb)
+    - Colaboratory is a free Jupyter notebook environment that requires no setup and runs entirely in the cloud
+    
+- [Binder](https://mybinder.org)
+    - Open notebooks in executable environment 
+    
+- [Microsoft Azure Notebooks](https://notebooks.azure.com)
+    - Develop and run code from anywhere with Jupyter notebooks on Azure
+
+- [Paperspace](https://www.paperspace.com)
+    - Powering next-generation applications and cloud ML/AI pipelines.
+    
+
+## Favourite programming languages
+
+Favourite programming languages are shown in the graph below
+
+---
+
+
+```{r PrgrammingLanguage}
+qnum <- 18
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite programming language", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+Hands down the **most popular programming language for machine learning is Python**. If **speed matters C++** is the way to go, but still, Python can be used for prototyping.
+
+## Recommended entry programming language
+
+Recommended programming language for aspiring data scientist to learn first are shown in the graph below
+
+---
+
+
+```{r FirstPrgrammingLanguage}
+qnum <- 19
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Recommended first programming language", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+As Python is the most popular machine learning programming language it is not surprising that it is also the most recommended one for beginners.
+
+## Favourite data visualization libraries or tools
+
+Favourite data visualization libraries or tools are shown in the graph below
+
+---
+
+
+```{r visualizationLibraries}
+qnum <- 20
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite data visualization libraries", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+With Matplotlib there is a clear winner, however, ggplot2 is the clear **Favourite in the R world**.
+
+- [Matplotlib](https://matplotlib.org)
+    - Matplotlib is a **Python** 2D plotting library which produces publication quality figures in a variety of hard copy formats and interactive environments across platforms 
+    
+- [Seaborn](https://seaborn.pydata.org)
+    - Seaborn is a **Python** data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.
+    
+- [ggplot2](https://ggplot2.tidyverse.org)
+    - ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics 
+    - Available for **R** and **Python**
+    
+- [Plotly](https://plot.ly)
+    - Interactive plots 
+    - Available for **R** and **Python**
+    
+- [D3.js](https://d3js.org)
+    -  Data-Driven Documents
+    - Javascript based
+    - Can be used from **R** and **Python**
+    
+- [Bokeh](https://docs.bokeh.org/en/latest/index.html)
+    - Bokeh is an interactive visualization library for modern web browsers.
+
+## Favourite specialized hardware
+
+Favourite specialized hardware are shown in the graph below
+
+---
+
+
+```{r spezializedHardware}
+qnum <- 21
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite specialized hardware", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+- **CPU** => Central Processing Unit 
+    - Performs basic arithmetic, logic, and input output instructions
+    - Heart of every computing device
+    
+- **GPU** => Graphics Processing Unit
+    - Optimized processor for graphics
+    - Very fast matrix multiplication => speeds up neural network computation
+    
+- **TPU** => Tensor  Processing Unit
+    - A tensor processing unit (TPU) is an AI accelerator application-specific integrated circuit (ASIC) **developed by Google specifically for neural network machine learning.**
+    - Edge TPU
+        - 4 TOPs [^1]
+        - 2W
+
+
+In @wei2019benchmarking a comparison of the three processors with respect to machine learning capabilities is given:
+
+>• TPU is highly-optimized for large batches and CNNs, and has the highest training throughput
+
+>• GPU shows better flexibility and programmability for irregular computations, such as small batches and non- MatMul computations. The training of large FC models also benefits from its sophisticated memory system and higher bandwidth.
+
+>• CPU has the best programmability, so it achieves the highest FLOPS utilization for RNNs, and it supports the largest model because of large memory capacity.
+
+ [^1]: Tera Operations Per Second 
+
+## Favourite machine learning frameworks
+
+Favourite machine learning frameworks are shown in the graph below
+
+---
+
+
+```{r MlFrameworks}
+qnum <- 28
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% #  Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+#  Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite machine learning frameworks", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+
+
+- [Scikit-learn](https://scikit-learn.org/stable/)
+    - Machine Learning in Python
+    - Open source, commercially usable - BSD license
+    
+- [TensorFlow](https://www.tensorflow.org)
+    - An end-to-end open source machine learning platform
+
+- [Keras](https://keras.io) 
+    - Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano.
+    
+- [RandomForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 
+    - A random forest classifier
+    
+- [Xgboost](https://xgboost.readthedocs.io/en/latest/)      
+    - XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible and portable. 
+    
+- [PyTorch](https://pytorch.org) 
+    - An open source machine learning framework that accelerates the path from research prototyping to production deployment.
+    - On 30.01.2020 OpenAI announced [OpenAI → PyTorch](https://openai.com/blog/openai-pytorch/)
+    
+- [LightGBM](https://lightgbm.readthedocs.io/en/latest/) 
+    - LightGBM is a gradient boosting framework that uses tree based learning algorithms.
+    
+- [Caret](http://topepo.github.io/caret/index.html)  
+    - The caret package (short for Classification And REgression Training) is a set of functions that attempt to streamline the process for creating predictive models.
+    - For the programming language R
+    
+- [Fast.ai](https://www.fast.ai) 
+    - Making neural nets uncool again
+    - Blogs
+    - MOOC [^2]
+
+
+
+[^2]: Massive Open Online Courses
+
+##  Favourite cloud computing platforms
+
+Favourite cloud computing platforms are shown in the graph below
+
+---
+
+
+```{r MlCloudFrameworks}
+qnum <- 29
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite cloud computing platforms", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+- [Amazon Web Services (AWS)](https://aws.amazon.com) 
+    - AWS has the services to help you build sophisticated applications with increased flexibility, scalability and reliability
+    
+- [Google Cloud Platform (GCP)](https://cloud.google.com)
+    - Build scalable apps
+    
+- [Microsoft Azure](https://azure.microsoft.com/en-us/) 
+    - Turn ideas into solutions with more than 100 services to build, deploy, and manage applications—in the cloud, on-premises, and at the edge—using the tools and frameworks of your choice.
+    
+- [IBM Cloud](https://www.ibm.com/cloud)                  
+    - Discover a faster, more secure journey to cloud trusted by thousands of enterprises across 20 industries
+    
+- [VMware Cloud](https://cloud.vmware.com)
+    - Manage your entire app portfolio across hybrid and native public clouds 
+    
+- [Oracle Cloud](https://www.oracle.com/cloud/)
+    - Oracle Cloud is a cloud computing service offered by Oracle Corporation providing servers, storage, network, applications and services through a global network of Oracle Corporation managed data centers. 
+
+- [Salesforce Cloud](https://www.salesforce.com/products/service-cloud/overview/) 
+    - Try the world’s #1 service platform: the time-saving, joy-boosting, relationship-building machine.
+
+- [Alibaba Cloud](https://eu.alibabacloud.com)  
+    - Experience the Latest in Cloud Computing, Storage, Networking, Security, Big Data and Artificial Intelligence on Alibaba Cloud
+
+- [SAP Cloud](https://www.sap.com/products/cloud-platform.html)         
+    - Achieve process excellence, deliver engaging digital experiences, and simplify data-driven innovation with a multi-cloud architecture.
+
+- [Red Hat Cloud](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) 
+    - Red Hat® Cloud Access is the program that allows our customers to run eligible Red Hat product subscriptions on certified public cloud providers.
+
+
+
+## Favourite big data / analytics products 
+
+Favourite big data / analytics products are shown in the graph below
+
+---
+
+
+```{r bigData}
+qnum <- 31
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite big data / analytics products ", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+
+
+## Favourite automated machine learning tools (or partial AutoML tools)
+
+Favourite automated machine learning tools (or partial AutoML tools) are shown in the graph below
+
+---
+
+
+```{r automatedMlTools}
+qnum <- 33
+    cols2plot <- colnames(qa_df)[(grepl(paste0('Q',qnum,'$|Q',qnum,'_'),colnames(qa_df))) &  (!grepl('TEXT$',colnames(qa_df)))] 
+
+g <-  qa_df %>% select(cols2plot, Q4, Q23) %>% add_count(Q23, name = "Q23N") %>% add_count(Q4, name = "Q4N") %>% # Formal education
+  pivot_longer(cols = -c(Q4, Q23, Q23N, Q4N) , names_to = "value", values_to = "Algo")  %>% filter(Algo !="") %>%  group_by(Algo) %>% add_tally() %>% arrange(-n) %>% add_count(Q23, name = "Q23PerAlgo") %>% add_count(Q4, name = "Q4PerAlgo") %>% mutate(Q23Percent = Q23PerAlgo/Q23N, Q4Percent = Q4PerAlgo/Q4N) %>% 
+ggplot( aes(reorder(Algo, n)))
+# Number of cars in each class:
+g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") + 
+  guides(fill = guide_legend(nrow = 3,title = "Qualification", title.position = "left")) + labs(title = "Favourite automated ML tools", x = NULL, caption = "(based on data from Kaggle survey 2019)")
+```
+The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
+
+---
+
+
