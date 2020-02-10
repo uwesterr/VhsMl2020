@@ -41,3 +41,61 @@ https://deepai.org
 The most popular research, guides, news
 and more in artificial intelligence
 
+
+##  TensorFlow tutorials
+
+https://www.tensorflow.org/tutorials
+
+The website has a range of examples which can be
+
+
+TensorFlow tutorials examples: 
+- run in Colab
+- looked at in GitHub
+- downloaded as notebook
+
+Example include
+
+
+- Text
+- Image
+- Generative
+- Transfer learning
+
+### MIT 6.S191 Introduction to Deep Learning
+
+MIT's official introductory course on deep learning methods with applications in game play, and more!
+
+http://introtodeeplearning.com
+
+## FastAI
+
+https://course.fast.ai
+
+
+## Embedding Projector
+
+Visualisation of 
+
+- PCA
+- t-SNE
+- UMAP
+
+Available data sets
+
+- Word2Vec all
+- Word2Vec 10k
+- Minst with images
+- Iris
+-
+
+http://projector.tensorflow.org 
+
+
+## Tensorboard playground
+
+
+Tinker With a Neural Network Right Here in Your Browser.
+Don’t Worry, You Can’t Break It. We Promise.
+
+https://playground.tensorflow.org

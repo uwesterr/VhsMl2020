@@ -8,6 +8,13 @@ https://towardsdatascience.com/build-your-own-robust-deep-learning-environment-i
 
 - [Google Colaboratory](https://colab.research.google.com/) 
     - Pricing information => For free
+    
+Since Feb 2020 there is a commercial version available (only in US, checked 10.2.2020) https://colab.research.google.com/signup
+
+- Faster GPU
+- Longer runtimes
+- More memory
+    
 - [Paperspace Gradient](https://www.paperspace.com/gradient) 
     - [Pricing information](https://gradient.paperspace.com/pricing)
 - [FloydHub Workspace](https://www.floydhub.com/product/build)

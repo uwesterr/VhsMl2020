@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Lyft 3D Object Detection for Autonomous Vehicles | Machine learning orientation</title>
+  <title>Chapter 6 Machine leanring classes | Machine learning orientation</title>
   <meta name="description" content="A guide to machine learning" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Lyft 3D Object Detection for Autonomous Vehicles | Machine learning orientation" />
+  <meta property="og:title" content="Chapter 6 Machine leanring classes | Machine learning orientation" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Lyft 3D Object Detection for Autonomous Vehicles | Machine learning orientation" />
+  <meta name="twitter:title" content="Chapter 6 Machine leanring classes | Machine learning orientation" />
   
   <meta name="twitter:description" content="A guide to machine learning" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="severstal-steel-defect-detection.html"/>
-<link rel="next" href="aptos-2019-blindness-detection.html"/>
+<link rel="prev" href="ml-project-process.html"/>
+<link rel="next" href="MlAlgorithm.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -417,12 +417,281 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lyft-3d-object-detection-for-autonomous-vehicles" class="section level1">
-<h1><span class="header-section-number">Chapter 16</span> Lyft 3D Object Detection for Autonomous Vehicles</h1>
-<p><a href="https://www.kaggle.com/c/3d-object-detection-for-autonomous-vehicles" class="uri">https://www.kaggle.com/c/3d-object-detection-for-autonomous-vehicles</a></p>
-<div id="rd-place-solution" class="section level2">
-<h2><span class="header-section-number">16.1</span> 3rd place solution</h2>
-<p><a href="https://www.kaggle.com/c/3d-object-detection-for-autonomous-vehicles/discussion/117269#latest-679717" class="uri">https://www.kaggle.com/c/3d-object-detection-for-autonomous-vehicles/discussion/117269#latest-679717</a></p>
+<div id="machineLearningClasses" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Machine leanring classes</h1>
+<p>There are three major classes of learning problems</p>
+<ul>
+<li>Supervised learning</li>
+<li>Unsupervised learning</li>
+<li>Reinforcement learning</li>
+</ul>
+<p><img src="images/classesOfLearningProblems.png" style="width:60.0%" /></p>
+<p>In the following chapters each class will be introduced and examples given</p>
+<div id="supervised-learning" class="section level2">
+<h2><span class="header-section-number">6.1</span> Supervised learning</h2>
+</div>
+<div id="unsupervised-learning" class="section level2">
+<h2><span class="header-section-number">6.2</span> Unsupervised learning</h2>
+</div>
+<div id="reinforcement-learning" class="section level2">
+<h2><span class="header-section-number">6.3</span> Reinforcement learning</h2>
+<p>Reinforcement learning (RL) is the most complex concept of the learning classes. It helps to first look at a simple example where the goal is to find the best possible way in a grid world. How the best possible way is defined and ways to find it will be the topic of this chapter</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4MOx2_e5tug" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<hr />
+<div id="elements-of-reinforcement-learning" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Elements of reinforcement learning</h3>
+<p>There are five elements of RL as depicted below:</p>
+<hr />
+<div class="figure">
+<img src="images/rlPrinciple.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from © MIT 6.S191: Introduction to Deep Learning</p>
+</div>
+<hr />
+<p>Those elements together build a Markov decision process (MDP) which might be a more familiar term. In order to solve a taks using RL the first step would be if the real world problem can be described as a MDP in terms of the five RL elements.</p>
+
+<div class="rmdtip">
+<ul>
+<li><p>
+Elements of RL:<img src="images/sdcMitExample.png" alt="Smiley face" align="right" style="width:30%;">
+</p></li>
+<li>Agent: takes actions.<br />
+</li>
+<li>Environment: the world in which the agent exists and operates.<br />
+</li>
+<li>Action <span class="math inline">\(a_t\)</span>: a move the agent can make in the environment.<br />
+</li>
+<li>Observations: of the environment after taking actions.
+<ul>
+<li>State <span class="math inline">\(s_t\)</span>: a situation which the agent perceives.<br />
+</li>
+<li>Reward <span class="math inline">\(r_t\)</span>: feedback that measures the success or failure of the agent’s action.<br />
+</li>
+</ul></li>
+</ul>
+</div>
+
+<p>In order to understand the above defined terms better it is helpful to look at an example of self driving car in a simulator of MIT (<a href="https://selfdrivingcars.mit.edu/deeptraffic/" class="uri">https://selfdrivingcars.mit.edu/deeptraffic/</a>).</p>
+<p>The agent is the car which can take any of five actions</p>
+
+<div class="rmdtip">
+<p>Actions of agent <span class="math inline">\(a_t\)</span>:</p>
+<ul>
+<li>No action</li>
+<li>Accelerate</li>
+<li>Break</li>
+<li>Change lanes
+<ul>
+<li>to the left</li>
+<li>to the right
+</div></li>
+</ul></li>
+</ul>
+<p>The <strong>environment</strong> is the <strong>red marked space segments of the road</strong>
+The <strong>state</strong> is defined by the spaces in environment which are occupied by another car or empty.
+The <strong>reward</strong> is given by the speed of the car, the <strong>faster the better</strong></p>
+
+<div class="HeadingNoNumber">
+Reward
+</div>
+
+<p>A close look at the reward shows that the reward is summed up over time weighted with the so called <strong>discount factor <span class="math inline">\(\lambda\)</span></strong> which is in the range of <span class="math inline">\(0\geq \lambda \leq 1\)</span>. Therefore the reward is not only dependent on the immidient reward but also on the to be expected reward.</p>
+<span class="math display">\[R_{t}=\sum_{i=t}^{\infty} \gamma^{i} r_{i}=\gamma^{t} r_{t}+\gamma^{t+1} r_{t+1} \ldots+\gamma^{t+n} r_{t+n}+\dots\]</span>
+
+<div class="HeadingNoNumber">
+Find good actions, i.e actions with high total reward
+</div>
+
+<p>A Q-function can be defined which gives the expected value of the total reward for an action <span class="math inline">\(a\)</span> in a given state <span class="math inline">\(s\)</span>.</p>
+<p><span class="math display">\[Q(s, a)=\mathbb{E}\left[R_{t}\right]\]</span>
+where <span class="math inline">\(\mathbb{E}\)</span> is the expected value of the total reward. So the equation can be read as:</p>
+<p>Q value if the environment is in state <span class="math inline">\(s\)</span> and the agent performing action <span class="math inline">\(a\)</span> is the expected value of the total reward <span class="math inline">\(\mathbb{E}\left[R_{t}\right]\)</span></p>
+<p>The Q-function captures the <strong>expected total future reward</strong> an agent in state <span class="math inline">\(s\)</span> can receive by executing a certain action <span class="math inline">\(a\)</span> .</p>
+
+<div class="HeadingNoNumber">
+Find a good policy
+</div>
+
+<p>Ultimately, the agent needs a <strong>policy <span class="math inline">\(\pi(s)\)</span></strong>, to infer the <strong>best action to take</strong> at its state <span class="math inline">\(s\)</span></p>
+<p>The strategy is that the policy should choose an action that maximiyes future reward</p>
+<p><span class="math display">\[\pi^{*}(s)=\underset{a}{\operatorname{argmax}} Q(s, a)\]</span></p>
+</div>
+<div id="rl-algorithms" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> RL algorithms</h3>
+<p>There are two ways to learn the best action</p>
+<ul>
+<li><p>Value learning</p></li>
+<li><p>Policy learning</p></li>
+</ul>
+<hr />
+<div class="figure">
+<img src="images/rlAlgorithms.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from © MIT 6.S191: Introduction to Deep Learning</p>
+</div>
+<hr />
+<div id="value-learning" class="section level4">
+<h4><span class="header-section-number">6.3.2.1</span> Value learning</h4>
+<p>The task in value learning is to find the Q-values for the states and acitons <span class="math inline">\((s,a)\)</span></p>
+
+<div class="HeadingNoNumber">
+Find Q-values
+</div>
+
+<p>Depending on the complexity of the environment it might be difficult to find the Q values.</p>
+<hr />
+<div class="figure">
+<img src="images/findQValue.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from © MIT 6.S191: Introduction to Deep Learning</p>
+</div>
+<hr />
+<p>Q-values can be found using neural networks, the training however is than a two staged task.</p>
+
+<div class="HeadingNoNumber">
+Traing deep q-learning
+</div>
+
+<hr />
+<div class="figure">
+<img src="images/trainingDeepQnn.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure based on © MIT 6.S191: Introduction to Deep Learning</p>
+</div>
+<hr />
+
+<div class="HeadingNoNumber">
+Downsides of Q-learning
+</div>
+
+
+<div class="rmdtip">
+<p>Q-learning downsides:</p>
+<ul>
+<li>Complexity:
+<ul>
+<li>Can model scenarios where the action space is discrete and small</li>
+<li>Cannot handle continuous action spaces</li>
+</ul></li>
+<li>Flexibility:
+<ul>
+<li>Cannot learn stochastic policies since policy is deterministically computed from the Q function</li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+<div id="policy-learning" class="section level4">
+<h4><span class="header-section-number">6.3.2.2</span> Policy learning</h4>
+<hr />
+<div class="figure">
+<img src="images/rlPrinciplesComparision.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure based on © MIT 6.S191: Introduction to Deep Learning</p>
+</div>
+<hr />
+
+<div class="HeadingNoNumber">
+Traing policy learning
+</div>
+
+
+<div class="rmdtip">
+<ol style="list-style-type: decimal">
+<li>Run a policy for a while</li>
+<li>Increase probability of actions that lead to high
+rewards</li>
+<li>Decrease probability of actions that lead to
+low/no rewards</li>
+</ol>
+</div>
+
+<p>In a more mathematically way this could be written as pseudo code</p>
+
+<div class="rmdtip">
+<p>Pseudo code for training:</p>
+<ul>
+<li>function REINFORCE
+<ul>
+<li>Initialize <span class="math inline">\(\theta\)</span></li>
+<li>for episode <span class="math inline">\(\sim \pi_{\theta}\)</span>
+<ul>
+<li><span class="math inline">\(\left\{s_{i}, a_{i}, r_{i}\right\}_{i=1}^{T-1} \leftarrow episode\)</span></li>
+<li>for t = 1 to T-1
+<ul>
+<li><span class="math inline">\(\nabla \leftarrow \nabla_{\theta} \log \pi_{\theta}\left(a_{t} | s_{t}\right) R_{t}\)</span></li>
+<li><span class="math inline">\(\theta \leftarrow \theta+\alpha \nabla\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>return <span class="math inline">\(\theta\)</span></li>
+</ul>
+<p>where <span class="math inline">\(\log \pi_{\theta}\left(a_{t} | s_{t}\right)\)</span> is the log-likelihood of action <span class="math inline">\(a_t\)</span></p>
+</div>
+
+</div>
+</div>
+<div id="example-self-driving-car-mit" class="section level3">
+<h3><span class="header-section-number">6.3.3</span> Example self driving car MIT</h3>
+<p>The DeepTraffic website of MIT is a great place to get a feeling for reinforcement learning. Parameters can be varied and the impact can be seen right away without the need to install any code on the computer.</p>
+
+<div class="rmdtip">
+<p>DeepTraffic:
+- Competition of MIT in the frame of their self-driving car course
+- Target: Create a neural network which drives a car fast through highway traffic
+- website <a href="https://selfdrivingcars.mit.edu/deeptraffic/" class="uri">https://selfdrivingcars.mit.edu/deeptraffic/</a>
+- documentation: <a href="https://selfdrivingcars.mit.edu/deeptraffic-documentation/" class="uri">https://selfdrivingcars.mit.edu/deeptraffic-documentation/</a></p>
+</div>
+
+<p>The following variables control the size of the input the net gets – a larger input area provides more information about the traffic situation, but it also makes it harder to learn the relevant parts, and may require longer learning times.</p>
+
+<div class="rmdtip">
+<p>
+Environment:<img src="images/sdcMitExample.png" alt="Smiley face" align="right" style="width:30%;">
+</p>
+<ul>
+<li><p>For each car the grid cells below it are filled with the car’s speed, empty cells are filled with a high value to symbolize the potential for speed.</p></li>
+<li><p>Your car gets a car-centric cutout of that map to use as an input to the neural network. You can have a look at it by changing the Road Overlay to <em>Learning Input</em></p></li>
+</ul>
+<blockquote>
+<p>lanesSide = 1;<br />
+patchesAhead = 10;<br />
+patchesBehind = 0;</p>
+</blockquote>
+</div>
+
+<p>The agent is controlled by a function called learn that receives the current state (provided as a flattened array of the defined learning input cutout), a reward for the last step (in this case the average speed in mph) and has to return one of the following actions:</p>
+
+<div class="rmdtip">
+<p>Ouptut of neural network is action:</p>
+<ul>
+<li>Agent is controlled by function called <strong>learn</strong></li>
+<li>Receives current state
+<ul>
+<li>flattened array</li>
+<li>reward of last step
+retunrs
+&gt;
+var noAction = 0;<br />
+var accelerateAction = 1;<br />
+var decelerateAction = 2;<br />
+var goLeftAction = 3;<br />
+var goRightAction = 4;<br />
+</li>
+</ul></li>
+</ul>
+</div>
+
+<p>The learn function is as follows</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="machineLearningClasses.html#cb1-1"></a></span>
+<span id="cb1-2"><a href="machineLearningClasses.html#cb1-2"></a>learn <span class="op">=</span> function (state, lastReward) {</span>
+<span id="cb1-3"><a href="machineLearningClasses.html#cb1-3"></a>    brain.backward(lastReward)<span class="op">;</span></span>
+<span id="cb1-4"><a href="machineLearningClasses.html#cb1-4"></a>    var action <span class="op">=</span> brain.forward(state)<span class="op">;</span></span>
+<span id="cb1-5"><a href="machineLearningClasses.html#cb1-5"></a> </span>
+<span id="cb1-6"><a href="machineLearningClasses.html#cb1-6"></a>    draw_net()<span class="op">;</span></span>
+<span id="cb1-7"><a href="machineLearningClasses.html#cb1-7"></a>    draw_stats()<span class="op">;</span></span>
+<span id="cb1-8"><a href="machineLearningClasses.html#cb1-8"></a> </span>
+<span id="cb1-9"><a href="machineLearningClasses.html#cb1-9"></a>    <span class="cf">return</span> action<span class="op">;</span></span>
+<span id="cb1-10"><a href="machineLearningClasses.html#cb1-10"></a>}</span></code></pre></div>
+<p>An overview of the most important variables is given below</p>
+<p><img src="images/sdcVariables.png" style="width:100.0%" /></p>
+</div>
 </div>
 </div>
             </section>
@@ -430,8 +699,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="severstal-steel-defect-detection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="aptos-2019-blindness-detection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ml-project-process.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="MlAlgorithm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

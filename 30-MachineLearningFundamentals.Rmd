@@ -114,6 +114,9 @@ Two fundamental questions:
 ```
 
 
+$x \rightarrow y$
+
+
 ### How much data is necessary?
 
 There are a number of rules of thumb out there like
@@ -244,9 +247,326 @@ $$ \hat{Y} = \hat{f}(X)$$
 ```
 
 
-# ML types 
+# Machine leanring classes {#machineLearningClasses} 
 
-scikit-learn
+There are three major classes of learning problems
+
+- Supervised learning
+- Unsupervised learning
+- Reinforcement learning
+
+ ![](images/classesOfLearningProblems.png){width=60% } 
+
+In the following chapters each class will be introduced and examples given
+
+## Supervised learning
+
+## Unsupervised learning
+
+## Reinforcement learning
+
+Reinforcement learning (RL) is the most complex concept of the learning classes. It helps to first look at a simple example where the goal is to find the best possible way in a grid world. How the best possible way is defined and ways to find it will be the topic of this chapter
+
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4MOx2_e5tug" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+### Elements of reinforcement learning
+
+There are five elements of RL as depicted below:
+
+---
+
+ ![Figure from © MIT 6.S191: Introduction to Deep Learning](images/rlPrinciple.png){width=100% .external}
+
+---
+
+Those elements together build a Markov decision process (MDP) which might be a more familiar term. In order to solve a taks using RL the first step would be if the real world problem can be described as a MDP in terms of the five RL elements.
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- <p>Elements of RL:<img src="images/sdcMitExample.png" alt="Smiley face" align="right" style="width:30%;"> </p>
+
+  
+- Agent: takes actions.  
+- Environment: the world in which the agent exists and operates.  
+- Action $a_t$: a move the agent can make in the environment.  
+- Observations: of the environment after taking actions.  
+    - State $s_t$: a situation which the agent perceives.  
+    - Reward $r_t$: feedback that measures the success or failure of the agent’s action.  
+
+```
+
+
+In order to understand the above defined terms better it is helpful to look at an example of self driving car in a simulator of MIT (https://selfdrivingcars.mit.edu/deeptraffic/).
+
+The agent is the car which can take any of five actions
+
+```{block2 echo=TRUE, type='rmdtip'}
+Actions of agent $a_t$:
+
+- No action
+- Accelerate
+- Break
+- Change lanes
+    - to the left
+    - to the right
+    
+```
+
+
+The **environment** is the **red marked space segments of the road**
+The **state** is defined by the spaces in environment which are occupied by another car or empty.
+The **reward** is given by the speed of the car, the **faster the better**
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+
+Reward
+  
+```
+
+A close look at the reward shows that the reward is summed up over time weighted with the so called **discount factor $\lambda$** which is in the range of $0\geq \lambda \leq 1$. Therefore the reward is not only dependent on the immidient reward but also on the to be expected reward.
+
+$$R_{t}=\sum_{i=t}^{\infty} \gamma^{i} r_{i}=\gamma^{t} r_{t}+\gamma^{t+1} r_{t+1} \ldots+\gamma^{t+n} r_{t+n}+\dots$$
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+
+Find good actions, i.e actions with high total reward
+  
+```
+
+A Q-function can be defined which gives the expected value of the total reward for an action $a$ in a given state $s$.
+
+
+$$Q(s, a)=\mathbb{E}\left[R_{t}\right]$$
+where $\mathbb{E}$ is the expected value of the total reward. So the equation can be read as:
+
+Q value if the environment is in state $s$ and the agent performing action $a$ is the expected value of the total reward $\mathbb{E}\left[R_{t}\right]$
+
+The Q-function captures the **expected total future reward** an agent in state $s$ can receive by executing a certain action $a$ .
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+
+Find a good policy
+  
+```
+
+
+Ultimately, the agent needs a **policy $\pi(s)$**, to infer the **best action to take** at its state $s$
+
+The strategy is that the policy should choose an action that maximiyes future reward
+
+$$\pi^{*}(s)=\underset{a}{\operatorname{argmax}} Q(s, a)$$
+
+
+### RL algorithms
+
+There are two ways to learn the best action
+
+- Value learning
+
+- Policy learning
+
+
+---
+
+
+ ![Figure from © MIT 6.S191: Introduction to Deep Learning](images/rlAlgorithms.png){width=100% .external}
+
+---
+
+
+#### Value learning
+
+The task in value learning is to find the Q-values for the states and acitons $(s,a)$
+
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+
+Find Q-values
+  
+```
+
+
+Depending on the complexity of the environment it might be difficult to find the Q values. 
+
+---
+
+ ![Figure from © MIT 6.S191: Introduction to Deep Learning](images/findQValue.png){width=100% .external}
+
+---
+
+
+Q-values can be found using neural networks, the training however is than a two staged task.
+
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+
+Traing deep q-learning
+  
+```
+
+
+---
+
+ ![Figure based on © MIT 6.S191: Introduction to Deep Learning](images/trainingDeepQnn.png){width=100% .external}
+
+
+---
+
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+
+Downsides of Q-learning
+  
+```
+
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+Q-learning downsides: 
+
+- Complexity:
+    - Can model scenarios where the action space is discrete and small
+    - Cannot handle continuous action spaces
+- Flexibility:
+    - Cannot learn stochastic policies since policy is deterministically computed from the Q function
+
+```
+
+
+
+#### Policy learning
+
+---
+
+ ![Figure based on © MIT 6.S191: Introduction to Deep Learning](images/rlPrinciplesComparision.png){width=100% .external}
+
+
+---
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+
+Traing policy learning
+  
+```
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+1. Run a policy for a while
+2. Increase probability of actions that lead to high
+rewards
+3. Decrease probability of actions that lead to
+low/no rewards
+
+```
+
+In a more mathematically way this could be written as pseudo code
+
+```{block2 echo=TRUE, type='rmdtip'}
+Pseudo code for training:
+ 
+- function REINFORCE
+    - Initialize $\theta$
+    - for episode $\sim \pi_{\theta}$
+        - $\left\{s_{i}, a_{i}, r_{i}\right\}_{i=1}^{T-1} \leftarrow episode$
+        - for t = 1 to T-1
+            - $\nabla \leftarrow \nabla_{\theta} \log \pi_{\theta}\left(a_{t} | s_{t}\right) R_{t}$ 
+            - $\theta \leftarrow \theta+\alpha \nabla$
+- return $\theta$           
+  
+where $\log \pi_{\theta}\left(a_{t} | s_{t}\right)$ is the log-likelihood of action $a_t$
+
+```
+
+
+### Example self driving car MIT
+
+The DeepTraffic website of MIT is a great place to get a feeling for reinforcement learning. Parameters can be varied and the impact can be seen right away without the need to install any code on the computer.
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+DeepTraffic: 
+- Competition of MIT in the frame of their self-driving car course
+- Target: Create a neural network which drives a car fast through highway traffic
+- website https://selfdrivingcars.mit.edu/deeptraffic/
+- documentation: https://selfdrivingcars.mit.edu/deeptraffic-documentation/ 
+
+```
+
+
+The following variables control the size of the input the net gets – a larger input area provides more information about the traffic situation, but it also makes it harder to learn the relevant parts, and may require longer learning times.
+
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+
+<p>Environment:<img src="images/sdcMitExample.png" alt="Smiley face" align="right" style="width:30%;"> </p>
+
+- For each car the grid cells below it are filled with the car’s speed, empty cells are filled with a high value to symbolize the potential for speed.
+
+- Your car gets a car-centric cutout of that map to use as an input to the neural network. You can have a look at it by changing the Road Overlay to *Learning Input*
+  
+>
+lanesSide = 1;  
+patchesAhead = 10;  
+patchesBehind = 0;  
+
+
+
+```
+
+The agent is controlled by a function called learn that receives the current state (provided as a flattened array of the defined learning input cutout), a reward for the last step (in this case the average speed in mph) and has to return one of the following actions:
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+Ouptut of neural network is action:
+
+- Agent is controlled by function called **learn**
+- Receives current state
+    - flattened array
+    - reward of last step
+retunrs
+>
+var noAction = 0;  
+var accelerateAction = 1;  
+var decelerateAction = 2;  
+var goLeftAction = 3;  
+var goRightAction = 4;  
+
+```
+
+
+The learn function is as follows
+
+```python
+
+learn = function (state, lastReward) {
+    brain.backward(lastReward);
+    var action = brain.forward(state);
+ 
+    draw_net();
+    draw_stats();
+ 
+    return action;
+}
+
+```
+
+
+An overview of the most important variables is given below
+
+ ![](images/sdcVariables.png){width=100%}
+
+
+
+
+# ML algorithms {#MlAlgorithm}
+
+
 
 <blockquote>
 
@@ -261,11 +581,6 @@ https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_com
 
 
  ![](images/classificationCompare.png){width=120% }
-
-
-
-
-# ML algorithms {#MlAlgorithm}
 
 ## Linear regression TBD {#MlAlgoLinReg}
 
@@ -980,22 +1295,101 @@ Note that predictions are returned on the hazard ratio scale (i.e., as HR = exp(
 ## Support Vector Machine (SVM) TBD {#MlAlgoSvm}
  
  
- 
- 
- 
- 
- 
-$$maximize \(M\) \(\beta_{0}, \beta_{1}, \ldots, \beta_{p}\)
-subject to \(\sum_{j=1}^{p} \beta_{j}^{2}=1\)
-\(y_{i}\left(\beta_{0}+\beta_{1} x_{i 1}+\ldots+\beta_{p} x_{i p}\right) \geq M\)
-for all \(i=1, \dots, N\)$$ 
+
+A good explanation of the theory behind SVMs is given in [@9781461471370]
+
+The support vector machine (SVM) is an extension of the support vector classifier that results from enlarging the feature space in a specific way, using kernels. We will now discuss this extension, the details of which are somewhat complex and are beyond the scope of this report. The main idea is to enlarge the feature space in order to accommodate a non-linear boundary between the classes. The kernel approach that we describe here is simply an efficient computational approach for enacting this idea.
+
+The solution to the support vector classifier problem involves only the inner products of the observations (as opposed to the observations themselves). The inner product of two r-vectors *a* and *b* is defined as $\langle a, b\rangle=\sum_{i=1}^{r} a_{i} b_{i}$;. Thus the inner product of two observations $x_{i}, x_{i^{\prime}}$ is given by
 
 
- ### Python example for SVM
+\begin{equation} 
+\left\langle x_{i}, x_{i^{\prime}}\right\rangle=\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}
+  (\#eq:9-17)
+\end{equation} 
+
+It can be shown that  
+- The linear support vector classifier can be represented as:
+
+\begin{equation} 
+f(x)=\beta_{0}+\sum_{i=1}^{n} \alpha_{i}\left\langle x, x_{i}\right\rangle
+  (\#eq:9-18)
+\end{equation} 
+
+where there are *n* parameters $\alpha_{i}, \quad i=1, \dots, n$, one per training observation.
+
+- To estimate the parameters $\alpha_{1}, \ldots, \alpha_{n} \text { and } \beta_{0}$, all we need are the $\left( \begin{array}{l}{n} \\ {2}\end{array}\right)$ inner products $\left\langle x_{i}, x_{i^{\prime}}\right\rangle$ between all pairs of training observations. The notation  $\left( \begin{array}{c}{n} \\ {2}\end{array}\right)$  means $n(n-1) / 2$ and gives the number of pairs among a set of $n$ items.
+
+Notice that in \@ref(eq:9-18), in order to evaluate the function f(x), we need to compute the inner product between the new point *x* and each of the training points $x_i$. However, it turns out that $α_i$ is nonzero only for the support vectors in the solution—that is, if a training observation is not a support vector, then its $α_i$ equals zero. So if *S* is the collection of indices of these support points, we can rewrite any solution function of the form \@ref(eq:9-18) as
+
+\begin{equation} 
+f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\rangle
+  (\#eq:9-19)
+\end{equation}
+which typically involves far fewer terms than in \@ref(eq:9-18)
+
+### Kernels
+
+To summarize, in representing the linear classifier $f (x)$, and in computing its coefficients, all we need are inner products. Now suppose that every time the inner product \@ref(eq:9-17) appears in the representation \@ref(eq:9-18), or in a calculation of the solution for the support vector classifier, we replace it with a generalization of the inner product of the form
+
+
+\begin{equation} 
+K\left(x_{i}, x_{i^{\prime}}\right)  
+  (\#eq:9-20)
+\end{equation} 
+
+where *K* is some function that we will refer to as a kernel. A kernel is a function that quantifies the similarity of two observations. For instance, we could simply take
+
+
+\begin{equation} 
+K\left(x_{i}, x_{i^{\prime}}\right)=\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}
+(\#eq:9-21)
+\end{equation} 
+
+which would just give us back the support vector classifier. Equation \@ref(eq:9-21) is known as a linear kernel because the support vector classifier is linear in the features; the linear kernel essentially quantifies the similarity of a pair of observations using Pearson (standard) correlation. 
+
+#### Polynomial Kernel  
+
+But one could instead choose another form for \@ref(eq:9-20). For instance, one could replace every instance of $\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}$ with the quantity
+
+\begin{equation} 
+K\left(x_{i}, x_{i^{\prime}}\right)=\left(1+\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}\right)^{d}
+  (\#eq:9-22)
+\end{equation} 
+
+This is known as a polynomial kernel of degree *d*, where *d* is a positive integer. Using such a kernel with *d* > 1, instead of the standard linear kernel \@ref(eq:9-21), in the support vector classifier algorithm leads to a much more flexible decision boundary. It essentially amounts to fitting a support vector classifier in a higher-dimensional space involving polynomials of degree *d*, rather than in the original feature space. When the support vector classifier is combined with a non-linear kernel such as \@ref(eq:9-22), the resulting classifier is known as a support vector machine. Note that in this case the (non-linear) function has the form
+
+\begin{equation} 
+f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i} K\left(x, x_{i}\right)
+  (\#eq:9-23)
+\end{equation} 
+
+The polynomial kernel shown in \@ref(eq:9-22) is one example of a possible non-linear kernel, but alternatives abound. 
+
+#### Radial Kernel  
+Another popular choice is the *radial kernel*, which takes the form
+
+\begin{equation} 
+K\left(x_{i}, x_{i^{\prime}}\right)=\exp \left(-\gamma \sum_{j=1}^{p}\left(x_{i j}-x_{i^{\prime} j}\right)^{2}\right)
+  (\#eq:9-24)
+\end{equation} 
+
+In \@ref(eq:9-24), γ is a positive constant.
+
+How does the radial kernel \@ref(eq:9-24) actually work? If a given test observation $x^{*}=\left(x_{1}^{*} \ldots x_{p}^{*}\right)^{T}$ is far from a training observation $x_i$ in terms of Euclidean distance, then $\sum_{j=1}^{p}\left(x_{j}^{*}-x_{i j}\right)^{2}$ will be large, and so  $K\left(x_{i}, x_{i^{\prime}}\right)={\exp \left(-\gamma \sum_{j=1}^{p}\left(x_{j}^{*}-x_{i j}\right)^{2}\right)}$ will be very tiny. This means that in \@ref(eq:9-23), $x_{i}$ will play virtually no role in $f\left(x^{*}\right)$. Recall that the predicted class label for the test observation $x^{*}$ is based on the sign of $f\left(x^{*}\right)$. In other words, training observations that are far from $x^{*}$ will play essentially no role in the predicted class label for $x^{*}$. This means that the radial kernel has very local behaviour, in the sense that only nearby training observations have an effect on the class label of a test observation.
+What is the advantage of using a kernel rather than simply enlarging the feature space using functions of the original features? One
+advantage is computational, and it amounts to the fact that using kernels, one need only compute $K\left(x_{i}, x_{i^{\prime}}\right)$ for $\left( \begin{array}{l}{n} \\ {2}\end{array}\right)$  distinct pairs $i$, $i^{\prime}$.This can be
+done without explicitly working in the enlarged feature space. This is im- portant because in many applications of SVMs, the enlarged feature space is so large that computations are intractable. For some kernels, such as the radial kernel \@ref(eq:9-24), the feature space is *implicit* and infinite-dimensional, so we could never do the computations there anyway! 
+ 
+ 
+ 
+
+
+### Python example for SVM
  
  Two examples are given, both take images and classify them.
  
- #### SVM face recognition
+#### SVM face recognition
  
  The following example is given at [scikit-learn.org](https://scikit-learn.org/stable/auto_examples/applications/plot_face_recognition.html#sphx-glr-auto-examples-applications-plot-face-recognition-py)
  
@@ -1502,6 +1896,14 @@ Attention Is All You Need https://arxiv.org/abs/1706.03762
 
 
 # Food for the algorithms: Data
+
+## NLP 
+
+CCMatrix: A billion-scale bitext data set for training translation models
+
+Facebook learned a multilingual sentence embedding to help it represent sentences from different languages in the same featurespace, and then using the distance between sentences in featurespace to help the system figure out if they're parallel sentences from two different languages.
+
+https://ai.facebook.com/blog/ccmatrix-a-billion-scale-bitext-data-set-for-training-translation-models/ 
 
 
 ## Discovering millions of datasets on the web
