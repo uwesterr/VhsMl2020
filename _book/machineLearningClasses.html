@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Machine leanring classes | Machine learning orientation</title>
+  <title>Chapter 6 Machine learning classes | Machine learning orientation</title>
   <meta name="description" content="A guide to machine learning" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Machine leanring classes | Machine learning orientation" />
+  <meta property="og:title" content="Chapter 6 Machine learning classes | Machine learning orientation" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Machine leanring classes | Machine learning orientation" />
+  <meta name="twitter:title" content="Chapter 6 Machine learning classes | Machine learning orientation" />
   
   <meta name="twitter:description" content="A guide to machine learning" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-10" />
+<meta name="date" content="2020-02-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -197,7 +197,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ml-project-process.html"><a href="ml-project-process.html#after-data-gathering-iteration-is-trump"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
 <li class="chapter" data-level="5.8" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering-1"><i class="fa fa-check"></i><b>5.8</b> Feature engineering</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html"><i class="fa fa-check"></i><b>6</b> Machine leanring classes</a><ul>
+<li class="chapter" data-level="6" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html"><i class="fa fa-check"></i><b>6</b> Machine learning classes</a><ul>
 <li class="chapter" data-level="6.1" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html#supervised-learning"><i class="fa fa-check"></i><b>6.1</b> Supervised learning</a></li>
 <li class="chapter" data-level="6.2" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html#unsupervised-learning"><i class="fa fa-check"></i><b>6.2</b> Unsupervised learning</a></li>
 <li class="chapter" data-level="6.3" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html#reinforcement-learning"><i class="fa fa-check"></i><b>6.3</b> Reinforcement learning</a><ul>
@@ -418,14 +418,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="machineLearningClasses" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Machine leanring classes</h1>
+<h1><span class="header-section-number">Chapter 6</span> Machine learning classes</h1>
 <p>There are three major classes of learning problems</p>
 <ul>
 <li>Supervised learning</li>
 <li>Unsupervised learning</li>
 <li>Reinforcement learning</li>
 </ul>
-<p><img src="images/classesOfLearningProblems.png" style="width:60.0%" /></p>
+<hr />
+<p><img src="images/classesOfLearningProblems.png" style="width:100.0%" /></p>
+<hr />
 <p>In the following chapters each class will be introduced and examples given</p>
 <div id="supervised-learning" class="section level2">
 <h2><span class="header-section-number">6.1</span> Supervised learning</h2>
@@ -496,16 +498,24 @@ Reward
 </div>
 
 <p>A close look at the reward shows that the reward is summed up over time weighted with the so called <strong>discount factor <span class="math inline">\(\lambda\)</span></strong> which is in the range of <span class="math inline">\(0\geq \lambda \leq 1\)</span>. Therefore the reward is not only dependent on the immidient reward but also on the to be expected reward.</p>
-<span class="math display">\[R_{t}=\sum_{i=t}^{\infty} \gamma^{i} r_{i}=\gamma^{t} r_{t}+\gamma^{t+1} r_{t+1} \ldots+\gamma^{t+n} r_{t+n}+\dots\]</span>
+
+<div class="rmdmath">
+<p><span class="math display">\[R_{t}=\sum_{i=t}^{\infty} \gamma^{i} r_{i}=\gamma^{t} r_{t}+\gamma^{t+1} r_{t+1} \ldots+\gamma^{t+n} r_{t+n}+\dots\]</span></p>
+</div>
+
 
 <div class="HeadingNoNumber">
 Find good actions, i.e actions with high total reward
 </div>
 
+
+<div class="rmdmath">
 <p>A Q-function can be defined which gives the expected value of the total reward for an action <span class="math inline">\(a\)</span> in a given state <span class="math inline">\(s\)</span>.</p>
-<p><span class="math display">\[Q(s, a)=\mathbb{E}\left[R_{t}\right]\]</span>
-where <span class="math inline">\(\mathbb{E}\)</span> is the expected value of the total reward. So the equation can be read as:</p>
+<p><span class="math display">\[Q(s, a)=\mathbb{E}\left[R_{t}\right]\]</span></p>
+<p>where <span class="math inline">\(\mathbb{E}\)</span> is the expected value of the total reward. So the equation can be read as:</p>
 <p>Q value if the environment is in state <span class="math inline">\(s\)</span> and the agent performing action <span class="math inline">\(a\)</span> is the expected value of the total reward <span class="math inline">\(\mathbb{E}\left[R_{t}\right]\)</span></p>
+</div>
+
 <p>The Q-function captures the <strong>expected total future reward</strong> an agent in state <span class="math inline">\(s\)</span> can receive by executing a certain action <span class="math inline">\(a\)</span> .</p>
 
 <div class="HeadingNoNumber">
@@ -513,8 +523,12 @@ Find a good policy
 </div>
 
 <p>Ultimately, the agent needs a <strong>policy <span class="math inline">\(\pi(s)\)</span></strong>, to infer the <strong>best action to take</strong> at its state <span class="math inline">\(s\)</span></p>
-<p>The strategy is that the policy should choose an action that maximiyes future reward</p>
+
+<div class="rmdmath">
+<p>The strategy is that the policy should choose an action that maximizes future reward</p>
 <p><span class="math display">\[\pi^{*}(s)=\underset{a}{\operatorname{argmax}} Q(s, a)\]</span></p>
+</div>
+
 </div>
 <div id="rl-algorithms" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> RL algorithms</h3>
@@ -610,7 +624,7 @@ low/no rewards</li>
 <li>function REINFORCE
 <ul>
 <li>Initialize <span class="math inline">\(\theta\)</span></li>
-<li>for episode <span class="math inline">\(\sim \pi_{\theta}\)</span>
+<li><span class="math inline">\(\mbox{for episode} \sim \pi_{\theta}\)</span>
 <ul>
 <li><span class="math inline">\(\left\{s_{i}, a_{i}, r_{i}\right\}_{i=1}^{T-1} \leftarrow episode\)</span></li>
 <li>for t = 1 to T-1
@@ -691,7 +705,114 @@ var goRightAction = 4;<br />
 <span id="cb1-10"><a href="machineLearningClasses.html#cb1-10"></a>}</span></code></pre></div>
 <p>An overview of the most important variables is given below</p>
 <p><img src="images/sdcVariables.png" style="width:100.0%" /></p>
+<div id="crowdsourced-hyperparmeter-tuning" class="section level4">
+<h4><span class="header-section-number">6.3.3.1</span> Crowdsourced Hyperparmeter tuning</h4>
+<p>MIT “DeepTraffic: Crowdsourced Hyperparameter Tuning of Deep Reinforcement Learning Systems for Multi-Agent Dense Traffic Navigation” <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span> in which they present the results of</p>
+
+<div class="rmdtip">
+<p>Results of study:</p>
+<ul>
+<li>Number of submissions: 24,013</li>
+<li>Total network parameters optimized: 572.2 million</li>
+<li>Total duration of RL simulations: 96.6 years</li>
+</ul>
 </div>
+
+<p>The results show that over time the results became better until a plateau was reached.</p>
+<hr />
+<div class="figure">
+<img src="images/averageVsSpeed.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>Looking at <strong>average speed vs neural network parameters</strong> it can be seen that</p>
+
+<div class="rmdtip">
+<p>Average speed vs NN parameters:</p>
+<ul>
+<li>Few layers sufficient for high average speed</li>
+<li>Balance needed between neural network
+<ul>
+<li>width</li>
+<li>deepth</li>
+</ul></li>
+</ul>
+</div>
+
+<hr />
+<div class="figure">
+<img src="images/speedVsLayers.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>Looking at the training iterations it can be seen that with <strong>fewer parameters less iterations are necessary</strong></p>
+<hr />
+<div class="figure">
+<img src="images/aveSpeedIterations" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>There is a clear optimum of <strong>three lines</strong> at either side of the car</p>
+<hr />
+<div class="figure">
+<img src="images/aveLanes.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>It can be concluded that it is worth looking into the future when looking at the image below depicting average speed vs pachtes ahead.</p>
+<hr />
+<div class="figure">
+<img src="images/avePatchesAhead.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>Whereas looking into the past only pays of until 5 patches behind.</p>
+<hr />
+<div class="figure">
+<img src="images/avePatchesRear.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>Another idea to improve the performance is to look not only at one image but at several images to get a bette understanding of the dynamics of the scenario. However, the graph below shows that is was <strong>not helpful to look into the past</strong></p>
+<hr />
+<div class="figure">
+<img src="images/aveVsTemporalWindows.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>The reduction factor <span class="math inline">\(\gamma\)</span> considers future rewards, the higher the value the more attention is given to future awards. The image below shows that <strong>paying attention to future rewards is beneficial</strong></p>
+<hr />
+<div class="figure">
+<img src="images/aveVsGamma.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>To find a rule out of the parameters analysed a t-SNE mapping of the following parameters onto 2 dimensions was conducted:</p>
+<ul>
+<li>patches ahead</li>
+<li>patches behind</li>
+<li>l2 decay</li>
+<li>layer count</li>
+<li>gamma</li>
+<li>learning rate</li>
+<li>lanes side</li>
+<li>training iterations</li>
+</ul>
+<hr />
+<div class="figure">
+<img src="images/avetSNE.png" class="external" style="width:100.0%" alt="" />
+<p class="caption">Figure from <span class="citation">(Fridman, Terwilliger, and Jenik <a href="#ref-fridman2018deeptraffic" role="doc-biblioref">2018</a>)</span></p>
+</div>
+<hr />
+<p>The figure shows spots with high average speed, those patches can be used as basis for further improvement.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-fridman2018deeptraffic">
+<p>Fridman, Lex, Jack Terwilliger, and Benedikt Jenik. 2018. “DeepTraffic: Crowdsourced Hyperparameter Tuning of Deep Reinforcement Learning Systems for Multi-Agent Dense Traffic Navigation.” <em>arXiv Preprint arXiv:1801.02805</em>.</p>
 </div>
 </div>
             </section>

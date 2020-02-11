@@ -247,7 +247,7 @@ $$ \hat{Y} = \hat{f}(X)$$
 ```
 
 
-# Machine leanring classes {#machineLearningClasses} 
+# Machine learning classes {#machineLearningClasses} 
 
 There are three major classes of learning problems
 
@@ -255,7 +255,11 @@ There are three major classes of learning problems
 - Unsupervised learning
 - Reinforcement learning
 
- ![](images/classesOfLearningProblems.png){width=60% } 
+---
+
+ ![](images/classesOfLearningProblems.png){width=100% } 
+
+---
 
 In the following chapters each class will be introduced and examples given
 
@@ -329,21 +333,41 @@ Reward
 
 A close look at the reward shows that the reward is summed up over time weighted with the so called **discount factor $\lambda$** which is in the range of $0\geq \lambda \leq 1$. Therefore the reward is not only dependent on the immidient reward but also on the to be expected reward.
 
+
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+
 $$R_{t}=\sum_{i=t}^{\infty} \gamma^{i} r_{i}=\gamma^{t} r_{t}+\gamma^{t+1} r_{t+1} \ldots+\gamma^{t+n} r_{t+n}+\dots$$
+
+```
+
+
+  
 ```{block2 echo=TRUE, type='HeadingNoNumber'}
 
 Find good actions, i.e actions with high total reward
   
 ```
 
+
+```{block2 echo=TRUE, type='rmdmath'}
+
 A Q-function can be defined which gives the expected value of the total reward for an action $a$ in a given state $s$.
 
-
 $$Q(s, a)=\mathbb{E}\left[R_{t}\right]$$
+
+  
+  
 where $\mathbb{E}$ is the expected value of the total reward. So the equation can be read as:
+
 
 Q value if the environment is in state $s$ and the agent performing action $a$ is the expected value of the total reward $\mathbb{E}\left[R_{t}\right]$
 
+  
+
+```  
+  
 The Q-function captures the **expected total future reward** an agent in state $s$ can receive by executing a certain action $a$ .
 
 ```{block2 echo=TRUE, type='HeadingNoNumber'}
@@ -355,11 +379,19 @@ Find a good policy
 
 Ultimately, the agent needs a **policy $\pi(s)$**, to infer the **best action to take** at its state $s$
 
-The strategy is that the policy should choose an action that maximiyes future reward
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+
+The strategy is that the policy should choose an action that maximizes future reward
 
 $$\pi^{*}(s)=\underset{a}{\operatorname{argmax}} Q(s, a)$$
 
 
+
+```
+
+  
 ### RL algorithms
 
 There are two ways to learn the best action
@@ -469,7 +501,7 @@ Pseudo code for training:
  
 - function REINFORCE
     - Initialize $\theta$
-    - for episode $\sim \pi_{\theta}$
+    - $\mbox{for episode} \sim \pi_{\theta}$
         - $\left\{s_{i}, a_{i}, r_{i}\right\}_{i=1}^{T-1} \leftarrow episode$
         - for t = 1 to T-1
             - $\nabla \leftarrow \nabla_{\theta} \log \pi_{\theta}\left(a_{t} | s_{t}\right) R_{t}$ 
@@ -562,7 +594,120 @@ An overview of the most important variables is given below
  ![](images/sdcVariables.png){width=100%}
 
 
+#### Crowdsourced Hyperparmeter tuning
 
+MIT "DeepTraffic: Crowdsourced Hyperparameter Tuning of Deep Reinforcement Learning Systems for Multi-Agent Dense Traffic Navigation" [@fridman2018deeptraffic] in which they present the results of
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+Results of study:
+
+- Number of submissions: 24,013
+- Total network parameters optimized: 572.2 million
+- Total duration of RL simulations: 96.6 years
+
+```
+
+The results show that over time the results became better until a plateau was reached.
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/averageVsSpeed.png){width=100% .external}
+
+---
+
+Looking at **average speed vs neural network parameters** it can be seen that
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+Average speed vs NN parameters:
+
+- Few layers sufficient for high average speed
+- Balance needed between neural network
+    - width
+    - deepth 
+
+```
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/speedVsLayers.png){width=100% .external}
+
+---
+
+Looking at the training iterations it can be seen that with **fewer parameters less iterations are necessary**
+
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/aveSpeedIterations){width=100% .external}
+
+---
+
+
+There is a clear optimum of **three lines** at either side of the car
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/aveLanes.png){width=100% .external}
+
+---
+
+It can be concluded that it is worth looking into the future when looking at the image below depicting average speed vs pachtes ahead.
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/avePatchesAhead.png){width=100% .external}
+
+---
+
+
+Whereas looking into the past only pays of until 5 patches behind.
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/avePatchesRear.png){width=100% .external}
+
+---
+
+
+Another idea to improve the performance is to look not only at one image but at several images to get a bette understanding of the dynamics of the scenario. However, the graph below shows that is was **not helpful to look into the past**
+
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/aveVsTemporalWindows.png){width=100% .external}
+
+---
+
+
+The reduction factor $\gamma$ considers future rewards, the higher the value the more attention is given to future awards. The image below shows that **paying attention to future rewards is beneficial**
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/aveVsGamma.png){width=100% .external}
+
+---
+
+To find a rule out of the parameters analysed a t-SNE mapping of the following parameters onto 2 dimensions was conducted:
+
+- patches ahead
+- patches behind
+- l2 decay
+- layer count
+- gamma
+- learning rate
+- lanes side
+- training iterations
+
+---
+
+![Figure from [@fridman2018deeptraffic]](images/avetSNE.png){width=100% .external}
+
+---
+
+The figure shows spots with high average speed, those patches can be used as basis for further improvement.
 
 # ML algorithms {#MlAlgorithm}
 
@@ -1797,7 +1942,14 @@ below the working mechanism for a max pooling layer is shown. The stride for x a
 ![Figure from https://www.thelearningmachine.ai/cnn](images/poolingOps.gif){width=80% .external}
 
 
-After one or more combination of convolutional and pooling layers one or more fully connected layers learn how to classify the image based on non-linear combinations of the high-level features learned by the previous layers. The fully connected layer with the soft-max activation at the end gives the probability of each category, often as a result the three to five classes with the highest probability are reported.
+After one or more combination of convolutional and pooling layers one or more fully connected layers learn how to classify the image based on non-linear combinations of the high-level features learned by the previous layers. 
+
+
+
+![Figure from https://blogs.nvidia.com/wp-content/uploads/2018/09/autos-672x378.png](https://blogs.nvidia.com/wp-content/uploads/2018/09/autos-672x378.png){width=100% .external}
+https://blogs.nvidia.com/wp-content/uploads/2018/09/autos-672x378.png
+
+The fully connected layer with the soft-max activation at the end gives the probability of each category, often as a result the three to five classes with the highest probability are reported.
 
 - convolutional and pooling layers => high-level features
 - fully connected layers => combine non-linear high level features for classification

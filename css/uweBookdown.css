@@ -37,6 +37,8 @@ div.rmdtip:hover, div.rmdcaution:hover, div.rmdimportant:hover, div.rmdnote:hove
   background-image: url("../images/question.svg");
 }
 
+
+
 div.HeadingNoNumber {
   font-weight: bold;
   color: blue;
