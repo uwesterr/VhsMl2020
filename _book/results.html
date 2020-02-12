@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-11" />
+<meta name="date" content="2020-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,7 +191,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ml-project-process.html"><a href="ml-project-process.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>5.3</b> Exploratory data analysis</a></li>
 <li class="chapter" data-level="5.4" data-path="ml-project-process.html"><a href="ml-project-process.html#qunatitiave-anaylsis"><i class="fa fa-check"></i><b>5.4</b> Qunatitiave anaylsis</a></li>
-<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a></li>
+<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="ml-project-process.html"><a href="ml-project-process.html#featureImportance"><i class="fa fa-check"></i><b>5.5.1</b> Feature importance</a></li>
+</ul></li>
 <li class="chapter" data-level="5.6" data-path="ml-project-process.html"><a href="ml-project-process.html#model-fit"><i class="fa fa-check"></i><b>5.6</b> Model fit</a></li>
 <li class="chapter" data-level="5.7" data-path="ml-project-process.html"><a href="ml-project-process.html#model-tuning"><i class="fa fa-check"></i><b>5.7</b> Model tuning</a></li>
 <li class="chapter" data-level="" data-path="ml-project-process.html"><a href="ml-project-process.html#after-data-gathering-iteration-is-trump"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
@@ -207,8 +209,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>7</b> ML algorithms</a><ul>
-<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a></li>
-<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a></li>
+<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#example-for-linear-regression"><i class="fa fa-check"></i><b>7.1.1</b> Example for linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#python-example-logistic-regression"><i class="fa fa-check"></i><b>7.2.1</b> Python example logistic regression</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoTrees"><i class="fa fa-check"></i><b>7.3</b> Tree based methods TBD</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#splitting-metrics"><i class="fa fa-check"></i><b>7.3.1</b> Splitting metrics</a></li>
 <li class="chapter" data-level="7.3.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#ensembles"><i class="fa fa-check"></i><b>7.3.2</b> Ensembles</a></li>
@@ -437,32 +443,32 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The actual implementation of the <strong>algorithm is often a matter of 10 - 20 lines of code</strong>. Below the neural network definition for a self driving RC model car of the <a href="https://www.donkeycar.com">donkey car framework</a>.</p>
 <p>The neural network is defined using the <a href="https://keras.io">Keras API</a> which sits on top of <a href="https://www.tensorflow.org">Tensorflow</a>, the program is written in <a href="https://www.python.org">Python</a></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="results.html#cb26-1"></a>    img_in <span class="op">=</span> Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">&#39;img_in&#39;</span>)          </span>
-<span id="cb26-2"><a href="results.html#cb26-2"></a>    x <span class="op">=</span> img_in</span>
-<span id="cb26-3"><a href="results.html#cb26-3"></a>    x <span class="op">=</span> Convolution2D(<span class="dv">24</span>, (<span class="dv">5</span>,<span class="dv">5</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_1&quot;</span>)(x)      </span>
-<span id="cb26-4"><a href="results.html#cb26-4"></a>    x <span class="op">=</span> Dropout(drop)(x)                                                    </span>
-<span id="cb26-5"><a href="results.html#cb26-5"></a>    x <span class="op">=</span> Convolution2D(<span class="dv">32</span>, (<span class="dv">5</span>,<span class="dv">5</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_2&quot;</span>)(x)     </span>
-<span id="cb26-6"><a href="results.html#cb26-6"></a>    x <span class="op">=</span> Dropout(drop)(x)                                              </span>
-<span id="cb26-7"><a href="results.html#cb26-7"></a>    <span class="cf">if</span> input_shape[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">32</span> :</span>
-<span id="cb26-8"><a href="results.html#cb26-8"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">5</span>,<span class="dv">5</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_3&quot;</span>)(x)    </span>
-<span id="cb26-9"><a href="results.html#cb26-9"></a>    <span class="cf">else</span>:</span>
-<span id="cb26-10"><a href="results.html#cb26-10"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_3&quot;</span>)(x)    </span>
-<span id="cb26-11"><a href="results.html#cb26-11"></a>    <span class="cf">if</span> input_shape[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">64</span> :</span>
-<span id="cb26-12"><a href="results.html#cb26-12"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_4&quot;</span>)(x)    </span>
-<span id="cb26-13"><a href="results.html#cb26-13"></a>    <span class="cf">elif</span> input_shape[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">32</span> :</span>
-<span id="cb26-14"><a href="results.html#cb26-14"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_4&quot;</span>)(x)   </span>
-<span id="cb26-15"><a href="results.html#cb26-15"></a>    x <span class="op">=</span> Dropout(drop)(x)                                             </span>
-<span id="cb26-16"><a href="results.html#cb26-16"></a>    x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_5&quot;</span>)(x)      </span>
-<span id="cb26-17"><a href="results.html#cb26-17"></a></span>
-<span id="cb26-18"><a href="results.html#cb26-18"></a>    x <span class="op">=</span> Flatten(name<span class="op">=</span><span class="st">&#39;flattened&#39;</span>)(x)            </span>
-<span id="cb26-19"><a href="results.html#cb26-19"></a>    x <span class="op">=</span> Dense(<span class="dv">100</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;fc_1&quot;</span>)(x)  </span>
-<span id="cb26-20"><a href="results.html#cb26-20"></a>    x <span class="op">=</span> Dropout(drop)(x)                              </span>
-<span id="cb26-21"><a href="results.html#cb26-21"></a>    x <span class="op">=</span> Dense(<span class="dv">50</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;fc_2&quot;</span>)(x)  </span>
-<span id="cb26-22"><a href="results.html#cb26-22"></a>    x <span class="op">=</span> Dropout(drop)(x)            </span>
-<span id="cb26-23"><a href="results.html#cb26-23"></a>    angle_out <span class="op">=</span> Dense(<span class="dv">15</span>, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>, name<span class="op">=</span><span class="st">&#39;angle_out&#39;</span>)(x)      </span>
-<span id="cb26-24"><a href="results.html#cb26-24"></a>    throttle_out <span class="op">=</span> Dense(<span class="dv">20</span>, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>, name<span class="op">=</span><span class="st">&#39;throttle_out&#39;</span>)(x)      </span>
-<span id="cb26-25"><a href="results.html#cb26-25"></a>    </span>
-<span id="cb26-26"><a href="results.html#cb26-26"></a>    model <span class="op">=</span> Model(inputs<span class="op">=</span>[img_in], outputs<span class="op">=</span>[angle_out, throttle_out])</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="results.html#cb27-1"></a>    img_in <span class="op">=</span> Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">&#39;img_in&#39;</span>)          </span>
+<span id="cb27-2"><a href="results.html#cb27-2"></a>    x <span class="op">=</span> img_in</span>
+<span id="cb27-3"><a href="results.html#cb27-3"></a>    x <span class="op">=</span> Convolution2D(<span class="dv">24</span>, (<span class="dv">5</span>,<span class="dv">5</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_1&quot;</span>)(x)      </span>
+<span id="cb27-4"><a href="results.html#cb27-4"></a>    x <span class="op">=</span> Dropout(drop)(x)                                                    </span>
+<span id="cb27-5"><a href="results.html#cb27-5"></a>    x <span class="op">=</span> Convolution2D(<span class="dv">32</span>, (<span class="dv">5</span>,<span class="dv">5</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_2&quot;</span>)(x)     </span>
+<span id="cb27-6"><a href="results.html#cb27-6"></a>    x <span class="op">=</span> Dropout(drop)(x)                                              </span>
+<span id="cb27-7"><a href="results.html#cb27-7"></a>    <span class="cf">if</span> input_shape[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">32</span> :</span>
+<span id="cb27-8"><a href="results.html#cb27-8"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">5</span>,<span class="dv">5</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_3&quot;</span>)(x)    </span>
+<span id="cb27-9"><a href="results.html#cb27-9"></a>    <span class="cf">else</span>:</span>
+<span id="cb27-10"><a href="results.html#cb27-10"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_3&quot;</span>)(x)    </span>
+<span id="cb27-11"><a href="results.html#cb27-11"></a>    <span class="cf">if</span> input_shape[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">64</span> :</span>
+<span id="cb27-12"><a href="results.html#cb27-12"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_4&quot;</span>)(x)    </span>
+<span id="cb27-13"><a href="results.html#cb27-13"></a>    <span class="cf">elif</span> input_shape[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">32</span> :</span>
+<span id="cb27-14"><a href="results.html#cb27-14"></a>        x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_4&quot;</span>)(x)   </span>
+<span id="cb27-15"><a href="results.html#cb27-15"></a>    x <span class="op">=</span> Dropout(drop)(x)                                             </span>
+<span id="cb27-16"><a href="results.html#cb27-16"></a>    x <span class="op">=</span> Convolution2D(<span class="dv">64</span>, (<span class="dv">3</span>,<span class="dv">3</span>), strides<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;conv2d_5&quot;</span>)(x)      </span>
+<span id="cb27-17"><a href="results.html#cb27-17"></a></span>
+<span id="cb27-18"><a href="results.html#cb27-18"></a>    x <span class="op">=</span> Flatten(name<span class="op">=</span><span class="st">&#39;flattened&#39;</span>)(x)            </span>
+<span id="cb27-19"><a href="results.html#cb27-19"></a>    x <span class="op">=</span> Dense(<span class="dv">100</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;fc_1&quot;</span>)(x)  </span>
+<span id="cb27-20"><a href="results.html#cb27-20"></a>    x <span class="op">=</span> Dropout(drop)(x)                              </span>
+<span id="cb27-21"><a href="results.html#cb27-21"></a>    x <span class="op">=</span> Dense(<span class="dv">50</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>, name<span class="op">=</span><span class="st">&quot;fc_2&quot;</span>)(x)  </span>
+<span id="cb27-22"><a href="results.html#cb27-22"></a>    x <span class="op">=</span> Dropout(drop)(x)            </span>
+<span id="cb27-23"><a href="results.html#cb27-23"></a>    angle_out <span class="op">=</span> Dense(<span class="dv">15</span>, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>, name<span class="op">=</span><span class="st">&#39;angle_out&#39;</span>)(x)      </span>
+<span id="cb27-24"><a href="results.html#cb27-24"></a>    throttle_out <span class="op">=</span> Dense(<span class="dv">20</span>, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>, name<span class="op">=</span><span class="st">&#39;throttle_out&#39;</span>)(x)      </span>
+<span id="cb27-25"><a href="results.html#cb27-25"></a>    </span>
+<span id="cb27-26"><a href="results.html#cb27-26"></a>    model <span class="op">=</span> Model(inputs<span class="op">=</span>[img_in], outputs<span class="op">=</span>[angle_out, throttle_out])</span></code></pre></div>
 </div>
 <div id="who-uses-which-algorithm" class="section level2">
 <h2><span class="header-section-number">23.2</span> Who uses which algorithm</h2>

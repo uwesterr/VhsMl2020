@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-11" />
+<meta name="date" content="2020-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,7 +191,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ml-project-process.html"><a href="ml-project-process.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>5.3</b> Exploratory data analysis</a></li>
 <li class="chapter" data-level="5.4" data-path="ml-project-process.html"><a href="ml-project-process.html#qunatitiave-anaylsis"><i class="fa fa-check"></i><b>5.4</b> Qunatitiave anaylsis</a></li>
-<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a></li>
+<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="ml-project-process.html"><a href="ml-project-process.html#featureImportance"><i class="fa fa-check"></i><b>5.5.1</b> Feature importance</a></li>
+</ul></li>
 <li class="chapter" data-level="5.6" data-path="ml-project-process.html"><a href="ml-project-process.html#model-fit"><i class="fa fa-check"></i><b>5.6</b> Model fit</a></li>
 <li class="chapter" data-level="5.7" data-path="ml-project-process.html"><a href="ml-project-process.html#model-tuning"><i class="fa fa-check"></i><b>5.7</b> Model tuning</a></li>
 <li class="chapter" data-level="" data-path="ml-project-process.html"><a href="ml-project-process.html#after-data-gathering-iteration-is-trump"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
@@ -207,8 +209,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>7</b> ML algorithms</a><ul>
-<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a></li>
-<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a></li>
+<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#example-for-linear-regression"><i class="fa fa-check"></i><b>7.1.1</b> Example for linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#python-example-logistic-regression"><i class="fa fa-check"></i><b>7.2.1</b> Python example logistic regression</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoTrees"><i class="fa fa-check"></i><b>7.3</b> Tree based methods TBD</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#splitting-metrics"><i class="fa fa-check"></i><b>7.3.1</b> Splitting metrics</a></li>
 <li class="chapter" data-level="7.3.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#ensembles"><i class="fa fa-check"></i><b>7.3.2</b> Ensembles</a></li>
@@ -516,8 +522,8 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 <p>From input to output</p>
 
 <div class="rmdtip">
-<p><span class="math display">\[ outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)  \]</span></p>
-<p><span class="math display">\[ \hat{Y} = \hat{f}(X)\]</span></p>
+<p><span class="math display">\[outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)\]</span></p>
+<p><span class="math display">\[\hat{Y} = \hat{f}(X)\]</span></p>
 </div>
 
 </div>
@@ -664,7 +670,7 @@ Specificity = \frac
 </div>
 <div id="confusion-matrix-and-roc-for-pulse" class="section level2">
 <h2><span class="header-section-number">20.5</span> Confusion matrix and ROC for pulse</h2>
-<p><img src="Figs/unnamed-chunk-128-1.png" width="1920" /></p>
+<p><img src="Figs/unnamed-chunk-141-1.png" width="1920" /></p>
 <div id="r-plots" class="section level3">
 <h3><span class="header-section-number">20.5.1</span> R Plots</h3>
 <p><img src="images/rocAnimation.gif" style="width:100.0%" /></p>

@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-11" />
+<meta name="date" content="2020-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,7 +191,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ml-project-process.html"><a href="ml-project-process.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>5.3</b> Exploratory data analysis</a></li>
 <li class="chapter" data-level="5.4" data-path="ml-project-process.html"><a href="ml-project-process.html#qunatitiave-anaylsis"><i class="fa fa-check"></i><b>5.4</b> Qunatitiave anaylsis</a></li>
-<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a></li>
+<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="ml-project-process.html"><a href="ml-project-process.html#featureImportance"><i class="fa fa-check"></i><b>5.5.1</b> Feature importance</a></li>
+</ul></li>
 <li class="chapter" data-level="5.6" data-path="ml-project-process.html"><a href="ml-project-process.html#model-fit"><i class="fa fa-check"></i><b>5.6</b> Model fit</a></li>
 <li class="chapter" data-level="5.7" data-path="ml-project-process.html"><a href="ml-project-process.html#model-tuning"><i class="fa fa-check"></i><b>5.7</b> Model tuning</a></li>
 <li class="chapter" data-level="" data-path="ml-project-process.html"><a href="ml-project-process.html#after-data-gathering-iteration-is-trump"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
@@ -207,8 +209,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>7</b> ML algorithms</a><ul>
-<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a></li>
-<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a></li>
+<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#example-for-linear-regression"><i class="fa fa-check"></i><b>7.1.1</b> Example for linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#python-example-logistic-regression"><i class="fa fa-check"></i><b>7.2.1</b> Python example logistic regression</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoTrees"><i class="fa fa-check"></i><b>7.3</b> Tree based methods TBD</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#splitting-metrics"><i class="fa fa-check"></i><b>7.3.1</b> Splitting metrics</a></li>
 <li class="chapter" data-level="7.3.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#ensembles"><i class="fa fa-check"></i><b>7.3.2</b> Ensembles</a></li>
@@ -428,27 +434,113 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="images/classificationCompare.png" style="width:120.0%" /></p>
 <div id="MlAlgoLinReg" class="section level2">
 <h2><span class="header-section-number">7.1</span> Linear regression TBD</h2>
+<p>A linear regression is a regression analysis, a statistical method, at which a dependent variable is explained through several independent variables.</p>
+<ul>
+<li>Simple linear regression
+<ul>
+<li>Only one independent variable</li>
+</ul></li>
+<li>Multiple linear regression
+<ul>
+<li>more than one independent variables</li>
+</ul></li>
+</ul>
+<p>Linear regression algorithm is one of the <strong>fundamental supervised learning algorithms</strong>.</p>
+<div id="example-for-linear-regression" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Example for linear regression</h3>
+<p>In this example the procedure of a linear regression is described</p>
+
+<div class="HeadingNoNumber">
+<p>Data</p>
+</div>
+
+<p>Given is a set of data created by a linear expression plus some noise</p>
+
+<div class="rmdmath">
+<p><span class="math display">\[y = 3*x+2+n\]</span>
+where <span class="math inline">\(n\)</span> is noise</p>
+</div>
+
+<p>The data can be depicted as below. It is easy to be seen that we are looking at a linear function with superimposed noise.</p>
+<p><img src="images/LrData.png" style="width:50.0%" /></p>
+
+<div class="HeadingNoNumber">
+<p>Model</p>
+</div>
+
+<p>The task is to find the value for <span class="math inline">\(w_0\)</span> and <span class="math inline">\(w_1\)</span> of a model which is as close as possible to the original function</p>
+
+<div class="rmdmath">
+<p><span class="math display">\[\hat{y} = w_0*x+w_1\]</span></p>
+</div>
+
+
+<div class="HeadingNoNumber">
+<p>Loss function</p>
+</div>
+
+<p>The metric to define how good the model fits the data is defined as <strong>mean squared error (MSE)</strong></p>
+
+<div class="rmdmath">
+<p><span class="math display">\[L=(\hat{y}-y)^2\]</span></p>
+</div>
+
+
+<div class="HeadingNoNumber">
+<p>Minimise loss function</p>
+</div>
+
+<p>The difference between <span class="math inline">\(\hat{y}\)</span> and <span class="math inline">\(y\)</span> shall be small <strong>stochastic gradient descent (SGD)</strong> can be applied.</p>
+
+<div class="rmdtip">
+<p>SGD:</p>
+<ul>
+<li>Iteratively updating values of <span class="math inline">\(w_0, w_1\)</span> using
+<ul>
+<li>gradient</li>
+<li>learning rate <span class="math inline">\(\eta\)</span></li>
+</ul></li>
+</ul>
+</div>
+
+<p>In maths terms this can be written as:</p>
+
+<div class="rmdmath">
+<span class="math display">\[ w_{new} = w_{current} - \eta \frac{\partial L}{\partial w_{current}}\]</span>
+</div>
+
+<p>A graphical representation of SGD is given below. In this example the loss function can be depicted as a 3D plot. In the current case the surface is flat which makes it easy to find the <strong>global optimum</strong></p>
+<hr />
 <div class="figure">
 <img src="images/sgdAnimation.gif" class="external" style="width:90.0%" alt="" />
 <p class="caption">Figure from <a href="https://nbviewer.jupyter.org/gist/joshfp/85d96f07aaa5f4d2c9eb47956ccdcc88/lesson2-sgd-in-action.ipynb" class="uri">https://nbviewer.jupyter.org/gist/joshfp/85d96f07aaa5f4d2c9eb47956ccdcc88/lesson2-sgd-in-action.ipynb</a></p>
 </div>
+<hr />
+</div>
 </div>
 <div id="MlAlgoLogReg" class="section level2">
 <h2><span class="header-section-number">7.2</span> Logistic regression</h2>
+<p>Logistic regression is similar to linear regression, however, the value range of the dependent variable y is limited to:</p>
+<p><span class="math display">\[0\leq y \geq 1\]</span></p>
 <p>Logistic regression is a algorithm with the low computational complexity TBD</p>
 
 <div class="rmdtip">
 <ul>
 <li>Low computational complexity</li>
-<li>Start algorithm to determine suitable algorithm</li>
-<li>Details of algorithm are given at</li>
+<li>y limited range of values <span class="math inline">\(0\leq y \geq 1\)</span></li>
+<li>maps x on y (<span class="math inline">\(y \leftarrow x\)</span>) using the <a href="https://en.wikipedia.org/wiki/Logistic_function">logisit function</a><br />
+</li>
+<li>Used of classification</li>
 </ul>
 </div>
 
-<p><img src="Figs/logsiticFuncitonMlAlgo-1.png" width="1152" /></p>
+<p>The logistic function is depicted in the graph below</p>
+<p><img src="Figs/logsiticFuncitonMlAlgo-1.png" width="60%" /></p>
+<p>The logistic function is defined as:</p>
 
 <div class="rmdmath">
-<p><span class="math display">\[ logistic(\eta) = \frac{1}{1+exp^{-\eta}}\]</span></p>
+<p>Logistic function:
+<span class="math display">\[logistic(\eta) = \frac{1}{1+exp^{-\eta}}\]</span></p>
 <p><span class="math display">\[P(Y = 1 \vert X_i = x_i) = \frac{1}{1+exp^{-(\beta_0 + \beta_1X_1+ \dots \beta_n X_n)}}\]</span></p>
 <p>where:</p>
 <ul>
@@ -457,6 +549,60 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 
+<p>The second equation reads: The probability of <span class="math inline">\(Y=1\)</span> given the value <span class="math inline">\(X=x_i\)</span> which is exactly the result needed for a classification problem.</p>
+<div id="python-example-logistic-regression" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Python example logistic regression</h3>
+<p>An example of scikit-learn is given at <a href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py" class="uri">https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py</a> and emphasises on the difference between linear and logistic regression. The synthetic data set has values either 0 or 1. This can be modeled quite well with logisitc regression, but not at all with linear regression.</p>
+<p><img src="images/logRegPython.png" style="width:70.0%" /></p>
+<p>The python code is given below</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="MlAlgorithm.html#cb2-1"></a></span>
+<span id="cb2-2"><a href="MlAlgorithm.html#cb2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="MlAlgorithm.html#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="MlAlgorithm.html#cb2-4"></a></span>
+<span id="cb2-5"><a href="MlAlgorithm.html#cb2-5"></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb2-6"><a href="MlAlgorithm.html#cb2-6"></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
+<span id="cb2-7"><a href="MlAlgorithm.html#cb2-7"></a></span>
+<span id="cb2-8"><a href="MlAlgorithm.html#cb2-8"></a><span class="co"># General a toy dataset:s it&#39;s just a straight line with some Gaussian noise:</span></span>
+<span id="cb2-9"><a href="MlAlgorithm.html#cb2-9"></a>xmin, xmax <span class="op">=</span> <span class="dv">-5</span>, <span class="dv">5</span></span>
+<span id="cb2-10"><a href="MlAlgorithm.html#cb2-10"></a>n_samples <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb2-11"><a href="MlAlgorithm.html#cb2-11"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb2-12"><a href="MlAlgorithm.html#cb2-12"></a>X <span class="op">=</span> np.random.normal(size<span class="op">=</span>n_samples)</span>
+<span id="cb2-13"><a href="MlAlgorithm.html#cb2-13"></a>y <span class="op">=</span> (X <span class="op">&gt;</span> <span class="dv">0</span>).astype(np.<span class="bu">float</span>)</span>
+<span id="cb2-14"><a href="MlAlgorithm.html#cb2-14"></a>X[X <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">*=</span> <span class="dv">4</span></span>
+<span id="cb2-15"><a href="MlAlgorithm.html#cb2-15"></a>X <span class="op">+=</span> <span class="fl">.3</span> <span class="op">*</span> np.random.normal(size<span class="op">=</span>n_samples)</span>
+<span id="cb2-16"><a href="MlAlgorithm.html#cb2-16"></a></span>
+<span id="cb2-17"><a href="MlAlgorithm.html#cb2-17"></a>X <span class="op">=</span> X[:, np.newaxis]</span>
+<span id="cb2-18"><a href="MlAlgorithm.html#cb2-18"></a></span>
+<span id="cb2-19"><a href="MlAlgorithm.html#cb2-19"></a><span class="co"># Fit the classifier</span></span>
+<span id="cb2-20"><a href="MlAlgorithm.html#cb2-20"></a>clf <span class="op">=</span> linear_model.LogisticRegression(C<span class="op">=</span><span class="fl">1e5</span>)</span>
+<span id="cb2-21"><a href="MlAlgorithm.html#cb2-21"></a>clf.fit(X, y)</span>
+<span id="cb2-22"><a href="MlAlgorithm.html#cb2-22"></a></span>
+<span id="cb2-23"><a href="MlAlgorithm.html#cb2-23"></a><span class="co"># and plot the result</span></span>
+<span id="cb2-24"><a href="MlAlgorithm.html#cb2-24"></a>plt.figure(<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb2-25"><a href="MlAlgorithm.html#cb2-25"></a>plt.clf()</span>
+<span id="cb2-26"><a href="MlAlgorithm.html#cb2-26"></a>plt.scatter(X.ravel(), y, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, zorder<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb2-27"><a href="MlAlgorithm.html#cb2-27"></a>X_test <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">300</span>)</span>
+<span id="cb2-28"><a href="MlAlgorithm.html#cb2-28"></a></span>
+<span id="cb2-29"><a href="MlAlgorithm.html#cb2-29"></a>loss <span class="op">=</span> expit(X_test <span class="op">*</span> clf.coef_ <span class="op">+</span> clf.intercept_).ravel()</span>
+<span id="cb2-30"><a href="MlAlgorithm.html#cb2-30"></a>plt.plot(X_test, loss, color<span class="op">=</span><span class="st">&#39;red&#39;</span>, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb2-31"><a href="MlAlgorithm.html#cb2-31"></a></span>
+<span id="cb2-32"><a href="MlAlgorithm.html#cb2-32"></a>ols <span class="op">=</span> linear_model.LinearRegression()</span>
+<span id="cb2-33"><a href="MlAlgorithm.html#cb2-33"></a>ols.fit(X, y)</span>
+<span id="cb2-34"><a href="MlAlgorithm.html#cb2-34"></a>plt.plot(X_test, ols.coef_ <span class="op">*</span> X_test <span class="op">+</span> ols.intercept_, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-35"><a href="MlAlgorithm.html#cb2-35"></a>plt.axhline(.<span class="dv">5</span>, color<span class="op">=</span><span class="st">&#39;.5&#39;</span>)</span>
+<span id="cb2-36"><a href="MlAlgorithm.html#cb2-36"></a></span>
+<span id="cb2-37"><a href="MlAlgorithm.html#cb2-37"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>)</span>
+<span id="cb2-38"><a href="MlAlgorithm.html#cb2-38"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)</span>
+<span id="cb2-39"><a href="MlAlgorithm.html#cb2-39"></a>plt.xticks(<span class="bu">range</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>))</span>
+<span id="cb2-40"><a href="MlAlgorithm.html#cb2-40"></a>plt.yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>])</span>
+<span id="cb2-41"><a href="MlAlgorithm.html#cb2-41"></a>plt.ylim(<span class="op">-</span>.<span class="dv">25</span>, <span class="fl">1.25</span>)</span>
+<span id="cb2-42"><a href="MlAlgorithm.html#cb2-42"></a>plt.xlim(<span class="op">-</span><span class="dv">4</span>, <span class="dv">10</span>)</span>
+<span id="cb2-43"><a href="MlAlgorithm.html#cb2-43"></a>plt.legend((<span class="st">&#39;Logistic Regression Model&#39;</span>, <span class="st">&#39;Linear Regression Model&#39;</span>),</span>
+<span id="cb2-44"><a href="MlAlgorithm.html#cb2-44"></a>           loc<span class="op">=</span><span class="st">&quot;lower right&quot;</span>, fontsize<span class="op">=</span><span class="st">&#39;small&#39;</span>)</span>
+<span id="cb2-45"><a href="MlAlgorithm.html#cb2-45"></a>plt.tight_layout()</span>
+<span id="cb2-46"><a href="MlAlgorithm.html#cb2-46"></a>plt.show()</span></code></pre></div>
+
+</div>
 </div>
 <div id="MlAlgoTrees" class="section level2">
 <h2><span class="header-section-number">7.3</span> Tree based methods TBD</h2>
@@ -526,60 +672,60 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>An example on how the gini value changes
 <img src="images/giniTreeExample.png" style="width:100.0%" /></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="MlAlgorithm.html#cb2-1"></a><span class="co"># source: https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html#sphx-glr-auto-examples-tree-plot-iris-dtc-py</span></span>
-<span id="cb2-2"><a href="MlAlgorithm.html#cb2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="MlAlgorithm.html#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-4"><a href="MlAlgorithm.html#cb2-4"></a></span>
-<span id="cb2-5"><a href="MlAlgorithm.html#cb2-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
-<span id="cb2-6"><a href="MlAlgorithm.html#cb2-6"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
-<span id="cb2-7"><a href="MlAlgorithm.html#cb2-7"></a></span>
-<span id="cb2-8"><a href="MlAlgorithm.html#cb2-8"></a><span class="co"># Parameters</span></span>
-<span id="cb2-9"><a href="MlAlgorithm.html#cb2-9"></a>n_classes <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb2-10"><a href="MlAlgorithm.html#cb2-10"></a>plot_colors <span class="op">=</span> <span class="st">&quot;ryb&quot;</span></span>
-<span id="cb2-11"><a href="MlAlgorithm.html#cb2-11"></a>plot_step <span class="op">=</span> <span class="fl">0.02</span></span>
-<span id="cb2-12"><a href="MlAlgorithm.html#cb2-12"></a></span>
-<span id="cb2-13"><a href="MlAlgorithm.html#cb2-13"></a><span class="co"># Load data</span></span>
-<span id="cb2-14"><a href="MlAlgorithm.html#cb2-14"></a>iris <span class="op">=</span> load_iris()</span>
-<span id="cb2-15"><a href="MlAlgorithm.html#cb2-15"></a></span>
-<span id="cb2-16"><a href="MlAlgorithm.html#cb2-16"></a><span class="cf">for</span> pairidx, pair <span class="kw">in</span> <span class="bu">enumerate</span>([[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">3</span>],</span>
-<span id="cb2-17"><a href="MlAlgorithm.html#cb2-17"></a>                                [<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">3</span>]]):</span>
-<span id="cb2-18"><a href="MlAlgorithm.html#cb2-18"></a>    <span class="co"># We only take the two corresponding features</span></span>
-<span id="cb2-19"><a href="MlAlgorithm.html#cb2-19"></a>    X <span class="op">=</span> iris.data[:, pair]</span>
-<span id="cb2-20"><a href="MlAlgorithm.html#cb2-20"></a>    y <span class="op">=</span> iris.target</span>
-<span id="cb2-21"><a href="MlAlgorithm.html#cb2-21"></a></span>
-<span id="cb2-22"><a href="MlAlgorithm.html#cb2-22"></a>    <span class="co"># Train</span></span>
-<span id="cb2-23"><a href="MlAlgorithm.html#cb2-23"></a>    clf <span class="op">=</span> DecisionTreeClassifier().fit(X, y)</span>
-<span id="cb2-24"><a href="MlAlgorithm.html#cb2-24"></a></span>
-<span id="cb2-25"><a href="MlAlgorithm.html#cb2-25"></a>    <span class="co"># Plot the decision boundary</span></span>
-<span id="cb2-26"><a href="MlAlgorithm.html#cb2-26"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">3</span>, pairidx <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb2-27"><a href="MlAlgorithm.html#cb2-27"></a></span>
-<span id="cb2-28"><a href="MlAlgorithm.html#cb2-28"></a>    x_min, x_max <span class="op">=</span> X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-29"><a href="MlAlgorithm.html#cb2-29"></a>    y_min, y_max <span class="op">=</span> X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb2-30"><a href="MlAlgorithm.html#cb2-30"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.arange(x_min, x_max, plot_step),</span>
-<span id="cb2-31"><a href="MlAlgorithm.html#cb2-31"></a>                         np.arange(y_min, y_max, plot_step))</span>
-<span id="cb2-32"><a href="MlAlgorithm.html#cb2-32"></a>    plt.tight_layout(h_pad<span class="op">=</span><span class="fl">0.5</span>, w_pad<span class="op">=</span><span class="fl">0.5</span>, pad<span class="op">=</span><span class="fl">2.5</span>)</span>
-<span id="cb2-33"><a href="MlAlgorithm.html#cb2-33"></a></span>
-<span id="cb2-34"><a href="MlAlgorithm.html#cb2-34"></a>    Z <span class="op">=</span> clf.predict(np.c_[xx.ravel(), yy.ravel()])</span>
-<span id="cb2-35"><a href="MlAlgorithm.html#cb2-35"></a>    Z <span class="op">=</span> Z.reshape(xx.shape)</span>
-<span id="cb2-36"><a href="MlAlgorithm.html#cb2-36"></a>    cs <span class="op">=</span> plt.contourf(xx, yy, Z, cmap<span class="op">=</span>plt.cm.RdYlBu)</span>
-<span id="cb2-37"><a href="MlAlgorithm.html#cb2-37"></a></span>
-<span id="cb2-38"><a href="MlAlgorithm.html#cb2-38"></a>    plt.xlabel(iris.feature_names[pair[<span class="dv">0</span>]])</span>
-<span id="cb2-39"><a href="MlAlgorithm.html#cb2-39"></a>    plt.ylabel(iris.feature_names[pair[<span class="dv">1</span>]])</span>
-<span id="cb2-40"><a href="MlAlgorithm.html#cb2-40"></a></span>
-<span id="cb2-41"><a href="MlAlgorithm.html#cb2-41"></a>    <span class="co"># Plot the training points</span></span>
-<span id="cb2-42"><a href="MlAlgorithm.html#cb2-42"></a>    <span class="cf">for</span> i, color <span class="kw">in</span> <span class="bu">zip</span>(<span class="bu">range</span>(n_classes), plot_colors):</span>
-<span id="cb2-43"><a href="MlAlgorithm.html#cb2-43"></a>        idx <span class="op">=</span> np.where(y <span class="op">==</span> i)</span>
-<span id="cb2-44"><a href="MlAlgorithm.html#cb2-44"></a>        plt.scatter(X[idx, <span class="dv">0</span>], X[idx, <span class="dv">1</span>], c<span class="op">=</span>color, label<span class="op">=</span>iris.target_names[i],</span>
-<span id="cb2-45"><a href="MlAlgorithm.html#cb2-45"></a>                    cmap<span class="op">=</span>plt.cm.RdYlBu, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, s<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb2-46"><a href="MlAlgorithm.html#cb2-46"></a></span>
-<span id="cb2-47"><a href="MlAlgorithm.html#cb2-47"></a>plt.suptitle(<span class="st">&quot;Decision surface of a decision tree using paired features&quot;</span>)</span>
-<span id="cb2-48"><a href="MlAlgorithm.html#cb2-48"></a>plt.legend(loc<span class="op">=</span><span class="st">&#39;lower right&#39;</span>, borderpad<span class="op">=</span><span class="dv">0</span>, handletextpad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb2-49"><a href="MlAlgorithm.html#cb2-49"></a>plt.axis(<span class="st">&quot;tight&quot;</span>)</span>
-<span id="cb2-50"><a href="MlAlgorithm.html#cb2-50"></a></span>
-<span id="cb2-51"><a href="MlAlgorithm.html#cb2-51"></a>plt.figure(dpi <span class="op">=</span> <span class="dv">300</span>) <span class="co"># Uwe Sterr added dpi argument for better readability of plot</span></span>
-<span id="cb2-52"><a href="MlAlgorithm.html#cb2-52"></a>clf <span class="op">=</span> DecisionTreeClassifier().fit(iris.data, iris.target)</span>
-<span id="cb2-53"><a href="MlAlgorithm.html#cb2-53"></a>plot_tree(clf, filled<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-54"><a href="MlAlgorithm.html#cb2-54"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="MlAlgorithm.html#cb3-1"></a><span class="co"># source: https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html#sphx-glr-auto-examples-tree-plot-iris-dtc-py</span></span>
+<span id="cb3-2"><a href="MlAlgorithm.html#cb3-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="MlAlgorithm.html#cb3-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-4"><a href="MlAlgorithm.html#cb3-4"></a></span>
+<span id="cb3-5"><a href="MlAlgorithm.html#cb3-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb3-6"><a href="MlAlgorithm.html#cb3-6"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
+<span id="cb3-7"><a href="MlAlgorithm.html#cb3-7"></a></span>
+<span id="cb3-8"><a href="MlAlgorithm.html#cb3-8"></a><span class="co"># Parameters</span></span>
+<span id="cb3-9"><a href="MlAlgorithm.html#cb3-9"></a>n_classes <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb3-10"><a href="MlAlgorithm.html#cb3-10"></a>plot_colors <span class="op">=</span> <span class="st">&quot;ryb&quot;</span></span>
+<span id="cb3-11"><a href="MlAlgorithm.html#cb3-11"></a>plot_step <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb3-12"><a href="MlAlgorithm.html#cb3-12"></a></span>
+<span id="cb3-13"><a href="MlAlgorithm.html#cb3-13"></a><span class="co"># Load data</span></span>
+<span id="cb3-14"><a href="MlAlgorithm.html#cb3-14"></a>iris <span class="op">=</span> load_iris()</span>
+<span id="cb3-15"><a href="MlAlgorithm.html#cb3-15"></a></span>
+<span id="cb3-16"><a href="MlAlgorithm.html#cb3-16"></a><span class="cf">for</span> pairidx, pair <span class="kw">in</span> <span class="bu">enumerate</span>([[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">3</span>],</span>
+<span id="cb3-17"><a href="MlAlgorithm.html#cb3-17"></a>                                [<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">3</span>]]):</span>
+<span id="cb3-18"><a href="MlAlgorithm.html#cb3-18"></a>    <span class="co"># We only take the two corresponding features</span></span>
+<span id="cb3-19"><a href="MlAlgorithm.html#cb3-19"></a>    X <span class="op">=</span> iris.data[:, pair]</span>
+<span id="cb3-20"><a href="MlAlgorithm.html#cb3-20"></a>    y <span class="op">=</span> iris.target</span>
+<span id="cb3-21"><a href="MlAlgorithm.html#cb3-21"></a></span>
+<span id="cb3-22"><a href="MlAlgorithm.html#cb3-22"></a>    <span class="co"># Train</span></span>
+<span id="cb3-23"><a href="MlAlgorithm.html#cb3-23"></a>    clf <span class="op">=</span> DecisionTreeClassifier().fit(X, y)</span>
+<span id="cb3-24"><a href="MlAlgorithm.html#cb3-24"></a></span>
+<span id="cb3-25"><a href="MlAlgorithm.html#cb3-25"></a>    <span class="co"># Plot the decision boundary</span></span>
+<span id="cb3-26"><a href="MlAlgorithm.html#cb3-26"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">3</span>, pairidx <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb3-27"><a href="MlAlgorithm.html#cb3-27"></a></span>
+<span id="cb3-28"><a href="MlAlgorithm.html#cb3-28"></a>    x_min, x_max <span class="op">=</span> X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-29"><a href="MlAlgorithm.html#cb3-29"></a>    y_min, y_max <span class="op">=</span> X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-30"><a href="MlAlgorithm.html#cb3-30"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.arange(x_min, x_max, plot_step),</span>
+<span id="cb3-31"><a href="MlAlgorithm.html#cb3-31"></a>                         np.arange(y_min, y_max, plot_step))</span>
+<span id="cb3-32"><a href="MlAlgorithm.html#cb3-32"></a>    plt.tight_layout(h_pad<span class="op">=</span><span class="fl">0.5</span>, w_pad<span class="op">=</span><span class="fl">0.5</span>, pad<span class="op">=</span><span class="fl">2.5</span>)</span>
+<span id="cb3-33"><a href="MlAlgorithm.html#cb3-33"></a></span>
+<span id="cb3-34"><a href="MlAlgorithm.html#cb3-34"></a>    Z <span class="op">=</span> clf.predict(np.c_[xx.ravel(), yy.ravel()])</span>
+<span id="cb3-35"><a href="MlAlgorithm.html#cb3-35"></a>    Z <span class="op">=</span> Z.reshape(xx.shape)</span>
+<span id="cb3-36"><a href="MlAlgorithm.html#cb3-36"></a>    cs <span class="op">=</span> plt.contourf(xx, yy, Z, cmap<span class="op">=</span>plt.cm.RdYlBu)</span>
+<span id="cb3-37"><a href="MlAlgorithm.html#cb3-37"></a></span>
+<span id="cb3-38"><a href="MlAlgorithm.html#cb3-38"></a>    plt.xlabel(iris.feature_names[pair[<span class="dv">0</span>]])</span>
+<span id="cb3-39"><a href="MlAlgorithm.html#cb3-39"></a>    plt.ylabel(iris.feature_names[pair[<span class="dv">1</span>]])</span>
+<span id="cb3-40"><a href="MlAlgorithm.html#cb3-40"></a></span>
+<span id="cb3-41"><a href="MlAlgorithm.html#cb3-41"></a>    <span class="co"># Plot the training points</span></span>
+<span id="cb3-42"><a href="MlAlgorithm.html#cb3-42"></a>    <span class="cf">for</span> i, color <span class="kw">in</span> <span class="bu">zip</span>(<span class="bu">range</span>(n_classes), plot_colors):</span>
+<span id="cb3-43"><a href="MlAlgorithm.html#cb3-43"></a>        idx <span class="op">=</span> np.where(y <span class="op">==</span> i)</span>
+<span id="cb3-44"><a href="MlAlgorithm.html#cb3-44"></a>        plt.scatter(X[idx, <span class="dv">0</span>], X[idx, <span class="dv">1</span>], c<span class="op">=</span>color, label<span class="op">=</span>iris.target_names[i],</span>
+<span id="cb3-45"><a href="MlAlgorithm.html#cb3-45"></a>                    cmap<span class="op">=</span>plt.cm.RdYlBu, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, s<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-46"><a href="MlAlgorithm.html#cb3-46"></a></span>
+<span id="cb3-47"><a href="MlAlgorithm.html#cb3-47"></a>plt.suptitle(<span class="st">&quot;Decision surface of a decision tree using paired features&quot;</span>)</span>
+<span id="cb3-48"><a href="MlAlgorithm.html#cb3-48"></a>plt.legend(loc<span class="op">=</span><span class="st">&#39;lower right&#39;</span>, borderpad<span class="op">=</span><span class="dv">0</span>, handletextpad<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-49"><a href="MlAlgorithm.html#cb3-49"></a>plt.axis(<span class="st">&quot;tight&quot;</span>)</span>
+<span id="cb3-50"><a href="MlAlgorithm.html#cb3-50"></a></span>
+<span id="cb3-51"><a href="MlAlgorithm.html#cb3-51"></a>plt.figure(dpi <span class="op">=</span> <span class="dv">300</span>) <span class="co"># Uwe Sterr added dpi argument for better readability of plot</span></span>
+<span id="cb3-52"><a href="MlAlgorithm.html#cb3-52"></a>clf <span class="op">=</span> DecisionTreeClassifier().fit(iris.data, iris.target)</span>
+<span id="cb3-53"><a href="MlAlgorithm.html#cb3-53"></a>plot_tree(clf, filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-54"><a href="MlAlgorithm.html#cb3-54"></a>plt.show()</span></code></pre></div>
 </div>
 <div id="ensembles" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> Ensembles</h3>
@@ -696,23 +842,23 @@ An example on how boosting works for tree is given in chapter <a href="MlAlgorit
 <h4><span class="header-section-number">7.3.3.1</span> Python example for random forest</h4>
 <p>The sample code for a random forest classifier produces a ROC image as shown below</p>
 <p><img src="images/rocRfPython.png" style="width:60.0%" /></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="MlAlgorithm.html#cb3-1"></a></span>
-<span id="cb3-2"><a href="MlAlgorithm.html#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="MlAlgorithm.html#cb3-3"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb3-4"><a href="MlAlgorithm.html#cb3-4"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> plot_roc_curve</span>
-<span id="cb3-5"><a href="MlAlgorithm.html#cb3-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_wine</span>
-<span id="cb3-6"><a href="MlAlgorithm.html#cb3-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb3-7"><a href="MlAlgorithm.html#cb3-7"></a></span>
-<span id="cb3-8"><a href="MlAlgorithm.html#cb3-8"></a>X, y <span class="op">=</span> load_wine(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-9"><a href="MlAlgorithm.html#cb3-9"></a>y <span class="op">=</span> y <span class="op">==</span> <span class="dv">2</span></span>
-<span id="cb3-10"><a href="MlAlgorithm.html#cb3-10"></a></span>
-<span id="cb3-11"><a href="MlAlgorithm.html#cb3-11"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb3-12"><a href="MlAlgorithm.html#cb3-12"></a></span>
-<span id="cb3-13"><a href="MlAlgorithm.html#cb3-13"></a>rfc <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb3-14"><a href="MlAlgorithm.html#cb3-14"></a>rfc.fit(X_train, y_train)</span>
-<span id="cb3-15"><a href="MlAlgorithm.html#cb3-15"></a>ax <span class="op">=</span> plt.gca()</span>
-<span id="cb3-16"><a href="MlAlgorithm.html#cb3-16"></a>rfc_disp <span class="op">=</span> plot_roc_curve(rfc, X_test, y_test, ax<span class="op">=</span>ax, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb3-17"><a href="MlAlgorithm.html#cb3-17"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="MlAlgorithm.html#cb4-1"></a></span>
+<span id="cb4-2"><a href="MlAlgorithm.html#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="MlAlgorithm.html#cb4-3"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb4-4"><a href="MlAlgorithm.html#cb4-4"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> plot_roc_curve</span>
+<span id="cb4-5"><a href="MlAlgorithm.html#cb4-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_wine</span>
+<span id="cb4-6"><a href="MlAlgorithm.html#cb4-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb4-7"><a href="MlAlgorithm.html#cb4-7"></a></span>
+<span id="cb4-8"><a href="MlAlgorithm.html#cb4-8"></a>X, y <span class="op">=</span> load_wine(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-9"><a href="MlAlgorithm.html#cb4-9"></a>y <span class="op">=</span> y <span class="op">==</span> <span class="dv">2</span></span>
+<span id="cb4-10"><a href="MlAlgorithm.html#cb4-10"></a></span>
+<span id="cb4-11"><a href="MlAlgorithm.html#cb4-11"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb4-12"><a href="MlAlgorithm.html#cb4-12"></a></span>
+<span id="cb4-13"><a href="MlAlgorithm.html#cb4-13"></a>rfc <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb4-14"><a href="MlAlgorithm.html#cb4-14"></a>rfc.fit(X_train, y_train)</span>
+<span id="cb4-15"><a href="MlAlgorithm.html#cb4-15"></a>ax <span class="op">=</span> plt.gca()</span>
+<span id="cb4-16"><a href="MlAlgorithm.html#cb4-16"></a>rfc_disp <span class="op">=</span> plot_roc_curve(rfc, X_test, y_test, ax<span class="op">=</span>ax, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb4-17"><a href="MlAlgorithm.html#cb4-17"></a>plt.show()</span></code></pre></div>
 </div>
 <div id="parameters-for-random-forest" class="section level4">
 <h4><span class="header-section-number">7.3.3.2</span> Parameters for random forest</h4>
@@ -1135,86 +1281,86 @@ If float, then draw <code class="docutils literal notranslate"><span class="pre"
 <p>A popular library for boosted trees in Python is <strong>XGBoost</strong>, the documentation is hosted at <a href="https://xgboost.readthedocs.io/en/latest/" class="uri">https://xgboost.readthedocs.io/en/latest/</a>.<br />
 Plenty of examples are on the GitHub page <a href="https://github.com/dmlc/xgboost/tree/master/demo/guide-python" class="uri">https://github.com/dmlc/xgboost/tree/master/demo/guide-python</a>.</p>
 <p>The example script <strong>basic_walkthrough.py</strong> is shown below</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="MlAlgorithm.html#cb4-1"></a><span class="co">#!/usr/bin/python</span></span>
-<span id="cb4-2"><a href="MlAlgorithm.html#cb4-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-3"><a href="MlAlgorithm.html#cb4-3"></a><span class="im">import</span> scipy.sparse</span>
-<span id="cb4-4"><a href="MlAlgorithm.html#cb4-4"></a><span class="im">import</span> pickle</span>
-<span id="cb4-5"><a href="MlAlgorithm.html#cb4-5"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
-<span id="cb4-6"><a href="MlAlgorithm.html#cb4-6"></a></span>
-<span id="cb4-7"><a href="MlAlgorithm.html#cb4-7"></a><span class="co">### simple example</span></span>
-<span id="cb4-8"><a href="MlAlgorithm.html#cb4-8"></a><span class="co"># load file from text file, also binary buffer generated by xgboost</span></span>
-<span id="cb4-9"><a href="MlAlgorithm.html#cb4-9"></a>dtrain <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>)</span>
-<span id="cb4-10"><a href="MlAlgorithm.html#cb4-10"></a>dtest <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.test&#39;</span>)</span>
-<span id="cb4-11"><a href="MlAlgorithm.html#cb4-11"></a></span>
-<span id="cb4-12"><a href="MlAlgorithm.html#cb4-12"></a><span class="co"># specify parameters via map, definition are same as c++ version</span></span>
-<span id="cb4-13"><a href="MlAlgorithm.html#cb4-13"></a>param <span class="op">=</span> {<span class="st">&#39;max_depth&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;eta&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;silent&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;objective&#39;</span>:<span class="st">&#39;binary:logistic&#39;</span>}</span>
-<span id="cb4-14"><a href="MlAlgorithm.html#cb4-14"></a></span>
-<span id="cb4-15"><a href="MlAlgorithm.html#cb4-15"></a><span class="co"># specify validations set to watch performance</span></span>
-<span id="cb4-16"><a href="MlAlgorithm.html#cb4-16"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb4-17"><a href="MlAlgorithm.html#cb4-17"></a>num_round <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb4-18"><a href="MlAlgorithm.html#cb4-18"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
-<span id="cb4-19"><a href="MlAlgorithm.html#cb4-19"></a></span>
-<span id="cb4-20"><a href="MlAlgorithm.html#cb4-20"></a><span class="co"># this is prediction</span></span>
-<span id="cb4-21"><a href="MlAlgorithm.html#cb4-21"></a>preds <span class="op">=</span> bst.predict(dtest)</span>
-<span id="cb4-22"><a href="MlAlgorithm.html#cb4-22"></a>labels <span class="op">=</span> dtest.get_label()</span>
-<span id="cb4-23"><a href="MlAlgorithm.html#cb4-23"></a><span class="bu">print</span>(<span class="st">&#39;error=</span><span class="sc">%f</span><span class="st">&#39;</span> <span class="op">%</span> (<span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(preds)) <span class="cf">if</span> <span class="bu">int</span>(preds[i] <span class="op">&gt;</span> <span class="fl">0.5</span>) <span class="op">!=</span> labels[i]) <span class="op">/</span> <span class="bu">float</span>(<span class="bu">len</span>(preds))))</span>
-<span id="cb4-24"><a href="MlAlgorithm.html#cb4-24"></a>bst.save_model(<span class="st">&#39;0001.model&#39;</span>)</span>
-<span id="cb4-25"><a href="MlAlgorithm.html#cb4-25"></a><span class="co"># dump model</span></span>
-<span id="cb4-26"><a href="MlAlgorithm.html#cb4-26"></a>bst.dump_model(<span class="st">&#39;dump.raw.txt&#39;</span>)</span>
-<span id="cb4-27"><a href="MlAlgorithm.html#cb4-27"></a><span class="co"># dump model with feature map</span></span>
-<span id="cb4-28"><a href="MlAlgorithm.html#cb4-28"></a>bst.dump_model(<span class="st">&#39;dump.nice.txt&#39;</span>, <span class="st">&#39;../data/featmap.txt&#39;</span>)</span>
-<span id="cb4-29"><a href="MlAlgorithm.html#cb4-29"></a></span>
-<span id="cb4-30"><a href="MlAlgorithm.html#cb4-30"></a><span class="co"># save dmatrix into binary buffer</span></span>
-<span id="cb4-31"><a href="MlAlgorithm.html#cb4-31"></a>dtest.save_binary(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
-<span id="cb4-32"><a href="MlAlgorithm.html#cb4-32"></a><span class="co"># save model</span></span>
-<span id="cb4-33"><a href="MlAlgorithm.html#cb4-33"></a>bst.save_model(<span class="st">&#39;xgb.model&#39;</span>)</span>
-<span id="cb4-34"><a href="MlAlgorithm.html#cb4-34"></a><span class="co"># load model and data in</span></span>
-<span id="cb4-35"><a href="MlAlgorithm.html#cb4-35"></a>bst2 <span class="op">=</span> xgb.Booster(model_file<span class="op">=</span><span class="st">&#39;xgb.model&#39;</span>)</span>
-<span id="cb4-36"><a href="MlAlgorithm.html#cb4-36"></a>dtest2 <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
-<span id="cb4-37"><a href="MlAlgorithm.html#cb4-37"></a>preds2 <span class="op">=</span> bst2.predict(dtest2)</span>
-<span id="cb4-38"><a href="MlAlgorithm.html#cb4-38"></a><span class="co"># assert they are the same</span></span>
-<span id="cb4-39"><a href="MlAlgorithm.html#cb4-39"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds2 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb4-40"><a href="MlAlgorithm.html#cb4-40"></a></span>
-<span id="cb4-41"><a href="MlAlgorithm.html#cb4-41"></a><span class="co"># alternatively, you can pickle the booster</span></span>
-<span id="cb4-42"><a href="MlAlgorithm.html#cb4-42"></a>pks <span class="op">=</span> pickle.dumps(bst2)</span>
-<span id="cb4-43"><a href="MlAlgorithm.html#cb4-43"></a><span class="co"># load model and data in</span></span>
-<span id="cb4-44"><a href="MlAlgorithm.html#cb4-44"></a>bst3 <span class="op">=</span> pickle.loads(pks)</span>
-<span id="cb4-45"><a href="MlAlgorithm.html#cb4-45"></a>preds3 <span class="op">=</span> bst3.predict(dtest2)</span>
-<span id="cb4-46"><a href="MlAlgorithm.html#cb4-46"></a><span class="co"># assert they are the same</span></span>
-<span id="cb4-47"><a href="MlAlgorithm.html#cb4-47"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds3 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb4-48"><a href="MlAlgorithm.html#cb4-48"></a></span>
-<span id="cb4-49"><a href="MlAlgorithm.html#cb4-49"></a><span class="co">###</span></span>
-<span id="cb4-50"><a href="MlAlgorithm.html#cb4-50"></a><span class="co"># build dmatrix from scipy.sparse</span></span>
-<span id="cb4-51"><a href="MlAlgorithm.html#cb4-51"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSR Matrix&#39;</span>)</span>
-<span id="cb4-52"><a href="MlAlgorithm.html#cb4-52"></a>labels <span class="op">=</span> []</span>
-<span id="cb4-53"><a href="MlAlgorithm.html#cb4-53"></a>row <span class="op">=</span> []<span class="op">;</span> col <span class="op">=</span> []<span class="op">;</span> dat <span class="op">=</span> []</span>
-<span id="cb4-54"><a href="MlAlgorithm.html#cb4-54"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-55"><a href="MlAlgorithm.html#cb4-55"></a><span class="cf">for</span> l <span class="kw">in</span> <span class="bu">open</span>(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>):</span>
-<span id="cb4-56"><a href="MlAlgorithm.html#cb4-56"></a>    arr <span class="op">=</span> l.split()</span>
-<span id="cb4-57"><a href="MlAlgorithm.html#cb4-57"></a>    labels.append(<span class="bu">int</span>(arr[<span class="dv">0</span>]))</span>
-<span id="cb4-58"><a href="MlAlgorithm.html#cb4-58"></a>    <span class="cf">for</span> it <span class="kw">in</span> arr[<span class="dv">1</span>:]:</span>
-<span id="cb4-59"><a href="MlAlgorithm.html#cb4-59"></a>        k,v <span class="op">=</span> it.split(<span class="st">&#39;:&#39;</span>)</span>
-<span id="cb4-60"><a href="MlAlgorithm.html#cb4-60"></a>        row.append(i)<span class="op">;</span> col.append(<span class="bu">int</span>(k))<span class="op">;</span> dat.append(<span class="bu">float</span>(v))</span>
-<span id="cb4-61"><a href="MlAlgorithm.html#cb4-61"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb4-62"><a href="MlAlgorithm.html#cb4-62"></a>csr <span class="op">=</span> scipy.sparse.csr_matrix((dat, (row, col)))</span>
-<span id="cb4-63"><a href="MlAlgorithm.html#cb4-63"></a>dtrain <span class="op">=</span> xgb.DMatrix(csr, label<span class="op">=</span>labels)</span>
-<span id="cb4-64"><a href="MlAlgorithm.html#cb4-64"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb4-65"><a href="MlAlgorithm.html#cb4-65"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
-<span id="cb4-66"><a href="MlAlgorithm.html#cb4-66"></a></span>
-<span id="cb4-67"><a href="MlAlgorithm.html#cb4-67"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSC Matrix&#39;</span>)</span>
-<span id="cb4-68"><a href="MlAlgorithm.html#cb4-68"></a><span class="co"># we can also construct from csc matrix</span></span>
-<span id="cb4-69"><a href="MlAlgorithm.html#cb4-69"></a>csc <span class="op">=</span> scipy.sparse.csc_matrix((dat, (row, col)))</span>
-<span id="cb4-70"><a href="MlAlgorithm.html#cb4-70"></a>dtrain <span class="op">=</span> xgb.DMatrix(csc, label<span class="op">=</span>labels)</span>
-<span id="cb4-71"><a href="MlAlgorithm.html#cb4-71"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb4-72"><a href="MlAlgorithm.html#cb4-72"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
-<span id="cb4-73"><a href="MlAlgorithm.html#cb4-73"></a></span>
-<span id="cb4-74"><a href="MlAlgorithm.html#cb4-74"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from numpy array&#39;</span>)</span>
-<span id="cb4-75"><a href="MlAlgorithm.html#cb4-75"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: npymat is numpy array, we will convert it into scipy.sparse.csr_matrix in internal implementation</span></span>
-<span id="cb4-76"><a href="MlAlgorithm.html#cb4-76"></a><span class="co"># then convert to DMatrix</span></span>
-<span id="cb4-77"><a href="MlAlgorithm.html#cb4-77"></a>npymat <span class="op">=</span> csr.todense()</span>
-<span id="cb4-78"><a href="MlAlgorithm.html#cb4-78"></a>dtrain <span class="op">=</span> xgb.DMatrix(npymat, label<span class="op">=</span>labels)</span>
-<span id="cb4-79"><a href="MlAlgorithm.html#cb4-79"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb4-80"><a href="MlAlgorithm.html#cb4-80"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="MlAlgorithm.html#cb5-1"></a><span class="co">#!/usr/bin/python</span></span>
+<span id="cb5-2"><a href="MlAlgorithm.html#cb5-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="MlAlgorithm.html#cb5-3"></a><span class="im">import</span> scipy.sparse</span>
+<span id="cb5-4"><a href="MlAlgorithm.html#cb5-4"></a><span class="im">import</span> pickle</span>
+<span id="cb5-5"><a href="MlAlgorithm.html#cb5-5"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
+<span id="cb5-6"><a href="MlAlgorithm.html#cb5-6"></a></span>
+<span id="cb5-7"><a href="MlAlgorithm.html#cb5-7"></a><span class="co">### simple example</span></span>
+<span id="cb5-8"><a href="MlAlgorithm.html#cb5-8"></a><span class="co"># load file from text file, also binary buffer generated by xgboost</span></span>
+<span id="cb5-9"><a href="MlAlgorithm.html#cb5-9"></a>dtrain <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>)</span>
+<span id="cb5-10"><a href="MlAlgorithm.html#cb5-10"></a>dtest <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.test&#39;</span>)</span>
+<span id="cb5-11"><a href="MlAlgorithm.html#cb5-11"></a></span>
+<span id="cb5-12"><a href="MlAlgorithm.html#cb5-12"></a><span class="co"># specify parameters via map, definition are same as c++ version</span></span>
+<span id="cb5-13"><a href="MlAlgorithm.html#cb5-13"></a>param <span class="op">=</span> {<span class="st">&#39;max_depth&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;eta&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;silent&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;objective&#39;</span>:<span class="st">&#39;binary:logistic&#39;</span>}</span>
+<span id="cb5-14"><a href="MlAlgorithm.html#cb5-14"></a></span>
+<span id="cb5-15"><a href="MlAlgorithm.html#cb5-15"></a><span class="co"># specify validations set to watch performance</span></span>
+<span id="cb5-16"><a href="MlAlgorithm.html#cb5-16"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb5-17"><a href="MlAlgorithm.html#cb5-17"></a>num_round <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb5-18"><a href="MlAlgorithm.html#cb5-18"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb5-19"><a href="MlAlgorithm.html#cb5-19"></a></span>
+<span id="cb5-20"><a href="MlAlgorithm.html#cb5-20"></a><span class="co"># this is prediction</span></span>
+<span id="cb5-21"><a href="MlAlgorithm.html#cb5-21"></a>preds <span class="op">=</span> bst.predict(dtest)</span>
+<span id="cb5-22"><a href="MlAlgorithm.html#cb5-22"></a>labels <span class="op">=</span> dtest.get_label()</span>
+<span id="cb5-23"><a href="MlAlgorithm.html#cb5-23"></a><span class="bu">print</span>(<span class="st">&#39;error=</span><span class="sc">%f</span><span class="st">&#39;</span> <span class="op">%</span> (<span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(preds)) <span class="cf">if</span> <span class="bu">int</span>(preds[i] <span class="op">&gt;</span> <span class="fl">0.5</span>) <span class="op">!=</span> labels[i]) <span class="op">/</span> <span class="bu">float</span>(<span class="bu">len</span>(preds))))</span>
+<span id="cb5-24"><a href="MlAlgorithm.html#cb5-24"></a>bst.save_model(<span class="st">&#39;0001.model&#39;</span>)</span>
+<span id="cb5-25"><a href="MlAlgorithm.html#cb5-25"></a><span class="co"># dump model</span></span>
+<span id="cb5-26"><a href="MlAlgorithm.html#cb5-26"></a>bst.dump_model(<span class="st">&#39;dump.raw.txt&#39;</span>)</span>
+<span id="cb5-27"><a href="MlAlgorithm.html#cb5-27"></a><span class="co"># dump model with feature map</span></span>
+<span id="cb5-28"><a href="MlAlgorithm.html#cb5-28"></a>bst.dump_model(<span class="st">&#39;dump.nice.txt&#39;</span>, <span class="st">&#39;../data/featmap.txt&#39;</span>)</span>
+<span id="cb5-29"><a href="MlAlgorithm.html#cb5-29"></a></span>
+<span id="cb5-30"><a href="MlAlgorithm.html#cb5-30"></a><span class="co"># save dmatrix into binary buffer</span></span>
+<span id="cb5-31"><a href="MlAlgorithm.html#cb5-31"></a>dtest.save_binary(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
+<span id="cb5-32"><a href="MlAlgorithm.html#cb5-32"></a><span class="co"># save model</span></span>
+<span id="cb5-33"><a href="MlAlgorithm.html#cb5-33"></a>bst.save_model(<span class="st">&#39;xgb.model&#39;</span>)</span>
+<span id="cb5-34"><a href="MlAlgorithm.html#cb5-34"></a><span class="co"># load model and data in</span></span>
+<span id="cb5-35"><a href="MlAlgorithm.html#cb5-35"></a>bst2 <span class="op">=</span> xgb.Booster(model_file<span class="op">=</span><span class="st">&#39;xgb.model&#39;</span>)</span>
+<span id="cb5-36"><a href="MlAlgorithm.html#cb5-36"></a>dtest2 <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
+<span id="cb5-37"><a href="MlAlgorithm.html#cb5-37"></a>preds2 <span class="op">=</span> bst2.predict(dtest2)</span>
+<span id="cb5-38"><a href="MlAlgorithm.html#cb5-38"></a><span class="co"># assert they are the same</span></span>
+<span id="cb5-39"><a href="MlAlgorithm.html#cb5-39"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds2 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb5-40"><a href="MlAlgorithm.html#cb5-40"></a></span>
+<span id="cb5-41"><a href="MlAlgorithm.html#cb5-41"></a><span class="co"># alternatively, you can pickle the booster</span></span>
+<span id="cb5-42"><a href="MlAlgorithm.html#cb5-42"></a>pks <span class="op">=</span> pickle.dumps(bst2)</span>
+<span id="cb5-43"><a href="MlAlgorithm.html#cb5-43"></a><span class="co"># load model and data in</span></span>
+<span id="cb5-44"><a href="MlAlgorithm.html#cb5-44"></a>bst3 <span class="op">=</span> pickle.loads(pks)</span>
+<span id="cb5-45"><a href="MlAlgorithm.html#cb5-45"></a>preds3 <span class="op">=</span> bst3.predict(dtest2)</span>
+<span id="cb5-46"><a href="MlAlgorithm.html#cb5-46"></a><span class="co"># assert they are the same</span></span>
+<span id="cb5-47"><a href="MlAlgorithm.html#cb5-47"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds3 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb5-48"><a href="MlAlgorithm.html#cb5-48"></a></span>
+<span id="cb5-49"><a href="MlAlgorithm.html#cb5-49"></a><span class="co">###</span></span>
+<span id="cb5-50"><a href="MlAlgorithm.html#cb5-50"></a><span class="co"># build dmatrix from scipy.sparse</span></span>
+<span id="cb5-51"><a href="MlAlgorithm.html#cb5-51"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSR Matrix&#39;</span>)</span>
+<span id="cb5-52"><a href="MlAlgorithm.html#cb5-52"></a>labels <span class="op">=</span> []</span>
+<span id="cb5-53"><a href="MlAlgorithm.html#cb5-53"></a>row <span class="op">=</span> []<span class="op">;</span> col <span class="op">=</span> []<span class="op">;</span> dat <span class="op">=</span> []</span>
+<span id="cb5-54"><a href="MlAlgorithm.html#cb5-54"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-55"><a href="MlAlgorithm.html#cb5-55"></a><span class="cf">for</span> l <span class="kw">in</span> <span class="bu">open</span>(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>):</span>
+<span id="cb5-56"><a href="MlAlgorithm.html#cb5-56"></a>    arr <span class="op">=</span> l.split()</span>
+<span id="cb5-57"><a href="MlAlgorithm.html#cb5-57"></a>    labels.append(<span class="bu">int</span>(arr[<span class="dv">0</span>]))</span>
+<span id="cb5-58"><a href="MlAlgorithm.html#cb5-58"></a>    <span class="cf">for</span> it <span class="kw">in</span> arr[<span class="dv">1</span>:]:</span>
+<span id="cb5-59"><a href="MlAlgorithm.html#cb5-59"></a>        k,v <span class="op">=</span> it.split(<span class="st">&#39;:&#39;</span>)</span>
+<span id="cb5-60"><a href="MlAlgorithm.html#cb5-60"></a>        row.append(i)<span class="op">;</span> col.append(<span class="bu">int</span>(k))<span class="op">;</span> dat.append(<span class="bu">float</span>(v))</span>
+<span id="cb5-61"><a href="MlAlgorithm.html#cb5-61"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-62"><a href="MlAlgorithm.html#cb5-62"></a>csr <span class="op">=</span> scipy.sparse.csr_matrix((dat, (row, col)))</span>
+<span id="cb5-63"><a href="MlAlgorithm.html#cb5-63"></a>dtrain <span class="op">=</span> xgb.DMatrix(csr, label<span class="op">=</span>labels)</span>
+<span id="cb5-64"><a href="MlAlgorithm.html#cb5-64"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb5-65"><a href="MlAlgorithm.html#cb5-65"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb5-66"><a href="MlAlgorithm.html#cb5-66"></a></span>
+<span id="cb5-67"><a href="MlAlgorithm.html#cb5-67"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSC Matrix&#39;</span>)</span>
+<span id="cb5-68"><a href="MlAlgorithm.html#cb5-68"></a><span class="co"># we can also construct from csc matrix</span></span>
+<span id="cb5-69"><a href="MlAlgorithm.html#cb5-69"></a>csc <span class="op">=</span> scipy.sparse.csc_matrix((dat, (row, col)))</span>
+<span id="cb5-70"><a href="MlAlgorithm.html#cb5-70"></a>dtrain <span class="op">=</span> xgb.DMatrix(csc, label<span class="op">=</span>labels)</span>
+<span id="cb5-71"><a href="MlAlgorithm.html#cb5-71"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb5-72"><a href="MlAlgorithm.html#cb5-72"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb5-73"><a href="MlAlgorithm.html#cb5-73"></a></span>
+<span id="cb5-74"><a href="MlAlgorithm.html#cb5-74"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from numpy array&#39;</span>)</span>
+<span id="cb5-75"><a href="MlAlgorithm.html#cb5-75"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: npymat is numpy array, we will convert it into scipy.sparse.csr_matrix in internal implementation</span></span>
+<span id="cb5-76"><a href="MlAlgorithm.html#cb5-76"></a><span class="co"># then convert to DMatrix</span></span>
+<span id="cb5-77"><a href="MlAlgorithm.html#cb5-77"></a>npymat <span class="op">=</span> csr.todense()</span>
+<span id="cb5-78"><a href="MlAlgorithm.html#cb5-78"></a>dtrain <span class="op">=</span> xgb.DMatrix(npymat, label<span class="op">=</span>labels)</span>
+<span id="cb5-79"><a href="MlAlgorithm.html#cb5-79"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb5-80"><a href="MlAlgorithm.html#cb5-80"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span></code></pre></div>
 <p>The parameters below are from their webpage <a href="https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters" class="uri">https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters</a></p>
 <div id="learning-task-parameters" class="section">
 <h2>
@@ -1559,181 +1705,181 @@ done without explicitly working in the enlarged feature space. This is im- porta
 </ul>
 <p>See below some examples of the resulting classification of the algorithm</p>
 <p><img src="images/svmFaces.png" style="width:60.0%" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="MlAlgorithm.html#cb5-1"></a>Total dataset size:</span>
-<span id="cb5-2"><a href="MlAlgorithm.html#cb5-2"></a>n_samples: 1288</span>
-<span id="cb5-3"><a href="MlAlgorithm.html#cb5-3"></a>n_features: 1850</span>
-<span id="cb5-4"><a href="MlAlgorithm.html#cb5-4"></a>n_classes: 7</span>
-<span id="cb5-5"><a href="MlAlgorithm.html#cb5-5"></a>Extracting the top 150 eigenfaces from 966 faces</span>
-<span id="cb5-6"><a href="MlAlgorithm.html#cb5-6"></a>done in 0.320s</span>
-<span id="cb5-7"><a href="MlAlgorithm.html#cb5-7"></a>Projecting the input data on the eigenfaces orthonormal basis</span>
-<span id="cb5-8"><a href="MlAlgorithm.html#cb5-8"></a>done in 0.013s</span>
-<span id="cb5-9"><a href="MlAlgorithm.html#cb5-9"></a>Fitting the classifier to the training set</span>
-<span id="cb5-10"><a href="MlAlgorithm.html#cb5-10"></a>done in 28.379s</span>
-<span id="cb5-11"><a href="MlAlgorithm.html#cb5-11"></a>Best estimator found by grid search:</span>
-<span id="cb5-12"><a href="MlAlgorithm.html#cb5-12"></a>SVC(C=1000.0, break_ties=False, cache_size=200, class_weight=&#39;balanced&#39;,</span>
-<span id="cb5-13"><a href="MlAlgorithm.html#cb5-13"></a><span class="bn">    coef0=0.0, decision_function_shape=&#39;ovr&#39;, degree=3, gamma=0.005,</span></span>
-<span id="cb5-14"><a href="MlAlgorithm.html#cb5-14"></a><span class="bn">    kernel=&#39;rbf&#39;, max_iter=-1, probability=False, random_state=None,</span></span>
-<span id="cb5-15"><a href="MlAlgorithm.html#cb5-15"></a><span class="bn">    shrinking=True, tol=0.001, verbose=False)</span></span>
-<span id="cb5-16"><a href="MlAlgorithm.html#cb5-16"></a>Predicting people&#39;s names on the test set</span>
-<span id="cb5-17"><a href="MlAlgorithm.html#cb5-17"></a>done in 0.045s</span>
-<span id="cb5-18"><a href="MlAlgorithm.html#cb5-18"></a><span class="bn">                   precision    recall  f1-score   support</span></span>
-<span id="cb5-19"><a href="MlAlgorithm.html#cb5-19"></a></span>
-<span id="cb5-20"><a href="MlAlgorithm.html#cb5-20"></a><span class="bn">     Ariel Sharon       0.88      0.54      0.67        13</span></span>
-<span id="cb5-21"><a href="MlAlgorithm.html#cb5-21"></a><span class="bn">     Colin Powell       0.80      0.87      0.83        60</span></span>
-<span id="cb5-22"><a href="MlAlgorithm.html#cb5-22"></a>  Donald Rumsfeld       0.94      0.63      0.76        27</span>
-<span id="cb5-23"><a href="MlAlgorithm.html#cb5-23"></a><span class="bn">    George W Bush       0.83      0.98      0.90       146</span></span>
-<span id="cb5-24"><a href="MlAlgorithm.html#cb5-24"></a>Gerhard Schroeder       0.91      0.80      0.85        25</span>
-<span id="cb5-25"><a href="MlAlgorithm.html#cb5-25"></a><span class="bn">      Hugo Chavez       1.00      0.53      0.70        15</span></span>
-<span id="cb5-26"><a href="MlAlgorithm.html#cb5-26"></a><span class="bn">       Tony Blair       0.96      0.75      0.84        36</span></span>
-<span id="cb5-27"><a href="MlAlgorithm.html#cb5-27"></a></span>
-<span id="cb5-28"><a href="MlAlgorithm.html#cb5-28"></a><span class="bn">         accuracy                           0.85       322</span></span>
-<span id="cb5-29"><a href="MlAlgorithm.html#cb5-29"></a><span class="bn">        macro avg       0.90      0.73      0.79       322</span></span>
-<span id="cb5-30"><a href="MlAlgorithm.html#cb5-30"></a><span class="bn">     weighted avg       0.86      0.85      0.84       322</span></span>
-<span id="cb5-31"><a href="MlAlgorithm.html#cb5-31"></a></span>
-<span id="cb5-32"><a href="MlAlgorithm.html#cb5-32"></a></span>
-<span id="cb5-33"><a href="MlAlgorithm.html#cb5-33"></a>Confusion matrix</span>
-<span id="cb5-34"><a href="MlAlgorithm.html#cb5-34"></a></span>
-<span id="cb5-35"><a href="MlAlgorithm.html#cb5-35"></a>[[  7   1   0   5   0   0   0]</span>
-<span id="cb5-36"><a href="MlAlgorithm.html#cb5-36"></a> [  1  52   0   7   0   0   0]</span>
-<span id="cb5-37"><a href="MlAlgorithm.html#cb5-37"></a> [  0   3  17   7   0   0   0]</span>
-<span id="cb5-38"><a href="MlAlgorithm.html#cb5-38"></a> [  0   3   0 143   0   0   0]</span>
-<span id="cb5-39"><a href="MlAlgorithm.html#cb5-39"></a> [  0   1   0   3  20   0   1]</span>
-<span id="cb5-40"><a href="MlAlgorithm.html#cb5-40"></a> [  0   4   0   2   1   8   0]</span>
-<span id="cb5-41"><a href="MlAlgorithm.html#cb5-41"></a> [  0   1   1   6   1   0  27]]</span></code></pre></div>
-<p>The python code is given below</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="MlAlgorithm.html#cb6-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
-<span id="cb6-2"><a href="MlAlgorithm.html#cb6-2"></a><span class="im">import</span> logging</span>
-<span id="cb6-3"><a href="MlAlgorithm.html#cb6-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-4"><a href="MlAlgorithm.html#cb6-4"></a></span>
-<span id="cb6-5"><a href="MlAlgorithm.html#cb6-5"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb6-6"><a href="MlAlgorithm.html#cb6-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
-<span id="cb6-7"><a href="MlAlgorithm.html#cb6-7"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_lfw_people</span>
-<span id="cb6-8"><a href="MlAlgorithm.html#cb6-8"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
-<span id="cb6-9"><a href="MlAlgorithm.html#cb6-9"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
-<span id="cb6-10"><a href="MlAlgorithm.html#cb6-10"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
-<span id="cb6-11"><a href="MlAlgorithm.html#cb6-11"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
-<span id="cb6-12"><a href="MlAlgorithm.html#cb6-12"></a></span>
-<span id="cb6-13"><a href="MlAlgorithm.html#cb6-13"></a></span>
-<span id="cb6-14"><a href="MlAlgorithm.html#cb6-14"></a><span class="bu">print</span>(__doc__)</span>
-<span id="cb6-15"><a href="MlAlgorithm.html#cb6-15"></a></span>
-<span id="cb6-16"><a href="MlAlgorithm.html#cb6-16"></a><span class="co"># Display progress logs on stdout</span></span>
-<span id="cb6-17"><a href="MlAlgorithm.html#cb6-17"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
-<span id="cb6-18"><a href="MlAlgorithm.html#cb6-18"></a></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="MlAlgorithm.html#cb6-1"></a>Total dataset size:</span>
+<span id="cb6-2"><a href="MlAlgorithm.html#cb6-2"></a>n_samples: 1288</span>
+<span id="cb6-3"><a href="MlAlgorithm.html#cb6-3"></a>n_features: 1850</span>
+<span id="cb6-4"><a href="MlAlgorithm.html#cb6-4"></a>n_classes: 7</span>
+<span id="cb6-5"><a href="MlAlgorithm.html#cb6-5"></a>Extracting the top 150 eigenfaces from 966 faces</span>
+<span id="cb6-6"><a href="MlAlgorithm.html#cb6-6"></a>done in 0.320s</span>
+<span id="cb6-7"><a href="MlAlgorithm.html#cb6-7"></a>Projecting the input data on the eigenfaces orthonormal basis</span>
+<span id="cb6-8"><a href="MlAlgorithm.html#cb6-8"></a>done in 0.013s</span>
+<span id="cb6-9"><a href="MlAlgorithm.html#cb6-9"></a>Fitting the classifier to the training set</span>
+<span id="cb6-10"><a href="MlAlgorithm.html#cb6-10"></a>done in 28.379s</span>
+<span id="cb6-11"><a href="MlAlgorithm.html#cb6-11"></a>Best estimator found by grid search:</span>
+<span id="cb6-12"><a href="MlAlgorithm.html#cb6-12"></a>SVC(C=1000.0, break_ties=False, cache_size=200, class_weight=&#39;balanced&#39;,</span>
+<span id="cb6-13"><a href="MlAlgorithm.html#cb6-13"></a><span class="bn">    coef0=0.0, decision_function_shape=&#39;ovr&#39;, degree=3, gamma=0.005,</span></span>
+<span id="cb6-14"><a href="MlAlgorithm.html#cb6-14"></a><span class="bn">    kernel=&#39;rbf&#39;, max_iter=-1, probability=False, random_state=None,</span></span>
+<span id="cb6-15"><a href="MlAlgorithm.html#cb6-15"></a><span class="bn">    shrinking=True, tol=0.001, verbose=False)</span></span>
+<span id="cb6-16"><a href="MlAlgorithm.html#cb6-16"></a>Predicting people&#39;s names on the test set</span>
+<span id="cb6-17"><a href="MlAlgorithm.html#cb6-17"></a>done in 0.045s</span>
+<span id="cb6-18"><a href="MlAlgorithm.html#cb6-18"></a><span class="bn">                   precision    recall  f1-score   support</span></span>
 <span id="cb6-19"><a href="MlAlgorithm.html#cb6-19"></a></span>
-<span id="cb6-20"><a href="MlAlgorithm.html#cb6-20"></a><span class="co"># #############################################################################</span></span>
-<span id="cb6-21"><a href="MlAlgorithm.html#cb6-21"></a><span class="co"># Download the data, if not already on disk and load it as numpy arrays</span></span>
-<span id="cb6-22"><a href="MlAlgorithm.html#cb6-22"></a></span>
-<span id="cb6-23"><a href="MlAlgorithm.html#cb6-23"></a>lfw_people <span class="op">=</span> fetch_lfw_people(min_faces_per_person<span class="op">=</span><span class="dv">70</span>, resize<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb6-24"><a href="MlAlgorithm.html#cb6-24"></a></span>
-<span id="cb6-25"><a href="MlAlgorithm.html#cb6-25"></a><span class="co"># introspect the images arrays to find the shapes (for plotting)</span></span>
-<span id="cb6-26"><a href="MlAlgorithm.html#cb6-26"></a>n_samples, h, w <span class="op">=</span> lfw_people.images.shape</span>
+<span id="cb6-20"><a href="MlAlgorithm.html#cb6-20"></a><span class="bn">     Ariel Sharon       0.88      0.54      0.67        13</span></span>
+<span id="cb6-21"><a href="MlAlgorithm.html#cb6-21"></a><span class="bn">     Colin Powell       0.80      0.87      0.83        60</span></span>
+<span id="cb6-22"><a href="MlAlgorithm.html#cb6-22"></a>  Donald Rumsfeld       0.94      0.63      0.76        27</span>
+<span id="cb6-23"><a href="MlAlgorithm.html#cb6-23"></a><span class="bn">    George W Bush       0.83      0.98      0.90       146</span></span>
+<span id="cb6-24"><a href="MlAlgorithm.html#cb6-24"></a>Gerhard Schroeder       0.91      0.80      0.85        25</span>
+<span id="cb6-25"><a href="MlAlgorithm.html#cb6-25"></a><span class="bn">      Hugo Chavez       1.00      0.53      0.70        15</span></span>
+<span id="cb6-26"><a href="MlAlgorithm.html#cb6-26"></a><span class="bn">       Tony Blair       0.96      0.75      0.84        36</span></span>
 <span id="cb6-27"><a href="MlAlgorithm.html#cb6-27"></a></span>
-<span id="cb6-28"><a href="MlAlgorithm.html#cb6-28"></a><span class="co"># for machine learning we use the 2 data directly (as relative pixel</span></span>
-<span id="cb6-29"><a href="MlAlgorithm.html#cb6-29"></a><span class="co"># positions info is ignored by this model)</span></span>
-<span id="cb6-30"><a href="MlAlgorithm.html#cb6-30"></a>X <span class="op">=</span> lfw_people.data</span>
-<span id="cb6-31"><a href="MlAlgorithm.html#cb6-31"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb6-28"><a href="MlAlgorithm.html#cb6-28"></a><span class="bn">         accuracy                           0.85       322</span></span>
+<span id="cb6-29"><a href="MlAlgorithm.html#cb6-29"></a><span class="bn">        macro avg       0.90      0.73      0.79       322</span></span>
+<span id="cb6-30"><a href="MlAlgorithm.html#cb6-30"></a><span class="bn">     weighted avg       0.86      0.85      0.84       322</span></span>
+<span id="cb6-31"><a href="MlAlgorithm.html#cb6-31"></a></span>
 <span id="cb6-32"><a href="MlAlgorithm.html#cb6-32"></a></span>
-<span id="cb6-33"><a href="MlAlgorithm.html#cb6-33"></a><span class="co"># the label to predict is the id of the person</span></span>
-<span id="cb6-34"><a href="MlAlgorithm.html#cb6-34"></a>y <span class="op">=</span> lfw_people.target</span>
-<span id="cb6-35"><a href="MlAlgorithm.html#cb6-35"></a>target_names <span class="op">=</span> lfw_people.target_names</span>
-<span id="cb6-36"><a href="MlAlgorithm.html#cb6-36"></a>n_classes <span class="op">=</span> target_names.shape[<span class="dv">0</span>]</span>
-<span id="cb6-37"><a href="MlAlgorithm.html#cb6-37"></a></span>
-<span id="cb6-38"><a href="MlAlgorithm.html#cb6-38"></a><span class="bu">print</span>(<span class="st">&quot;Total dataset size:&quot;</span>)</span>
-<span id="cb6-39"><a href="MlAlgorithm.html#cb6-39"></a><span class="bu">print</span>(<span class="st">&quot;n_samples: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_samples)</span>
-<span id="cb6-40"><a href="MlAlgorithm.html#cb6-40"></a><span class="bu">print</span>(<span class="st">&quot;n_features: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_features)</span>
-<span id="cb6-41"><a href="MlAlgorithm.html#cb6-41"></a><span class="bu">print</span>(<span class="st">&quot;n_classes: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_classes)</span>
-<span id="cb6-42"><a href="MlAlgorithm.html#cb6-42"></a></span>
-<span id="cb6-43"><a href="MlAlgorithm.html#cb6-43"></a></span>
-<span id="cb6-44"><a href="MlAlgorithm.html#cb6-44"></a><span class="co"># #############################################################################</span></span>
-<span id="cb6-45"><a href="MlAlgorithm.html#cb6-45"></a><span class="co"># Split into a training set and a test set using a stratified k fold</span></span>
-<span id="cb6-46"><a href="MlAlgorithm.html#cb6-46"></a></span>
-<span id="cb6-47"><a href="MlAlgorithm.html#cb6-47"></a><span class="co"># split into a training and testing set</span></span>
-<span id="cb6-48"><a href="MlAlgorithm.html#cb6-48"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb6-49"><a href="MlAlgorithm.html#cb6-49"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb6-50"><a href="MlAlgorithm.html#cb6-50"></a></span>
-<span id="cb6-51"><a href="MlAlgorithm.html#cb6-51"></a></span>
-<span id="cb6-52"><a href="MlAlgorithm.html#cb6-52"></a><span class="co"># #############################################################################</span></span>
-<span id="cb6-53"><a href="MlAlgorithm.html#cb6-53"></a><span class="co"># Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled</span></span>
-<span id="cb6-54"><a href="MlAlgorithm.html#cb6-54"></a><span class="co"># dataset): unsupervised feature extraction / dimensionality reduction</span></span>
-<span id="cb6-55"><a href="MlAlgorithm.html#cb6-55"></a>n_components <span class="op">=</span> <span class="dv">150</span></span>
-<span id="cb6-56"><a href="MlAlgorithm.html#cb6-56"></a></span>
-<span id="cb6-57"><a href="MlAlgorithm.html#cb6-57"></a><span class="bu">print</span>(<span class="st">&quot;Extracting the top </span><span class="sc">%d</span><span class="st"> eigenfaces from </span><span class="sc">%d</span><span class="st"> faces&quot;</span></span>
-<span id="cb6-58"><a href="MlAlgorithm.html#cb6-58"></a>      <span class="op">%</span> (n_components, X_train.shape[<span class="dv">0</span>]))</span>
-<span id="cb6-59"><a href="MlAlgorithm.html#cb6-59"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb6-60"><a href="MlAlgorithm.html#cb6-60"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span>n_components, svd_solver<span class="op">=</span><span class="st">&#39;randomized&#39;</span>,</span>
-<span id="cb6-61"><a href="MlAlgorithm.html#cb6-61"></a>          whiten<span class="op">=</span><span class="va">True</span>).fit(X_train)</span>
-<span id="cb6-62"><a href="MlAlgorithm.html#cb6-62"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb6-63"><a href="MlAlgorithm.html#cb6-63"></a></span>
-<span id="cb6-64"><a href="MlAlgorithm.html#cb6-64"></a>eigenfaces <span class="op">=</span> pca.components_.reshape((n_components, h, w))</span>
-<span id="cb6-65"><a href="MlAlgorithm.html#cb6-65"></a></span>
-<span id="cb6-66"><a href="MlAlgorithm.html#cb6-66"></a><span class="bu">print</span>(<span class="st">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span>)</span>
-<span id="cb6-67"><a href="MlAlgorithm.html#cb6-67"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb6-68"><a href="MlAlgorithm.html#cb6-68"></a>X_train_pca <span class="op">=</span> pca.transform(X_train)</span>
-<span id="cb6-69"><a href="MlAlgorithm.html#cb6-69"></a>X_test_pca <span class="op">=</span> pca.transform(X_test)</span>
-<span id="cb6-70"><a href="MlAlgorithm.html#cb6-70"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb6-71"><a href="MlAlgorithm.html#cb6-71"></a></span>
-<span id="cb6-72"><a href="MlAlgorithm.html#cb6-72"></a></span>
-<span id="cb6-73"><a href="MlAlgorithm.html#cb6-73"></a><span class="co"># #############################################################################</span></span>
-<span id="cb6-74"><a href="MlAlgorithm.html#cb6-74"></a><span class="co"># Train a SVM classification model</span></span>
-<span id="cb6-75"><a href="MlAlgorithm.html#cb6-75"></a></span>
-<span id="cb6-76"><a href="MlAlgorithm.html#cb6-76"></a><span class="bu">print</span>(<span class="st">&quot;Fitting the classifier to the training set&quot;</span>)</span>
-<span id="cb6-77"><a href="MlAlgorithm.html#cb6-77"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb6-78"><a href="MlAlgorithm.html#cb6-78"></a>param_grid <span class="op">=</span> {<span class="st">&#39;C&#39;</span>: [<span class="fl">1e3</span>, <span class="fl">5e3</span>, <span class="fl">1e4</span>, <span class="fl">5e4</span>, <span class="fl">1e5</span>],</span>
-<span id="cb6-79"><a href="MlAlgorithm.html#cb6-79"></a>              <span class="st">&#39;gamma&#39;</span>: [<span class="fl">0.0001</span>, <span class="fl">0.0005</span>, <span class="fl">0.001</span>, <span class="fl">0.005</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>], }</span>
-<span id="cb6-80"><a href="MlAlgorithm.html#cb6-80"></a>clf <span class="op">=</span> GridSearchCV(</span>
-<span id="cb6-81"><a href="MlAlgorithm.html#cb6-81"></a>    SVC(kernel<span class="op">=</span><span class="st">&#39;rbf&#39;</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>), param_grid</span>
-<span id="cb6-82"><a href="MlAlgorithm.html#cb6-82"></a>)</span>
-<span id="cb6-83"><a href="MlAlgorithm.html#cb6-83"></a>clf <span class="op">=</span> clf.fit(X_train_pca, y_train)</span>
-<span id="cb6-84"><a href="MlAlgorithm.html#cb6-84"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb6-85"><a href="MlAlgorithm.html#cb6-85"></a><span class="bu">print</span>(<span class="st">&quot;Best estimator found by grid search:&quot;</span>)</span>
-<span id="cb6-86"><a href="MlAlgorithm.html#cb6-86"></a><span class="bu">print</span>(clf.best_estimator_)</span>
-<span id="cb6-87"><a href="MlAlgorithm.html#cb6-87"></a></span>
-<span id="cb6-88"><a href="MlAlgorithm.html#cb6-88"></a></span>
-<span id="cb6-89"><a href="MlAlgorithm.html#cb6-89"></a><span class="co"># #############################################################################</span></span>
-<span id="cb6-90"><a href="MlAlgorithm.html#cb6-90"></a><span class="co"># Quantitative evaluation of the model quality on the test set</span></span>
-<span id="cb6-91"><a href="MlAlgorithm.html#cb6-91"></a></span>
-<span id="cb6-92"><a href="MlAlgorithm.html#cb6-92"></a><span class="bu">print</span>(<span class="st">&quot;Predicting people&#39;s names on the test set&quot;</span>)</span>
-<span id="cb6-93"><a href="MlAlgorithm.html#cb6-93"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb6-94"><a href="MlAlgorithm.html#cb6-94"></a>y_pred <span class="op">=</span> clf.predict(X_test_pca)</span>
-<span id="cb6-95"><a href="MlAlgorithm.html#cb6-95"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb6-96"><a href="MlAlgorithm.html#cb6-96"></a></span>
-<span id="cb6-97"><a href="MlAlgorithm.html#cb6-97"></a><span class="bu">print</span>(classification_report(y_test, y_pred, target_names<span class="op">=</span>target_names))</span>
-<span id="cb6-98"><a href="MlAlgorithm.html#cb6-98"></a><span class="bu">print</span>(confusion_matrix(y_test, y_pred, labels<span class="op">=</span><span class="bu">range</span>(n_classes)))</span>
-<span id="cb6-99"><a href="MlAlgorithm.html#cb6-99"></a></span>
-<span id="cb6-100"><a href="MlAlgorithm.html#cb6-100"></a></span>
-<span id="cb6-101"><a href="MlAlgorithm.html#cb6-101"></a><span class="co"># #############################################################################</span></span>
-<span id="cb6-102"><a href="MlAlgorithm.html#cb6-102"></a><span class="co"># Qualitative evaluation of the predictions using matplotlib</span></span>
-<span id="cb6-103"><a href="MlAlgorithm.html#cb6-103"></a></span>
-<span id="cb6-104"><a href="MlAlgorithm.html#cb6-104"></a><span class="kw">def</span> plot_gallery(images, titles, h, w, n_row<span class="op">=</span><span class="dv">3</span>, n_col<span class="op">=</span><span class="dv">4</span>):</span>
-<span id="cb6-105"><a href="MlAlgorithm.html#cb6-105"></a>    <span class="co">&quot;&quot;&quot;Helper function to plot a gallery of portraits&quot;&quot;&quot;</span></span>
-<span id="cb6-106"><a href="MlAlgorithm.html#cb6-106"></a>    plt.figure(figsize<span class="op">=</span>(<span class="fl">1.8</span> <span class="op">*</span> n_col, <span class="fl">2.4</span> <span class="op">*</span> n_row))</span>
-<span id="cb6-107"><a href="MlAlgorithm.html#cb6-107"></a>    plt.subplots_adjust(bottom<span class="op">=</span><span class="dv">0</span>, left<span class="op">=</span>.<span class="dv">01</span>, right<span class="op">=</span>.<span class="dv">99</span>, top<span class="op">=</span>.<span class="dv">90</span>, hspace<span class="op">=</span>.<span class="dv">35</span>)</span>
-<span id="cb6-108"><a href="MlAlgorithm.html#cb6-108"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_row <span class="op">*</span> n_col):</span>
-<span id="cb6-109"><a href="MlAlgorithm.html#cb6-109"></a>        plt.subplot(n_row, n_col, i <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb6-110"><a href="MlAlgorithm.html#cb6-110"></a>        plt.imshow(images[i].reshape((h, w)), cmap<span class="op">=</span>plt.cm.gray)</span>
-<span id="cb6-111"><a href="MlAlgorithm.html#cb6-111"></a>        plt.title(titles[i], size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb6-112"><a href="MlAlgorithm.html#cb6-112"></a>        plt.xticks(())</span>
-<span id="cb6-113"><a href="MlAlgorithm.html#cb6-113"></a>        plt.yticks(())</span>
-<span id="cb6-114"><a href="MlAlgorithm.html#cb6-114"></a></span>
-<span id="cb6-115"><a href="MlAlgorithm.html#cb6-115"></a></span>
-<span id="cb6-116"><a href="MlAlgorithm.html#cb6-116"></a><span class="co"># plot the result of the prediction on a portion of the test set</span></span>
-<span id="cb6-117"><a href="MlAlgorithm.html#cb6-117"></a></span>
-<span id="cb6-118"><a href="MlAlgorithm.html#cb6-118"></a><span class="kw">def</span> title(y_pred, y_test, target_names, i):</span>
-<span id="cb6-119"><a href="MlAlgorithm.html#cb6-119"></a>    pred_name <span class="op">=</span> target_names[y_pred[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb6-120"><a href="MlAlgorithm.html#cb6-120"></a>    true_name <span class="op">=</span> target_names[y_test[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb6-121"><a href="MlAlgorithm.html#cb6-121"></a>    <span class="cf">return</span> <span class="st">&#39;predicted: </span><span class="sc">%s</span><span class="ch">\n</span><span class="st">true:      </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (pred_name, true_name)</span>
-<span id="cb6-122"><a href="MlAlgorithm.html#cb6-122"></a></span>
-<span id="cb6-123"><a href="MlAlgorithm.html#cb6-123"></a>prediction_titles <span class="op">=</span> [title(y_pred, y_test, target_names, i)</span>
-<span id="cb6-124"><a href="MlAlgorithm.html#cb6-124"></a>                     <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(y_pred.shape[<span class="dv">0</span>])]</span>
-<span id="cb6-125"><a href="MlAlgorithm.html#cb6-125"></a></span>
-<span id="cb6-126"><a href="MlAlgorithm.html#cb6-126"></a>plot_gallery(X_test, prediction_titles, h, w)</span>
-<span id="cb6-127"><a href="MlAlgorithm.html#cb6-127"></a></span>
-<span id="cb6-128"><a href="MlAlgorithm.html#cb6-128"></a><span class="co"># plot the gallery of the most significative eigenfaces</span></span>
-<span id="cb6-129"><a href="MlAlgorithm.html#cb6-129"></a></span>
-<span id="cb6-130"><a href="MlAlgorithm.html#cb6-130"></a>eigenface_titles <span class="op">=</span> [<span class="st">&quot;eigenface </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(eigenfaces.shape[<span class="dv">0</span>])]</span>
-<span id="cb6-131"><a href="MlAlgorithm.html#cb6-131"></a>plot_gallery(eigenfaces, eigenface_titles, h, w)</span>
-<span id="cb6-132"><a href="MlAlgorithm.html#cb6-132"></a></span>
-<span id="cb6-133"><a href="MlAlgorithm.html#cb6-133"></a>plt.show()</span></code></pre></div>
+<span id="cb6-33"><a href="MlAlgorithm.html#cb6-33"></a>Confusion matrix</span>
+<span id="cb6-34"><a href="MlAlgorithm.html#cb6-34"></a></span>
+<span id="cb6-35"><a href="MlAlgorithm.html#cb6-35"></a>[[  7   1   0   5   0   0   0]</span>
+<span id="cb6-36"><a href="MlAlgorithm.html#cb6-36"></a> [  1  52   0   7   0   0   0]</span>
+<span id="cb6-37"><a href="MlAlgorithm.html#cb6-37"></a> [  0   3  17   7   0   0   0]</span>
+<span id="cb6-38"><a href="MlAlgorithm.html#cb6-38"></a> [  0   3   0 143   0   0   0]</span>
+<span id="cb6-39"><a href="MlAlgorithm.html#cb6-39"></a> [  0   1   0   3  20   0   1]</span>
+<span id="cb6-40"><a href="MlAlgorithm.html#cb6-40"></a> [  0   4   0   2   1   8   0]</span>
+<span id="cb6-41"><a href="MlAlgorithm.html#cb6-41"></a> [  0   1   1   6   1   0  27]]</span></code></pre></div>
+<p>The python code is given below</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="MlAlgorithm.html#cb7-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
+<span id="cb7-2"><a href="MlAlgorithm.html#cb7-2"></a><span class="im">import</span> logging</span>
+<span id="cb7-3"><a href="MlAlgorithm.html#cb7-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-4"><a href="MlAlgorithm.html#cb7-4"></a></span>
+<span id="cb7-5"><a href="MlAlgorithm.html#cb7-5"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb7-6"><a href="MlAlgorithm.html#cb7-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb7-7"><a href="MlAlgorithm.html#cb7-7"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_lfw_people</span>
+<span id="cb7-8"><a href="MlAlgorithm.html#cb7-8"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb7-9"><a href="MlAlgorithm.html#cb7-9"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb7-10"><a href="MlAlgorithm.html#cb7-10"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb7-11"><a href="MlAlgorithm.html#cb7-11"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb7-12"><a href="MlAlgorithm.html#cb7-12"></a></span>
+<span id="cb7-13"><a href="MlAlgorithm.html#cb7-13"></a></span>
+<span id="cb7-14"><a href="MlAlgorithm.html#cb7-14"></a><span class="bu">print</span>(__doc__)</span>
+<span id="cb7-15"><a href="MlAlgorithm.html#cb7-15"></a></span>
+<span id="cb7-16"><a href="MlAlgorithm.html#cb7-16"></a><span class="co"># Display progress logs on stdout</span></span>
+<span id="cb7-17"><a href="MlAlgorithm.html#cb7-17"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
+<span id="cb7-18"><a href="MlAlgorithm.html#cb7-18"></a></span>
+<span id="cb7-19"><a href="MlAlgorithm.html#cb7-19"></a></span>
+<span id="cb7-20"><a href="MlAlgorithm.html#cb7-20"></a><span class="co"># #############################################################################</span></span>
+<span id="cb7-21"><a href="MlAlgorithm.html#cb7-21"></a><span class="co"># Download the data, if not already on disk and load it as numpy arrays</span></span>
+<span id="cb7-22"><a href="MlAlgorithm.html#cb7-22"></a></span>
+<span id="cb7-23"><a href="MlAlgorithm.html#cb7-23"></a>lfw_people <span class="op">=</span> fetch_lfw_people(min_faces_per_person<span class="op">=</span><span class="dv">70</span>, resize<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb7-24"><a href="MlAlgorithm.html#cb7-24"></a></span>
+<span id="cb7-25"><a href="MlAlgorithm.html#cb7-25"></a><span class="co"># introspect the images arrays to find the shapes (for plotting)</span></span>
+<span id="cb7-26"><a href="MlAlgorithm.html#cb7-26"></a>n_samples, h, w <span class="op">=</span> lfw_people.images.shape</span>
+<span id="cb7-27"><a href="MlAlgorithm.html#cb7-27"></a></span>
+<span id="cb7-28"><a href="MlAlgorithm.html#cb7-28"></a><span class="co"># for machine learning we use the 2 data directly (as relative pixel</span></span>
+<span id="cb7-29"><a href="MlAlgorithm.html#cb7-29"></a><span class="co"># positions info is ignored by this model)</span></span>
+<span id="cb7-30"><a href="MlAlgorithm.html#cb7-30"></a>X <span class="op">=</span> lfw_people.data</span>
+<span id="cb7-31"><a href="MlAlgorithm.html#cb7-31"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb7-32"><a href="MlAlgorithm.html#cb7-32"></a></span>
+<span id="cb7-33"><a href="MlAlgorithm.html#cb7-33"></a><span class="co"># the label to predict is the id of the person</span></span>
+<span id="cb7-34"><a href="MlAlgorithm.html#cb7-34"></a>y <span class="op">=</span> lfw_people.target</span>
+<span id="cb7-35"><a href="MlAlgorithm.html#cb7-35"></a>target_names <span class="op">=</span> lfw_people.target_names</span>
+<span id="cb7-36"><a href="MlAlgorithm.html#cb7-36"></a>n_classes <span class="op">=</span> target_names.shape[<span class="dv">0</span>]</span>
+<span id="cb7-37"><a href="MlAlgorithm.html#cb7-37"></a></span>
+<span id="cb7-38"><a href="MlAlgorithm.html#cb7-38"></a><span class="bu">print</span>(<span class="st">&quot;Total dataset size:&quot;</span>)</span>
+<span id="cb7-39"><a href="MlAlgorithm.html#cb7-39"></a><span class="bu">print</span>(<span class="st">&quot;n_samples: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_samples)</span>
+<span id="cb7-40"><a href="MlAlgorithm.html#cb7-40"></a><span class="bu">print</span>(<span class="st">&quot;n_features: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_features)</span>
+<span id="cb7-41"><a href="MlAlgorithm.html#cb7-41"></a><span class="bu">print</span>(<span class="st">&quot;n_classes: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_classes)</span>
+<span id="cb7-42"><a href="MlAlgorithm.html#cb7-42"></a></span>
+<span id="cb7-43"><a href="MlAlgorithm.html#cb7-43"></a></span>
+<span id="cb7-44"><a href="MlAlgorithm.html#cb7-44"></a><span class="co"># #############################################################################</span></span>
+<span id="cb7-45"><a href="MlAlgorithm.html#cb7-45"></a><span class="co"># Split into a training set and a test set using a stratified k fold</span></span>
+<span id="cb7-46"><a href="MlAlgorithm.html#cb7-46"></a></span>
+<span id="cb7-47"><a href="MlAlgorithm.html#cb7-47"></a><span class="co"># split into a training and testing set</span></span>
+<span id="cb7-48"><a href="MlAlgorithm.html#cb7-48"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb7-49"><a href="MlAlgorithm.html#cb7-49"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb7-50"><a href="MlAlgorithm.html#cb7-50"></a></span>
+<span id="cb7-51"><a href="MlAlgorithm.html#cb7-51"></a></span>
+<span id="cb7-52"><a href="MlAlgorithm.html#cb7-52"></a><span class="co"># #############################################################################</span></span>
+<span id="cb7-53"><a href="MlAlgorithm.html#cb7-53"></a><span class="co"># Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled</span></span>
+<span id="cb7-54"><a href="MlAlgorithm.html#cb7-54"></a><span class="co"># dataset): unsupervised feature extraction / dimensionality reduction</span></span>
+<span id="cb7-55"><a href="MlAlgorithm.html#cb7-55"></a>n_components <span class="op">=</span> <span class="dv">150</span></span>
+<span id="cb7-56"><a href="MlAlgorithm.html#cb7-56"></a></span>
+<span id="cb7-57"><a href="MlAlgorithm.html#cb7-57"></a><span class="bu">print</span>(<span class="st">&quot;Extracting the top </span><span class="sc">%d</span><span class="st"> eigenfaces from </span><span class="sc">%d</span><span class="st"> faces&quot;</span></span>
+<span id="cb7-58"><a href="MlAlgorithm.html#cb7-58"></a>      <span class="op">%</span> (n_components, X_train.shape[<span class="dv">0</span>]))</span>
+<span id="cb7-59"><a href="MlAlgorithm.html#cb7-59"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb7-60"><a href="MlAlgorithm.html#cb7-60"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span>n_components, svd_solver<span class="op">=</span><span class="st">&#39;randomized&#39;</span>,</span>
+<span id="cb7-61"><a href="MlAlgorithm.html#cb7-61"></a>          whiten<span class="op">=</span><span class="va">True</span>).fit(X_train)</span>
+<span id="cb7-62"><a href="MlAlgorithm.html#cb7-62"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb7-63"><a href="MlAlgorithm.html#cb7-63"></a></span>
+<span id="cb7-64"><a href="MlAlgorithm.html#cb7-64"></a>eigenfaces <span class="op">=</span> pca.components_.reshape((n_components, h, w))</span>
+<span id="cb7-65"><a href="MlAlgorithm.html#cb7-65"></a></span>
+<span id="cb7-66"><a href="MlAlgorithm.html#cb7-66"></a><span class="bu">print</span>(<span class="st">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span>)</span>
+<span id="cb7-67"><a href="MlAlgorithm.html#cb7-67"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb7-68"><a href="MlAlgorithm.html#cb7-68"></a>X_train_pca <span class="op">=</span> pca.transform(X_train)</span>
+<span id="cb7-69"><a href="MlAlgorithm.html#cb7-69"></a>X_test_pca <span class="op">=</span> pca.transform(X_test)</span>
+<span id="cb7-70"><a href="MlAlgorithm.html#cb7-70"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb7-71"><a href="MlAlgorithm.html#cb7-71"></a></span>
+<span id="cb7-72"><a href="MlAlgorithm.html#cb7-72"></a></span>
+<span id="cb7-73"><a href="MlAlgorithm.html#cb7-73"></a><span class="co"># #############################################################################</span></span>
+<span id="cb7-74"><a href="MlAlgorithm.html#cb7-74"></a><span class="co"># Train a SVM classification model</span></span>
+<span id="cb7-75"><a href="MlAlgorithm.html#cb7-75"></a></span>
+<span id="cb7-76"><a href="MlAlgorithm.html#cb7-76"></a><span class="bu">print</span>(<span class="st">&quot;Fitting the classifier to the training set&quot;</span>)</span>
+<span id="cb7-77"><a href="MlAlgorithm.html#cb7-77"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb7-78"><a href="MlAlgorithm.html#cb7-78"></a>param_grid <span class="op">=</span> {<span class="st">&#39;C&#39;</span>: [<span class="fl">1e3</span>, <span class="fl">5e3</span>, <span class="fl">1e4</span>, <span class="fl">5e4</span>, <span class="fl">1e5</span>],</span>
+<span id="cb7-79"><a href="MlAlgorithm.html#cb7-79"></a>              <span class="st">&#39;gamma&#39;</span>: [<span class="fl">0.0001</span>, <span class="fl">0.0005</span>, <span class="fl">0.001</span>, <span class="fl">0.005</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>], }</span>
+<span id="cb7-80"><a href="MlAlgorithm.html#cb7-80"></a>clf <span class="op">=</span> GridSearchCV(</span>
+<span id="cb7-81"><a href="MlAlgorithm.html#cb7-81"></a>    SVC(kernel<span class="op">=</span><span class="st">&#39;rbf&#39;</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>), param_grid</span>
+<span id="cb7-82"><a href="MlAlgorithm.html#cb7-82"></a>)</span>
+<span id="cb7-83"><a href="MlAlgorithm.html#cb7-83"></a>clf <span class="op">=</span> clf.fit(X_train_pca, y_train)</span>
+<span id="cb7-84"><a href="MlAlgorithm.html#cb7-84"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb7-85"><a href="MlAlgorithm.html#cb7-85"></a><span class="bu">print</span>(<span class="st">&quot;Best estimator found by grid search:&quot;</span>)</span>
+<span id="cb7-86"><a href="MlAlgorithm.html#cb7-86"></a><span class="bu">print</span>(clf.best_estimator_)</span>
+<span id="cb7-87"><a href="MlAlgorithm.html#cb7-87"></a></span>
+<span id="cb7-88"><a href="MlAlgorithm.html#cb7-88"></a></span>
+<span id="cb7-89"><a href="MlAlgorithm.html#cb7-89"></a><span class="co"># #############################################################################</span></span>
+<span id="cb7-90"><a href="MlAlgorithm.html#cb7-90"></a><span class="co"># Quantitative evaluation of the model quality on the test set</span></span>
+<span id="cb7-91"><a href="MlAlgorithm.html#cb7-91"></a></span>
+<span id="cb7-92"><a href="MlAlgorithm.html#cb7-92"></a><span class="bu">print</span>(<span class="st">&quot;Predicting people&#39;s names on the test set&quot;</span>)</span>
+<span id="cb7-93"><a href="MlAlgorithm.html#cb7-93"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb7-94"><a href="MlAlgorithm.html#cb7-94"></a>y_pred <span class="op">=</span> clf.predict(X_test_pca)</span>
+<span id="cb7-95"><a href="MlAlgorithm.html#cb7-95"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb7-96"><a href="MlAlgorithm.html#cb7-96"></a></span>
+<span id="cb7-97"><a href="MlAlgorithm.html#cb7-97"></a><span class="bu">print</span>(classification_report(y_test, y_pred, target_names<span class="op">=</span>target_names))</span>
+<span id="cb7-98"><a href="MlAlgorithm.html#cb7-98"></a><span class="bu">print</span>(confusion_matrix(y_test, y_pred, labels<span class="op">=</span><span class="bu">range</span>(n_classes)))</span>
+<span id="cb7-99"><a href="MlAlgorithm.html#cb7-99"></a></span>
+<span id="cb7-100"><a href="MlAlgorithm.html#cb7-100"></a></span>
+<span id="cb7-101"><a href="MlAlgorithm.html#cb7-101"></a><span class="co"># #############################################################################</span></span>
+<span id="cb7-102"><a href="MlAlgorithm.html#cb7-102"></a><span class="co"># Qualitative evaluation of the predictions using matplotlib</span></span>
+<span id="cb7-103"><a href="MlAlgorithm.html#cb7-103"></a></span>
+<span id="cb7-104"><a href="MlAlgorithm.html#cb7-104"></a><span class="kw">def</span> plot_gallery(images, titles, h, w, n_row<span class="op">=</span><span class="dv">3</span>, n_col<span class="op">=</span><span class="dv">4</span>):</span>
+<span id="cb7-105"><a href="MlAlgorithm.html#cb7-105"></a>    <span class="co">&quot;&quot;&quot;Helper function to plot a gallery of portraits&quot;&quot;&quot;</span></span>
+<span id="cb7-106"><a href="MlAlgorithm.html#cb7-106"></a>    plt.figure(figsize<span class="op">=</span>(<span class="fl">1.8</span> <span class="op">*</span> n_col, <span class="fl">2.4</span> <span class="op">*</span> n_row))</span>
+<span id="cb7-107"><a href="MlAlgorithm.html#cb7-107"></a>    plt.subplots_adjust(bottom<span class="op">=</span><span class="dv">0</span>, left<span class="op">=</span>.<span class="dv">01</span>, right<span class="op">=</span>.<span class="dv">99</span>, top<span class="op">=</span>.<span class="dv">90</span>, hspace<span class="op">=</span>.<span class="dv">35</span>)</span>
+<span id="cb7-108"><a href="MlAlgorithm.html#cb7-108"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_row <span class="op">*</span> n_col):</span>
+<span id="cb7-109"><a href="MlAlgorithm.html#cb7-109"></a>        plt.subplot(n_row, n_col, i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb7-110"><a href="MlAlgorithm.html#cb7-110"></a>        plt.imshow(images[i].reshape((h, w)), cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb7-111"><a href="MlAlgorithm.html#cb7-111"></a>        plt.title(titles[i], size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-112"><a href="MlAlgorithm.html#cb7-112"></a>        plt.xticks(())</span>
+<span id="cb7-113"><a href="MlAlgorithm.html#cb7-113"></a>        plt.yticks(())</span>
+<span id="cb7-114"><a href="MlAlgorithm.html#cb7-114"></a></span>
+<span id="cb7-115"><a href="MlAlgorithm.html#cb7-115"></a></span>
+<span id="cb7-116"><a href="MlAlgorithm.html#cb7-116"></a><span class="co"># plot the result of the prediction on a portion of the test set</span></span>
+<span id="cb7-117"><a href="MlAlgorithm.html#cb7-117"></a></span>
+<span id="cb7-118"><a href="MlAlgorithm.html#cb7-118"></a><span class="kw">def</span> title(y_pred, y_test, target_names, i):</span>
+<span id="cb7-119"><a href="MlAlgorithm.html#cb7-119"></a>    pred_name <span class="op">=</span> target_names[y_pred[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb7-120"><a href="MlAlgorithm.html#cb7-120"></a>    true_name <span class="op">=</span> target_names[y_test[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb7-121"><a href="MlAlgorithm.html#cb7-121"></a>    <span class="cf">return</span> <span class="st">&#39;predicted: </span><span class="sc">%s</span><span class="ch">\n</span><span class="st">true:      </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (pred_name, true_name)</span>
+<span id="cb7-122"><a href="MlAlgorithm.html#cb7-122"></a></span>
+<span id="cb7-123"><a href="MlAlgorithm.html#cb7-123"></a>prediction_titles <span class="op">=</span> [title(y_pred, y_test, target_names, i)</span>
+<span id="cb7-124"><a href="MlAlgorithm.html#cb7-124"></a>                     <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(y_pred.shape[<span class="dv">0</span>])]</span>
+<span id="cb7-125"><a href="MlAlgorithm.html#cb7-125"></a></span>
+<span id="cb7-126"><a href="MlAlgorithm.html#cb7-126"></a>plot_gallery(X_test, prediction_titles, h, w)</span>
+<span id="cb7-127"><a href="MlAlgorithm.html#cb7-127"></a></span>
+<span id="cb7-128"><a href="MlAlgorithm.html#cb7-128"></a><span class="co"># plot the gallery of the most significative eigenfaces</span></span>
+<span id="cb7-129"><a href="MlAlgorithm.html#cb7-129"></a></span>
+<span id="cb7-130"><a href="MlAlgorithm.html#cb7-130"></a>eigenface_titles <span class="op">=</span> [<span class="st">&quot;eigenface </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(eigenfaces.shape[<span class="dv">0</span>])]</span>
+<span id="cb7-131"><a href="MlAlgorithm.html#cb7-131"></a>plot_gallery(eigenfaces, eigenface_titles, h, w)</span>
+<span id="cb7-132"><a href="MlAlgorithm.html#cb7-132"></a></span>
+<span id="cb7-133"><a href="MlAlgorithm.html#cb7-133"></a>plt.show()</span></code></pre></div>
 <hr />
 <div class="figure">
 <img src="images/2880px-Kernel_Machine.svg.png" class="external" style="width:100.0%" alt="" />
@@ -1751,65 +1897,65 @@ done without explicitly working in the enlarged feature space. This is im- porta
 <p>The confusion matrix is given below and shows for example that a true “3” is often mistaken as a “8” (see red circle)</p></li>
 </ul>
 <p><img src="images/ConfMatrixMinst.png" style="width:80.0%" /></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="MlAlgorithm.html#cb7-1"></a><span class="bu">print</span>(__doc__)</span>
-<span id="cb7-2"><a href="MlAlgorithm.html#cb7-2"></a></span>
-<span id="cb7-3"><a href="MlAlgorithm.html#cb7-3"></a><span class="co"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span></span>
-<span id="cb7-4"><a href="MlAlgorithm.html#cb7-4"></a><span class="co"># License: BSD 3 clause</span></span>
-<span id="cb7-5"><a href="MlAlgorithm.html#cb7-5"></a></span>
-<span id="cb7-6"><a href="MlAlgorithm.html#cb7-6"></a><span class="co"># Standard scientific Python imports</span></span>
-<span id="cb7-7"><a href="MlAlgorithm.html#cb7-7"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-8"><a href="MlAlgorithm.html#cb7-8"></a></span>
-<span id="cb7-9"><a href="MlAlgorithm.html#cb7-9"></a><span class="co"># Import datasets, classifiers and performance metrics</span></span>
-<span id="cb7-10"><a href="MlAlgorithm.html#cb7-10"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets, svm, metrics</span>
-<span id="cb7-11"><a href="MlAlgorithm.html#cb7-11"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb7-12"><a href="MlAlgorithm.html#cb7-12"></a></span>
-<span id="cb7-13"><a href="MlAlgorithm.html#cb7-13"></a><span class="co"># The digits dataset</span></span>
-<span id="cb7-14"><a href="MlAlgorithm.html#cb7-14"></a>digits <span class="op">=</span> datasets.load_digits()</span>
-<span id="cb7-15"><a href="MlAlgorithm.html#cb7-15"></a></span>
-<span id="cb7-16"><a href="MlAlgorithm.html#cb7-16"></a><span class="co"># The data that we are interested in is made of 8x8 images of digits, let&#39;s</span></span>
-<span id="cb7-17"><a href="MlAlgorithm.html#cb7-17"></a><span class="co"># have a look at the first 4 images, stored in the `images` attribute of the</span></span>
-<span id="cb7-18"><a href="MlAlgorithm.html#cb7-18"></a><span class="co"># dataset.  If we were working from image files, we could load them using</span></span>
-<span id="cb7-19"><a href="MlAlgorithm.html#cb7-19"></a><span class="co"># matplotlib.pyplot.imread.  Note that each image must have the same size. For these</span></span>
-<span id="cb7-20"><a href="MlAlgorithm.html#cb7-20"></a><span class="co"># images, we know which digit they represent: it is given in the &#39;target&#39; of</span></span>
-<span id="cb7-21"><a href="MlAlgorithm.html#cb7-21"></a><span class="co"># the dataset.</span></span>
-<span id="cb7-22"><a href="MlAlgorithm.html#cb7-22"></a>_, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb7-23"><a href="MlAlgorithm.html#cb7-23"></a>images_and_labels <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images, digits.target))</span>
-<span id="cb7-24"><a href="MlAlgorithm.html#cb7-24"></a><span class="cf">for</span> ax, (image, label) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">0</span>, :], images_and_labels[:<span class="dv">4</span>]):</span>
-<span id="cb7-25"><a href="MlAlgorithm.html#cb7-25"></a>    ax.set_axis_off()</span>
-<span id="cb7-26"><a href="MlAlgorithm.html#cb7-26"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
-<span id="cb7-27"><a href="MlAlgorithm.html#cb7-27"></a>    ax.set_title(<span class="st">&#39;Training: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> label)</span>
-<span id="cb7-28"><a href="MlAlgorithm.html#cb7-28"></a></span>
-<span id="cb7-29"><a href="MlAlgorithm.html#cb7-29"></a><span class="co"># To apply a classifier on this data, we need to flatten the image, to</span></span>
-<span id="cb7-30"><a href="MlAlgorithm.html#cb7-30"></a><span class="co"># turn the data in a (samples, feature) matrix:</span></span>
-<span id="cb7-31"><a href="MlAlgorithm.html#cb7-31"></a>n_samples <span class="op">=</span> <span class="bu">len</span>(digits.images)</span>
-<span id="cb7-32"><a href="MlAlgorithm.html#cb7-32"></a>data <span class="op">=</span> digits.images.reshape((n_samples, <span class="dv">-1</span>))</span>
-<span id="cb7-33"><a href="MlAlgorithm.html#cb7-33"></a></span>
-<span id="cb7-34"><a href="MlAlgorithm.html#cb7-34"></a><span class="co"># Create a classifier: a support vector classifier</span></span>
-<span id="cb7-35"><a href="MlAlgorithm.html#cb7-35"></a>classifier <span class="op">=</span> svm.SVC(gamma<span class="op">=</span><span class="fl">0.001</span>)</span>
-<span id="cb7-36"><a href="MlAlgorithm.html#cb7-36"></a></span>
-<span id="cb7-37"><a href="MlAlgorithm.html#cb7-37"></a><span class="co"># Split data into train and test subsets</span></span>
-<span id="cb7-38"><a href="MlAlgorithm.html#cb7-38"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb7-39"><a href="MlAlgorithm.html#cb7-39"></a>    data, digits.target, test_size<span class="op">=</span><span class="fl">0.5</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-40"><a href="MlAlgorithm.html#cb7-40"></a></span>
-<span id="cb7-41"><a href="MlAlgorithm.html#cb7-41"></a><span class="co"># We learn the digits on the first half of the digits</span></span>
-<span id="cb7-42"><a href="MlAlgorithm.html#cb7-42"></a>classifier.fit(X_train, y_train)</span>
-<span id="cb7-43"><a href="MlAlgorithm.html#cb7-43"></a></span>
-<span id="cb7-44"><a href="MlAlgorithm.html#cb7-44"></a><span class="co"># Now predict the value of the digit on the second half:</span></span>
-<span id="cb7-45"><a href="MlAlgorithm.html#cb7-45"></a>predicted <span class="op">=</span> classifier.predict(X_test)</span>
-<span id="cb7-46"><a href="MlAlgorithm.html#cb7-46"></a></span>
-<span id="cb7-47"><a href="MlAlgorithm.html#cb7-47"></a>images_and_predictions <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images[n_samples <span class="op">//</span> <span class="dv">2</span>:], predicted))</span>
-<span id="cb7-48"><a href="MlAlgorithm.html#cb7-48"></a><span class="cf">for</span> ax, (image, prediction) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">1</span>, :], images_and_predictions[:<span class="dv">4</span>]):</span>
-<span id="cb7-49"><a href="MlAlgorithm.html#cb7-49"></a>    ax.set_axis_off()</span>
-<span id="cb7-50"><a href="MlAlgorithm.html#cb7-50"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
-<span id="cb7-51"><a href="MlAlgorithm.html#cb7-51"></a>    ax.set_title(<span class="st">&#39;Prediction: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> prediction)</span>
-<span id="cb7-52"><a href="MlAlgorithm.html#cb7-52"></a></span>
-<span id="cb7-53"><a href="MlAlgorithm.html#cb7-53"></a><span class="bu">print</span>(<span class="st">&quot;Classification report for classifier </span><span class="sc">%s</span><span class="st">:</span><span class="ch">\n</span><span class="sc">%s</span><span class="ch">\n</span><span class="st">&quot;</span></span>
-<span id="cb7-54"><a href="MlAlgorithm.html#cb7-54"></a>      <span class="op">%</span> (classifier, metrics.classification_report(y_test, predicted)))</span>
-<span id="cb7-55"><a href="MlAlgorithm.html#cb7-55"></a>disp <span class="op">=</span> metrics.plot_confusion_matrix(classifier, X_test, y_test)</span>
-<span id="cb7-56"><a href="MlAlgorithm.html#cb7-56"></a>disp.figure_.suptitle(<span class="st">&quot;Confusion Matrix&quot;</span>)</span>
-<span id="cb7-57"><a href="MlAlgorithm.html#cb7-57"></a><span class="bu">print</span>(<span class="st">&quot;Confusion matrix:</span><span class="ch">\n</span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> disp.confusion_matrix)</span>
-<span id="cb7-58"><a href="MlAlgorithm.html#cb7-58"></a></span>
-<span id="cb7-59"><a href="MlAlgorithm.html#cb7-59"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="MlAlgorithm.html#cb8-1"></a><span class="bu">print</span>(__doc__)</span>
+<span id="cb8-2"><a href="MlAlgorithm.html#cb8-2"></a></span>
+<span id="cb8-3"><a href="MlAlgorithm.html#cb8-3"></a><span class="co"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span></span>
+<span id="cb8-4"><a href="MlAlgorithm.html#cb8-4"></a><span class="co"># License: BSD 3 clause</span></span>
+<span id="cb8-5"><a href="MlAlgorithm.html#cb8-5"></a></span>
+<span id="cb8-6"><a href="MlAlgorithm.html#cb8-6"></a><span class="co"># Standard scientific Python imports</span></span>
+<span id="cb8-7"><a href="MlAlgorithm.html#cb8-7"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-8"><a href="MlAlgorithm.html#cb8-8"></a></span>
+<span id="cb8-9"><a href="MlAlgorithm.html#cb8-9"></a><span class="co"># Import datasets, classifiers and performance metrics</span></span>
+<span id="cb8-10"><a href="MlAlgorithm.html#cb8-10"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets, svm, metrics</span>
+<span id="cb8-11"><a href="MlAlgorithm.html#cb8-11"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb8-12"><a href="MlAlgorithm.html#cb8-12"></a></span>
+<span id="cb8-13"><a href="MlAlgorithm.html#cb8-13"></a><span class="co"># The digits dataset</span></span>
+<span id="cb8-14"><a href="MlAlgorithm.html#cb8-14"></a>digits <span class="op">=</span> datasets.load_digits()</span>
+<span id="cb8-15"><a href="MlAlgorithm.html#cb8-15"></a></span>
+<span id="cb8-16"><a href="MlAlgorithm.html#cb8-16"></a><span class="co"># The data that we are interested in is made of 8x8 images of digits, let&#39;s</span></span>
+<span id="cb8-17"><a href="MlAlgorithm.html#cb8-17"></a><span class="co"># have a look at the first 4 images, stored in the `images` attribute of the</span></span>
+<span id="cb8-18"><a href="MlAlgorithm.html#cb8-18"></a><span class="co"># dataset.  If we were working from image files, we could load them using</span></span>
+<span id="cb8-19"><a href="MlAlgorithm.html#cb8-19"></a><span class="co"># matplotlib.pyplot.imread.  Note that each image must have the same size. For these</span></span>
+<span id="cb8-20"><a href="MlAlgorithm.html#cb8-20"></a><span class="co"># images, we know which digit they represent: it is given in the &#39;target&#39; of</span></span>
+<span id="cb8-21"><a href="MlAlgorithm.html#cb8-21"></a><span class="co"># the dataset.</span></span>
+<span id="cb8-22"><a href="MlAlgorithm.html#cb8-22"></a>_, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb8-23"><a href="MlAlgorithm.html#cb8-23"></a>images_and_labels <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images, digits.target))</span>
+<span id="cb8-24"><a href="MlAlgorithm.html#cb8-24"></a><span class="cf">for</span> ax, (image, label) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">0</span>, :], images_and_labels[:<span class="dv">4</span>]):</span>
+<span id="cb8-25"><a href="MlAlgorithm.html#cb8-25"></a>    ax.set_axis_off()</span>
+<span id="cb8-26"><a href="MlAlgorithm.html#cb8-26"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
+<span id="cb8-27"><a href="MlAlgorithm.html#cb8-27"></a>    ax.set_title(<span class="st">&#39;Training: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> label)</span>
+<span id="cb8-28"><a href="MlAlgorithm.html#cb8-28"></a></span>
+<span id="cb8-29"><a href="MlAlgorithm.html#cb8-29"></a><span class="co"># To apply a classifier on this data, we need to flatten the image, to</span></span>
+<span id="cb8-30"><a href="MlAlgorithm.html#cb8-30"></a><span class="co"># turn the data in a (samples, feature) matrix:</span></span>
+<span id="cb8-31"><a href="MlAlgorithm.html#cb8-31"></a>n_samples <span class="op">=</span> <span class="bu">len</span>(digits.images)</span>
+<span id="cb8-32"><a href="MlAlgorithm.html#cb8-32"></a>data <span class="op">=</span> digits.images.reshape((n_samples, <span class="dv">-1</span>))</span>
+<span id="cb8-33"><a href="MlAlgorithm.html#cb8-33"></a></span>
+<span id="cb8-34"><a href="MlAlgorithm.html#cb8-34"></a><span class="co"># Create a classifier: a support vector classifier</span></span>
+<span id="cb8-35"><a href="MlAlgorithm.html#cb8-35"></a>classifier <span class="op">=</span> svm.SVC(gamma<span class="op">=</span><span class="fl">0.001</span>)</span>
+<span id="cb8-36"><a href="MlAlgorithm.html#cb8-36"></a></span>
+<span id="cb8-37"><a href="MlAlgorithm.html#cb8-37"></a><span class="co"># Split data into train and test subsets</span></span>
+<span id="cb8-38"><a href="MlAlgorithm.html#cb8-38"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb8-39"><a href="MlAlgorithm.html#cb8-39"></a>    data, digits.target, test_size<span class="op">=</span><span class="fl">0.5</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-40"><a href="MlAlgorithm.html#cb8-40"></a></span>
+<span id="cb8-41"><a href="MlAlgorithm.html#cb8-41"></a><span class="co"># We learn the digits on the first half of the digits</span></span>
+<span id="cb8-42"><a href="MlAlgorithm.html#cb8-42"></a>classifier.fit(X_train, y_train)</span>
+<span id="cb8-43"><a href="MlAlgorithm.html#cb8-43"></a></span>
+<span id="cb8-44"><a href="MlAlgorithm.html#cb8-44"></a><span class="co"># Now predict the value of the digit on the second half:</span></span>
+<span id="cb8-45"><a href="MlAlgorithm.html#cb8-45"></a>predicted <span class="op">=</span> classifier.predict(X_test)</span>
+<span id="cb8-46"><a href="MlAlgorithm.html#cb8-46"></a></span>
+<span id="cb8-47"><a href="MlAlgorithm.html#cb8-47"></a>images_and_predictions <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images[n_samples <span class="op">//</span> <span class="dv">2</span>:], predicted))</span>
+<span id="cb8-48"><a href="MlAlgorithm.html#cb8-48"></a><span class="cf">for</span> ax, (image, prediction) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">1</span>, :], images_and_predictions[:<span class="dv">4</span>]):</span>
+<span id="cb8-49"><a href="MlAlgorithm.html#cb8-49"></a>    ax.set_axis_off()</span>
+<span id="cb8-50"><a href="MlAlgorithm.html#cb8-50"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
+<span id="cb8-51"><a href="MlAlgorithm.html#cb8-51"></a>    ax.set_title(<span class="st">&#39;Prediction: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> prediction)</span>
+<span id="cb8-52"><a href="MlAlgorithm.html#cb8-52"></a></span>
+<span id="cb8-53"><a href="MlAlgorithm.html#cb8-53"></a><span class="bu">print</span>(<span class="st">&quot;Classification report for classifier </span><span class="sc">%s</span><span class="st">:</span><span class="ch">\n</span><span class="sc">%s</span><span class="ch">\n</span><span class="st">&quot;</span></span>
+<span id="cb8-54"><a href="MlAlgorithm.html#cb8-54"></a>      <span class="op">%</span> (classifier, metrics.classification_report(y_test, predicted)))</span>
+<span id="cb8-55"><a href="MlAlgorithm.html#cb8-55"></a>disp <span class="op">=</span> metrics.plot_confusion_matrix(classifier, X_test, y_test)</span>
+<span id="cb8-56"><a href="MlAlgorithm.html#cb8-56"></a>disp.figure_.suptitle(<span class="st">&quot;Confusion Matrix&quot;</span>)</span>
+<span id="cb8-57"><a href="MlAlgorithm.html#cb8-57"></a><span class="bu">print</span>(<span class="st">&quot;Confusion matrix:</span><span class="ch">\n</span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> disp.confusion_matrix)</span>
+<span id="cb8-58"><a href="MlAlgorithm.html#cb8-58"></a></span>
+<span id="cb8-59"><a href="MlAlgorithm.html#cb8-59"></a>plt.show()</span></code></pre></div>
 </div>
 </div>
 </div>

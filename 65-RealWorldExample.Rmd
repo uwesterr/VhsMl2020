@@ -115,9 +115,9 @@ From input to output
 
 ```{block2 echo=TRUE, type='rmdtip'}
 
-$$ outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)  $$
+$$outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)$$
 
-$$ \hat{Y} = \hat{f}(X)$$
+$$\hat{Y} = \hat{f}(X)$$
 
 ```
 

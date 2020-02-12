@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-11" />
+<meta name="date" content="2020-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,7 +191,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="ml-project-process.html"><a href="ml-project-process.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>5.3</b> Exploratory data analysis</a></li>
 <li class="chapter" data-level="5.4" data-path="ml-project-process.html"><a href="ml-project-process.html#qunatitiave-anaylsis"><i class="fa fa-check"></i><b>5.4</b> Qunatitiave anaylsis</a></li>
-<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a></li>
+<li class="chapter" data-level="5.5" data-path="ml-project-process.html"><a href="ml-project-process.html#feature-engineering"><i class="fa fa-check"></i><b>5.5</b> Feature engineering</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="ml-project-process.html"><a href="ml-project-process.html#featureImportance"><i class="fa fa-check"></i><b>5.5.1</b> Feature importance</a></li>
+</ul></li>
 <li class="chapter" data-level="5.6" data-path="ml-project-process.html"><a href="ml-project-process.html#model-fit"><i class="fa fa-check"></i><b>5.6</b> Model fit</a></li>
 <li class="chapter" data-level="5.7" data-path="ml-project-process.html"><a href="ml-project-process.html#model-tuning"><i class="fa fa-check"></i><b>5.7</b> Model tuning</a></li>
 <li class="chapter" data-level="" data-path="ml-project-process.html"><a href="ml-project-process.html#after-data-gathering-iteration-is-trump"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
@@ -207,8 +209,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>7</b> ML algorithms</a><ul>
-<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a></li>
-<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a></li>
+<li class="chapter" data-level="7.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLinReg"><i class="fa fa-check"></i><b>7.1</b> Linear regression TBD</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#example-for-linear-regression"><i class="fa fa-check"></i><b>7.1.1</b> Example for linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoLogReg"><i class="fa fa-check"></i><b>7.2</b> Logistic regression</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#python-example-logistic-regression"><i class="fa fa-check"></i><b>7.2.1</b> Python example logistic regression</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#MlAlgoTrees"><i class="fa fa-check"></i><b>7.3</b> Tree based methods TBD</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#splitting-metrics"><i class="fa fa-check"></i><b>7.3.1</b> Splitting metrics</a></li>
 <li class="chapter" data-level="7.3.2" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html#ensembles"><i class="fa fa-check"></i><b>7.3.2</b> Ensembles</a></li>
@@ -502,16 +508,30 @@ Reasons why ML approach should NOT be chosen:<img src="images/no.svg" alt="Smile
 </ul>
 </div>
 
-<p><span class="math inline">\(x \rightarrow y\)</span></p>
+<p>For the first question there are no clear answers, for the second the are plenty of methods to decide whether data is useful or not.</p>
 <div id="how-much-data-is-necessary" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> How much data is necessary?</h3>
 <p>There are a number of rules of thumb out there like</p>
-<p>-For regression analysis
-- 10 times as many samples than parameters
-- For image recognition
-- 1000 samples per category
-- can go down significantly using pre-trained models</p>
+
+<div class="rmdtip">
+<p>Rules of thumb:</p>
+<ul>
+<li>For regression analysis
+<ul>
+<li>10 times as many samples than parameters</li>
+</ul></li>
+<li>For image recognition
+<ul>
+<li>1000 samples per category</li>
+<li>can go down significantly using pre-trained models</li>
+</ul></li>
+</ul>
+</div>
+
 <p>but those rules a just a rough guidance since there are plenty of factors influencing the data needed</p>
+
+<div class="rmdtip">
+<p>Factors influencing data requirement:</p>
 <ul>
 <li>model complexity</li>
 <li>similarity of data
@@ -525,21 +545,41 @@ Reasons why ML approach should NOT be chosen:<img src="images/no.svg" alt="Smile
 <li>for trees might be counterproductive</li>
 </ul></li>
 </ul>
+</div>
+
 <p>Sometimes it is easy to create data. When Ayers was thinking about the title of his new book he targeted Google Ads, each with a different title. He got 250,000 samples related to which ad was clicked on most <span class="citation">(Ayres <a href="#ref-ayres2007super" role="doc-biblioref">2007</a>)</span>.</p>
-<p>TBD:
-- picture of bias and variance similar to <a href="https://towardsdatascience.com/breaking-the-curse-of-small-datasets-in-machine-learning-part-1-36f28b0c044d" class="uri">https://towardsdatascience.com/breaking-the-curse-of-small-datasets-in-machine-learning-part-1-36f28b0c044d</a>
-- picture for transfer learning similar to <a href="https://medium.com/predict/dealing-with-the-lack-of-data-in-machine-learning-725f2abd2b92" class="uri">https://medium.com/predict/dealing-with-the-lack-of-data-in-machine-learning-725f2abd2b92</a></p>
-<p>There obviously cannot be a single number as an answer to this question.</p>
-<p>Well, you need roughly 10 times as many examples as there are degrees of freedom in your model.</p>
+<p>During model training it might become obvious that we run into overfitting, that is the case when training error gets smaller and at the same time the validation error goes up or when the validation error is much higher than the training error.</p>
+
+<div class="rmdtip">
+<p>Overfitting as indicator for not enough data:</p>
 <ul>
-<li><p>Number of categories to be predicted
-What is the expected output of your model? Basically, the fewest number or categories the better.</p></li>
-<li><p>Model Performance
-If you plan on getting a product in production, you need more. A small dataset might be good enough for a proof of concept but in production, you’ll need way more data.</p></li>
+<li>Validation error is much higher than training error</li>
+<li>Validation error increase with training cycles</li>
+<li>Model memorizes dat but doesn’t generalise</li>
 </ul>
+</div>
+
+<hr />
+<p><img src="images/earlyStopping.png" style="width:80.0%" /></p>
+<hr />
 </div>
 <div id="which-data-is-useful" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Which data is useful?</h3>
+<p>Ideally only data which explain the output are fed into a model. But there might be features which are not known to be of importance. On the other hand there might be features which are overrated as to the importance they have for the output. Anyhow, both can only be known after a model is build. Also, it might be that a feature is valuable for one model but not so much for another model.</p>
+
+<div class="rmdtip">
+<p>Data useful?:</p>
+<ul>
+<li>Has to be tested with model</li>
+<li>Importance can be model dependent</li>
+<li>Not helpful features cause
+<ul>
+<li>performance drop</li>
+<li>more complex models
+</div></li>
+</ul></li>
+</ul>
+<p>Finding the importance of a feature falls into the field of <strong>feature engineering</strong> as described in chapter <a href="ml-project-process.html#featureImportance">5.5.1</a></p>
 </div>
 </div>
 <div id="exploratory-data-analysis" class="section level2">
@@ -550,6 +590,10 @@ If you plan on getting a product in production, you need more. A small dataset m
 </div>
 <div id="feature-engineering" class="section level2">
 <h2><span class="header-section-number">5.5</span> Feature engineering</h2>
+<div id="featureImportance" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Feature importance</h3>
+<p><span class="citation">(Pedregosa et al. <a href="#ref-scikit-learn" role="doc-biblioref">2011</a>)</span></p>
+</div>
 </div>
 <div id="model-fit" class="section level2">
 <h2><span class="header-section-number">5.6</span> Model fit</h2>
@@ -630,8 +674,8 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 <p>From input to output</p>
 
 <div class="rmdtip">
-<p><span class="math display">\[ outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)  \]</span></p>
-<p><span class="math display">\[ \hat{Y} = \hat{f}(X)\]</span></p>
+<p><span class="math display">\[outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)\]</span></p>
+<p><span class="math display">\[\hat{Y} = \hat{f}(X)\]</span></p>
 </div>
 
 </div>
@@ -640,6 +684,9 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 <div id="refs" class="references">
 <div id="ref-ayres2007super">
 <p>Ayres, Ian. 2007. <em>Super Crunchers: Why Thinking-by-Numbers Is the New Way to Be Smart</em>. Bantam Books.</p>
+</div>
+<div id="ref-scikit-learn">
+<p>Pedregosa, F., G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O. Grisel, M. Blondel, et al. 2011. “Scikit-Learn: Machine Learning in Python.” <em>Journal of Machine Learning Research</em> 12: 2825–30.</p>
 </div>
 </div>
 <div class="footnotes">
