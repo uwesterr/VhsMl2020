@@ -163,7 +163,26 @@ Overfitting as indicator for not enough data:
 
  ![](images/earlyStopping.png){width=80% }
 
+#### Dealing with small data
 
+
+ source https://www.industryweek.com/technology-and-iiot/digital-tools/article/21122846/making-ai-work-with-small-data 
+>
+Synthetic data generation is used to synthesize novel images that are difficult to collect in real life. Recent advances in techniques such as GANs, variational autoencoders, domain randomization and data augmentation can be used to do this. 
+
+Transfer learning is a technique that enables AI to learn from a related task where there is ample data available and then uses this knowledge to help solve the small data task. For example, an AI learns to find dents from 1,000 pictures of dents collected from a variety of products and data sources. It can then transfer this knowledge to detect dents in a specific novel product with only a few pictures of dents. 
+
+Self-supervised learning: Similar to transfer-learning. but the obtained knowledge is acquired by solving a slightly different task and then adapted to small data problem. For example, you can take a lot of OK images and create a puzzle-like grid to be sorted by a base model. Solving this dummy problem will force the model to acquire domain knowledge that can be used as starting point in the small data task.
+
+In few-shot learning, the small-data problem is reformulated to help the AI system to learn an easier, less data hungry inspection task while achieving the same goal. In this scenario, AI is given thousands of easier inspection tasks, where each task has only 10 (or another similarly small number) examples. This forces the AI to learn to spot the most important patterns since it only has a small dataset. After that, when you expose this AI to the problem you care about, which has only a similar number of examples, its performance will benefit from it having seen thousands of similar small data tasks.
+
+One-shot learning is a special case of few-shot learning where the number of examples per class it has to learn from is one instead of a few (as in the example above). 
+
+In anomaly detection, the AI sees zero examples of defect and only examples of OK images. The algorithm learns to flag anything that deviates significantly from the OK images as a potential problem. 
+
+Hand-coded knowledge is an example in which an AI team interviews the inspection engineers and tries to encode as much of their institutional knowledge as possible into a system. Modern machine learning has been trending toward systems that rely on data rather than on human institutional knowledge, but when data isn’t available, skilled AI teams can engineer machine learning systems that leverage this knowledge. 
+
+Human-in-the-loop describes situations where any of the techniques listed above can be used to build an initial, perhaps somewhat higher error system. But the AI is smart enough to know when it is confident in a label or not and knows to show it to a human expert and defer to their judgement in the latter case. Each time it does so, it also gets to learn from the human, so that it increases accuracy and confidence in its output over time.
 
 
 ---
@@ -174,24 +193,392 @@ Overfitting as indicator for not enough data:
 Ideally only data which explain the output are fed into a model. But there might be features which are not known to be of importance. On the other hand there might be features which are overrated as to the importance they have for the output. Anyhow, both can only be known after a model is build. Also, it might be that a feature is valuable for one model but not so much for another model.
 
 
-```{block2 echo=TRUE, type='rmdtip'}
+<div class="rmdtip">
+
 
 Data useful?:
 
+- Could be detected during exploratory data analysis see chapter \@ref(eda) 
 - Has to be tested with model 
 - Importance can be model dependent
 - Not helpful features cause
     - performance drop
     - more complex models
-    
+
+</div>
+
+
+Finding the importance of a feature falls into the scope of **feature engineering** as described in chapter  \@ref(featureImportance) 
+
+
+
+## Exploratory and quantitative data analysis {#eda}
+
+Before starting to build any model it is good practice to analyze the data. Exploratory and quantitative data analysis are interlinked and therefore can be viewed together.
+
+<div class="rmdtip">
+
+
+- <p>Why data analysis?<img src="images/boxPlot.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+- Understanding characteristic and distribution of response
+    - histogram
+    - box plot
+- Uncover relationships between predictors and response
+    - scatter plots
+    - pairwise correlation plot among predictors
+    - projection of high-dimensional predictors into lower dimensional space
+    - heat maps across predictors
+
+</div>
+
+
+The process of exploratory and quantitative data analysis is described in detail in the following example.
+
+### Example for exploratory and quantitative data analysis
+
+This example is from the online book "Feature Engineering and Selection: A Practical Approach for Predictive Models"  [@FeatureEngineeringKuhnWebsite]
+
+#### Visualization for numeric data
+
+In this example the data set on ridership on the Chicago Transit Authority (CTA) “L” train system http://bit.ly/FES-Chicago is used to predict the ridership in order to optimize operation of the train system.
+
+
+<div class="HeadingNoNumber">
+
+Task: predict future ridership volume 14 days in advance
+
+</div>
+
+---
+
+ ![Source: Wikimedia Commons, Creative Commons license](images/ChicagoTransit.png){width=100% .external}
+
+---
+
+Since for any prediction of future ridership volume only historical values are available lagging data are used. In this case a lag of 14 days are used, i.e. ridership at day D-14.
+
+ <div class="HeadingNoNumber">
+
+Distribution of response
+
+</div>
+
+The distribution of the response gives an indication what to expect from a model. The residuals of a model should have less variation than the variation of the response.
+
+If the distribution shows that the frequency of response decreases proportionally with larger values this might be an indication that the response follows a log-normal distribution. Log-transforming the response would induce a normal distribution and often will enable a model to have better prediction performance.
+
+
+
+<div class="rmdtip">
+
+
+- <p>Why look at distribution?<img src="images/distributionRidership.svg" alt="Smiley face" align="right" style="width:30%;"></p>
+
+- Gives indication on what to be expected from model performance
+    - variance of residuals < variance of response
+- Distribution shaping might enable better prediction performance    
+
+</div>
+
+
+A **box plot** gives a quick idea of the distribution of a variable
+
+---
+
+ ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/clarkRides.svg){width=70% .external}
+ 
+---
+ 
+ <div class="rmdtip">
+Box plot legend:
+
+- Vertical line
+    - median of data
+- Blue area
+    - represents 50% of data
+- Whiskers
+    - indicate upper and lower 25% of data
+
+</div>
+
+ <div class="HeadingNoNumber">
+
+Skewness of distribution
+
+</div>
+
+In the following picture the relative position of the red line within its surrounding box shows the skewness of the data
+
+---
+
+ ![Figure from <a href="https://commons.wikimedia.org/wiki/File:Boxplots_with_skewness.png" title="via Wikimedia Commons">Ever.chae</a> [<a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA</a>]](images/Boxplots_with_skewness.png){width=50% .external}
+ 
+---
+
+ What the skewness of data means for its distribution is shown in the picture below
+
+---
+
+ ![Figure from <a href="https://commons.wikimedia.org/wiki/File:Relationship_between_mean_and_median_under_different_skewness.png" title="via Wikimedia Commons">Diva Jain</a> [<a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA</a>]](images/Relationship_between_mean_and_median_under_different_skewness.png){width=70% .external}
+ 
+ 
+ mode: Value which appears most often in data set
+ 
+---
+
+The box plot doesn't show if there are multiple peaks or modes. Histograms and violin plots are better suited in that case
+
+---
+
+ ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/eda-s-40380-distribution-1.svg){width=70% .external}
+ 
+---
+
+ 
+ <div class="rmdtip">
+Box plot alternatives: 
+
+- Histogram
+     - data binned into equal regions
+     - height of bar proportional frequency of percentage of samples in region
+- Violin plot
+    - compact visualization of distribution
+    - histogram-like characteristics 
+    - could add
+        - lower quartile ^[lower quarter of the data]
+        - median
+        - upper quartile ^[higher quarter of the data]
+
+</div>
+
+
+To **compare multiple distributions box plots are still helpful** as shown in the next image which shows the distribution of weekday ridership at all stations
+
+---
+
+ ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/multipleBoxPlots.png){width=100% .external}
+ 
+---
+
+
+ <div class="rmdtip">
+
+Knowledge gained through box plot:
+
+- Wider distribution than other stations
+- Station is close to stadium of Chicago Clubs
+- $\implies$ Clubs home game schedule would be important information for model
+
+</div>
+
+
+ <div class="HeadingNoNumber">
+
+Using faceting and colors to augment visualizations
+
+</div>
+
+Facets create the same type of plots and splitting the plot into different panels based on some variable
+
+ <div class="rmdtip">
+<p>Faceting:<img src="images/ridesFacet.svg" alt="Smiley face" align="right" style="width:30%;"></p>
+
+
+- Same type of plot
+- Based on some variable
+- Below faceting shows that ridership is different for parts of the week
+- $\implies$ **part of the week** is important feature
+
+</div>
+
+
+
+The plot below shows the ridership for Clark/Lake, and gives an explanation for the two modes seen in the histogram above, the ridership is vastly different on weekends than during the week.
+
+---
+
+ ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/ridesFacet.svg){width=70% .external}
+ 
+---
+
+
+
+ <div class="HeadingNoNumber">
+
+Scatter plots
+
+</div>
+
+Scatter plots can add a new dimesions to the analysis
+
+ <div class="rmdtip">
+
+Scatter plot:
+
+- One variable on x-axis, the other variable on y-axis
+- Each sample plotted in this coordinate space
+- Assess relationships
+    - between predictors
+    - between response and predictors
+
+</div>
+
+
+
+---
+
+ ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/scatterRidesWeekendsWeekdays.svg){width=60% .external}
+ 
+---
+
+There are several conclusions which can be drawn from the scatter plot above
+
+
+
+<div class="rmdtip">
+
+Knowledge gained through scatter plot:
+
+- Strong linear relationship between 14-day lag and current-day ridership
+- Two distinct groups of points
+    - weekday
+    - weekend
+- Plenty of outlier
+- Uncovering explanation of outlier $\implies$ new useful feature
+
+</div>
+
+
+
+<div class="HeadingNoNumber">
+
+Heatmaps
+
+</div>
+
+Heatmaps are a versatile plots that displays one predictor on the x-axis and another predictor on the y-axis. Both predictors must be able to be categorized.
+The categorized predictors form a grid, this grid is filled by another variable.
+
+<div class="rmdtip">
+<p>Heatmaps:<img src="images/heatMap.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+- Categorize predictor
+    - for x and y-axis
+- Display another variable on grid
+    - categorical or continuous 
+- Color depends on either value or category
+
+</div>
+
+
+The following heatmap investigates the all cases of weekday ridership less than 10,000. Those represent outlier needing explanation
+
+
+
+
+---
+
+ ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/heatMapRidesAnnotated.png){width=70% .external}
+
+
+blue: holiday  
+green: extreme weather
+
+---
+
+<div class="rmdtip">
+Heatmap concept
+
+- Categorize predictor
+    - x-axis: represents year
+    - y-axis: represents month and day
+- Red lines indicate weekdays ridership < 10,000
+- Blue boxes mark holiday seasons
+- Green boxes mark unusual data points
+    - both days hat extreme weather
+    - $\implies$ **weather** is important feature
+
+</div>
+
+
+<div class="HeadingNoNumber">
+
+Correlation matrix plots
+
+</div>
+
+An extension to scatter plot correlation matrix plots show the correlation between each pair of variable.
+
+<div class="rmdtip">
+
+Correlation matrix plots
+
+- Extension to scatter plot
+- Each variable is represented on the outer x-axis and outer y-axis
+- Matrix colored based on correlation value
+
+</div>
+
+
+
+---
+
+```{r CorMap, echo=FALSE, message=FALSE, warning=FALSE}
+load("images/corMap.RData")
+cor_map
 ```
 
-Finding the importance of a feature falls into the field of **feature engineering** as described in chapter  \@ref(featureImportance) 
+**Interactive figure** based on  [@FeatureEngineeringKuhnWebsite]
+
+---
+
+<div class="rmdtip">
+
+Knowledge gained through analysis of correlation matrix plot
+
+- Ridership across station is positively correlated for nearly all pairs of stations
+- Correlation for majority of stations is extremely high
+    - information present across stations is redundant
+- Columns and rows are organized based on hierarchical cluster analysis
+    - stations that have similar correlation vectors will be nearby on the axis
+    - helps to identify groups $\implies$ may point to important features
+
+</div>
+
+<div class="HeadingNoNumber">
+
+Principal Components Analysis (PCA)
+
+</div>
+
+One way of condensing many dimensions into just two or three are dimension reductions techniques such as principle components analysis (PCA)
+
+<blockquote>
+
+Principal components analysis finds combinations of the variables that best summarizes the variability in the original data 
+
+[@dillon1984multivariate]
+
+</div>
+
+---
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/pcaAndViolinPlot.png){width=100% .external}
 
 
-## Exploratory data analysis
+---
 
-## Qunatitiave anaylsis
+
+<div class="rmdtip">
+
+Knowledge gained through analysis of PCA plot
+
+- Component 1 focuses on part of the week
+- Component 2 focuses on changes over time
+
+</div>
+
 
 ## Feature engineering
 
@@ -213,7 +600,7 @@ Lastly, the no free lunch theorems say that there is no a-priori superiority for
 
 ---
 
- ![Figure from http://www.feat.engineering/intro-intro.html#the-model-versus-the-modeling-process (Image Credit: Owlsmcgee [Public domain] )](images/MLprocess.svg){width=100% .external}
+ ![Figure from  [@FeatureEngineeringKuhnWebsite] (Image Credit: Owlsmcgee [Public domain] )](images/MLprocess.svg){width=100% .external}
  
 ---
 
@@ -782,6 +1169,7 @@ Given is a set of data created by a linear expression plus some noise
 
 
 ```{block2 echo=TRUE, type='rmdmath'}
+
 $$y = 3*x+2+n$$
 where $n$ is noise
 

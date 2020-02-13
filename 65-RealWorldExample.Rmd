@@ -59,7 +59,7 @@ The question asked was: **How can the system be made faster and more reliable?**
 
 ---
 
- ![Figure from http://www.feat.engineering/intro-intro.html#the-model-versus-the-modeling-process (Image Credit: Owlsmcgee [Public domain] )](images/MLprocess.svg){width=100% .external}
+ ![Figure from  [@FeatureEngineeringKuhnWebsite] (Image Credit: Owlsmcgee [Public domain] )](images/MLprocess.svg){width=100% .external}
  
 ---
 
