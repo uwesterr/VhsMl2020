@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-13" />
+<meta name="date" content="2020-02-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,14 +191,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5.3</b> Exploratory and quantitative data analysis</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="eda.html"><a href="eda.html#example-for-exploratory-and-quantitative-data-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Example for exploratory and quantitative data analysis</a></li>
+<li class="chapter" data-level="5.3.2" data-path="eda.html"><a href="eda.html#visualizations-for-categorical-data-exploring-the-okcupid-data"><i class="fa fa-check"></i><b>5.3.2</b> Visualizations for Categorical Data: Exploring the OkCupid Data</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="feature-engineering.html"><a href="feature-engineering.html"><i class="fa fa-check"></i><b>5.4</b> Feature engineering</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="feature-engineering.html"><a href="feature-engineering.html#featureImportance"><i class="fa fa-check"></i><b>5.4.1</b> Feature importance</a></li>
+<li class="chapter" data-level="5.4.2" data-path="feature-engineering.html"><a href="feature-engineering.html#dimensionReductionsTechniques"><i class="fa fa-check"></i><b>5.4.2</b> Dimensionality reduction algorithms TBD</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="model-fit.html"><a href="model-fit.html"><i class="fa fa-check"></i><b>5.5</b> Model fit</a></li>
 <li class="chapter" data-level="5.6" data-path="model-tuning.html"><a href="model-tuning.html"><i class="fa fa-check"></i><b>5.6</b> Model tuning</a></li>
 <li class="chapter" data-level="" data-path="after-data-gathering-iteration-is-trump.html"><a href="after-data-gathering-iteration-is-trump.html"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
-<li class="chapter" data-level="5.7" data-path="feature-engineering-1.html"><a href="feature-engineering-1.html"><i class="fa fa-check"></i><b>5.7</b> Feature engineering</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html"><i class="fa fa-check"></i><b>6</b> Machine learning classes</a><ul>
 <li class="chapter" data-level="6.1" data-path="supervised-learning.html"><a href="supervised-learning.html"><i class="fa fa-check"></i><b>6.1</b> Supervised learning</a></li>
@@ -341,7 +342,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.2" data-path="project-phases.html"><a href="project-phases.html"><i class="fa fa-check"></i><b>20.2</b> Project phases</a><ul>
 <li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#the-main-project-phases-are"><i class="fa fa-check"></i>The main project phases are:</a></li>
 <li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#after-data-gathering-iteration-is-trump-1"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
-<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-2"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
+<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-1"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
 </ul></li>
 <li class="chapter" data-level="20.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html"><i class="fa fa-check"></i><b>20.3</b> Algorithm selection</a><ul>
 <li class="chapter" data-level="20.3.1" data-path="algorithm-selection.html"><a href="algorithm-selection.html#logistic-regression"><i class="fa fa-check"></i><b>20.3.1</b> Logistic regression</a></li>
@@ -429,26 +430,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>This is an <strong>analysis based on Kaggle survey data</strong>,
 details are at <a href="https://www.kaggle.com/c/kaggle-survey-2019" class="uri">https://www.kaggle.com/c/kaggle-survey-2019</a>. Kaggle is a subsidiary of Google LLC online community of data scientists machine learners with more than 1Mio members.</p>
 <p>It offers data sets, a no-setup, customizable, Jupyter Notebooks environment, machine learning competitions and access free GPUs and a huge repository of community published data &amp; code.</p>
+<div class="rmdtip">
+<p>Info on survey</p>
 <ul>
 <li><p>The survey <strong>received 19,717 usable respondents</strong> from <strong>171 countries and territories</strong>. If a country or territory received less than 50 respondents, they were grouped and named “Other” for anonymity.</p></li>
 <li><p>The survey was live from <strong>October 8th to October 28th 2019.</strong></p></li>
 <li><p>The median response time for those who participated in the survey was <strong>approximately 10 minutes.</strong></p></li>
 </ul>
+</div>
 <p>An overview of the world wide participation is given in the map below. The first three countries are</p>
+<div class="rmdtip">
+<p>Countries of most participants:</p>
 <ul>
 <li>India</li>
 <li>USA</li>
 <li>Brazil</li>
 </ul>
+</div>
 <p><img src="Figs/histo_age-1.png" width="1152" /></p>
 <hr />
-<p>All numbers of all countries are given in the interactive table below. To find a specific country, type the name in the search field.
-Surprising facts:</p>
+<p>All numbers of all countries are given in the interactive table below. To find a specific country, type the name in the search field.</p>
+<div class="rmdtip">
+<p>Surprising facts:</p>
 <ul>
 <li>Almost as many participants from Saudi Arabia (50) and Norway (51)</li>
 <li>Peru (74) higher than Belgium (70)</li>
 <li>Iran (96) higher than Sweden (92)</li>
 </ul>
+</div>
 <hr />
 <div id="htmlwidget-6ab62b41ede853aee543" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-6ab62b41ede853aee543">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56"],["India","USA","Brazil","Japan","China","Russia","Germany","UK","Canada","Spain","Nigeria","France","Taiwan","Turkey","Italy","Australia","South Korea","Poland","Pakistan","Mexico","Ukraine","Colombia","Indonesia","Netherlands","Singapore","Bangladesh","Vietnam","Argentina","Morocco","Egypt","South Africa","Kenya","Portugal","Greece","Israel","Switzerland","Iran","Sweden","Chile","Ireland","Malaysia","Peru","Belgium","Belarus","Tunisia","Thailand","Philippines","Algeria","Czech Republic","Romania","Hungary","Denmark","Austria","New Zealand","Norway","Saudi Arabia"],[4786,3085,728,673,638,626,531,482,450,399,395,386,301,288,271,269,255,212,210,195,191,168,167,161,156,136,128,123,123,122,120,114,114,108,104,97,96,92,91,89,80,74,70,68,68,67,65,58,58,58,56,55,53,51,51,50]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Country<\/th>\n      <th>No. of participants<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
@@ -509,7 +518,8 @@ gitbook.start({
 },
 "download": ["MlOrienttionBookDown.pdf", "MlOrienttionBookDown.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "subsection",
+"toc_depth": 5
 }
 });
 });

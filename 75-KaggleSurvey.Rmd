@@ -111,7 +111,11 @@ short$country <-  plyr::revalue(short$country, c("United States of America"="USA
 # Kaggle survey introduction {#KaggleSurvey}
 
 
-Kaggle is a platform for data scientists and machine learning practitioners which allows users to
+Kaggle is a platform for data scientists and machine learning practitioners which allows users to:
+
+<div class="rmdtip">
+
+Kaggle allows users to:
 
 - [find datasets](https://www.kaggle.com/datasets) 
 - publish datasets
@@ -123,7 +127,7 @@ Kaggle is a platform for data scientists and machine learning practitioners whic
 - [work with other machine learning practitioners on competitions](https://www.kaggle.com/competitions)
 - [Host competitions](https://www.kaggle.com/host)
 
-  
+</div> 
 
 ## Kaggle survey details
 
@@ -132,20 +136,31 @@ details are at https://www.kaggle.com/c/kaggle-survey-2019. Kaggle is a subsidia
 
 It offers data sets, a no-setup, customizable, Jupyter Notebooks environment, machine learning competitions and access free GPUs and a huge repository of community published data & code.
 
-- The survey **received 19,717 usable respondents** from **171 countries and territories**. If a country or territory received less than 50 respondents, they were grouped and named “Other” for anonymity.
+<div class="rmdtip">
 
+Info on survey
+
+- The survey **received 19,717 usable respondents** from **171 countries and territories**. If a country or territory received less than 50 respondents, they were grouped and named “Other” for anonymity.
 
 - The survey was live from **October 8th to October 28th 2019.**  
 
 - The median response time for those who participated in the survey was **approximately 10 minutes.**
 
-
+</div>
 
 An overview of the world wide participation is given in the map below. The first three countries are
+
+
+
+<div class="rmdtip">
+
+Countries of most participants:
 
 - India
 - USA
 - Brazil
+
+</div>
 
 ```{r histo_age}
 
@@ -174,12 +189,19 @@ ggplot(data = shortRegion, aes( x = long, y = lat, group = group )) +
 
 --- 
 
+
 All numbers of all countries are given in the interactive table below. To find a specific country, type the name in the search field.
+
+<div class="rmdtip">
+
+
 Surprising facts:
 
 - Almost as many participants from Saudi Arabia (50) and Norway (51)
 - Peru (74) higher than Belgium (70)
 - Iran (96) higher than Sweden (92)
+
+</div>
 
 ---
 
@@ -224,9 +246,15 @@ Easy histogram plots of all questions can be created in R as shown at https://ww
 
 The purpose of the survey analysis is to create insight into which 
 
+<div class="rmdtip">
+
+Purpose of survey, get insight into usage of:
+
 - algorithms
 - tools
 - platforms
+
+</div>
 
 are used in the field of machine learning. Contrary to public opinion machine learning is not mainly focused on neural networks.
 
@@ -304,9 +332,16 @@ The results are presented by graphs relating parameters either vs time or vs oth
 ## Survey participants education level
 The following plot shows survey participants education level. Very few participants have a non-academic background. By **no means a academic background is a pre-requisit to use machine learning,** however, two skills are very helpful
 
+<div class="rmdtip">
+
+
+Helpful skills for ML:
+
 - Coding experience
 - Statistical knowledge  
 
+
+</div>
 
 ---
 
@@ -325,8 +360,15 @@ labs(title = "Survey participants education level", x = NULL, caption = "(based 
 
 Coding experience speeds up the process to implement the machine learning ideas and concepts. Most effort during a machine learning project will go into
 
+<div class="rmdtip">
+
+
+Main effort during ML process:
+
 - Data pre-processing
 - Model tuning
+
+</div>
 
 The actual implementation of the **algorithm is often a matter of 10 - 20 lines of code**. Below the neural network definition for a self driving RC model car of the [donkey car framework](https://www.donkeycar.com). 
 
@@ -406,13 +448,20 @@ Splitting the graphs up for each category of education and plotting the percenta
 
 The graph above shows that **regression and tree-based algorithms are very popular**
 
-They are:  
+<div class="rmdtip">
+
+
+Regression and tree-based algorithms are:  
 
 
 - Less computationally intensive than neural networks
 - Available in the de facto standard machine learning library in Python, [scikit-learn](https://scikit-learn.org/stable/).   
 
+</div>
+
 Below **historical data to some the algorithms** are given, together with links to the Wikipedia article on the algorithm.
+
+<div class="rmdtip">
 
 
 - [Linear regression](https://en.wikipedia.org/wiki/Linear_regression) 
@@ -440,6 +489,9 @@ Below **historical data to some the algorithms** are given, together with links 
 - [Generative adversarial networks](https://en.wikipedia.org/wiki/Generative_adversarial_network)
     - Goodfellow, 2010-2014
 
+
+</div>
+
 ## Machine learning experience and algorithms
 
 Most of the **survey participants have less than 3 years machine learning experience** as can be seen in the graph below. Due to fact that the number in each category differs a lot a **representation of percentages is beneficial for some analysis.**
@@ -464,6 +516,7 @@ The usage of algorithms for different duration of experience is given in the gra
 ---  
 
 ```{r AlgoExperience}
+g <- ggplot(qa_dfAlgo , aes(reorder(Algo, n)))
 g + geom_bar(aes(fill = factor(Q23, levels =c("20+ years", "10-15 years", "5-10 years", "4-5 years", "3-4 years","2-3 years", "1-2 years", "< 1 years" ))))+ coord_flip() + theme(legend.position="bottom") + guides(fill = guide_legend(nrow = 3,title = "ML experience", title.position = "left")) + labs(title = "Who uses which algorithms", x = NULL, caption = "(based on data from Kaggle survey 2019)")
 ```
 
@@ -486,19 +539,29 @@ qa_dfAlgo$Q23 <- factor(qa_dfAlgo$Q23, levels(factor(qa_dfAlgo$Q23)),Q23Order)
 
 ---   
 
+<div class="rmdtip">
+
+Findings:
 
 - Regression and trees are popular at all level of experience
 - Neural networks are more popular for less experienced
 - 20% of very experienced use no algorithm
 
+</div>
 
 ## Experience and new algorithms 
 
-Newer algorithms there are: 
+Newer algorithms there are listed below
+
+<div class="rmdtip">
+
+Newer algorithms are: 
 
 - Evolutionary Approaches
 - Transformer Networks (BERT, gpt-2, etc)
-- Generative Adversarial Networks
+- Generative Adversarial Networks (GAN)
+
+</div>
 
 where evolutionary approaches have been around for quite some time but the usage of them in machine learning is rather recent. 
 
@@ -530,11 +593,15 @@ Splitting the graphs up for each category of experience and plotting the percent
 
 From the above graph it can be deducted that:
 
+<div class="rmdtip">
+
+Findings: 
+
 - Very experienced use new algorithms less often
 - Newbies embrace them
 - Evolutionary approaches are popular for medium experienced
 
-
+</div>
 
 
 ## Role of participants
@@ -560,10 +627,14 @@ The numbers for certain categories certainly have to be taken with a grain of sa
 
 Also there are:  
 
+<div class="rmdtip">
+
+Summary roles:
+
 - Many Software engineers
 - Very few Statistician
 
-
+</div>
 
 ## Company size
 
@@ -584,9 +655,14 @@ labs(title = "Company size", x = NULL, caption = "(based on data from Kaggle sur
 
 ---
 
-- Largest group of participants are from small companies
-- Second largest group of participants are from small companies
+<div class="rmdtip">
 
+Groups of many participants:
+
+- Largest group of participants are from small companies
+- Second largest group of participants are >10,000 employees companies
+
+</div>
 
 ## Company incorporation of machine learning
 
@@ -624,7 +700,11 @@ labs(title = "Company incorporation of machine learning", x = NULL, caption = "(
 
 ---
 
+<div class="HeadingNoNumber">
+
 **All participants of companies with > 10,000 employees declare that *"We have well established ML methods (i.e., models in production for more than 2 years)*"**
+
+</div>
 
 Splitting the graphs up for each category of company size and plotting the incorporation of machine learning shows this even more clearly
 
@@ -659,13 +739,17 @@ labs(title = "Company incorporation of machine learning", x = NULL, caption = "(
 
 ---
 
+<div class="rmdtip">
+
+Findings:
+
 - More companies explore machine learning than having it established
 - Many companies don't use machine learning
     - However, their employees invest in ML
     - Danger of loosing employees
     - Maybe companies are slow to discover ML potential
 
-
+</div>
 
 
 ## Favourite media sources on data science topics
@@ -691,21 +775,31 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 ---
 
+<div class="rmdtip">
+
+
 Those sources offer information about: 
+
 - Algorithms
 - New publications
 - Projects
 - Releases of new software versions
 - Recommended courses, popular platforms see [Favourite online course platform]
 
+</div>
 
 A few links to sources are given below
+
+<div class="rmdtip">
+
+Links to online media sources:
+
 
 - [Kaggle](https://www.kaggle.com)
 - [forums.fast.ai](https://www.fast.ai)
 - [medium blog](https://medium.com)
 
-
+</div>
 
 ## Favourite online course platform
 
@@ -730,13 +824,17 @@ g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") +
 
 All levels of academics are active on online course platforms. Below there are links to some of the platforms:
 
+<div class="rmdtip">
+
+Links to online course platforms: 
+
 - [Coursera](https://www.coursera.org)
 - [Kaggle Courses](https://www.kaggle.com/learn/overview)
 - [Udemy](https://www.udemy.com)
 - [Udacity](https://www.udacity.com)
 - [Fast.ai](https://www.fast.ai)
 
-
+</div>
 
 ## Favourite data analyzing tool
 
@@ -784,9 +882,14 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 ---
 
+<div class="rmdtip">
+
+Findings:
+
 - Most have less than 5 years coding experience in data analysis
 - Data analysis can be done without writing code
 
+</div>
 
 ## Favourite integrated development environments (IDE's)
 
@@ -811,7 +914,10 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 ----
 
-Below a list of some IDEs, all of them are free except for Matlab.
+<div class="rmdtip">
+
+
+List of some IDEs, all of them are free except for Matlab.
 
 - [Jupyter Notebook](https://jupyter.org)
     - Works with Python, R, Julia, C++, Ruby 
@@ -839,6 +945,7 @@ Below a list of some IDEs, all of them are free except for Matlab.
     - Commercial tool 
     - Own syntax
 
+</div>
 
 ## Favourite hosted notebook products
 
@@ -864,6 +971,11 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 Hosted notebooks offer a very easy and comfortable start into writing machine learning code. Some of them are free. Some of them provide many examples from which valuable techniques can be learned.
 
+
+<div class="rmdtip">
+
+List of hosted notebooks
+
 - [Kaggle Notebooks](https://www.kaggle.com/kernels)
     - Great place to find machine learning examples
     
@@ -878,7 +990,8 @@ Hosted notebooks offer a very easy and comfortable start into writing machine le
 
 - [Paperspace](https://www.paperspace.com)
     - Powering next-generation applications and cloud ML/AI pipelines.
-    
+ 
+</div>    
 
 ## Favourite programming languages
 
@@ -903,7 +1016,11 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 ---
 
+<div class="HeadingNoNumber">
+
 Hands down the **most popular programming language for machine learning is Python**. If **speed matters C++** is the way to go, but still, Python can be used for prototyping.
+
+</div>
 
 ## Recommended entry programming language
 
@@ -955,6 +1072,10 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 With Matplotlib there is a clear winner, however, ggplot2 is the clear **Favourite in the R world**.
 
+<div class="rmdtip">
+
+Links to visualization libraries:
+
 - [Matplotlib](https://matplotlib.org)
     - Matplotlib is a **Python** 2D plotting library which produces publication quality figures in a variety of hard copy formats and interactive environments across platforms 
     
@@ -976,6 +1097,8 @@ With Matplotlib there is a clear winner, however, ggplot2 is the clear **Favouri
     
 - [Bokeh](https://docs.bokeh.org/en/latest/index.html)
     - Bokeh is an interactive visualization library for modern web browsers.
+
+</div>
 
 ## Favourite specialized hardware
 
@@ -999,6 +1122,11 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 ---
 
+<div class="rmdtip">
+
+
+Specialized Hardware:
+
 - **CPU** => Central Processing Unit 
     - Performs basic arithmetic, logic, and input output instructions
     - Heart of every computing device
@@ -1010,19 +1138,26 @@ The last Qualification which is cut off in the legend in the plot above reads **
 - **TPU** => Tensor  Processing Unit
     - A tensor processing unit (TPU) is an AI accelerator application-specific integrated circuit (ASIC) **developed by Google specifically for neural network machine learning.**
     - Edge TPU
-        - 4 TOPs [^1]
-        - 2W
+        - 4 TOPs ^[Tera Operations Per Second ]
+        - Power = 2W
 
+</div>
 
 In @wei2019benchmarking a comparison of the three processors with respect to machine learning capabilities is given:
 
->• TPU is highly-optimized for large batches and CNNs, and has the highest training throughput
+<blockquote>
 
->• GPU shows better flexibility and programmability for irregular computations, such as small batches and non- MatMul computations. The training of large FC models also benefits from its sophisticated memory system and higher bandwidth.
 
->• CPU has the best programmability, so it achieves the highest FLOPS utilization for RNNs, and it supports the largest model because of large memory capacity.
+- TPU is highly-optimized for large batches and CNNs, and has the highest training throughput
 
- [^1]: Tera Operations Per Second 
+- GPU shows better flexibility and programmability for irregular computations, such as small batches and non- MatMul computations. The training of large FC models also benefits from its sophisticated memory system and higher bandwidth.
+
+- CPU has the best programmability, so it achieves the highest FLOPS utilization for RNNs, and it supports the largest model because of large memory capacity.
+
+@wei2019benchmarking
+ </blockquote>
+
+
 
 ## Favourite machine learning frameworks
 
@@ -1046,7 +1181,9 @@ The last Qualification which is cut off in the legend in the plot above reads **
 
 ---
 
+<div class="rmdtip">
 
+Links to ML frameworks
 
 - [Scikit-learn](https://scikit-learn.org/stable/)
     - Machine Learning in Python
@@ -1080,6 +1217,7 @@ The last Qualification which is cut off in the legend in the plot above reads **
     - Blogs
     - MOOC [^2]
 
+</div>
 
 
 [^2]: Massive Open Online Courses
@@ -1105,6 +1243,11 @@ g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") +
 The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
 
 ---
+
+<div class="rmdtip">
+
+
+Links to ML cloud computing frameworks:
 
 - [Amazon Web Services (AWS)](https://aws.amazon.com) 
     - AWS has the services to help you build sophisticated applications with increased flexibility, scalability and reliability
@@ -1136,6 +1279,7 @@ The last Qualification which is cut off in the legend in the plot above reads **
 - [Red Hat Cloud](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) 
     - Red Hat® Cloud Access is the program that allows our customers to run eligible Red Hat product subscriptions on certified public cloud providers.
 
+</div>
 
 
 ## Favourite big data / analytics products 
@@ -1184,5 +1328,7 @@ g + geom_bar(aes(fill = Q4))+ coord_flip() + theme(legend.position="bottom") +
 The last Qualification which is cut off in the legend in the plot above reads **"Some college/university study without earning a bachelor’s degree"**
 
 ---
+
+
 
 

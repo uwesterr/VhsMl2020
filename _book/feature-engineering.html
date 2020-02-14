@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-13" />
+<meta name="date" content="2020-02-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,14 +191,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5.3</b> Exploratory and quantitative data analysis</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="eda.html"><a href="eda.html#example-for-exploratory-and-quantitative-data-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Example for exploratory and quantitative data analysis</a></li>
+<li class="chapter" data-level="5.3.2" data-path="eda.html"><a href="eda.html#visualizations-for-categorical-data-exploring-the-okcupid-data"><i class="fa fa-check"></i><b>5.3.2</b> Visualizations for Categorical Data: Exploring the OkCupid Data</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="feature-engineering.html"><a href="feature-engineering.html"><i class="fa fa-check"></i><b>5.4</b> Feature engineering</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="feature-engineering.html"><a href="feature-engineering.html#featureImportance"><i class="fa fa-check"></i><b>5.4.1</b> Feature importance</a></li>
+<li class="chapter" data-level="5.4.2" data-path="feature-engineering.html"><a href="feature-engineering.html#dimensionReductionsTechniques"><i class="fa fa-check"></i><b>5.4.2</b> Dimensionality reduction algorithms TBD</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="model-fit.html"><a href="model-fit.html"><i class="fa fa-check"></i><b>5.5</b> Model fit</a></li>
 <li class="chapter" data-level="5.6" data-path="model-tuning.html"><a href="model-tuning.html"><i class="fa fa-check"></i><b>5.6</b> Model tuning</a></li>
 <li class="chapter" data-level="" data-path="after-data-gathering-iteration-is-trump.html"><a href="after-data-gathering-iteration-is-trump.html"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
-<li class="chapter" data-level="5.7" data-path="feature-engineering-1.html"><a href="feature-engineering-1.html"><i class="fa fa-check"></i><b>5.7</b> Feature engineering</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html"><i class="fa fa-check"></i><b>6</b> Machine learning classes</a><ul>
 <li class="chapter" data-level="6.1" data-path="supervised-learning.html"><a href="supervised-learning.html"><i class="fa fa-check"></i><b>6.1</b> Supervised learning</a></li>
@@ -341,7 +342,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.2" data-path="project-phases.html"><a href="project-phases.html"><i class="fa fa-check"></i><b>20.2</b> Project phases</a><ul>
 <li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#the-main-project-phases-are"><i class="fa fa-check"></i>The main project phases are:</a></li>
 <li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#after-data-gathering-iteration-is-trump-1"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
-<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-2"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
+<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-1"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
 </ul></li>
 <li class="chapter" data-level="20.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html"><i class="fa fa-check"></i><b>20.3</b> Algorithm selection</a><ul>
 <li class="chapter" data-level="20.3.1" data-path="algorithm-selection.html"><a href="algorithm-selection.html#logistic-regression"><i class="fa fa-check"></i><b>20.3.1</b> Logistic regression</a></li>
@@ -424,11 +425,82 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="feature-engineering" class="section level2">
+<div id="feature-engineering" class="section level2 tabset">
 <h2><span class="header-section-number">5.4</span> Feature engineering</h2>
+<p>Variables that go into model are called:</p>
+
+<div class="rmdtip">
+<ul>
+<li><p>
+Predictors<img src="images/In.png" alt="Smiley face" align="right" style="width:10%;">
+</p></li>
+<li>Features</li>
+<li>Independent variables</li>
+</ul>
+</div>
+
+<p>Quantity being modeled called:</p>
+
+<div class="rmdtip">
+<ul>
+<li><p>
+Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width:10%;">
+</p></li>
+<li>Outcome</li>
+<li>Response</li>
+<li>Dependent variable</li>
+</ul>
+</div>
+
+<p>From input to output</p>
+
+<div class="rmdtip">
+<p><span class="math display">\[outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)\]</span></p>
+<p><span class="math display">\[\hat{Y} = \hat{f}(X)\]</span></p>
+</div>
+
 <div id="featureImportance" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Feature importance</h3>
+<p><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html" class="uri">https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html</a></p>
+<p>================================================================
+Permutation Importance vs Random Forest Feature Importance (MDI)
+================================================================
+/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/permutationImportance.py</p>
+<p>=================================================================
+Permutation Importance with Multicollinear or Correlated Features
+=================================================================</p>
+<p>/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/plot_permutation_importance_multicollinear.py</p>
 <p><span class="citation">(Pedregosa et al. <a href="#ref-scikit-learn" role="doc-biblioref">2011</a>)</span></p>
+</div>
+<div id="dimensionReductionsTechniques" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Dimensionality reduction algorithms TBD</h3>
+<p>check chapter at kuhn TBD</p>
+<p><a href="http://www.feat.engineering/numeric-many-to-many.html" class="uri">http://www.feat.engineering/numeric-many-to-many.html</a></p>
+<p>Dimensionality reduction algorithms are employed in feature engineering to reduce the number of predictors in order to reduce complexity of the model and to reduce correlation between predictors</p>
+<div class="rmdtip">
+<ol style="list-style-type: decimal">
+<li>The number of predictors should be reduced but no predictor can be omitted
+<ul>
+<li>leads to less complex models</li>
+</ul></li>
+<li>To ensure that predictors are independent, i.e not correlated
+<ul>
+<li>might improve prediction performance</li>
+</ul></li>
+<li>The predictors don’t have to be interpretable</li>
+</ol>
+</div>
+<div id="PcaAlgorithm" class="section level4">
+<h4><span class="header-section-number">5.4.2.1</span> Principle component analysis (PCA) TBD</h4>
+<p><a href="https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c" class="uri">https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c</a></p>
+<p>Principle component</p>
+</div>
+<div id="t-SNEAlgorithm" class="section level4">
+<h4><span class="header-section-number">5.4.2.2</span> t-SNE TBD</h4>
+</div>
+<div id="autoencoders" class="section level4">
+<h4><span class="header-section-number">5.4.2.3</span> Autoencoders</h4>
+</div>
 </div>
 </div>
 <h3>References</h3>
@@ -487,7 +559,8 @@ gitbook.start({
 },
 "download": ["MlOrienttionBookDown.pdf", "MlOrienttionBookDown.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "subsection",
+"toc_depth": 5
 }
 });
 });

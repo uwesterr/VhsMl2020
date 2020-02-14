@@ -1,3 +1,4 @@
+
 # (PART) Machine learning fundamentals {-} 
 
 
@@ -163,7 +164,7 @@ Overfitting as indicator for not enough data:
 
  ![](images/earlyStopping.png){width=80% }
 
-#### Dealing with small data
+#### Dealing with small data TBC
 
 
  source https://www.industryweek.com/technology-and-iiot/digital-tools/article/21122846/making-ai-work-with-small-data 
@@ -524,7 +525,7 @@ Correlation matrix plots
 
 ---
 
-```{r CorMap, echo=FALSE, message=FALSE, warning=FALSE}
+```{r CorMap, echo=FALSE, message=FALSE, warning=FALSE, out.width = "80%"}
 load("images/corMap.RData")
 cor_map
 ```
@@ -552,7 +553,7 @@ Principal Components Analysis (PCA)
 
 </div>
 
-One way of condensing many dimensions into just two or three are dimension reductions techniques such as principle components analysis (PCA)
+One way of condensing many dimensions into just two or three are dimension reductions techniques such as principle components analysis (PCA). An explanation of dimension reductions techniques is given in chapter \@ref(dimensionReductionsTechniques) 
 
 <blockquote>
 
@@ -580,13 +581,249 @@ Knowledge gained through analysis of PCA plot
 </div>
 
 
-## Feature engineering
+### Visualizations for Categorical Data: Exploring the OkCupid Data
+
+OkCupid is an online dating platform.A data set of 50,000 San Fransico user data is available at [GitHub](https://github.com/rudeboybert/JSE_OkCupid)
+
+<div class="rmdtip">
+
+Data of OkCupid data set:
+
+- open text essays related to an individual’s interests and personal descriptions,
+- single-choice type fields such as profession, diet, and education, and
+- multiple-choice fields such as languages spoken and fluency in programming languages.
+
+</div>
+
+
+<div class="HeadingNoNumber">
+
+Task: Predict whether the profile's author was worked in STEM (science, technology, engineering, and math) field
+</div>
+
+
+
+
+#### Visualizing Relationships between Outcomes and Predictors
+
+
+To find out whether religion would be a good predictor several kinds of plots are compared.
+
+Firstly use a **bar plot**. The figure is ordered from greatest ratio (left) to least ratio (right) of STEM members in that religion.
+
+
+---
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/barPlotReligionStem.png){width=60% .external}
+
+
+---
+
+<div class="rmdtip">
+
+Bar plot shortcomings:
+
+- Doesn't easily show ratio
+    - see Hinduism
+- Gives no sense on uncertainty
+    - number of profiles per religion
+    - the smaller the number the higher the uncertainty
+
+</div>
+
+
+A better alternative is a **stacked bar plot** as shown in the next graph
+
+---
+
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/stackedBarPlotReligionStem.png){width=60% .external}
+
+
+---
+
+<div class="rmdtip">
+
+Stacked plot shortcomings:
+
+- No sense of frequency
+    - No information that there are very few Islamic profiles
+- No sense of uncertainty
+
+</div>
+
+
+
+A better alternative is a **error bar plot** as shown in the next graph
+
+---
+
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/errorBarPlotReligionStem.png){width=60% .external}
+
+
+---
+
+<div class="rmdtip">
+
+Error bar plot:
+
+- Shows uncertainty
+    - 95% confidence level ^[In statistics, a binomial proportion confidence interval is a confidence interval for the probability of success calculated from the outcome of a series of success–failure experiments (Bernoulli trials). In other words, a binomial proportion confidence interval is an interval estimate of a success probability $p$ when only the number of experiments $n$ and the number of successes $n_S$ are known.]
+
+</div>
+
+All plots combined are shown below
+
+---
+
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/eda-religion-1.png){width=80% .external}
+
+
+---
+
+
+
+ each graph should have a clearly defined hypothesis and that this hypothesis is shown concisely in a way that allows the reader to make quick and informative judgments based on the data
+
+<div class="rmdtip">
+
+Conclusion:
+
+- Each graph should have clearly defined hypothesis
+- Hypothesis shall be shown clearly
+- Reader can make quick, informative judgments based on data
+-  $\implies$ **Religion is a useful feature**
+
+</div>
+
+
+
+<div class="HeadingNoNumber">
+
+Relationship between a categorical outcome and a numeric predictor
+</div>
+
+As an example the relationship between essay length and STEM and others are analyzed using a **histogram** as shown below
+
+
+---
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/eda-essay-length-1.svg){width=80% .external}
+
+
+---
+
+
+The histogram shows that the **distribution is pretty similar** between STEM and others. A way to check whether the predictor could be useful is to **train a logistic regression** an a basis expansion by building a regression spline smoother of the essay length.
+
+<div class="rmdtip">
+
+Conclusion:
+
+- Distribution similar for STEM and others
+- Train logisitc regression model on basis expanded essay length
+- Values are close to base rate of 18.5%
+-  $\implies$ **essay length is NOT a helpful feature**
+
+</div>
+
+
+## Feature engineering {.tabset}
+
+
+
+Variables that go into model are called:
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- <p>Predictors<img src="images/In.png" alt="Smiley face" align="right" style="width:10%;"></p>
+- Features
+- Independent variables
+
+```
+
+
+Quantity being modeled called: 
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- <p>Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width:10%;"></p>
+- Outcome
+- Response
+- Dependent variable
+
+```
+
+
+From input to output
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+$$outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)$$
+
+$$\hat{Y} = \hat{f}(X)$$
+
+```
 
 
 ### Feature importance {#featureImportance}
 
+https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html 
+
+================================================================
+Permutation Importance vs Random Forest Feature Importance (MDI)
+================================================================
+/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/permutationImportance.py 
+
+=================================================================
+Permutation Importance with Multicollinear or Correlated Features
+=================================================================
+
+/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/plot_permutation_importance_multicollinear.py
 
 [@scikit-learn]
+
+
+### Dimensionality reduction algorithms TBD {#dimensionReductionsTechniques}
+
+check chapter at kuhn TBD
+
+http://www.feat.engineering/numeric-many-to-many.html
+
+Dimensionality reduction algorithms are employed in feature engineering to reduce the number of predictors in order to reduce complexity of the model and to reduce correlation between predictors
+
+<div class="rmdtip">
+
+1. The number of predictors should be reduced but no predictor can be omitted
+    - leads to less complex models
+
+2. To ensure that predictors are independent, i.e not correlated
+    - might improve prediction performance
+
+3. The predictors don't have to be interpretable
+
+</div>
+
+
+
+
+#### Principle component analysis (PCA) TBD  {#PcaAlgorithm}
+
+https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c
+
+Principle component 
+
+
+#### t-SNE TBD  {#t-SNEAlgorithm}
+
+
+#### Autoencoders
+
+
+
 
 ## Model fit
 
@@ -626,41 +863,6 @@ source http://www.feat.engineering/intro-intro.html#the-model-versus-the-modelin
 ```
 
 
-## Feature engineering
-
-Variables that go into model are called:
-
-```{block2 echo=TRUE, type='rmdtip'}
-
-- <p>Predictors<img src="images/In.png" alt="Smiley face" align="right" style="width:10%;"></p>
-- Features
-- Independent variables
-
-```
-
-
-Quantity being modeled called: 
-
-```{block2 echo=TRUE, type='rmdtip'}
-
-- <p>Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width:10%;"></p>
-- Outcome
-- Response
-- Dependent variable
-
-```
-
-
-From input to output
-
-
-```{block2 echo=TRUE, type='rmdtip'}
-
-$$outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)$$
-
-$$\hat{Y} = \hat{f}(X)$$
-
-```
 
 
 # Machine learning classes {#machineLearningClasses} 
