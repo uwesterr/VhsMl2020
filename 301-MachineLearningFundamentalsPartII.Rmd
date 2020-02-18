@@ -1281,10 +1281,17 @@ Facebook learned a multilingual sentence embedding to help it represent sentence
 https://ai.facebook.com/blog/ccmatrix-a-billion-scale-bitext-data-set-for-training-translation-models/ 
 
 
-## Discovering millions of datasets on the web
+## Dataset search from Google
 
-Published Jan 23, 2020 by Google
+The service is available at https://datasetsearch.research.google.com
+
+In a blog published Jan 23, 2020 Google states 
+<blockquote>
+
+
 Across the web, there are millions of datasets about nearly any subject that interests you. If you’re looking to buy a puppy, you could find datasets compiling complaints of puppy buyers or studies on puppy cognition. Or if you like skiing, you could find data on revenue of ski resorts or injury rates and participation numbers. Dataset Search has indexed almost 25 million of these datasets, giving you a single place to search for datasets and find links to where the data is. Over the past year, people have tried it out and provided feedback, and now Dataset Search is officially out of beta.
- 
 https://blog.google/products/search/discovering-millions-datasets-web/
+</blockquote>
+
+
 

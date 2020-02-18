@@ -9,8 +9,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Machine learning fundamentals {#MachineLearningFundamentals}
 
- “If intelligence was a cake, unsupervised learning would be the cake, supervised learning would be the icing, and reinforcement learning would be the carry.” – Yann LeCun
 
+<blockquote>
+ “If intelligence was a cake, unsupervised learning would be the cake, supervised learning would be the icing, and reinforcement learning would be the carry.” 
+ Yann LeCun
+</blockquote>
 
 
 # ML project process
@@ -217,6 +220,20 @@ Finding the importance of a feature falls into the scope of **feature engineerin
 
 Before starting to build any model it is good practice to analyze the data. Exploratory and quantitative data analysis are interlinked and therefore can be viewed together.
 
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+
+- <p>Exploratory data analysis </p>
+    - Find correlations or mutial depence
+- Quantiative analysis
+    - Check distribution
+        - Long tail => log of variable
+
+```
+
+
+
 <div class="rmdtip">
 
 
@@ -238,7 +255,8 @@ The process of exploratory and quantitative data analysis is described in detail
 
 ### Example for exploratory and quantitative data analysis
 
-This example is from the online book "Feature Engineering and Selection: A Practical Approach for Predictive Models"  [@FeatureEngineeringKuhnWebsite]
+This example is from the online book "Feature Engineering and Selection: A Practical Approach for Predictive Models" 
+[@FeatureEngineeringKuhnWebsite]
 
 #### Visualization for numeric data
 
@@ -553,7 +571,7 @@ Principal Components Analysis (PCA)
 
 </div>
 
-One way of condensing many dimensions into just two or three are dimension reductions techniques such as principle components analysis (PCA). An explanation of dimension reductions techniques is given in chapter \@ref(dimensionReductionsTechniques) 
+One way of condensing many dimensions into just two or three are dimension reductions techniques such as principle components analysis (PCA). An explanation of dimension reductions techniques is given in chapter \@ref(ManytoManyTransformations) 
 
 <blockquote>
 
@@ -583,7 +601,7 @@ Knowledge gained through analysis of PCA plot
 
 ### Visualizations for Categorical Data: Exploring the OkCupid Data
 
-OkCupid is an online dating platform.A data set of 50,000 San Fransico user data is available at [GitHub](https://github.com/rudeboybert/JSE_OkCupid)
+OkCupid is an online dating platform. A data set of 50,000 San Francisco user data is available at [GitHub](https://github.com/rudeboybert/JSE_OkCupid)
 
 <div class="rmdtip">
 
@@ -730,11 +748,28 @@ Conclusion:
 </div>
 
 
-## Feature engineering {.tabset}
+## Feature engineering {#featureEngineering}
 
+Sometimes even the best models have less than useful predictive performance. This could be because key relationships are not directly available.
 
+<div class="rmdtip">
 
-Variables that go into model are called:
+- Transformation of a predictor
+- Interaction of two or more predictors such as a product or ratio
+- Functional relationship among predictors
+- Equivalent re-representation of a predictor
+
+</div>
+
+Feature engineering can be defined as:
+
+<blockquote>
+Adjusting and reworking the predictors to enable models to better uncover predictor-response relationships has been termed feature engineering. 
+
+[@FeatureEngineeringKuhnWebsite]
+</blockquote>
+
+Since there are different faculties which work on machine learning (staticians, computer scientists, neurologists) there are different terms for the same thing, so variables that go into model are called:
 
 ```{block2 echo=TRUE, type='rmdtip'}
 
@@ -757,16 +792,326 @@ Quantity being modeled called:
 ```
 
 
-From input to output
+So machine learning is nothing more spectacular than finding a function that maps the input, features, to the output, response as close as possible.
 
 
-```{block2 echo=TRUE, type='rmdtip'}
+<div class="rmdtip">
 
 $$outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)$$
 
 $$\hat{Y} = \hat{f}(X)$$
 
-```
+</div>
+
+
+For numerical features it is straight forward for them to be fed into a model, but how can categorical data be handled?
+
+###  Encoding Categorical Predictors
+
+Categorical features are not quantitative nature but **qualitative data**, i.e. discrete values in an ordered relationship
+
+<div class="rmdtip">
+
+Categorical features: 
+
+- Gender
+- Breeds of dogs
+- Postal code
+
+
+</div>
+
+Ordered categorical features have a clear progression of values
+
+<div class="rmdtip">
+
+Ordered categorical features: 
+
+- Bad
+- Good
+- Better
+
+</div>
+
+Ordered and unordered features might be handled differently to include the embedded information into a model.
+
+Not all models need a special treatment for categorical data
+
+<div class="rmdtip">
+
+Models that can deal with categorical features: 
+
+- Tree based models
+- Naive Bayes models
+
+</div>
+
+
+
+one hot vs dummy variable
+
+TBC
+
+add
+- bert
+- word2vec
+- one hot encoding
+- dummy variable
+
+This are ways how to modify qualitative features For continuous, real number values exists other tools for converting them into features that can be better utilized by a model.
+
+### Engineering numeric features
+
+Features with continuous, real number values might need some pre-processing before being useful for a model. The pre-processing can be model dependent 
+
+
+<div class="rmdtip">
+
+Model dependent pre-processing:
+
+- Skewed distribution
+     - No problem for:
+         - Trees (based on rank rather than values)
+     - Problem for:     
+         - K-nearest neighbors
+         - SVM 
+         - Neural networks
+
+- Correlated features
+    - No problem for:
+        - Partial least square
+    - Problem for:
+        - Neural networks
+        - Multiple linear regression
+
+</div>
+
+
+Commonly occurring issues for numerical features and the counter measures are treated in this chapter
+
+<div class="rmdtip">
+
+Commonly occurring issues:
+
+- Vastly different scales
+- Skewed distribution
+- Small number of extreme values
+- Are clipped at on the low/or high end of range
+- Complex relationship with response
+- Redundant information
+
+</div>
+
+Those problems are addressed by various methods in the next chapters
+
+
+    
+<div class="rmdtip">
+
+Remedies to commonly occurring issues:
+
+- Transform individual feature's distribution in chapter \@ref(Transformations)
+    - avoid skewed distribution
+- Expanding individual features into many features in chapter \@ref(OneManyTransformations)
+    - helps with complex relationships with response
+- Mapping higher to lower dimensional space  in chapter \@ref(ManytoManyTransformations)
+    - helps with redundant information
+
+</div>
+
+
+#### Transformations {#Transformations}
+
+There are plenty of methods to transform a feature, first focus is on distribution shaping
+
+
+<div class="HeadingNoNumber">
+Box-Cox transformation
+
+</div>
+
+Apply the Box-Cox transformation the skewed distribution below
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/SkewedDistribution.png){width=80% .external}
+
+can be shaped to be closely normally distributed as shown below.
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/BoxCoxShapedDistribution.png){width=80% .external}
+
+
+Box-Cox transformation maps the original data by the following equation
+
+<div class="rmdmath">
+
+Box-Cox transformation  equation: 
+
+$$x^{*}=\left\{\begin{array}{ll}{\frac{x^{\lambda}-1}{\lambda \bar{x}^{\lambda-1}},} & {\lambda \neq 0} \\ {\tilde{x} \log x,} & {\lambda=0}\end{array}\right.$$
+
+where
+$\tilde{x} $ is geometric mean
+
+</div>
+
+
+$\lambda$ is estimated from the data, there are a few special cases
+
+
+<div class="rmdtip">
+
+Special cases for $\lambda$:
+
+- $\lambda$ = 1 $\implies$ no transformation
+- $\lambda$ = 0.5 $\implies$ square root transformation
+- $\lambda$ = -1 $\implies$ inverse transformation
+
+
+</div>
+
+
+
+#### 1:Many Transformations {#OneManyTransformations}
+
+A single numeric feature can be expanded to many features to improve model performance. 
+
+<div class="rmdmath">
+
+The cubic expansion can be written as:
+
+$$f(x)=\sum_{i=1}^{3} \beta_{i} f_{i}(x)=\beta_{1} x+\beta_{2} x^{2}+\beta_{3} x^{3}$$
+
+</div>
+
+
+The $\beta$ values can be calculated using linear regression. If the true trend were linear the second and third regression parameter would be close to zero.
+
+
+For example the **AMES sale price vs lot area ** as given below is clearly **not linear.** 
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/numeric-ames-lot-size-1.svg){width=80% .external}
+
+Considering a spline with 6 regions. Functions of x are shown in figure *"(a)"* below.
+Figure *"(b)"* shows the spline 
+
+
+![Figure from  [@FeatureEngineeringKuhnWebsite]](images/numeric-ames-ns-1.svg){width=80% .external}
+
+<div class="HeadingNoNumber">
+
+One feature was replaced by 6 hopefully more meaningful features for the model
+
+</div>
+
+####  Many:Many Transformations {#ManytoManyTransformations}
+
+Many to many transformation can solve  a variety of issues
+
+<div class="rmdtip">
+
+Many to many transformations help to:
+
+- Deal with 
+    -  outliers
+    - collinearity (high correlation)
+-  Reduce dimensionality     
+
+</div>
+
+Contrary to intuition more features are not always beneficial
+
+<div class="rmdtip">
+
+Considering irrelevant features leads to:
+
+- Increasing computational effort for model training
+- Decrease predictive  performance
+- Complicating predictor importance calculation
+
+
+</div>
+
+
+There are several dimension reduction algorithms
+
+<div class="rmdtip">
+Dimension reduction algorithms:
+
+- Unsupervised
+    - principle component analysis (PCA)
+    - t-SNE
+    - independent component analysis (ICA)
+    - non-negative matrix factorization (NNMF)
+    - autoencoders
+
+- Supervised
+    - partial least squares (PLS)
+    - reduced predictor space is optimally associated with the response
+</div>
+
+The embedding projector of TensorFlow at http://projector.tensorflow.org gives great insight into PCA and t-SNE 
+Below a PCA of the Word2Vec 200 dimensional space onto three dimensions, the word *"neural"* and points close by are marked.
+
+
+![Figure from http://projector.tensorflow.org ](images/projectorPlayground.png){width=100% .external}
+A few more details on some of the above mentioned algorithms
+
+![Figure from <a href="//commons.wikimedia.org/wiki/User:Nicoguaro" title="User:Nicoguaro">Nicoguaro</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0">CC BY 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=46871195">Link</a> [@FeatureEngineeringKuhnWebsite]](images/GaussianScatterPCA.svg){width=60% .external}
+
+
+<div class="rmdtip">
+
+Principle component analysis (PCA):
+
+- Linear orthogonal transformation
+- Possibly correlated variables
+- Into set of uncorrelated variables
+    - principle components
+
+</div>
+
+
+ 
+
+
+<div class="rmdtip">
+
+<p>t-SNE:<img src="images/t-sneExample.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+
+- t-distributed stochastic neighbor embedding
+- Nonlinear dimensionality reduction
+- Similar object modeled by nearby points
+
+
+</div>
+
+<div class="rmdtip">
+
+Independent component analysis (ICA):
+
+- Origin in signal processing
+- Separating mulivariate signal into additive subcomponents
+
+
+</div>
+
+
+<div class="rmdtip">
+
+Autoencoders:
+
+- Type of neural network
+- Feeds information through bottleneck
+- Input and output shall be as similar as possible
+- Representation at bottleneck is dimensionality reduced
+
+
+</div>
+
+![Figure from <a href="//commons.wikimedia.org/w/index.php?title=User:Michela_Massi&amp;action=edit&amp;redlink=1" class="new" title="User:Michela Massi (page does not exist)">Michela Massi</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=80177333">Link</a> [@FeatureEngineeringKuhnWebsite]](images/Autoencoder_schema.png){width=60% .external}
+
+
+
+
 
 
 ### Feature importance {#featureImportance}
@@ -787,42 +1132,6 @@ Permutation Importance with Multicollinear or Correlated Features
 [@scikit-learn]
 
 
-### Dimensionality reduction algorithms TBD {#dimensionReductionsTechniques}
-
-check chapter at kuhn TBD
-
-http://www.feat.engineering/numeric-many-to-many.html
-
-Dimensionality reduction algorithms are employed in feature engineering to reduce the number of predictors in order to reduce complexity of the model and to reduce correlation between predictors
-
-<div class="rmdtip">
-
-1. The number of predictors should be reduced but no predictor can be omitted
-    - leads to less complex models
-
-2. To ensure that predictors are independent, i.e not correlated
-    - might improve prediction performance
-
-3. The predictors don't have to be interpretable
-
-</div>
-
-
-
-
-#### Principle component analysis (PCA) TBD  {#PcaAlgorithm}
-
-https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c
-
-Principle component 
-
-
-#### t-SNE TBD  {#t-SNEAlgorithm}
-
-
-#### Autoencoders
-
-
 
 
 ## Model fit
@@ -831,36 +1140,7 @@ Principle component
 
 Lastly, the no free lunch theorems say that there is no a-priori superiority for any classifier system over the others, so the best classifier for a particular task is itself task-dependent. However there is more compelling theory for the SVM that suggests it is likely to be better choice than many other approaches for many problems.
 
-## Model tuning
-
-## After data gathering iteration is trump   {-}
-
----
-
- ![Figure from  [@FeatureEngineeringKuhnWebsite] (Image Credit: Owlsmcgee [Public domain] )](images/MLprocess.svg){width=100% .external}
- 
----
-
-
-EDA => exploratory data analysis  
-source http://www.feat.engineering/intro-intro.html#the-model-versus-the-modeling-process]
-
-```{block2 echo=TRUE, type='rmdtip'}
-
-- <p>Exploratory data analysis </p>
-    - Find correlations or mutial depence
-- Quantiative analysis
-    - Check distribution
-        - Long tail => log of variable
-- Feature engineering ^[Good source for feature engineering: http://www.feat.engineering/index.html]
-    - Create and select meaningful features
-- Model fit
-    - Selecting a few suited models
-- Model tuning
-    - Vary model **hyperpparameters**
-
-
-```
+## Model tuning TBC
 
 
 

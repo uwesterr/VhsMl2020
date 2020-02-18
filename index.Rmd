@@ -25,8 +25,8 @@ This document gives on overview of
 - Machine learing: Shall we? in chapter \@ref(whatML)
 - Analysis of the 2019 Kaggle member survey in chapter \@ref(KaggleSurvey)
 - Machine learning fundamentals in chapter \@ref(MachineLearningFundamentals)
-- Overview of online courses
-- Overview online resources in chapter \@ref(MlResources)MlResources
+- Overview of online courses  in chapter \@ref()
+- Overview online resources in chapter \@ref(MlResources)
 - Real world example on signal detection in chapter \@ref(RealWorld) 
 - How to understand ML models: Explainable machine learing in chapter \@ref(ExplainableMl)
 - Further examples from Kaggle  in chapter \@ref(KaggleExamples) 

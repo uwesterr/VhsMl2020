@@ -355,10 +355,12 @@ knitr::include_graphics('images/GanPrincipleAndSteps.png')
 
 What will the future bring for society?
 
->The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom. 
+
+<blockquote>
+The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom. 
 
 Isaac Asimov
-
+</blockquote>
 
 
 ## Development of life

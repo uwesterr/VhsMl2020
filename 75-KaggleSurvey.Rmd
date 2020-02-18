@@ -110,8 +110,9 @@ short$country <-  plyr::revalue(short$country, c("United States of America"="USA
 
 # Kaggle survey introduction {#KaggleSurvey}
 
+Kaggle is a subsidiary of Google LLC online community of data scientists machine learners with more than 1Mio members.  
 
-Kaggle is a platform for data scientists and machine learning practitioners which allows users to:
+It offers data sets, a no-setup, customizable, Jupyter Notebooks environment, machine learning competitions and access free GPUs and a huge repository of community published data & code.
 
 <div class="rmdtip">
 
@@ -132,15 +133,17 @@ Kaggle allows users to:
 ## Kaggle survey details
 
 This is an **analysis based on Kaggle survey data**,
-details are at https://www.kaggle.com/c/kaggle-survey-2019. Kaggle is a subsidiary of Google LLC online community of data scientists machine learners with more than 1Mio members.
+details are at https://www.kaggle.com/c/kaggle-survey-2019. 
 
-It offers data sets, a no-setup, customizable, Jupyter Notebooks environment, machine learning competitions and access free GPUs and a huge repository of community published data & code.
+
 
 <div class="rmdtip">
 
 Info on survey
 
-- The survey **received 19,717 usable respondents** from **171 countries and territories**. If a country or territory received less than 50 respondents, they were grouped and named “Other” for anonymity.
+- The survey **received 19,717 usable respondents** 
+- From **171 countries and territories**. 
+    - If a country or territory received less than 50 respondents, they were grouped and named “Other” for anonymity.
 
 - The survey was live from **October 8th to October 28th 2019.**  
 
@@ -148,7 +151,7 @@ Info on survey
 
 </div>
 
-An overview of the world wide participation is given in the map below. The first three countries are
+An overview of the world wide participation is given in the map below. The  three countries with the highest number of participants are:
 
 
 

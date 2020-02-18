@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-14" />
+<meta name="date" content="2020-02-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="gather-data-tbc.html"/>
-<link rel="next" href="feature-engineering.html"/>
+<link rel="next" href="featureEngineering.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -193,13 +193,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.1" data-path="eda.html"><a href="eda.html#example-for-exploratory-and-quantitative-data-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Example for exploratory and quantitative data analysis</a></li>
 <li class="chapter" data-level="5.3.2" data-path="eda.html"><a href="eda.html#visualizations-for-categorical-data-exploring-the-okcupid-data"><i class="fa fa-check"></i><b>5.3.2</b> Visualizations for Categorical Data: Exploring the OkCupid Data</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="feature-engineering.html"><a href="feature-engineering.html"><i class="fa fa-check"></i><b>5.4</b> Feature engineering</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="feature-engineering.html"><a href="feature-engineering.html#featureImportance"><i class="fa fa-check"></i><b>5.4.1</b> Feature importance</a></li>
-<li class="chapter" data-level="5.4.2" data-path="feature-engineering.html"><a href="feature-engineering.html#dimensionReductionsTechniques"><i class="fa fa-check"></i><b>5.4.2</b> Dimensionality reduction algorithms TBD</a></li>
+<li class="chapter" data-level="5.4" data-path="featureEngineering.html"><a href="featureEngineering.html"><i class="fa fa-check"></i><b>5.4</b> Feature engineering</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="featureEngineering.html"><a href="featureEngineering.html#encoding-categorical-predictors"><i class="fa fa-check"></i><b>5.4.1</b> Encoding Categorical Predictors</a></li>
+<li class="chapter" data-level="5.4.2" data-path="featureEngineering.html"><a href="featureEngineering.html#engineering-numeric-features"><i class="fa fa-check"></i><b>5.4.2</b> Engineering numeric features</a></li>
+<li class="chapter" data-level="5.4.3" data-path="featureEngineering.html"><a href="featureEngineering.html#featureImportance"><i class="fa fa-check"></i><b>5.4.3</b> Feature importance</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="model-fit.html"><a href="model-fit.html"><i class="fa fa-check"></i><b>5.5</b> Model fit</a></li>
-<li class="chapter" data-level="5.6" data-path="model-tuning.html"><a href="model-tuning.html"><i class="fa fa-check"></i><b>5.6</b> Model tuning</a></li>
-<li class="chapter" data-level="" data-path="after-data-gathering-iteration-is-trump.html"><a href="after-data-gathering-iteration-is-trump.html"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="5.6" data-path="model-tuning-tbc.html"><a href="model-tuning-tbc.html"><i class="fa fa-check"></i><b>5.6</b> Model tuning TBC</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html"><i class="fa fa-check"></i><b>6</b> Machine learning classes</a><ul>
 <li class="chapter" data-level="6.1" data-path="supervised-learning.html"><a href="supervised-learning.html"><i class="fa fa-check"></i><b>6.1</b> Supervised learning</a></li>
@@ -240,7 +240,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="food-for-the-algorithms-data.html"><a href="food-for-the-algorithms-data.html"><i class="fa fa-check"></i><b>8</b> Food for the algorithms: Data</a><ul>
 <li class="chapter" data-level="8.1" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>8.1</b> NLP</a></li>
-<li class="chapter" data-level="8.2" data-path="discovering-millions-of-datasets-on-the-web.html"><a href="discovering-millions-of-datasets-on-the-web.html"><i class="fa fa-check"></i><b>8.2</b> Discovering millions of datasets on the web</a></li>
+<li class="chapter" data-level="8.2" data-path="dataset-search-from-google.html"><a href="dataset-search-from-google.html"><i class="fa fa-check"></i><b>8.2</b> Dataset search from Google</a></li>
 </ul></li>
 <li class="part"><span><b>III Explainable ML</b></span></li>
 <li class="chapter" data-level="9" data-path="ExplainableMl.html"><a href="ExplainableMl.html"><i class="fa fa-check"></i><b>9</b> Explainable ML tbd</a><ul>
@@ -341,8 +341,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="20.2" data-path="project-phases.html"><a href="project-phases.html"><i class="fa fa-check"></i><b>20.2</b> Project phases</a><ul>
 <li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#the-main-project-phases-are"><i class="fa fa-check"></i>The main project phases are:</a></li>
-<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#after-data-gathering-iteration-is-trump-1"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
-<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering-1"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
+<li class="chapter" data-level="" data-path="project-phases.html"><a href="project-phases.html#after-data-gathering-iteration-is-trump"><i class="fa fa-check"></i>After data gathering iteration is trump</a></li>
+<li class="chapter" data-level="20.2.1" data-path="project-phases.html"><a href="project-phases.html#feature-engineering"><i class="fa fa-check"></i><b>20.2.1</b> Feature engineering</a></li>
 </ul></li>
 <li class="chapter" data-level="20.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html"><i class="fa fa-check"></i><b>20.3</b> Algorithm selection</a><ul>
 <li class="chapter" data-level="20.3.1" data-path="algorithm-selection.html"><a href="algorithm-selection.html#logistic-regression"><i class="fa fa-check"></i><b>20.3.1</b> Logistic regression</a></li>
@@ -428,6 +428,25 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="eda" class="section level2">
 <h2><span class="header-section-number">5.3</span> Exploratory and quantitative data analysis</h2>
 <p>Before starting to build any model it is good practice to analyze the data. Exploratory and quantitative data analysis are interlinked and therefore can be viewed together.</p>
+
+<div class="rmdtip">
+<ul>
+<li><p>
+Exploratory data analysis
+</p>
+<ul>
+<li>Find correlations or mutial depence</li>
+</ul></li>
+<li>Quantiative analysis
+<ul>
+<li>Check distribution
+<ul>
+<li>Long tail =&gt; log of variable</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
 <div class="rmdtip">
 <ul>
 <li><p>
@@ -450,7 +469,8 @@ Why data analysis?<img src="images/boxPlot.png" alt="Smiley face" align="right" 
 <p>The process of exploratory and quantitative data analysis is described in detail in the following example.</p>
 <div id="example-for-exploratory-and-quantitative-data-analysis" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Example for exploratory and quantitative data analysis</h3>
-<p>This example is from the online book “Feature Engineering and Selection: A Practical Approach for Predictive Models” <span class="citation">(Kuhn and Johnson <a href="#ref-FeatureEngineeringKuhnWebsite" role="doc-biblioref">2018</a>)</span></p>
+<p>This example is from the online book “Feature Engineering and Selection: A Practical Approach for Predictive Models”
+<span class="citation">(Kuhn and Johnson <a href="#ref-FeatureEngineeringKuhnWebsite" role="doc-biblioref">2018</a>)</span></p>
 <div id="visualization-for-numeric-data" class="section level4">
 <h4><span class="header-section-number">5.3.1.1</span> Visualization for numeric data</h4>
 <p>In this example the data set on ridership on the Chicago Transit Authority (CTA) “L” train system <a href="http://bit.ly/FES-Chicago" class="uri">http://bit.ly/FES-Chicago</a> is used to predict the ridership in order to optimize operation of the train system.</p>
@@ -706,7 +726,7 @@ green: extreme weather</p>
 <div class="HeadingNoNumber">
 <p>Principal Components Analysis (PCA)</p>
 </div>
-<p>One way of condensing many dimensions into just two or three are dimension reductions techniques such as principle components analysis (PCA). An explanation of dimension reductions techniques is given in chapter <a href="feature-engineering.html#dimensionReductionsTechniques">5.4.2</a></p>
+<p>One way of condensing many dimensions into just two or three are dimension reductions techniques such as principle components analysis (PCA). An explanation of dimension reductions techniques is given in chapter <a href="featureEngineering.html#ManytoManyTransformations">5.4.2.3</a></p>
 <blockquote>
 <p>Principal components analysis finds combinations of the variables that best summarizes the variability in the original data</p>
 <p><span class="citation">(Dillon and Goldstein <a href="#ref-dillon1984multivariate" role="doc-biblioref">1984</a>)</span></p>
@@ -728,7 +748,7 @@ green: extreme weather</p>
 </div>
 <div id="visualizations-for-categorical-data-exploring-the-okcupid-data" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Visualizations for Categorical Data: Exploring the OkCupid Data</h3>
-<p>OkCupid is an online dating platform.A data set of 50,000 San Fransico user data is available at <a href="https://github.com/rudeboybert/JSE_OkCupid">GitHub</a></p>
+<p>OkCupid is an online dating platform. A data set of 50,000 San Francisco user data is available at <a href="https://github.com/rudeboybert/JSE_OkCupid">GitHub</a></p>
 <div class="rmdtip">
 <p>Data of OkCupid data set:</p>
 <ul>
@@ -860,7 +880,7 @@ green: extreme weather</p>
         </div>
       </div>
 <a href="gather-data-tbc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="feature-engineering.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="featureEngineering.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
