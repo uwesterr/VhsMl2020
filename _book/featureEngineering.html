@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-18" />
+<meta name="date" content="2020-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -429,6 +429,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> Feature engineering</h2>
 <p>Sometimes even the best models have less than useful predictive performance. This could be because key relationships are not directly available.</p>
 <div class="rmdtip">
+<p>
+Key relationships that are not directly available: <img src="images/search.svg" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Transformation of a predictor</li>
 <li>Interaction of two or more predictors such as a product or ratio</li>
@@ -471,12 +474,14 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 <p><span class="math display">\[outcome = f(features) = f(X_1, X_2, \dots, Xp) = f(X)\]</span></p>
 <p><span class="math display">\[\hat{Y} = \hat{f}(X)\]</span></p>
 </div>
-<p>For numerical features it is straight forward for them to be fed into a model, but how can categorical data be handled?</p>
 <div id="encoding-categorical-predictors" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Encoding Categorical Predictors</h3>
-<p>Categorical features are not quantitative nature but <strong>qualitative data</strong>, i.e. discrete values in an ordered relationship</p>
+<p>Categorical features are not quantitative nature but <strong>qualitative data</strong>, i.e. discrete values in an ordered relationship
+For numerical features it is straight forward to feed them into a model, but how can categorical data be handled?</p>
 <div class="rmdtip">
-<p>Categorical features:</p>
+<p>
+Categorical features: <img src="images/mail.svg" alt="Smiley face" align="right" style="width:15%;">
+</p>
 <ul>
 <li>Gender</li>
 <li>Breeds of dogs</li>
@@ -485,7 +490,9 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 </div>
 <p>Ordered categorical features have a clear progression of values</p>
 <div class="rmdtip">
-<p>Ordered categorical features:</p>
+<p>
+Ordered categorical features:<img src="images/badGood.png" alt="Smiley face" align="right" style="width:30%;">
+</p>
 <ul>
 <li>Bad</li>
 <li>Good</li>
@@ -495,7 +502,9 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 <p>Ordered and unordered features might be handled differently to include the embedded information into a model.</p>
 <p>Not all models need a special treatment for categorical data</p>
 <div class="rmdtip">
-<p>Models that can deal with categorical features:</p>
+<p>
+Models that can deal with categorical features:<img src="images/tree.svg" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Tree based models</li>
 <li>Naive Bayes models</li>
@@ -514,7 +523,9 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 <h3><span class="header-section-number">5.4.2</span> Engineering numeric features</h3>
 <p>Features with continuous, real number values might need some pre-processing before being useful for a model. The pre-processing can be model dependent</p>
 <div class="rmdtip">
-<p>Model dependent pre-processing:</p>
+<p>
+Model dependent pre-processing:<img src="images/SkewedDistribution.png" alt="Smiley face" align="right" style="width:30%;">
+</p>
 <ul>
 <li>Skewed distribution
 <ul>
@@ -545,19 +556,23 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 </div>
 <p>Commonly occurring issues for numerical features and the counter measures are treated in this chapter</p>
 <div class="rmdtip">
-<p>Commonly occurring issues:</p>
+<p>
+Commonly occurring issues:<img src="images/issues.svg" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Vastly different scales</li>
 <li>Skewed distribution</li>
 <li>Small number of extreme values</li>
-<li>Are clipped at on the low/or high end of range</li>
+<li>Values clipped at on the low/or high end of range</li>
 <li>Complex relationship with response</li>
 <li>Redundant information</li>
 </ul>
 </div>
 <p>Those problems are addressed by various methods in the next chapters</p>
 <div class="rmdtip">
-<p>Remedies to commonly occurring issues:</p>
+<p>
+Remedies to commonly occurring issues:<img src="images/remedies.png" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Transform individual feature’s distribution in chapter <a href="featureEngineering.html#Transformations">5.4.2.1</a>
 <ul>
@@ -574,17 +589,17 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 </ul>
 </div>
 <div id="Transformations" class="section level4">
-<h4><span class="header-section-number">5.4.2.1</span> Transformations</h4>
+<h4><span class="header-section-number">5.4.2.1</span> 1:1 Transformations</h4>
 <p>There are plenty of methods to transform a feature, first focus is on distribution shaping</p>
 <div class="HeadingNoNumber">
 <p>Box-Cox transformation</p>
 </div>
-<p>Apply the Box-Cox transformation the skewed distribution below</p>
+<p>Apply the Box-Cox transformation the <strong>skewed distribution below</strong></p>
 <div class="figure">
 <img src="images/SkewedDistribution.png" class="external" style="width:80.0%" alt="" />
 <p class="caption">Figure from <span class="citation">(Kuhn and Johnson <a href="#ref-FeatureEngineeringKuhnWebsite" role="doc-biblioref">2018</a>)</span></p>
 </div>
-<p>can be shaped to be closely normally distributed as shown below.</p>
+<p>can be shaped by Box-Cox transformation to be almost normally distributed as shown below.</p>
 <div class="figure">
 <img src="images/BoxCoxShapedDistribution.png" class="external" style="width:80.0%" alt="" />
 <p class="caption">Figure from <span class="citation">(Kuhn and Johnson <a href="#ref-FeatureEngineeringKuhnWebsite" role="doc-biblioref">2018</a>)</span></p>
@@ -593,8 +608,9 @@ Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width
 <div class="rmdmath">
 <p>Box-Cox transformation equation:</p>
 <p><span class="math display">\[x^{*}=\left\{\begin{array}{ll}{\frac{x^{\lambda}-1}{\lambda \bar{x}^{\lambda-1}},} &amp; {\lambda \neq 0} \\ {\tilde{x} \log x,} &amp; {\lambda=0}\end{array}\right.\]</span></p>
-<p>where
-$ $ is geometric mean</p>
+<hr />
+<p>where</p>
+<p><span class="math inline">\(\tilde{x}\)</span> is geometric mean <span class="math inline">\(\bar{x}=\sqrt[n]{\prod_{i=1}^{n} x_{i}}=\sqrt[n]{x_{1} \cdot x_{2} \cdots x_{n}}\)</span></p>
 </div>
 <p><span class="math inline">\(\lambda\)</span> is estimated from the data, there are a few special cases</p>
 <div class="rmdtip">
@@ -633,7 +649,9 @@ Figure <em>“(b)”</em> shows the spline</p>
 <h4><span class="header-section-number">5.4.2.3</span> Many:Many Transformations</h4>
 <p>Many to many transformation can solve a variety of issues</p>
 <div class="rmdtip">
-<p>Many to many transformations help to:</p>
+<p>
+Many to many transformations help to:<img src="images/outlier.svg" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Deal with
 <ul>
@@ -645,7 +663,9 @@ Figure <em>“(b)”</em> shows the spline</p>
 </div>
 <p>Contrary to intuition more features are not always beneficial</p>
 <div class="rmdtip">
-<p>Considering irrelevant features leads to:</p>
+<p>
+Considering irrelevant features leads to:<img src="images/compEffort.png" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Increasing computational effort for model training</li>
 <li>Decrease predictive performance</li>
@@ -654,7 +674,9 @@ Figure <em>“(b)”</em> shows the spline</p>
 </div>
 <p>There are several dimension reduction algorithms</p>
 <div class="rmdtip">
-<p>Dimension reduction algorithms:</p>
+<p>
+Dimension reduction algorithms:<img src="images/supervised.svg" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Unsupervised
 <ul>
@@ -675,12 +697,13 @@ Figure <em>“(b)”</em> shows the spline</p>
 Below a PCA of the Word2Vec 200 dimensional space onto three dimensions, the word <em>“neural”</em> and points close by are marked.</p>
 <p><img src="images/projectorPlayground.png" class="external" style="width:100.0%" alt="Figure from http://projector.tensorflow.org" />
 A few more details on some of the above mentioned algorithms</p>
-<div class="figure">
-<img src="images/GaussianScatterPCA.svg" class="external" style="width:60.0%" alt="" />
-<p class="caption">Figure from <a href="//commons.wikimedia.org/wiki/User:Nicoguaro" title="User:Nicoguaro">Nicoguaro</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0">CC BY 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=46871195">Link</a> <span class="citation">(Kuhn and Johnson <a href="#ref-FeatureEngineeringKuhnWebsite" role="doc-biblioref">2018</a>)</span></p>
+<div class="HeadingNoNumber">
+<p>Principle component analysis (PCA)</p>
 </div>
 <div class="rmdtip">
-<p>Principle component analysis (PCA):</p>
+<p>
+Principle component analysis (PCA):<img src="images/irsisPca.png" alt="Smiley face" align="right" style="width:20%;">
+</p>
 <ul>
 <li>Linear orthogonal transformation</li>
 <li>Possibly correlated variables</li>
@@ -690,6 +713,37 @@ A few more details on some of the above mentioned algorithms</p>
 </ul></li>
 </ul>
 </div>
+<p>PCA maps a higher dimensional space to a lower dimensional space by linear orthogonal transformations. The orthogonality results from the condition that principle components are not correlated. Each principle component explains as much variance as possible. The principle components are weighted combinations of the independent variables. More on PCA can be found at Wikipedia <a href="https://en.wikipedia.org/wiki/Principal_component_analysis" class="uri">https://en.wikipedia.org/wiki/Principal_component_analysis</a></p>
+<p>A PCA of the irsis data set is given at <a href="https://scikit-learn.org/stable/auto_examples/decomposition/plot_pca_iris.html#sphx-glr-auto-examples-decomposition-plot-pca-iris-py" class="uri">https://scikit-learn.org/stable/auto_examples/decomposition/plot_pca_iris.html#sphx-glr-auto-examples-decomposition-plot-pca-iris-py</a>, it creates the graph below.</p>
+<hr />
+<p><img src="images/irsisPca.png" class="external" style="width:80.0%" /></p>
+<hr />
+<p>A minimal PCA Python example is given below, source <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html" class="uri">https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="featureEngineering.html#cb1-1"></a></span>
+<span id="cb1-2"><a href="featureEngineering.html#cb1-2"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="featureEngineering.html#cb1-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> sklearn.decomposition <span class="im">import</span> IncrementalPCA</span>
+<span id="cb1-4"><a href="featureEngineering.html#cb1-4"></a><span class="op">&gt;&gt;&gt;</span> X <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">1</span>, <span class="dv">-1</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">-1</span>], [<span class="op">-</span><span class="dv">3</span>, <span class="dv">-2</span>], [<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">3</span>, <span class="dv">2</span>]])</span>
+<span id="cb1-5"><a href="featureEngineering.html#cb1-5"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(X)</span>
+<span id="cb1-6"><a href="featureEngineering.html#cb1-6"></a>array([[<span class="op">-</span><span class="fl">1.38340578</span>, <span class="fl">-0.2935787</span> ],</span>
+<span id="cb1-7"><a href="featureEngineering.html#cb1-7"></a>       [<span class="op">-</span><span class="fl">2.22189802</span>,  <span class="fl">0.25133484</span>],</span>
+<span id="cb1-8"><a href="featureEngineering.html#cb1-8"></a>       [<span class="op">-</span><span class="fl">3.6053038</span> , <span class="fl">-0.04224385</span>],</span>
+<span id="cb1-9"><a href="featureEngineering.html#cb1-9"></a>       [ <span class="fl">1.38340578</span>,  <span class="fl">0.2935787</span> ],</span>
+<span id="cb1-10"><a href="featureEngineering.html#cb1-10"></a>       [ <span class="fl">2.22189802</span>, <span class="fl">-0.25133484</span>],</span>
+<span id="cb1-11"><a href="featureEngineering.html#cb1-11"></a>       [ <span class="fl">3.6053038</span> ,  <span class="fl">0.04224385</span>]])</span>
+<span id="cb1-12"><a href="featureEngineering.html#cb1-12"></a><span class="op">&gt;&gt;&gt;</span> ipca <span class="op">=</span> IncrementalPCA(n_components<span class="op">=</span><span class="dv">2</span>, batch_size<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-13"><a href="featureEngineering.html#cb1-13"></a><span class="op">&gt;&gt;&gt;</span> ipca.fit(X)</span>
+<span id="cb1-14"><a href="featureEngineering.html#cb1-14"></a>IncrementalPCA(batch_size<span class="op">=</span><span class="dv">3</span>, n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-15"><a href="featureEngineering.html#cb1-15"></a><span class="op">&gt;&gt;&gt;</span> ipca.transform(X) </span>
+<span id="cb1-16"><a href="featureEngineering.html#cb1-16"></a>[[<span class="op">-</span><span class="dv">1</span> <span class="dv">-1</span>]</span>
+<span id="cb1-17"><a href="featureEngineering.html#cb1-17"></a> [<span class="op">-</span><span class="dv">2</span> <span class="dv">-1</span>]</span>
+<span id="cb1-18"><a href="featureEngineering.html#cb1-18"></a> [<span class="op">-</span><span class="dv">3</span> <span class="dv">-2</span>]</span>
+<span id="cb1-19"><a href="featureEngineering.html#cb1-19"></a> [ <span class="dv">1</span>  <span class="dv">1</span>]</span>
+<span id="cb1-20"><a href="featureEngineering.html#cb1-20"></a> [ <span class="dv">2</span>  <span class="dv">1</span>]</span>
+<span id="cb1-21"><a href="featureEngineering.html#cb1-21"></a> [ <span class="dv">3</span>  <span class="dv">2</span>]]</span></code></pre></div>
+<div class="HeadingNoNumber">
+<p>t-distributed stochastic neighbor embedding (t-SNE)</p>
+</div>
+<p>The next algorithm is t-distributed stochastic neighbor embedding <strong>t-SNE</strong> which focuses more on the distance of samples than on variance. The main concept is that samples which are nearby in high dimensional space are also nearby in the lower dimensional space.</p>
 <div class="rmdtip">
 <p>
 t-SNE:<img src="images/t-sneExample.png" alt="Smiley face" align="right" style="width:30%;">
@@ -700,6 +754,11 @@ t-SNE:<img src="images/t-sneExample.png" alt="Smiley face" align="right" style="
 <li>Similar object modeled by nearby points</li>
 </ul>
 </div>
+<p>The t-SNE algorithm has important hyperparameter which need to be set with some insight. More on those hyperparameter and their settings can be found at <a href="https://distill.pub/2016/misread-tsne/" class="uri">https://distill.pub/2016/misread-tsne/</a> and in Laurens van der Maaten’s original paper on t-SNE <span class="citation">(Maaten and Hinton <a href="#ref-maaten2008visualizing" role="doc-biblioref">2008</a>)</span></p>
+<div class="HeadingNoNumber">
+<p>Independent component analysis (ICA)</p>
+</div>
+<p>ICA is used in signal processing to differentiate different sources of signal, i.e. suppress in an audio signal the background noise which can be very helpful when using a phone in an loud environment.</p>
 <div class="rmdtip">
 <p>Independent component analysis (ICA):</p>
 <ul>
@@ -707,6 +766,122 @@ t-SNE:<img src="images/t-sneExample.png" alt="Smiley face" align="right" style="
 <li>Separating mulivariate signal into additive subcomponents</li>
 </ul>
 </div>
+<p>The ability to separate signal sources can be seen in the following example. Whereas PCA picks up the variance ICA assigns signals to the sources.</p>
+<hr />
+<p><img src="images/icaPca.png" class="external" style="width:80.0%" /></p>
+<hr />
+<p>The code is from at <a href="https://scikit-learn.org/stable/auto_examples/decomposition/plot_ica_vs_pca.html#sphx-glr-auto-examples-decomposition-plot-ica-vs-pca-py" class="uri">https://scikit-learn.org/stable/auto_examples/decomposition/plot_ica_vs_pca.html#sphx-glr-auto-examples-decomposition-plot-ica-vs-pca-py</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="featureEngineering.html#cb2-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-2"><a href="featureEngineering.html#cb2-2"></a><span class="co">==========================</span></span>
+<span id="cb2-3"><a href="featureEngineering.html#cb2-3"></a><span class="co">FastICA on 2D point clouds</span></span>
+<span id="cb2-4"><a href="featureEngineering.html#cb2-4"></a><span class="co">==========================</span></span>
+<span id="cb2-5"><a href="featureEngineering.html#cb2-5"></a></span>
+<span id="cb2-6"><a href="featureEngineering.html#cb2-6"></a><span class="co">This example illustrates visually in the feature space a comparison by</span></span>
+<span id="cb2-7"><a href="featureEngineering.html#cb2-7"></a><span class="co">results using two different component analysis techniques.</span></span>
+<span id="cb2-8"><a href="featureEngineering.html#cb2-8"></a></span>
+<span id="cb2-9"><a href="featureEngineering.html#cb2-9"></a><span class="co">:ref:`ICA` vs :ref:`PCA`.</span></span>
+<span id="cb2-10"><a href="featureEngineering.html#cb2-10"></a></span>
+<span id="cb2-11"><a href="featureEngineering.html#cb2-11"></a><span class="co">Representing ICA in the feature space gives the view of &#39;geometric ICA&#39;:</span></span>
+<span id="cb2-12"><a href="featureEngineering.html#cb2-12"></a><span class="co">ICA is an algorithm that finds directions in the feature space</span></span>
+<span id="cb2-13"><a href="featureEngineering.html#cb2-13"></a><span class="co">corresponding to projections with high non-Gaussianity. These directions</span></span>
+<span id="cb2-14"><a href="featureEngineering.html#cb2-14"></a><span class="co">need not be orthogonal in the original feature space, but they are</span></span>
+<span id="cb2-15"><a href="featureEngineering.html#cb2-15"></a><span class="co">orthogonal in the whitened feature space, in which all directions</span></span>
+<span id="cb2-16"><a href="featureEngineering.html#cb2-16"></a><span class="co">correspond to the same variance.</span></span>
+<span id="cb2-17"><a href="featureEngineering.html#cb2-17"></a></span>
+<span id="cb2-18"><a href="featureEngineering.html#cb2-18"></a><span class="co">PCA, on the other hand, finds orthogonal directions in the raw feature</span></span>
+<span id="cb2-19"><a href="featureEngineering.html#cb2-19"></a><span class="co">space that correspond to directions accounting for maximum variance.</span></span>
+<span id="cb2-20"><a href="featureEngineering.html#cb2-20"></a></span>
+<span id="cb2-21"><a href="featureEngineering.html#cb2-21"></a><span class="co">Here we simulate independent sources using a highly non-Gaussian</span></span>
+<span id="cb2-22"><a href="featureEngineering.html#cb2-22"></a><span class="co">process, 2 student T with a low number of degrees of freedom (top left</span></span>
+<span id="cb2-23"><a href="featureEngineering.html#cb2-23"></a><span class="co">figure). We mix them to create observations (top right figure).</span></span>
+<span id="cb2-24"><a href="featureEngineering.html#cb2-24"></a><span class="co">In this raw observation space, directions identified by PCA are</span></span>
+<span id="cb2-25"><a href="featureEngineering.html#cb2-25"></a><span class="co">represented by orange vectors. We represent the signal in the PCA space,</span></span>
+<span id="cb2-26"><a href="featureEngineering.html#cb2-26"></a><span class="co">after whitening by the variance corresponding to the PCA vectors (lower</span></span>
+<span id="cb2-27"><a href="featureEngineering.html#cb2-27"></a><span class="co">left). Running ICA corresponds to finding a rotation in this space to</span></span>
+<span id="cb2-28"><a href="featureEngineering.html#cb2-28"></a><span class="co">identify the directions of largest non-Gaussianity (lower right).</span></span>
+<span id="cb2-29"><a href="featureEngineering.html#cb2-29"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-30"><a href="featureEngineering.html#cb2-30"></a><span class="bu">print</span>(__doc__)</span>
+<span id="cb2-31"><a href="featureEngineering.html#cb2-31"></a></span>
+<span id="cb2-32"><a href="featureEngineering.html#cb2-32"></a><span class="co"># Authors: Alexandre Gramfort, Gael Varoquaux</span></span>
+<span id="cb2-33"><a href="featureEngineering.html#cb2-33"></a><span class="co"># License: BSD 3 clause</span></span>
+<span id="cb2-34"><a href="featureEngineering.html#cb2-34"></a></span>
+<span id="cb2-35"><a href="featureEngineering.html#cb2-35"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-36"><a href="featureEngineering.html#cb2-36"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-37"><a href="featureEngineering.html#cb2-37"></a></span>
+<span id="cb2-38"><a href="featureEngineering.html#cb2-38"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA, FastICA</span>
+<span id="cb2-39"><a href="featureEngineering.html#cb2-39"></a></span>
+<span id="cb2-40"><a href="featureEngineering.html#cb2-40"></a><span class="co"># #############################################################################</span></span>
+<span id="cb2-41"><a href="featureEngineering.html#cb2-41"></a><span class="co"># Generate sample data</span></span>
+<span id="cb2-42"><a href="featureEngineering.html#cb2-42"></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">42</span>)</span>
+<span id="cb2-43"><a href="featureEngineering.html#cb2-43"></a>S <span class="op">=</span> rng.standard_t(<span class="fl">1.5</span>, size<span class="op">=</span>(<span class="dv">20000</span>, <span class="dv">2</span>))</span>
+<span id="cb2-44"><a href="featureEngineering.html#cb2-44"></a>S[:, <span class="dv">0</span>] <span class="op">*=</span> <span class="fl">2.</span></span>
+<span id="cb2-45"><a href="featureEngineering.html#cb2-45"></a></span>
+<span id="cb2-46"><a href="featureEngineering.html#cb2-46"></a><span class="co"># Mix data</span></span>
+<span id="cb2-47"><a href="featureEngineering.html#cb2-47"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>]])  <span class="co"># Mixing matrix</span></span>
+<span id="cb2-48"><a href="featureEngineering.html#cb2-48"></a></span>
+<span id="cb2-49"><a href="featureEngineering.html#cb2-49"></a>X <span class="op">=</span> np.dot(S, A.T)  <span class="co"># Generate observations</span></span>
+<span id="cb2-50"><a href="featureEngineering.html#cb2-50"></a></span>
+<span id="cb2-51"><a href="featureEngineering.html#cb2-51"></a>pca <span class="op">=</span> PCA()</span>
+<span id="cb2-52"><a href="featureEngineering.html#cb2-52"></a>S_pca_ <span class="op">=</span> pca.fit(X).transform(X)</span>
+<span id="cb2-53"><a href="featureEngineering.html#cb2-53"></a></span>
+<span id="cb2-54"><a href="featureEngineering.html#cb2-54"></a>ica <span class="op">=</span> FastICA(random_state<span class="op">=</span>rng)</span>
+<span id="cb2-55"><a href="featureEngineering.html#cb2-55"></a>S_ica_ <span class="op">=</span> ica.fit(X).transform(X)  <span class="co"># Estimate the sources</span></span>
+<span id="cb2-56"><a href="featureEngineering.html#cb2-56"></a></span>
+<span id="cb2-57"><a href="featureEngineering.html#cb2-57"></a>S_ica_ <span class="op">/=</span> S_ica_.std(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-58"><a href="featureEngineering.html#cb2-58"></a></span>
+<span id="cb2-59"><a href="featureEngineering.html#cb2-59"></a></span>
+<span id="cb2-60"><a href="featureEngineering.html#cb2-60"></a><span class="co"># #############################################################################</span></span>
+<span id="cb2-61"><a href="featureEngineering.html#cb2-61"></a><span class="co"># Plot results</span></span>
+<span id="cb2-62"><a href="featureEngineering.html#cb2-62"></a></span>
+<span id="cb2-63"><a href="featureEngineering.html#cb2-63"></a><span class="kw">def</span> plot_samples(S, axis_list<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb2-64"><a href="featureEngineering.html#cb2-64"></a>    plt.scatter(S[:, <span class="dv">0</span>], S[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">&#39;o&#39;</span>, zorder<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb2-65"><a href="featureEngineering.html#cb2-65"></a>                color<span class="op">=</span><span class="st">&#39;steelblue&#39;</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-66"><a href="featureEngineering.html#cb2-66"></a>    <span class="cf">if</span> axis_list <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb2-67"><a href="featureEngineering.html#cb2-67"></a>        colors <span class="op">=</span> [<span class="st">&#39;orange&#39;</span>, <span class="st">&#39;red&#39;</span>]</span>
+<span id="cb2-68"><a href="featureEngineering.html#cb2-68"></a>        <span class="cf">for</span> color, axis <span class="kw">in</span> <span class="bu">zip</span>(colors, axis_list):</span>
+<span id="cb2-69"><a href="featureEngineering.html#cb2-69"></a>            axis <span class="op">/=</span> axis.std()</span>
+<span id="cb2-70"><a href="featureEngineering.html#cb2-70"></a>            x_axis, y_axis <span class="op">=</span> axis</span>
+<span id="cb2-71"><a href="featureEngineering.html#cb2-71"></a>            <span class="co"># Trick to get legend to work</span></span>
+<span id="cb2-72"><a href="featureEngineering.html#cb2-72"></a>            plt.plot(<span class="fl">0.1</span> <span class="op">*</span> x_axis, <span class="fl">0.1</span> <span class="op">*</span> y_axis, linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span>color)</span>
+<span id="cb2-73"><a href="featureEngineering.html#cb2-73"></a>            plt.quiver(<span class="dv">0</span>, <span class="dv">0</span>, x_axis, y_axis, zorder<span class="op">=</span><span class="dv">11</span>, width<span class="op">=</span><span class="fl">0.01</span>, scale<span class="op">=</span><span class="dv">6</span>,</span>
+<span id="cb2-74"><a href="featureEngineering.html#cb2-74"></a>                       color<span class="op">=</span>color)</span>
+<span id="cb2-75"><a href="featureEngineering.html#cb2-75"></a></span>
+<span id="cb2-76"><a href="featureEngineering.html#cb2-76"></a>    plt.hlines(<span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">3</span>)</span>
+<span id="cb2-77"><a href="featureEngineering.html#cb2-77"></a>    plt.vlines(<span class="dv">0</span>, <span class="dv">-3</span>, <span class="dv">3</span>)</span>
+<span id="cb2-78"><a href="featureEngineering.html#cb2-78"></a>    plt.xlim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb2-79"><a href="featureEngineering.html#cb2-79"></a>    plt.ylim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb2-80"><a href="featureEngineering.html#cb2-80"></a>    plt.xlabel(<span class="st">&#39;x&#39;</span>)</span>
+<span id="cb2-81"><a href="featureEngineering.html#cb2-81"></a>    plt.ylabel(<span class="st">&#39;y&#39;</span>)</span>
+<span id="cb2-82"><a href="featureEngineering.html#cb2-82"></a></span>
+<span id="cb2-83"><a href="featureEngineering.html#cb2-83"></a>plt.figure()</span>
+<span id="cb2-84"><a href="featureEngineering.html#cb2-84"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb2-85"><a href="featureEngineering.html#cb2-85"></a>plot_samples(S <span class="op">/</span> S.std())</span>
+<span id="cb2-86"><a href="featureEngineering.html#cb2-86"></a>plt.title(<span class="st">&#39;True Independent Sources&#39;</span>)</span>
+<span id="cb2-87"><a href="featureEngineering.html#cb2-87"></a></span>
+<span id="cb2-88"><a href="featureEngineering.html#cb2-88"></a>axis_list <span class="op">=</span> [pca.components_.T, ica.mixing_]</span>
+<span id="cb2-89"><a href="featureEngineering.html#cb2-89"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb2-90"><a href="featureEngineering.html#cb2-90"></a>plot_samples(X <span class="op">/</span> np.std(X), axis_list<span class="op">=</span>axis_list)</span>
+<span id="cb2-91"><a href="featureEngineering.html#cb2-91"></a>legend <span class="op">=</span> plt.legend([<span class="st">&#39;PCA&#39;</span>, <span class="st">&#39;ICA&#39;</span>], loc<span class="op">=</span><span class="st">&#39;upper right&#39;</span>)</span>
+<span id="cb2-92"><a href="featureEngineering.html#cb2-92"></a>legend.set_zorder(<span class="dv">100</span>)</span>
+<span id="cb2-93"><a href="featureEngineering.html#cb2-93"></a></span>
+<span id="cb2-94"><a href="featureEngineering.html#cb2-94"></a>plt.title(<span class="st">&#39;Observations&#39;</span>)</span>
+<span id="cb2-95"><a href="featureEngineering.html#cb2-95"></a></span>
+<span id="cb2-96"><a href="featureEngineering.html#cb2-96"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb2-97"><a href="featureEngineering.html#cb2-97"></a>plot_samples(S_pca_ <span class="op">/</span> np.std(S_pca_, axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb2-98"><a href="featureEngineering.html#cb2-98"></a>plt.title(<span class="st">&#39;PCA recovered signals&#39;</span>)</span>
+<span id="cb2-99"><a href="featureEngineering.html#cb2-99"></a></span>
+<span id="cb2-100"><a href="featureEngineering.html#cb2-100"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb2-101"><a href="featureEngineering.html#cb2-101"></a>plot_samples(S_ica_ <span class="op">/</span> np.std(S_ica_))</span>
+<span id="cb2-102"><a href="featureEngineering.html#cb2-102"></a>plt.title(<span class="st">&#39;ICA recovered signals&#39;</span>)</span>
+<span id="cb2-103"><a href="featureEngineering.html#cb2-103"></a></span>
+<span id="cb2-104"><a href="featureEngineering.html#cb2-104"></a>plt.subplots_adjust(<span class="fl">0.09</span>, <span class="fl">0.04</span>, <span class="fl">0.94</span>, <span class="fl">0.94</span>, <span class="fl">0.26</span>, <span class="fl">0.36</span>)</span>
+<span id="cb2-105"><a href="featureEngineering.html#cb2-105"></a>plt.show()</span>
+<span id="cb2-106"><a href="featureEngineering.html#cb2-106"></a></span></code></pre></div>
+<div class="HeadingNoNumber">
+<p>Autoencoders</p>
+</div>
+<p>Autoencoders learn a latent representation of data by feeding them through a neural network with a bottleneck, i.e. a layer with less width than the input layer. Training an autoencoder is unsupervised since the training task is to create an output as similar to the input as possible.</p>
+<p>Further explanation is given in an example implemented in Keras at <a href="https://towardsdatascience.com/autoencoders-made-simple-6f59e2ab37ef" class="uri">https://towardsdatascience.com/autoencoders-made-simple-6f59e2ab37ef</a></p>
 <div class="rmdtip">
 <p>Autoencoders:</p>
 <ul>
@@ -724,16 +899,110 @@ t-SNE:<img src="images/t-sneExample.png" alt="Smiley face" align="right" style="
 </div>
 <div id="featureImportance" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Feature importance</h3>
-<p><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html" class="uri">https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html</a></p>
-<p>================================================================
-Permutation Importance vs Random Forest Feature Importance (MDI)
-================================================================
-/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/permutationImportance.py</p>
-<p>=================================================================
-Permutation Importance with Multicollinear or Correlated Features
-=================================================================</p>
-<p>/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/plot_permutation_importance_multicollinear.py</p>
-<p><span class="citation">(Pedregosa et al. <a href="#ref-scikit-learn" role="doc-biblioref">2011</a>)</span></p>
+<p>After creating features the next step is to find out which features are helpful for the model. First, two methods are compared</p>
+<div class="rmdtip">
+<p>
+Feature importance analysis methods:<img src="images/permutation.svg" alt="Smiley face" align="right" style="width:20%;">
+</p>
+<ul>
+<li>Permutation Importance
+<ul>
+<li>permute one feature</li>
+<li>calculate the change in prediction performance</li>
+<li>the bigger the drop in prediction performance <span class="math inline">\(\implies\)</span> more important feature</li>
+</ul></li>
+<li>Random Forest Feature Importance
+<ul>
+<li>during training compute decrease of impurity</li>
+<li>average for decrease for all features</li>
+<li>ranking according to decrease <span class="math inline">\(\implies\)</span> ranking of feature importance</li>
+</ul></li>
+</ul>
+</div>
+<p>An example shows strength and weakness of the algorithms. The example <em>“Permutation Importance vs Random Forest Feature Importance”</em> can be found at the Scikit-Learn <span class="citation">(Pedregosa et al. <a href="#ref-scikit-learn" role="doc-biblioref">2011</a>)</span> site <a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html" class="uri">https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html</a></p>
+<p>Comparing test and training accuracy give an indication that the <strong>model might have overfitted</strong></p>
+<div class="rmdtip">
+<p>Model might be overfitted:</p>
+<p>RF train accuracy: 1.000<br />
+RF test accuracy: 0.817</p>
+</div>
+<hr />
+<p><img src="images/rfImportanceTitanic.png" class="external" style="width:80.0%" /></p>
+<hr />
+<p>The most important feature is <strong>random_num</strong> which is totally random numeric feature which the model has used to memorize the training data set but is useless to predict anything. The wrong importance measure results from two causes</p>
+<div class="rmdtip">
+<p>Causes of wrong feature importance:</p>
+<ul>
+<li>impurity-based importances are biased towards high cardinality features</li>
+<li>impurity-based importances
+<ul>
+<li>computed on training set statistics</li>
+<li>do not reflect the ability of feature to be useful to make predictions that generalize to the test set</li>
+</ul></li>
+</ul>
+</div>
+<div class="HeadingNoNumber">
+<p>Permutation importance</p>
+</div>
+<p>Computing the permutation importance no a held out test data shows that the low cardinality categorical feature *<strong>sex</strong> has highest importance.</p>
+<hr />
+<p><img src="images/PermutationImportanceTitanicTest.png" class="external" style="width:80.0%" /></p>
+<hr />
+<div class="rmdtip">
+<p>
+Permutation importance:<img src="images/Gender.svg" alt="Smiley face" align="right" style="width:15%;">
+</p>
+<ul>
+<li>Most important feature: sex</li>
+<li>Random features low importance</li>
+</ul>
+</div>
+<p>Computing the permutation importance on the training data shows that the random features get significantly higher importance ranking than when computed on the test set.</p>
+<hr />
+<p><img src="images/PermutationImportanceTitanicTrain.png" class="external" style="width:80.0%" /></p>
+<hr />
+<div class="HeadingNoNumber">
+<p>Permutation Importance with Multicollinear or Correlated Features</p>
+</div>
+<p>Another example investigates the problem of multicollinear or correlated features. The example <em>“Permutation Importance with Multicollinear or Correlated Features”</em> can be found at the Scikit-Learn <span class="citation">(Pedregosa et al. <a href="#ref-scikit-learn" role="doc-biblioref">2011</a>)</span> site <a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html" class="uri">https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html</a></p>
+<div class="rmdtip">
+<p>Facts of example:</p>
+<ul>
+<li>Wisconsin breast cancer datase</li>
+<li>RandomForestClassifier 97% accuracy on a test data set</li>
+<li>Contains multicollinear features</li>
+</ul>
+</div>
+<p>The permutation importance plot shows that permuting a feature drops the accuracy by at most 0.012, which suggests taht none of the features are important.</p>
+<hr />
+<p><img src="images/rfImportance.png" style="width:100.0%" /></p>
+<hr />
+<div class="rmdtip">
+<p>Permutation importance:</p>
+<ul>
+<li>highest drop = 0.012 <span class="math inline">\(\implies\)</span> no feature is important</li>
+<li>when features collinear
+<ul>
+<li>permuting one feature will have little effect</li>
+</ul></li>
+<li>how to handle collinear features
+<ul>
+<li>performing hierarchical clustering on the Spearman rank-order correlations<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a></li>
+<li>pick threshold
+<ul>
+<li>in graph below = 2.0</li>
+</ul></li>
+<li>keep single feature from each cluster
+<ul>
+<li>in graph below 8 cluster <span class="math inline">\(\implies\)</span> 8 features</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<hr />
+<p><img src="images/clusterSpearman.png" style="width:100.0%" /></p>
+<hr />
+<p>If threshold 1.0 is chosen than accuracy stays at 0.97 with 14 features instead of 30</p>
 </div>
 </div>
 <h3>References</h3>
@@ -741,9 +1010,18 @@ Permutation Importance with Multicollinear or Correlated Features
 <div id="ref-FeatureEngineeringKuhnWebsite">
 <p>Kuhn, Max, and Kjell Johnson. 2018. “Feature Engineering and Selection: A Practical Approach for Predictive Models.” <a href="http://www.feat.engineering/index.html">http://www.feat.engineering/index.html</a>.</p>
 </div>
+<div id="ref-maaten2008visualizing">
+<p>Maaten, L. J. P. van der, and G. E. Hinton. 2008. “Visualizing High-Dimensional Data Using T-Sne.”</p>
+</div>
 <div id="ref-scikit-learn">
 <p>Pedregosa, F., G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O. Grisel, M. Blondel, et al. 2011. “Scikit-Learn: Machine Learning in Python.” <em>Journal of Machine Learning Research</em> 12: 2825–30.</p>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="19">
+<li id="fn19"><p>The Spearman rank-order correlation coefficient (Spearman’s correlation, for short) is a nonparametric measure of the strength and direction of association that exists between two variables measured on at least an ordinal scale.<a href="featureEngineering.html#fnref19" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

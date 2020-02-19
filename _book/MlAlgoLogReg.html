@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-18" />
+<meta name="date" content="2020-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -462,52 +462,52 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>An example of scikit-learn is given at <a href="https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py" class="uri">https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py</a> and emphasises on the difference between linear and logistic regression. The synthetic data set has values either 0 or 1. This can be modeled quite well with logisitc regression, but not at all with linear regression.</p>
 <p><img src="images/logRegPython.png" style="width:70.0%" /></p>
 <p>The python code is given below</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="MlAlgoLogReg.html#cb2-1"></a></span>
-<span id="cb2-2"><a href="MlAlgoLogReg.html#cb2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="MlAlgoLogReg.html#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-4"><a href="MlAlgoLogReg.html#cb2-4"></a></span>
-<span id="cb2-5"><a href="MlAlgoLogReg.html#cb2-5"></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
-<span id="cb2-6"><a href="MlAlgoLogReg.html#cb2-6"></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
-<span id="cb2-7"><a href="MlAlgoLogReg.html#cb2-7"></a></span>
-<span id="cb2-8"><a href="MlAlgoLogReg.html#cb2-8"></a><span class="co"># General a toy dataset:s it&#39;s just a straight line with some Gaussian noise:</span></span>
-<span id="cb2-9"><a href="MlAlgoLogReg.html#cb2-9"></a>xmin, xmax <span class="op">=</span> <span class="dv">-5</span>, <span class="dv">5</span></span>
-<span id="cb2-10"><a href="MlAlgoLogReg.html#cb2-10"></a>n_samples <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-11"><a href="MlAlgoLogReg.html#cb2-11"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb2-12"><a href="MlAlgoLogReg.html#cb2-12"></a>X <span class="op">=</span> np.random.normal(size<span class="op">=</span>n_samples)</span>
-<span id="cb2-13"><a href="MlAlgoLogReg.html#cb2-13"></a>y <span class="op">=</span> (X <span class="op">&gt;</span> <span class="dv">0</span>).astype(np.<span class="bu">float</span>)</span>
-<span id="cb2-14"><a href="MlAlgoLogReg.html#cb2-14"></a>X[X <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">*=</span> <span class="dv">4</span></span>
-<span id="cb2-15"><a href="MlAlgoLogReg.html#cb2-15"></a>X <span class="op">+=</span> <span class="fl">.3</span> <span class="op">*</span> np.random.normal(size<span class="op">=</span>n_samples)</span>
-<span id="cb2-16"><a href="MlAlgoLogReg.html#cb2-16"></a></span>
-<span id="cb2-17"><a href="MlAlgoLogReg.html#cb2-17"></a>X <span class="op">=</span> X[:, np.newaxis]</span>
-<span id="cb2-18"><a href="MlAlgoLogReg.html#cb2-18"></a></span>
-<span id="cb2-19"><a href="MlAlgoLogReg.html#cb2-19"></a><span class="co"># Fit the classifier</span></span>
-<span id="cb2-20"><a href="MlAlgoLogReg.html#cb2-20"></a>clf <span class="op">=</span> linear_model.LogisticRegression(C<span class="op">=</span><span class="fl">1e5</span>)</span>
-<span id="cb2-21"><a href="MlAlgoLogReg.html#cb2-21"></a>clf.fit(X, y)</span>
-<span id="cb2-22"><a href="MlAlgoLogReg.html#cb2-22"></a></span>
-<span id="cb2-23"><a href="MlAlgoLogReg.html#cb2-23"></a><span class="co"># and plot the result</span></span>
-<span id="cb2-24"><a href="MlAlgoLogReg.html#cb2-24"></a>plt.figure(<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb2-25"><a href="MlAlgoLogReg.html#cb2-25"></a>plt.clf()</span>
-<span id="cb2-26"><a href="MlAlgoLogReg.html#cb2-26"></a>plt.scatter(X.ravel(), y, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, zorder<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb2-27"><a href="MlAlgoLogReg.html#cb2-27"></a>X_test <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">300</span>)</span>
-<span id="cb2-28"><a href="MlAlgoLogReg.html#cb2-28"></a></span>
-<span id="cb2-29"><a href="MlAlgoLogReg.html#cb2-29"></a>loss <span class="op">=</span> expit(X_test <span class="op">*</span> clf.coef_ <span class="op">+</span> clf.intercept_).ravel()</span>
-<span id="cb2-30"><a href="MlAlgoLogReg.html#cb2-30"></a>plt.plot(X_test, loss, color<span class="op">=</span><span class="st">&#39;red&#39;</span>, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb2-31"><a href="MlAlgoLogReg.html#cb2-31"></a></span>
-<span id="cb2-32"><a href="MlAlgoLogReg.html#cb2-32"></a>ols <span class="op">=</span> linear_model.LinearRegression()</span>
-<span id="cb2-33"><a href="MlAlgoLogReg.html#cb2-33"></a>ols.fit(X, y)</span>
-<span id="cb2-34"><a href="MlAlgoLogReg.html#cb2-34"></a>plt.plot(X_test, ols.coef_ <span class="op">*</span> X_test <span class="op">+</span> ols.intercept_, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-35"><a href="MlAlgoLogReg.html#cb2-35"></a>plt.axhline(.<span class="dv">5</span>, color<span class="op">=</span><span class="st">&#39;.5&#39;</span>)</span>
-<span id="cb2-36"><a href="MlAlgoLogReg.html#cb2-36"></a></span>
-<span id="cb2-37"><a href="MlAlgoLogReg.html#cb2-37"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>)</span>
-<span id="cb2-38"><a href="MlAlgoLogReg.html#cb2-38"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)</span>
-<span id="cb2-39"><a href="MlAlgoLogReg.html#cb2-39"></a>plt.xticks(<span class="bu">range</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>))</span>
-<span id="cb2-40"><a href="MlAlgoLogReg.html#cb2-40"></a>plt.yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>])</span>
-<span id="cb2-41"><a href="MlAlgoLogReg.html#cb2-41"></a>plt.ylim(<span class="op">-</span>.<span class="dv">25</span>, <span class="fl">1.25</span>)</span>
-<span id="cb2-42"><a href="MlAlgoLogReg.html#cb2-42"></a>plt.xlim(<span class="op">-</span><span class="dv">4</span>, <span class="dv">10</span>)</span>
-<span id="cb2-43"><a href="MlAlgoLogReg.html#cb2-43"></a>plt.legend((<span class="st">&#39;Logistic Regression Model&#39;</span>, <span class="st">&#39;Linear Regression Model&#39;</span>),</span>
-<span id="cb2-44"><a href="MlAlgoLogReg.html#cb2-44"></a>           loc<span class="op">=</span><span class="st">&quot;lower right&quot;</span>, fontsize<span class="op">=</span><span class="st">&#39;small&#39;</span>)</span>
-<span id="cb2-45"><a href="MlAlgoLogReg.html#cb2-45"></a>plt.tight_layout()</span>
-<span id="cb2-46"><a href="MlAlgoLogReg.html#cb2-46"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="MlAlgoLogReg.html#cb4-1"></a></span>
+<span id="cb4-2"><a href="MlAlgoLogReg.html#cb4-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="MlAlgoLogReg.html#cb4-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-4"><a href="MlAlgoLogReg.html#cb4-4"></a></span>
+<span id="cb4-5"><a href="MlAlgoLogReg.html#cb4-5"></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb4-6"><a href="MlAlgoLogReg.html#cb4-6"></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
+<span id="cb4-7"><a href="MlAlgoLogReg.html#cb4-7"></a></span>
+<span id="cb4-8"><a href="MlAlgoLogReg.html#cb4-8"></a><span class="co"># General a toy dataset:s it&#39;s just a straight line with some Gaussian noise:</span></span>
+<span id="cb4-9"><a href="MlAlgoLogReg.html#cb4-9"></a>xmin, xmax <span class="op">=</span> <span class="dv">-5</span>, <span class="dv">5</span></span>
+<span id="cb4-10"><a href="MlAlgoLogReg.html#cb4-10"></a>n_samples <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb4-11"><a href="MlAlgoLogReg.html#cb4-11"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb4-12"><a href="MlAlgoLogReg.html#cb4-12"></a>X <span class="op">=</span> np.random.normal(size<span class="op">=</span>n_samples)</span>
+<span id="cb4-13"><a href="MlAlgoLogReg.html#cb4-13"></a>y <span class="op">=</span> (X <span class="op">&gt;</span> <span class="dv">0</span>).astype(np.<span class="bu">float</span>)</span>
+<span id="cb4-14"><a href="MlAlgoLogReg.html#cb4-14"></a>X[X <span class="op">&gt;</span> <span class="dv">0</span>] <span class="op">*=</span> <span class="dv">4</span></span>
+<span id="cb4-15"><a href="MlAlgoLogReg.html#cb4-15"></a>X <span class="op">+=</span> <span class="fl">.3</span> <span class="op">*</span> np.random.normal(size<span class="op">=</span>n_samples)</span>
+<span id="cb4-16"><a href="MlAlgoLogReg.html#cb4-16"></a></span>
+<span id="cb4-17"><a href="MlAlgoLogReg.html#cb4-17"></a>X <span class="op">=</span> X[:, np.newaxis]</span>
+<span id="cb4-18"><a href="MlAlgoLogReg.html#cb4-18"></a></span>
+<span id="cb4-19"><a href="MlAlgoLogReg.html#cb4-19"></a><span class="co"># Fit the classifier</span></span>
+<span id="cb4-20"><a href="MlAlgoLogReg.html#cb4-20"></a>clf <span class="op">=</span> linear_model.LogisticRegression(C<span class="op">=</span><span class="fl">1e5</span>)</span>
+<span id="cb4-21"><a href="MlAlgoLogReg.html#cb4-21"></a>clf.fit(X, y)</span>
+<span id="cb4-22"><a href="MlAlgoLogReg.html#cb4-22"></a></span>
+<span id="cb4-23"><a href="MlAlgoLogReg.html#cb4-23"></a><span class="co"># and plot the result</span></span>
+<span id="cb4-24"><a href="MlAlgoLogReg.html#cb4-24"></a>plt.figure(<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb4-25"><a href="MlAlgoLogReg.html#cb4-25"></a>plt.clf()</span>
+<span id="cb4-26"><a href="MlAlgoLogReg.html#cb4-26"></a>plt.scatter(X.ravel(), y, color<span class="op">=</span><span class="st">&#39;black&#39;</span>, zorder<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb4-27"><a href="MlAlgoLogReg.html#cb4-27"></a>X_test <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">300</span>)</span>
+<span id="cb4-28"><a href="MlAlgoLogReg.html#cb4-28"></a></span>
+<span id="cb4-29"><a href="MlAlgoLogReg.html#cb4-29"></a>loss <span class="op">=</span> expit(X_test <span class="op">*</span> clf.coef_ <span class="op">+</span> clf.intercept_).ravel()</span>
+<span id="cb4-30"><a href="MlAlgoLogReg.html#cb4-30"></a>plt.plot(X_test, loss, color<span class="op">=</span><span class="st">&#39;red&#39;</span>, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb4-31"><a href="MlAlgoLogReg.html#cb4-31"></a></span>
+<span id="cb4-32"><a href="MlAlgoLogReg.html#cb4-32"></a>ols <span class="op">=</span> linear_model.LinearRegression()</span>
+<span id="cb4-33"><a href="MlAlgoLogReg.html#cb4-33"></a>ols.fit(X, y)</span>
+<span id="cb4-34"><a href="MlAlgoLogReg.html#cb4-34"></a>plt.plot(X_test, ols.coef_ <span class="op">*</span> X_test <span class="op">+</span> ols.intercept_, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-35"><a href="MlAlgoLogReg.html#cb4-35"></a>plt.axhline(.<span class="dv">5</span>, color<span class="op">=</span><span class="st">&#39;.5&#39;</span>)</span>
+<span id="cb4-36"><a href="MlAlgoLogReg.html#cb4-36"></a></span>
+<span id="cb4-37"><a href="MlAlgoLogReg.html#cb4-37"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>)</span>
+<span id="cb4-38"><a href="MlAlgoLogReg.html#cb4-38"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)</span>
+<span id="cb4-39"><a href="MlAlgoLogReg.html#cb4-39"></a>plt.xticks(<span class="bu">range</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">10</span>))</span>
+<span id="cb4-40"><a href="MlAlgoLogReg.html#cb4-40"></a>plt.yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>])</span>
+<span id="cb4-41"><a href="MlAlgoLogReg.html#cb4-41"></a>plt.ylim(<span class="op">-</span>.<span class="dv">25</span>, <span class="fl">1.25</span>)</span>
+<span id="cb4-42"><a href="MlAlgoLogReg.html#cb4-42"></a>plt.xlim(<span class="op">-</span><span class="dv">4</span>, <span class="dv">10</span>)</span>
+<span id="cb4-43"><a href="MlAlgoLogReg.html#cb4-43"></a>plt.legend((<span class="st">&#39;Logistic Regression Model&#39;</span>, <span class="st">&#39;Linear Regression Model&#39;</span>),</span>
+<span id="cb4-44"><a href="MlAlgoLogReg.html#cb4-44"></a>           loc<span class="op">=</span><span class="st">&quot;lower right&quot;</span>, fontsize<span class="op">=</span><span class="st">&#39;small&#39;</span>)</span>
+<span id="cb4-45"><a href="MlAlgoLogReg.html#cb4-45"></a>plt.tight_layout()</span>
+<span id="cb4-46"><a href="MlAlgoLogReg.html#cb4-46"></a>plt.show()</span></code></pre></div>
 
 </div>
 </div>

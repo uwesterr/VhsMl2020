@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-18" />
+<meta name="date" content="2020-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -513,181 +513,181 @@ done without explicitly working in the enlarged feature space. This is im- porta
 </ul>
 <p>See below some examples of the resulting classification of the algorithm</p>
 <p><img src="images/svmFaces.png" style="width:60.0%" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="MlAlgoSvm.html#cb6-1"></a>Total dataset size:</span>
-<span id="cb6-2"><a href="MlAlgoSvm.html#cb6-2"></a>n_samples: 1288</span>
-<span id="cb6-3"><a href="MlAlgoSvm.html#cb6-3"></a>n_features: 1850</span>
-<span id="cb6-4"><a href="MlAlgoSvm.html#cb6-4"></a>n_classes: 7</span>
-<span id="cb6-5"><a href="MlAlgoSvm.html#cb6-5"></a>Extracting the top 150 eigenfaces from 966 faces</span>
-<span id="cb6-6"><a href="MlAlgoSvm.html#cb6-6"></a>done in 0.320s</span>
-<span id="cb6-7"><a href="MlAlgoSvm.html#cb6-7"></a>Projecting the input data on the eigenfaces orthonormal basis</span>
-<span id="cb6-8"><a href="MlAlgoSvm.html#cb6-8"></a>done in 0.013s</span>
-<span id="cb6-9"><a href="MlAlgoSvm.html#cb6-9"></a>Fitting the classifier to the training set</span>
-<span id="cb6-10"><a href="MlAlgoSvm.html#cb6-10"></a>done in 28.379s</span>
-<span id="cb6-11"><a href="MlAlgoSvm.html#cb6-11"></a>Best estimator found by grid search:</span>
-<span id="cb6-12"><a href="MlAlgoSvm.html#cb6-12"></a>SVC(C=1000.0, break_ties=False, cache_size=200, class_weight=&#39;balanced&#39;,</span>
-<span id="cb6-13"><a href="MlAlgoSvm.html#cb6-13"></a><span class="bn">    coef0=0.0, decision_function_shape=&#39;ovr&#39;, degree=3, gamma=0.005,</span></span>
-<span id="cb6-14"><a href="MlAlgoSvm.html#cb6-14"></a><span class="bn">    kernel=&#39;rbf&#39;, max_iter=-1, probability=False, random_state=None,</span></span>
-<span id="cb6-15"><a href="MlAlgoSvm.html#cb6-15"></a><span class="bn">    shrinking=True, tol=0.001, verbose=False)</span></span>
-<span id="cb6-16"><a href="MlAlgoSvm.html#cb6-16"></a>Predicting people&#39;s names on the test set</span>
-<span id="cb6-17"><a href="MlAlgoSvm.html#cb6-17"></a>done in 0.045s</span>
-<span id="cb6-18"><a href="MlAlgoSvm.html#cb6-18"></a><span class="bn">                   precision    recall  f1-score   support</span></span>
-<span id="cb6-19"><a href="MlAlgoSvm.html#cb6-19"></a></span>
-<span id="cb6-20"><a href="MlAlgoSvm.html#cb6-20"></a><span class="bn">     Ariel Sharon       0.88      0.54      0.67        13</span></span>
-<span id="cb6-21"><a href="MlAlgoSvm.html#cb6-21"></a><span class="bn">     Colin Powell       0.80      0.87      0.83        60</span></span>
-<span id="cb6-22"><a href="MlAlgoSvm.html#cb6-22"></a>  Donald Rumsfeld       0.94      0.63      0.76        27</span>
-<span id="cb6-23"><a href="MlAlgoSvm.html#cb6-23"></a><span class="bn">    George W Bush       0.83      0.98      0.90       146</span></span>
-<span id="cb6-24"><a href="MlAlgoSvm.html#cb6-24"></a>Gerhard Schroeder       0.91      0.80      0.85        25</span>
-<span id="cb6-25"><a href="MlAlgoSvm.html#cb6-25"></a><span class="bn">      Hugo Chavez       1.00      0.53      0.70        15</span></span>
-<span id="cb6-26"><a href="MlAlgoSvm.html#cb6-26"></a><span class="bn">       Tony Blair       0.96      0.75      0.84        36</span></span>
-<span id="cb6-27"><a href="MlAlgoSvm.html#cb6-27"></a></span>
-<span id="cb6-28"><a href="MlAlgoSvm.html#cb6-28"></a><span class="bn">         accuracy                           0.85       322</span></span>
-<span id="cb6-29"><a href="MlAlgoSvm.html#cb6-29"></a><span class="bn">        macro avg       0.90      0.73      0.79       322</span></span>
-<span id="cb6-30"><a href="MlAlgoSvm.html#cb6-30"></a><span class="bn">     weighted avg       0.86      0.85      0.84       322</span></span>
-<span id="cb6-31"><a href="MlAlgoSvm.html#cb6-31"></a></span>
-<span id="cb6-32"><a href="MlAlgoSvm.html#cb6-32"></a></span>
-<span id="cb6-33"><a href="MlAlgoSvm.html#cb6-33"></a>Confusion matrix</span>
-<span id="cb6-34"><a href="MlAlgoSvm.html#cb6-34"></a></span>
-<span id="cb6-35"><a href="MlAlgoSvm.html#cb6-35"></a>[[  7   1   0   5   0   0   0]</span>
-<span id="cb6-36"><a href="MlAlgoSvm.html#cb6-36"></a> [  1  52   0   7   0   0   0]</span>
-<span id="cb6-37"><a href="MlAlgoSvm.html#cb6-37"></a> [  0   3  17   7   0   0   0]</span>
-<span id="cb6-38"><a href="MlAlgoSvm.html#cb6-38"></a> [  0   3   0 143   0   0   0]</span>
-<span id="cb6-39"><a href="MlAlgoSvm.html#cb6-39"></a> [  0   1   0   3  20   0   1]</span>
-<span id="cb6-40"><a href="MlAlgoSvm.html#cb6-40"></a> [  0   4   0   2   1   8   0]</span>
-<span id="cb6-41"><a href="MlAlgoSvm.html#cb6-41"></a> [  0   1   1   6   1   0  27]]</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="MlAlgoSvm.html#cb8-1"></a>Total dataset size:</span>
+<span id="cb8-2"><a href="MlAlgoSvm.html#cb8-2"></a>n_samples: 1288</span>
+<span id="cb8-3"><a href="MlAlgoSvm.html#cb8-3"></a>n_features: 1850</span>
+<span id="cb8-4"><a href="MlAlgoSvm.html#cb8-4"></a>n_classes: 7</span>
+<span id="cb8-5"><a href="MlAlgoSvm.html#cb8-5"></a>Extracting the top 150 eigenfaces from 966 faces</span>
+<span id="cb8-6"><a href="MlAlgoSvm.html#cb8-6"></a>done in 0.320s</span>
+<span id="cb8-7"><a href="MlAlgoSvm.html#cb8-7"></a>Projecting the input data on the eigenfaces orthonormal basis</span>
+<span id="cb8-8"><a href="MlAlgoSvm.html#cb8-8"></a>done in 0.013s</span>
+<span id="cb8-9"><a href="MlAlgoSvm.html#cb8-9"></a>Fitting the classifier to the training set</span>
+<span id="cb8-10"><a href="MlAlgoSvm.html#cb8-10"></a>done in 28.379s</span>
+<span id="cb8-11"><a href="MlAlgoSvm.html#cb8-11"></a>Best estimator found by grid search:</span>
+<span id="cb8-12"><a href="MlAlgoSvm.html#cb8-12"></a>SVC(C=1000.0, break_ties=False, cache_size=200, class_weight=&#39;balanced&#39;,</span>
+<span id="cb8-13"><a href="MlAlgoSvm.html#cb8-13"></a><span class="bn">    coef0=0.0, decision_function_shape=&#39;ovr&#39;, degree=3, gamma=0.005,</span></span>
+<span id="cb8-14"><a href="MlAlgoSvm.html#cb8-14"></a><span class="bn">    kernel=&#39;rbf&#39;, max_iter=-1, probability=False, random_state=None,</span></span>
+<span id="cb8-15"><a href="MlAlgoSvm.html#cb8-15"></a><span class="bn">    shrinking=True, tol=0.001, verbose=False)</span></span>
+<span id="cb8-16"><a href="MlAlgoSvm.html#cb8-16"></a>Predicting people&#39;s names on the test set</span>
+<span id="cb8-17"><a href="MlAlgoSvm.html#cb8-17"></a>done in 0.045s</span>
+<span id="cb8-18"><a href="MlAlgoSvm.html#cb8-18"></a><span class="bn">                   precision    recall  f1-score   support</span></span>
+<span id="cb8-19"><a href="MlAlgoSvm.html#cb8-19"></a></span>
+<span id="cb8-20"><a href="MlAlgoSvm.html#cb8-20"></a><span class="bn">     Ariel Sharon       0.88      0.54      0.67        13</span></span>
+<span id="cb8-21"><a href="MlAlgoSvm.html#cb8-21"></a><span class="bn">     Colin Powell       0.80      0.87      0.83        60</span></span>
+<span id="cb8-22"><a href="MlAlgoSvm.html#cb8-22"></a>  Donald Rumsfeld       0.94      0.63      0.76        27</span>
+<span id="cb8-23"><a href="MlAlgoSvm.html#cb8-23"></a><span class="bn">    George W Bush       0.83      0.98      0.90       146</span></span>
+<span id="cb8-24"><a href="MlAlgoSvm.html#cb8-24"></a>Gerhard Schroeder       0.91      0.80      0.85        25</span>
+<span id="cb8-25"><a href="MlAlgoSvm.html#cb8-25"></a><span class="bn">      Hugo Chavez       1.00      0.53      0.70        15</span></span>
+<span id="cb8-26"><a href="MlAlgoSvm.html#cb8-26"></a><span class="bn">       Tony Blair       0.96      0.75      0.84        36</span></span>
+<span id="cb8-27"><a href="MlAlgoSvm.html#cb8-27"></a></span>
+<span id="cb8-28"><a href="MlAlgoSvm.html#cb8-28"></a><span class="bn">         accuracy                           0.85       322</span></span>
+<span id="cb8-29"><a href="MlAlgoSvm.html#cb8-29"></a><span class="bn">        macro avg       0.90      0.73      0.79       322</span></span>
+<span id="cb8-30"><a href="MlAlgoSvm.html#cb8-30"></a><span class="bn">     weighted avg       0.86      0.85      0.84       322</span></span>
+<span id="cb8-31"><a href="MlAlgoSvm.html#cb8-31"></a></span>
+<span id="cb8-32"><a href="MlAlgoSvm.html#cb8-32"></a></span>
+<span id="cb8-33"><a href="MlAlgoSvm.html#cb8-33"></a>Confusion matrix</span>
+<span id="cb8-34"><a href="MlAlgoSvm.html#cb8-34"></a></span>
+<span id="cb8-35"><a href="MlAlgoSvm.html#cb8-35"></a>[[  7   1   0   5   0   0   0]</span>
+<span id="cb8-36"><a href="MlAlgoSvm.html#cb8-36"></a> [  1  52   0   7   0   0   0]</span>
+<span id="cb8-37"><a href="MlAlgoSvm.html#cb8-37"></a> [  0   3  17   7   0   0   0]</span>
+<span id="cb8-38"><a href="MlAlgoSvm.html#cb8-38"></a> [  0   3   0 143   0   0   0]</span>
+<span id="cb8-39"><a href="MlAlgoSvm.html#cb8-39"></a> [  0   1   0   3  20   0   1]</span>
+<span id="cb8-40"><a href="MlAlgoSvm.html#cb8-40"></a> [  0   4   0   2   1   8   0]</span>
+<span id="cb8-41"><a href="MlAlgoSvm.html#cb8-41"></a> [  0   1   1   6   1   0  27]]</span></code></pre></div>
 <p>The python code is given below</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="MlAlgoSvm.html#cb7-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
-<span id="cb7-2"><a href="MlAlgoSvm.html#cb7-2"></a><span class="im">import</span> logging</span>
-<span id="cb7-3"><a href="MlAlgoSvm.html#cb7-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-4"><a href="MlAlgoSvm.html#cb7-4"></a></span>
-<span id="cb7-5"><a href="MlAlgoSvm.html#cb7-5"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb7-6"><a href="MlAlgoSvm.html#cb7-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
-<span id="cb7-7"><a href="MlAlgoSvm.html#cb7-7"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_lfw_people</span>
-<span id="cb7-8"><a href="MlAlgoSvm.html#cb7-8"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
-<span id="cb7-9"><a href="MlAlgoSvm.html#cb7-9"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
-<span id="cb7-10"><a href="MlAlgoSvm.html#cb7-10"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
-<span id="cb7-11"><a href="MlAlgoSvm.html#cb7-11"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
-<span id="cb7-12"><a href="MlAlgoSvm.html#cb7-12"></a></span>
-<span id="cb7-13"><a href="MlAlgoSvm.html#cb7-13"></a></span>
-<span id="cb7-14"><a href="MlAlgoSvm.html#cb7-14"></a><span class="bu">print</span>(__doc__)</span>
-<span id="cb7-15"><a href="MlAlgoSvm.html#cb7-15"></a></span>
-<span id="cb7-16"><a href="MlAlgoSvm.html#cb7-16"></a><span class="co"># Display progress logs on stdout</span></span>
-<span id="cb7-17"><a href="MlAlgoSvm.html#cb7-17"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
-<span id="cb7-18"><a href="MlAlgoSvm.html#cb7-18"></a></span>
-<span id="cb7-19"><a href="MlAlgoSvm.html#cb7-19"></a></span>
-<span id="cb7-20"><a href="MlAlgoSvm.html#cb7-20"></a><span class="co"># #############################################################################</span></span>
-<span id="cb7-21"><a href="MlAlgoSvm.html#cb7-21"></a><span class="co"># Download the data, if not already on disk and load it as numpy arrays</span></span>
-<span id="cb7-22"><a href="MlAlgoSvm.html#cb7-22"></a></span>
-<span id="cb7-23"><a href="MlAlgoSvm.html#cb7-23"></a>lfw_people <span class="op">=</span> fetch_lfw_people(min_faces_per_person<span class="op">=</span><span class="dv">70</span>, resize<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb7-24"><a href="MlAlgoSvm.html#cb7-24"></a></span>
-<span id="cb7-25"><a href="MlAlgoSvm.html#cb7-25"></a><span class="co"># introspect the images arrays to find the shapes (for plotting)</span></span>
-<span id="cb7-26"><a href="MlAlgoSvm.html#cb7-26"></a>n_samples, h, w <span class="op">=</span> lfw_people.images.shape</span>
-<span id="cb7-27"><a href="MlAlgoSvm.html#cb7-27"></a></span>
-<span id="cb7-28"><a href="MlAlgoSvm.html#cb7-28"></a><span class="co"># for machine learning we use the 2 data directly (as relative pixel</span></span>
-<span id="cb7-29"><a href="MlAlgoSvm.html#cb7-29"></a><span class="co"># positions info is ignored by this model)</span></span>
-<span id="cb7-30"><a href="MlAlgoSvm.html#cb7-30"></a>X <span class="op">=</span> lfw_people.data</span>
-<span id="cb7-31"><a href="MlAlgoSvm.html#cb7-31"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
-<span id="cb7-32"><a href="MlAlgoSvm.html#cb7-32"></a></span>
-<span id="cb7-33"><a href="MlAlgoSvm.html#cb7-33"></a><span class="co"># the label to predict is the id of the person</span></span>
-<span id="cb7-34"><a href="MlAlgoSvm.html#cb7-34"></a>y <span class="op">=</span> lfw_people.target</span>
-<span id="cb7-35"><a href="MlAlgoSvm.html#cb7-35"></a>target_names <span class="op">=</span> lfw_people.target_names</span>
-<span id="cb7-36"><a href="MlAlgoSvm.html#cb7-36"></a>n_classes <span class="op">=</span> target_names.shape[<span class="dv">0</span>]</span>
-<span id="cb7-37"><a href="MlAlgoSvm.html#cb7-37"></a></span>
-<span id="cb7-38"><a href="MlAlgoSvm.html#cb7-38"></a><span class="bu">print</span>(<span class="st">&quot;Total dataset size:&quot;</span>)</span>
-<span id="cb7-39"><a href="MlAlgoSvm.html#cb7-39"></a><span class="bu">print</span>(<span class="st">&quot;n_samples: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_samples)</span>
-<span id="cb7-40"><a href="MlAlgoSvm.html#cb7-40"></a><span class="bu">print</span>(<span class="st">&quot;n_features: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_features)</span>
-<span id="cb7-41"><a href="MlAlgoSvm.html#cb7-41"></a><span class="bu">print</span>(<span class="st">&quot;n_classes: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_classes)</span>
-<span id="cb7-42"><a href="MlAlgoSvm.html#cb7-42"></a></span>
-<span id="cb7-43"><a href="MlAlgoSvm.html#cb7-43"></a></span>
-<span id="cb7-44"><a href="MlAlgoSvm.html#cb7-44"></a><span class="co"># #############################################################################</span></span>
-<span id="cb7-45"><a href="MlAlgoSvm.html#cb7-45"></a><span class="co"># Split into a training set and a test set using a stratified k fold</span></span>
-<span id="cb7-46"><a href="MlAlgoSvm.html#cb7-46"></a></span>
-<span id="cb7-47"><a href="MlAlgoSvm.html#cb7-47"></a><span class="co"># split into a training and testing set</span></span>
-<span id="cb7-48"><a href="MlAlgoSvm.html#cb7-48"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb7-49"><a href="MlAlgoSvm.html#cb7-49"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb7-50"><a href="MlAlgoSvm.html#cb7-50"></a></span>
-<span id="cb7-51"><a href="MlAlgoSvm.html#cb7-51"></a></span>
-<span id="cb7-52"><a href="MlAlgoSvm.html#cb7-52"></a><span class="co"># #############################################################################</span></span>
-<span id="cb7-53"><a href="MlAlgoSvm.html#cb7-53"></a><span class="co"># Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled</span></span>
-<span id="cb7-54"><a href="MlAlgoSvm.html#cb7-54"></a><span class="co"># dataset): unsupervised feature extraction / dimensionality reduction</span></span>
-<span id="cb7-55"><a href="MlAlgoSvm.html#cb7-55"></a>n_components <span class="op">=</span> <span class="dv">150</span></span>
-<span id="cb7-56"><a href="MlAlgoSvm.html#cb7-56"></a></span>
-<span id="cb7-57"><a href="MlAlgoSvm.html#cb7-57"></a><span class="bu">print</span>(<span class="st">&quot;Extracting the top </span><span class="sc">%d</span><span class="st"> eigenfaces from </span><span class="sc">%d</span><span class="st"> faces&quot;</span></span>
-<span id="cb7-58"><a href="MlAlgoSvm.html#cb7-58"></a>      <span class="op">%</span> (n_components, X_train.shape[<span class="dv">0</span>]))</span>
-<span id="cb7-59"><a href="MlAlgoSvm.html#cb7-59"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb7-60"><a href="MlAlgoSvm.html#cb7-60"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span>n_components, svd_solver<span class="op">=</span><span class="st">&#39;randomized&#39;</span>,</span>
-<span id="cb7-61"><a href="MlAlgoSvm.html#cb7-61"></a>          whiten<span class="op">=</span><span class="va">True</span>).fit(X_train)</span>
-<span id="cb7-62"><a href="MlAlgoSvm.html#cb7-62"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb7-63"><a href="MlAlgoSvm.html#cb7-63"></a></span>
-<span id="cb7-64"><a href="MlAlgoSvm.html#cb7-64"></a>eigenfaces <span class="op">=</span> pca.components_.reshape((n_components, h, w))</span>
-<span id="cb7-65"><a href="MlAlgoSvm.html#cb7-65"></a></span>
-<span id="cb7-66"><a href="MlAlgoSvm.html#cb7-66"></a><span class="bu">print</span>(<span class="st">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span>)</span>
-<span id="cb7-67"><a href="MlAlgoSvm.html#cb7-67"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb7-68"><a href="MlAlgoSvm.html#cb7-68"></a>X_train_pca <span class="op">=</span> pca.transform(X_train)</span>
-<span id="cb7-69"><a href="MlAlgoSvm.html#cb7-69"></a>X_test_pca <span class="op">=</span> pca.transform(X_test)</span>
-<span id="cb7-70"><a href="MlAlgoSvm.html#cb7-70"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb7-71"><a href="MlAlgoSvm.html#cb7-71"></a></span>
-<span id="cb7-72"><a href="MlAlgoSvm.html#cb7-72"></a></span>
-<span id="cb7-73"><a href="MlAlgoSvm.html#cb7-73"></a><span class="co"># #############################################################################</span></span>
-<span id="cb7-74"><a href="MlAlgoSvm.html#cb7-74"></a><span class="co"># Train a SVM classification model</span></span>
-<span id="cb7-75"><a href="MlAlgoSvm.html#cb7-75"></a></span>
-<span id="cb7-76"><a href="MlAlgoSvm.html#cb7-76"></a><span class="bu">print</span>(<span class="st">&quot;Fitting the classifier to the training set&quot;</span>)</span>
-<span id="cb7-77"><a href="MlAlgoSvm.html#cb7-77"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb7-78"><a href="MlAlgoSvm.html#cb7-78"></a>param_grid <span class="op">=</span> {<span class="st">&#39;C&#39;</span>: [<span class="fl">1e3</span>, <span class="fl">5e3</span>, <span class="fl">1e4</span>, <span class="fl">5e4</span>, <span class="fl">1e5</span>],</span>
-<span id="cb7-79"><a href="MlAlgoSvm.html#cb7-79"></a>              <span class="st">&#39;gamma&#39;</span>: [<span class="fl">0.0001</span>, <span class="fl">0.0005</span>, <span class="fl">0.001</span>, <span class="fl">0.005</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>], }</span>
-<span id="cb7-80"><a href="MlAlgoSvm.html#cb7-80"></a>clf <span class="op">=</span> GridSearchCV(</span>
-<span id="cb7-81"><a href="MlAlgoSvm.html#cb7-81"></a>    SVC(kernel<span class="op">=</span><span class="st">&#39;rbf&#39;</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>), param_grid</span>
-<span id="cb7-82"><a href="MlAlgoSvm.html#cb7-82"></a>)</span>
-<span id="cb7-83"><a href="MlAlgoSvm.html#cb7-83"></a>clf <span class="op">=</span> clf.fit(X_train_pca, y_train)</span>
-<span id="cb7-84"><a href="MlAlgoSvm.html#cb7-84"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb7-85"><a href="MlAlgoSvm.html#cb7-85"></a><span class="bu">print</span>(<span class="st">&quot;Best estimator found by grid search:&quot;</span>)</span>
-<span id="cb7-86"><a href="MlAlgoSvm.html#cb7-86"></a><span class="bu">print</span>(clf.best_estimator_)</span>
-<span id="cb7-87"><a href="MlAlgoSvm.html#cb7-87"></a></span>
-<span id="cb7-88"><a href="MlAlgoSvm.html#cb7-88"></a></span>
-<span id="cb7-89"><a href="MlAlgoSvm.html#cb7-89"></a><span class="co"># #############################################################################</span></span>
-<span id="cb7-90"><a href="MlAlgoSvm.html#cb7-90"></a><span class="co"># Quantitative evaluation of the model quality on the test set</span></span>
-<span id="cb7-91"><a href="MlAlgoSvm.html#cb7-91"></a></span>
-<span id="cb7-92"><a href="MlAlgoSvm.html#cb7-92"></a><span class="bu">print</span>(<span class="st">&quot;Predicting people&#39;s names on the test set&quot;</span>)</span>
-<span id="cb7-93"><a href="MlAlgoSvm.html#cb7-93"></a>t0 <span class="op">=</span> time()</span>
-<span id="cb7-94"><a href="MlAlgoSvm.html#cb7-94"></a>y_pred <span class="op">=</span> clf.predict(X_test_pca)</span>
-<span id="cb7-95"><a href="MlAlgoSvm.html#cb7-95"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
-<span id="cb7-96"><a href="MlAlgoSvm.html#cb7-96"></a></span>
-<span id="cb7-97"><a href="MlAlgoSvm.html#cb7-97"></a><span class="bu">print</span>(classification_report(y_test, y_pred, target_names<span class="op">=</span>target_names))</span>
-<span id="cb7-98"><a href="MlAlgoSvm.html#cb7-98"></a><span class="bu">print</span>(confusion_matrix(y_test, y_pred, labels<span class="op">=</span><span class="bu">range</span>(n_classes)))</span>
-<span id="cb7-99"><a href="MlAlgoSvm.html#cb7-99"></a></span>
-<span id="cb7-100"><a href="MlAlgoSvm.html#cb7-100"></a></span>
-<span id="cb7-101"><a href="MlAlgoSvm.html#cb7-101"></a><span class="co"># #############################################################################</span></span>
-<span id="cb7-102"><a href="MlAlgoSvm.html#cb7-102"></a><span class="co"># Qualitative evaluation of the predictions using matplotlib</span></span>
-<span id="cb7-103"><a href="MlAlgoSvm.html#cb7-103"></a></span>
-<span id="cb7-104"><a href="MlAlgoSvm.html#cb7-104"></a><span class="kw">def</span> plot_gallery(images, titles, h, w, n_row<span class="op">=</span><span class="dv">3</span>, n_col<span class="op">=</span><span class="dv">4</span>):</span>
-<span id="cb7-105"><a href="MlAlgoSvm.html#cb7-105"></a>    <span class="co">&quot;&quot;&quot;Helper function to plot a gallery of portraits&quot;&quot;&quot;</span></span>
-<span id="cb7-106"><a href="MlAlgoSvm.html#cb7-106"></a>    plt.figure(figsize<span class="op">=</span>(<span class="fl">1.8</span> <span class="op">*</span> n_col, <span class="fl">2.4</span> <span class="op">*</span> n_row))</span>
-<span id="cb7-107"><a href="MlAlgoSvm.html#cb7-107"></a>    plt.subplots_adjust(bottom<span class="op">=</span><span class="dv">0</span>, left<span class="op">=</span>.<span class="dv">01</span>, right<span class="op">=</span>.<span class="dv">99</span>, top<span class="op">=</span>.<span class="dv">90</span>, hspace<span class="op">=</span>.<span class="dv">35</span>)</span>
-<span id="cb7-108"><a href="MlAlgoSvm.html#cb7-108"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_row <span class="op">*</span> n_col):</span>
-<span id="cb7-109"><a href="MlAlgoSvm.html#cb7-109"></a>        plt.subplot(n_row, n_col, i <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb7-110"><a href="MlAlgoSvm.html#cb7-110"></a>        plt.imshow(images[i].reshape((h, w)), cmap<span class="op">=</span>plt.cm.gray)</span>
-<span id="cb7-111"><a href="MlAlgoSvm.html#cb7-111"></a>        plt.title(titles[i], size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb7-112"><a href="MlAlgoSvm.html#cb7-112"></a>        plt.xticks(())</span>
-<span id="cb7-113"><a href="MlAlgoSvm.html#cb7-113"></a>        plt.yticks(())</span>
-<span id="cb7-114"><a href="MlAlgoSvm.html#cb7-114"></a></span>
-<span id="cb7-115"><a href="MlAlgoSvm.html#cb7-115"></a></span>
-<span id="cb7-116"><a href="MlAlgoSvm.html#cb7-116"></a><span class="co"># plot the result of the prediction on a portion of the test set</span></span>
-<span id="cb7-117"><a href="MlAlgoSvm.html#cb7-117"></a></span>
-<span id="cb7-118"><a href="MlAlgoSvm.html#cb7-118"></a><span class="kw">def</span> title(y_pred, y_test, target_names, i):</span>
-<span id="cb7-119"><a href="MlAlgoSvm.html#cb7-119"></a>    pred_name <span class="op">=</span> target_names[y_pred[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb7-120"><a href="MlAlgoSvm.html#cb7-120"></a>    true_name <span class="op">=</span> target_names[y_test[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb7-121"><a href="MlAlgoSvm.html#cb7-121"></a>    <span class="cf">return</span> <span class="st">&#39;predicted: </span><span class="sc">%s</span><span class="ch">\n</span><span class="st">true:      </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (pred_name, true_name)</span>
-<span id="cb7-122"><a href="MlAlgoSvm.html#cb7-122"></a></span>
-<span id="cb7-123"><a href="MlAlgoSvm.html#cb7-123"></a>prediction_titles <span class="op">=</span> [title(y_pred, y_test, target_names, i)</span>
-<span id="cb7-124"><a href="MlAlgoSvm.html#cb7-124"></a>                     <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(y_pred.shape[<span class="dv">0</span>])]</span>
-<span id="cb7-125"><a href="MlAlgoSvm.html#cb7-125"></a></span>
-<span id="cb7-126"><a href="MlAlgoSvm.html#cb7-126"></a>plot_gallery(X_test, prediction_titles, h, w)</span>
-<span id="cb7-127"><a href="MlAlgoSvm.html#cb7-127"></a></span>
-<span id="cb7-128"><a href="MlAlgoSvm.html#cb7-128"></a><span class="co"># plot the gallery of the most significative eigenfaces</span></span>
-<span id="cb7-129"><a href="MlAlgoSvm.html#cb7-129"></a></span>
-<span id="cb7-130"><a href="MlAlgoSvm.html#cb7-130"></a>eigenface_titles <span class="op">=</span> [<span class="st">&quot;eigenface </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(eigenfaces.shape[<span class="dv">0</span>])]</span>
-<span id="cb7-131"><a href="MlAlgoSvm.html#cb7-131"></a>plot_gallery(eigenfaces, eigenface_titles, h, w)</span>
-<span id="cb7-132"><a href="MlAlgoSvm.html#cb7-132"></a></span>
-<span id="cb7-133"><a href="MlAlgoSvm.html#cb7-133"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="MlAlgoSvm.html#cb9-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
+<span id="cb9-2"><a href="MlAlgoSvm.html#cb9-2"></a><span class="im">import</span> logging</span>
+<span id="cb9-3"><a href="MlAlgoSvm.html#cb9-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-4"><a href="MlAlgoSvm.html#cb9-4"></a></span>
+<span id="cb9-5"><a href="MlAlgoSvm.html#cb9-5"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb9-6"><a href="MlAlgoSvm.html#cb9-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb9-7"><a href="MlAlgoSvm.html#cb9-7"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_lfw_people</span>
+<span id="cb9-8"><a href="MlAlgoSvm.html#cb9-8"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb9-9"><a href="MlAlgoSvm.html#cb9-9"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb9-10"><a href="MlAlgoSvm.html#cb9-10"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb9-11"><a href="MlAlgoSvm.html#cb9-11"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb9-12"><a href="MlAlgoSvm.html#cb9-12"></a></span>
+<span id="cb9-13"><a href="MlAlgoSvm.html#cb9-13"></a></span>
+<span id="cb9-14"><a href="MlAlgoSvm.html#cb9-14"></a><span class="bu">print</span>(__doc__)</span>
+<span id="cb9-15"><a href="MlAlgoSvm.html#cb9-15"></a></span>
+<span id="cb9-16"><a href="MlAlgoSvm.html#cb9-16"></a><span class="co"># Display progress logs on stdout</span></span>
+<span id="cb9-17"><a href="MlAlgoSvm.html#cb9-17"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO, <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
+<span id="cb9-18"><a href="MlAlgoSvm.html#cb9-18"></a></span>
+<span id="cb9-19"><a href="MlAlgoSvm.html#cb9-19"></a></span>
+<span id="cb9-20"><a href="MlAlgoSvm.html#cb9-20"></a><span class="co"># #############################################################################</span></span>
+<span id="cb9-21"><a href="MlAlgoSvm.html#cb9-21"></a><span class="co"># Download the data, if not already on disk and load it as numpy arrays</span></span>
+<span id="cb9-22"><a href="MlAlgoSvm.html#cb9-22"></a></span>
+<span id="cb9-23"><a href="MlAlgoSvm.html#cb9-23"></a>lfw_people <span class="op">=</span> fetch_lfw_people(min_faces_per_person<span class="op">=</span><span class="dv">70</span>, resize<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb9-24"><a href="MlAlgoSvm.html#cb9-24"></a></span>
+<span id="cb9-25"><a href="MlAlgoSvm.html#cb9-25"></a><span class="co"># introspect the images arrays to find the shapes (for plotting)</span></span>
+<span id="cb9-26"><a href="MlAlgoSvm.html#cb9-26"></a>n_samples, h, w <span class="op">=</span> lfw_people.images.shape</span>
+<span id="cb9-27"><a href="MlAlgoSvm.html#cb9-27"></a></span>
+<span id="cb9-28"><a href="MlAlgoSvm.html#cb9-28"></a><span class="co"># for machine learning we use the 2 data directly (as relative pixel</span></span>
+<span id="cb9-29"><a href="MlAlgoSvm.html#cb9-29"></a><span class="co"># positions info is ignored by this model)</span></span>
+<span id="cb9-30"><a href="MlAlgoSvm.html#cb9-30"></a>X <span class="op">=</span> lfw_people.data</span>
+<span id="cb9-31"><a href="MlAlgoSvm.html#cb9-31"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb9-32"><a href="MlAlgoSvm.html#cb9-32"></a></span>
+<span id="cb9-33"><a href="MlAlgoSvm.html#cb9-33"></a><span class="co"># the label to predict is the id of the person</span></span>
+<span id="cb9-34"><a href="MlAlgoSvm.html#cb9-34"></a>y <span class="op">=</span> lfw_people.target</span>
+<span id="cb9-35"><a href="MlAlgoSvm.html#cb9-35"></a>target_names <span class="op">=</span> lfw_people.target_names</span>
+<span id="cb9-36"><a href="MlAlgoSvm.html#cb9-36"></a>n_classes <span class="op">=</span> target_names.shape[<span class="dv">0</span>]</span>
+<span id="cb9-37"><a href="MlAlgoSvm.html#cb9-37"></a></span>
+<span id="cb9-38"><a href="MlAlgoSvm.html#cb9-38"></a><span class="bu">print</span>(<span class="st">&quot;Total dataset size:&quot;</span>)</span>
+<span id="cb9-39"><a href="MlAlgoSvm.html#cb9-39"></a><span class="bu">print</span>(<span class="st">&quot;n_samples: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_samples)</span>
+<span id="cb9-40"><a href="MlAlgoSvm.html#cb9-40"></a><span class="bu">print</span>(<span class="st">&quot;n_features: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_features)</span>
+<span id="cb9-41"><a href="MlAlgoSvm.html#cb9-41"></a><span class="bu">print</span>(<span class="st">&quot;n_classes: </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> n_classes)</span>
+<span id="cb9-42"><a href="MlAlgoSvm.html#cb9-42"></a></span>
+<span id="cb9-43"><a href="MlAlgoSvm.html#cb9-43"></a></span>
+<span id="cb9-44"><a href="MlAlgoSvm.html#cb9-44"></a><span class="co"># #############################################################################</span></span>
+<span id="cb9-45"><a href="MlAlgoSvm.html#cb9-45"></a><span class="co"># Split into a training set and a test set using a stratified k fold</span></span>
+<span id="cb9-46"><a href="MlAlgoSvm.html#cb9-46"></a></span>
+<span id="cb9-47"><a href="MlAlgoSvm.html#cb9-47"></a><span class="co"># split into a training and testing set</span></span>
+<span id="cb9-48"><a href="MlAlgoSvm.html#cb9-48"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb9-49"><a href="MlAlgoSvm.html#cb9-49"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb9-50"><a href="MlAlgoSvm.html#cb9-50"></a></span>
+<span id="cb9-51"><a href="MlAlgoSvm.html#cb9-51"></a></span>
+<span id="cb9-52"><a href="MlAlgoSvm.html#cb9-52"></a><span class="co"># #############################################################################</span></span>
+<span id="cb9-53"><a href="MlAlgoSvm.html#cb9-53"></a><span class="co"># Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled</span></span>
+<span id="cb9-54"><a href="MlAlgoSvm.html#cb9-54"></a><span class="co"># dataset): unsupervised feature extraction / dimensionality reduction</span></span>
+<span id="cb9-55"><a href="MlAlgoSvm.html#cb9-55"></a>n_components <span class="op">=</span> <span class="dv">150</span></span>
+<span id="cb9-56"><a href="MlAlgoSvm.html#cb9-56"></a></span>
+<span id="cb9-57"><a href="MlAlgoSvm.html#cb9-57"></a><span class="bu">print</span>(<span class="st">&quot;Extracting the top </span><span class="sc">%d</span><span class="st"> eigenfaces from </span><span class="sc">%d</span><span class="st"> faces&quot;</span></span>
+<span id="cb9-58"><a href="MlAlgoSvm.html#cb9-58"></a>      <span class="op">%</span> (n_components, X_train.shape[<span class="dv">0</span>]))</span>
+<span id="cb9-59"><a href="MlAlgoSvm.html#cb9-59"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb9-60"><a href="MlAlgoSvm.html#cb9-60"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span>n_components, svd_solver<span class="op">=</span><span class="st">&#39;randomized&#39;</span>,</span>
+<span id="cb9-61"><a href="MlAlgoSvm.html#cb9-61"></a>          whiten<span class="op">=</span><span class="va">True</span>).fit(X_train)</span>
+<span id="cb9-62"><a href="MlAlgoSvm.html#cb9-62"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb9-63"><a href="MlAlgoSvm.html#cb9-63"></a></span>
+<span id="cb9-64"><a href="MlAlgoSvm.html#cb9-64"></a>eigenfaces <span class="op">=</span> pca.components_.reshape((n_components, h, w))</span>
+<span id="cb9-65"><a href="MlAlgoSvm.html#cb9-65"></a></span>
+<span id="cb9-66"><a href="MlAlgoSvm.html#cb9-66"></a><span class="bu">print</span>(<span class="st">&quot;Projecting the input data on the eigenfaces orthonormal basis&quot;</span>)</span>
+<span id="cb9-67"><a href="MlAlgoSvm.html#cb9-67"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb9-68"><a href="MlAlgoSvm.html#cb9-68"></a>X_train_pca <span class="op">=</span> pca.transform(X_train)</span>
+<span id="cb9-69"><a href="MlAlgoSvm.html#cb9-69"></a>X_test_pca <span class="op">=</span> pca.transform(X_test)</span>
+<span id="cb9-70"><a href="MlAlgoSvm.html#cb9-70"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb9-71"><a href="MlAlgoSvm.html#cb9-71"></a></span>
+<span id="cb9-72"><a href="MlAlgoSvm.html#cb9-72"></a></span>
+<span id="cb9-73"><a href="MlAlgoSvm.html#cb9-73"></a><span class="co"># #############################################################################</span></span>
+<span id="cb9-74"><a href="MlAlgoSvm.html#cb9-74"></a><span class="co"># Train a SVM classification model</span></span>
+<span id="cb9-75"><a href="MlAlgoSvm.html#cb9-75"></a></span>
+<span id="cb9-76"><a href="MlAlgoSvm.html#cb9-76"></a><span class="bu">print</span>(<span class="st">&quot;Fitting the classifier to the training set&quot;</span>)</span>
+<span id="cb9-77"><a href="MlAlgoSvm.html#cb9-77"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb9-78"><a href="MlAlgoSvm.html#cb9-78"></a>param_grid <span class="op">=</span> {<span class="st">&#39;C&#39;</span>: [<span class="fl">1e3</span>, <span class="fl">5e3</span>, <span class="fl">1e4</span>, <span class="fl">5e4</span>, <span class="fl">1e5</span>],</span>
+<span id="cb9-79"><a href="MlAlgoSvm.html#cb9-79"></a>              <span class="st">&#39;gamma&#39;</span>: [<span class="fl">0.0001</span>, <span class="fl">0.0005</span>, <span class="fl">0.001</span>, <span class="fl">0.005</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>], }</span>
+<span id="cb9-80"><a href="MlAlgoSvm.html#cb9-80"></a>clf <span class="op">=</span> GridSearchCV(</span>
+<span id="cb9-81"><a href="MlAlgoSvm.html#cb9-81"></a>    SVC(kernel<span class="op">=</span><span class="st">&#39;rbf&#39;</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>), param_grid</span>
+<span id="cb9-82"><a href="MlAlgoSvm.html#cb9-82"></a>)</span>
+<span id="cb9-83"><a href="MlAlgoSvm.html#cb9-83"></a>clf <span class="op">=</span> clf.fit(X_train_pca, y_train)</span>
+<span id="cb9-84"><a href="MlAlgoSvm.html#cb9-84"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb9-85"><a href="MlAlgoSvm.html#cb9-85"></a><span class="bu">print</span>(<span class="st">&quot;Best estimator found by grid search:&quot;</span>)</span>
+<span id="cb9-86"><a href="MlAlgoSvm.html#cb9-86"></a><span class="bu">print</span>(clf.best_estimator_)</span>
+<span id="cb9-87"><a href="MlAlgoSvm.html#cb9-87"></a></span>
+<span id="cb9-88"><a href="MlAlgoSvm.html#cb9-88"></a></span>
+<span id="cb9-89"><a href="MlAlgoSvm.html#cb9-89"></a><span class="co"># #############################################################################</span></span>
+<span id="cb9-90"><a href="MlAlgoSvm.html#cb9-90"></a><span class="co"># Quantitative evaluation of the model quality on the test set</span></span>
+<span id="cb9-91"><a href="MlAlgoSvm.html#cb9-91"></a></span>
+<span id="cb9-92"><a href="MlAlgoSvm.html#cb9-92"></a><span class="bu">print</span>(<span class="st">&quot;Predicting people&#39;s names on the test set&quot;</span>)</span>
+<span id="cb9-93"><a href="MlAlgoSvm.html#cb9-93"></a>t0 <span class="op">=</span> time()</span>
+<span id="cb9-94"><a href="MlAlgoSvm.html#cb9-94"></a>y_pred <span class="op">=</span> clf.predict(X_test_pca)</span>
+<span id="cb9-95"><a href="MlAlgoSvm.html#cb9-95"></a><span class="bu">print</span>(<span class="st">&quot;done in </span><span class="sc">%0.3f</span><span class="st">s&quot;</span> <span class="op">%</span> (time() <span class="op">-</span> t0))</span>
+<span id="cb9-96"><a href="MlAlgoSvm.html#cb9-96"></a></span>
+<span id="cb9-97"><a href="MlAlgoSvm.html#cb9-97"></a><span class="bu">print</span>(classification_report(y_test, y_pred, target_names<span class="op">=</span>target_names))</span>
+<span id="cb9-98"><a href="MlAlgoSvm.html#cb9-98"></a><span class="bu">print</span>(confusion_matrix(y_test, y_pred, labels<span class="op">=</span><span class="bu">range</span>(n_classes)))</span>
+<span id="cb9-99"><a href="MlAlgoSvm.html#cb9-99"></a></span>
+<span id="cb9-100"><a href="MlAlgoSvm.html#cb9-100"></a></span>
+<span id="cb9-101"><a href="MlAlgoSvm.html#cb9-101"></a><span class="co"># #############################################################################</span></span>
+<span id="cb9-102"><a href="MlAlgoSvm.html#cb9-102"></a><span class="co"># Qualitative evaluation of the predictions using matplotlib</span></span>
+<span id="cb9-103"><a href="MlAlgoSvm.html#cb9-103"></a></span>
+<span id="cb9-104"><a href="MlAlgoSvm.html#cb9-104"></a><span class="kw">def</span> plot_gallery(images, titles, h, w, n_row<span class="op">=</span><span class="dv">3</span>, n_col<span class="op">=</span><span class="dv">4</span>):</span>
+<span id="cb9-105"><a href="MlAlgoSvm.html#cb9-105"></a>    <span class="co">&quot;&quot;&quot;Helper function to plot a gallery of portraits&quot;&quot;&quot;</span></span>
+<span id="cb9-106"><a href="MlAlgoSvm.html#cb9-106"></a>    plt.figure(figsize<span class="op">=</span>(<span class="fl">1.8</span> <span class="op">*</span> n_col, <span class="fl">2.4</span> <span class="op">*</span> n_row))</span>
+<span id="cb9-107"><a href="MlAlgoSvm.html#cb9-107"></a>    plt.subplots_adjust(bottom<span class="op">=</span><span class="dv">0</span>, left<span class="op">=</span>.<span class="dv">01</span>, right<span class="op">=</span>.<span class="dv">99</span>, top<span class="op">=</span>.<span class="dv">90</span>, hspace<span class="op">=</span>.<span class="dv">35</span>)</span>
+<span id="cb9-108"><a href="MlAlgoSvm.html#cb9-108"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_row <span class="op">*</span> n_col):</span>
+<span id="cb9-109"><a href="MlAlgoSvm.html#cb9-109"></a>        plt.subplot(n_row, n_col, i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb9-110"><a href="MlAlgoSvm.html#cb9-110"></a>        plt.imshow(images[i].reshape((h, w)), cmap<span class="op">=</span>plt.cm.gray)</span>
+<span id="cb9-111"><a href="MlAlgoSvm.html#cb9-111"></a>        plt.title(titles[i], size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb9-112"><a href="MlAlgoSvm.html#cb9-112"></a>        plt.xticks(())</span>
+<span id="cb9-113"><a href="MlAlgoSvm.html#cb9-113"></a>        plt.yticks(())</span>
+<span id="cb9-114"><a href="MlAlgoSvm.html#cb9-114"></a></span>
+<span id="cb9-115"><a href="MlAlgoSvm.html#cb9-115"></a></span>
+<span id="cb9-116"><a href="MlAlgoSvm.html#cb9-116"></a><span class="co"># plot the result of the prediction on a portion of the test set</span></span>
+<span id="cb9-117"><a href="MlAlgoSvm.html#cb9-117"></a></span>
+<span id="cb9-118"><a href="MlAlgoSvm.html#cb9-118"></a><span class="kw">def</span> title(y_pred, y_test, target_names, i):</span>
+<span id="cb9-119"><a href="MlAlgoSvm.html#cb9-119"></a>    pred_name <span class="op">=</span> target_names[y_pred[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb9-120"><a href="MlAlgoSvm.html#cb9-120"></a>    true_name <span class="op">=</span> target_names[y_test[i]].rsplit(<span class="st">&#39; &#39;</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb9-121"><a href="MlAlgoSvm.html#cb9-121"></a>    <span class="cf">return</span> <span class="st">&#39;predicted: </span><span class="sc">%s</span><span class="ch">\n</span><span class="st">true:      </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (pred_name, true_name)</span>
+<span id="cb9-122"><a href="MlAlgoSvm.html#cb9-122"></a></span>
+<span id="cb9-123"><a href="MlAlgoSvm.html#cb9-123"></a>prediction_titles <span class="op">=</span> [title(y_pred, y_test, target_names, i)</span>
+<span id="cb9-124"><a href="MlAlgoSvm.html#cb9-124"></a>                     <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(y_pred.shape[<span class="dv">0</span>])]</span>
+<span id="cb9-125"><a href="MlAlgoSvm.html#cb9-125"></a></span>
+<span id="cb9-126"><a href="MlAlgoSvm.html#cb9-126"></a>plot_gallery(X_test, prediction_titles, h, w)</span>
+<span id="cb9-127"><a href="MlAlgoSvm.html#cb9-127"></a></span>
+<span id="cb9-128"><a href="MlAlgoSvm.html#cb9-128"></a><span class="co"># plot the gallery of the most significative eigenfaces</span></span>
+<span id="cb9-129"><a href="MlAlgoSvm.html#cb9-129"></a></span>
+<span id="cb9-130"><a href="MlAlgoSvm.html#cb9-130"></a>eigenface_titles <span class="op">=</span> [<span class="st">&quot;eigenface </span><span class="sc">%d</span><span class="st">&quot;</span> <span class="op">%</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(eigenfaces.shape[<span class="dv">0</span>])]</span>
+<span id="cb9-131"><a href="MlAlgoSvm.html#cb9-131"></a>plot_gallery(eigenfaces, eigenface_titles, h, w)</span>
+<span id="cb9-132"><a href="MlAlgoSvm.html#cb9-132"></a></span>
+<span id="cb9-133"><a href="MlAlgoSvm.html#cb9-133"></a>plt.show()</span></code></pre></div>
 <hr />
 <div class="figure">
 <img src="images/2880px-Kernel_Machine.svg.png" class="external" style="width:100.0%" alt="" />
@@ -705,65 +705,65 @@ done without explicitly working in the enlarged feature space. This is im- porta
 <p>The confusion matrix is given below and shows for example that a true “3” is often mistaken as a “8” (see red circle)</p></li>
 </ul>
 <p><img src="images/ConfMatrixMinst.png" style="width:80.0%" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="MlAlgoSvm.html#cb8-1"></a><span class="bu">print</span>(__doc__)</span>
-<span id="cb8-2"><a href="MlAlgoSvm.html#cb8-2"></a></span>
-<span id="cb8-3"><a href="MlAlgoSvm.html#cb8-3"></a><span class="co"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span></span>
-<span id="cb8-4"><a href="MlAlgoSvm.html#cb8-4"></a><span class="co"># License: BSD 3 clause</span></span>
-<span id="cb8-5"><a href="MlAlgoSvm.html#cb8-5"></a></span>
-<span id="cb8-6"><a href="MlAlgoSvm.html#cb8-6"></a><span class="co"># Standard scientific Python imports</span></span>
-<span id="cb8-7"><a href="MlAlgoSvm.html#cb8-7"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-8"><a href="MlAlgoSvm.html#cb8-8"></a></span>
-<span id="cb8-9"><a href="MlAlgoSvm.html#cb8-9"></a><span class="co"># Import datasets, classifiers and performance metrics</span></span>
-<span id="cb8-10"><a href="MlAlgoSvm.html#cb8-10"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets, svm, metrics</span>
-<span id="cb8-11"><a href="MlAlgoSvm.html#cb8-11"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb8-12"><a href="MlAlgoSvm.html#cb8-12"></a></span>
-<span id="cb8-13"><a href="MlAlgoSvm.html#cb8-13"></a><span class="co"># The digits dataset</span></span>
-<span id="cb8-14"><a href="MlAlgoSvm.html#cb8-14"></a>digits <span class="op">=</span> datasets.load_digits()</span>
-<span id="cb8-15"><a href="MlAlgoSvm.html#cb8-15"></a></span>
-<span id="cb8-16"><a href="MlAlgoSvm.html#cb8-16"></a><span class="co"># The data that we are interested in is made of 8x8 images of digits, let&#39;s</span></span>
-<span id="cb8-17"><a href="MlAlgoSvm.html#cb8-17"></a><span class="co"># have a look at the first 4 images, stored in the `images` attribute of the</span></span>
-<span id="cb8-18"><a href="MlAlgoSvm.html#cb8-18"></a><span class="co"># dataset.  If we were working from image files, we could load them using</span></span>
-<span id="cb8-19"><a href="MlAlgoSvm.html#cb8-19"></a><span class="co"># matplotlib.pyplot.imread.  Note that each image must have the same size. For these</span></span>
-<span id="cb8-20"><a href="MlAlgoSvm.html#cb8-20"></a><span class="co"># images, we know which digit they represent: it is given in the &#39;target&#39; of</span></span>
-<span id="cb8-21"><a href="MlAlgoSvm.html#cb8-21"></a><span class="co"># the dataset.</span></span>
-<span id="cb8-22"><a href="MlAlgoSvm.html#cb8-22"></a>_, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb8-23"><a href="MlAlgoSvm.html#cb8-23"></a>images_and_labels <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images, digits.target))</span>
-<span id="cb8-24"><a href="MlAlgoSvm.html#cb8-24"></a><span class="cf">for</span> ax, (image, label) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">0</span>, :], images_and_labels[:<span class="dv">4</span>]):</span>
-<span id="cb8-25"><a href="MlAlgoSvm.html#cb8-25"></a>    ax.set_axis_off()</span>
-<span id="cb8-26"><a href="MlAlgoSvm.html#cb8-26"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
-<span id="cb8-27"><a href="MlAlgoSvm.html#cb8-27"></a>    ax.set_title(<span class="st">&#39;Training: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> label)</span>
-<span id="cb8-28"><a href="MlAlgoSvm.html#cb8-28"></a></span>
-<span id="cb8-29"><a href="MlAlgoSvm.html#cb8-29"></a><span class="co"># To apply a classifier on this data, we need to flatten the image, to</span></span>
-<span id="cb8-30"><a href="MlAlgoSvm.html#cb8-30"></a><span class="co"># turn the data in a (samples, feature) matrix:</span></span>
-<span id="cb8-31"><a href="MlAlgoSvm.html#cb8-31"></a>n_samples <span class="op">=</span> <span class="bu">len</span>(digits.images)</span>
-<span id="cb8-32"><a href="MlAlgoSvm.html#cb8-32"></a>data <span class="op">=</span> digits.images.reshape((n_samples, <span class="dv">-1</span>))</span>
-<span id="cb8-33"><a href="MlAlgoSvm.html#cb8-33"></a></span>
-<span id="cb8-34"><a href="MlAlgoSvm.html#cb8-34"></a><span class="co"># Create a classifier: a support vector classifier</span></span>
-<span id="cb8-35"><a href="MlAlgoSvm.html#cb8-35"></a>classifier <span class="op">=</span> svm.SVC(gamma<span class="op">=</span><span class="fl">0.001</span>)</span>
-<span id="cb8-36"><a href="MlAlgoSvm.html#cb8-36"></a></span>
-<span id="cb8-37"><a href="MlAlgoSvm.html#cb8-37"></a><span class="co"># Split data into train and test subsets</span></span>
-<span id="cb8-38"><a href="MlAlgoSvm.html#cb8-38"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
-<span id="cb8-39"><a href="MlAlgoSvm.html#cb8-39"></a>    data, digits.target, test_size<span class="op">=</span><span class="fl">0.5</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb8-40"><a href="MlAlgoSvm.html#cb8-40"></a></span>
-<span id="cb8-41"><a href="MlAlgoSvm.html#cb8-41"></a><span class="co"># We learn the digits on the first half of the digits</span></span>
-<span id="cb8-42"><a href="MlAlgoSvm.html#cb8-42"></a>classifier.fit(X_train, y_train)</span>
-<span id="cb8-43"><a href="MlAlgoSvm.html#cb8-43"></a></span>
-<span id="cb8-44"><a href="MlAlgoSvm.html#cb8-44"></a><span class="co"># Now predict the value of the digit on the second half:</span></span>
-<span id="cb8-45"><a href="MlAlgoSvm.html#cb8-45"></a>predicted <span class="op">=</span> classifier.predict(X_test)</span>
-<span id="cb8-46"><a href="MlAlgoSvm.html#cb8-46"></a></span>
-<span id="cb8-47"><a href="MlAlgoSvm.html#cb8-47"></a>images_and_predictions <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images[n_samples <span class="op">//</span> <span class="dv">2</span>:], predicted))</span>
-<span id="cb8-48"><a href="MlAlgoSvm.html#cb8-48"></a><span class="cf">for</span> ax, (image, prediction) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">1</span>, :], images_and_predictions[:<span class="dv">4</span>]):</span>
-<span id="cb8-49"><a href="MlAlgoSvm.html#cb8-49"></a>    ax.set_axis_off()</span>
-<span id="cb8-50"><a href="MlAlgoSvm.html#cb8-50"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
-<span id="cb8-51"><a href="MlAlgoSvm.html#cb8-51"></a>    ax.set_title(<span class="st">&#39;Prediction: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> prediction)</span>
-<span id="cb8-52"><a href="MlAlgoSvm.html#cb8-52"></a></span>
-<span id="cb8-53"><a href="MlAlgoSvm.html#cb8-53"></a><span class="bu">print</span>(<span class="st">&quot;Classification report for classifier </span><span class="sc">%s</span><span class="st">:</span><span class="ch">\n</span><span class="sc">%s</span><span class="ch">\n</span><span class="st">&quot;</span></span>
-<span id="cb8-54"><a href="MlAlgoSvm.html#cb8-54"></a>      <span class="op">%</span> (classifier, metrics.classification_report(y_test, predicted)))</span>
-<span id="cb8-55"><a href="MlAlgoSvm.html#cb8-55"></a>disp <span class="op">=</span> metrics.plot_confusion_matrix(classifier, X_test, y_test)</span>
-<span id="cb8-56"><a href="MlAlgoSvm.html#cb8-56"></a>disp.figure_.suptitle(<span class="st">&quot;Confusion Matrix&quot;</span>)</span>
-<span id="cb8-57"><a href="MlAlgoSvm.html#cb8-57"></a><span class="bu">print</span>(<span class="st">&quot;Confusion matrix:</span><span class="ch">\n</span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> disp.confusion_matrix)</span>
-<span id="cb8-58"><a href="MlAlgoSvm.html#cb8-58"></a></span>
-<span id="cb8-59"><a href="MlAlgoSvm.html#cb8-59"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="MlAlgoSvm.html#cb10-1"></a><span class="bu">print</span>(__doc__)</span>
+<span id="cb10-2"><a href="MlAlgoSvm.html#cb10-2"></a></span>
+<span id="cb10-3"><a href="MlAlgoSvm.html#cb10-3"></a><span class="co"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span></span>
+<span id="cb10-4"><a href="MlAlgoSvm.html#cb10-4"></a><span class="co"># License: BSD 3 clause</span></span>
+<span id="cb10-5"><a href="MlAlgoSvm.html#cb10-5"></a></span>
+<span id="cb10-6"><a href="MlAlgoSvm.html#cb10-6"></a><span class="co"># Standard scientific Python imports</span></span>
+<span id="cb10-7"><a href="MlAlgoSvm.html#cb10-7"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-8"><a href="MlAlgoSvm.html#cb10-8"></a></span>
+<span id="cb10-9"><a href="MlAlgoSvm.html#cb10-9"></a><span class="co"># Import datasets, classifiers and performance metrics</span></span>
+<span id="cb10-10"><a href="MlAlgoSvm.html#cb10-10"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets, svm, metrics</span>
+<span id="cb10-11"><a href="MlAlgoSvm.html#cb10-11"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb10-12"><a href="MlAlgoSvm.html#cb10-12"></a></span>
+<span id="cb10-13"><a href="MlAlgoSvm.html#cb10-13"></a><span class="co"># The digits dataset</span></span>
+<span id="cb10-14"><a href="MlAlgoSvm.html#cb10-14"></a>digits <span class="op">=</span> datasets.load_digits()</span>
+<span id="cb10-15"><a href="MlAlgoSvm.html#cb10-15"></a></span>
+<span id="cb10-16"><a href="MlAlgoSvm.html#cb10-16"></a><span class="co"># The data that we are interested in is made of 8x8 images of digits, let&#39;s</span></span>
+<span id="cb10-17"><a href="MlAlgoSvm.html#cb10-17"></a><span class="co"># have a look at the first 4 images, stored in the `images` attribute of the</span></span>
+<span id="cb10-18"><a href="MlAlgoSvm.html#cb10-18"></a><span class="co"># dataset.  If we were working from image files, we could load them using</span></span>
+<span id="cb10-19"><a href="MlAlgoSvm.html#cb10-19"></a><span class="co"># matplotlib.pyplot.imread.  Note that each image must have the same size. For these</span></span>
+<span id="cb10-20"><a href="MlAlgoSvm.html#cb10-20"></a><span class="co"># images, we know which digit they represent: it is given in the &#39;target&#39; of</span></span>
+<span id="cb10-21"><a href="MlAlgoSvm.html#cb10-21"></a><span class="co"># the dataset.</span></span>
+<span id="cb10-22"><a href="MlAlgoSvm.html#cb10-22"></a>_, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb10-23"><a href="MlAlgoSvm.html#cb10-23"></a>images_and_labels <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images, digits.target))</span>
+<span id="cb10-24"><a href="MlAlgoSvm.html#cb10-24"></a><span class="cf">for</span> ax, (image, label) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">0</span>, :], images_and_labels[:<span class="dv">4</span>]):</span>
+<span id="cb10-25"><a href="MlAlgoSvm.html#cb10-25"></a>    ax.set_axis_off()</span>
+<span id="cb10-26"><a href="MlAlgoSvm.html#cb10-26"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
+<span id="cb10-27"><a href="MlAlgoSvm.html#cb10-27"></a>    ax.set_title(<span class="st">&#39;Training: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> label)</span>
+<span id="cb10-28"><a href="MlAlgoSvm.html#cb10-28"></a></span>
+<span id="cb10-29"><a href="MlAlgoSvm.html#cb10-29"></a><span class="co"># To apply a classifier on this data, we need to flatten the image, to</span></span>
+<span id="cb10-30"><a href="MlAlgoSvm.html#cb10-30"></a><span class="co"># turn the data in a (samples, feature) matrix:</span></span>
+<span id="cb10-31"><a href="MlAlgoSvm.html#cb10-31"></a>n_samples <span class="op">=</span> <span class="bu">len</span>(digits.images)</span>
+<span id="cb10-32"><a href="MlAlgoSvm.html#cb10-32"></a>data <span class="op">=</span> digits.images.reshape((n_samples, <span class="dv">-1</span>))</span>
+<span id="cb10-33"><a href="MlAlgoSvm.html#cb10-33"></a></span>
+<span id="cb10-34"><a href="MlAlgoSvm.html#cb10-34"></a><span class="co"># Create a classifier: a support vector classifier</span></span>
+<span id="cb10-35"><a href="MlAlgoSvm.html#cb10-35"></a>classifier <span class="op">=</span> svm.SVC(gamma<span class="op">=</span><span class="fl">0.001</span>)</span>
+<span id="cb10-36"><a href="MlAlgoSvm.html#cb10-36"></a></span>
+<span id="cb10-37"><a href="MlAlgoSvm.html#cb10-37"></a><span class="co"># Split data into train and test subsets</span></span>
+<span id="cb10-38"><a href="MlAlgoSvm.html#cb10-38"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb10-39"><a href="MlAlgoSvm.html#cb10-39"></a>    data, digits.target, test_size<span class="op">=</span><span class="fl">0.5</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-40"><a href="MlAlgoSvm.html#cb10-40"></a></span>
+<span id="cb10-41"><a href="MlAlgoSvm.html#cb10-41"></a><span class="co"># We learn the digits on the first half of the digits</span></span>
+<span id="cb10-42"><a href="MlAlgoSvm.html#cb10-42"></a>classifier.fit(X_train, y_train)</span>
+<span id="cb10-43"><a href="MlAlgoSvm.html#cb10-43"></a></span>
+<span id="cb10-44"><a href="MlAlgoSvm.html#cb10-44"></a><span class="co"># Now predict the value of the digit on the second half:</span></span>
+<span id="cb10-45"><a href="MlAlgoSvm.html#cb10-45"></a>predicted <span class="op">=</span> classifier.predict(X_test)</span>
+<span id="cb10-46"><a href="MlAlgoSvm.html#cb10-46"></a></span>
+<span id="cb10-47"><a href="MlAlgoSvm.html#cb10-47"></a>images_and_predictions <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(digits.images[n_samples <span class="op">//</span> <span class="dv">2</span>:], predicted))</span>
+<span id="cb10-48"><a href="MlAlgoSvm.html#cb10-48"></a><span class="cf">for</span> ax, (image, prediction) <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">1</span>, :], images_and_predictions[:<span class="dv">4</span>]):</span>
+<span id="cb10-49"><a href="MlAlgoSvm.html#cb10-49"></a>    ax.set_axis_off()</span>
+<span id="cb10-50"><a href="MlAlgoSvm.html#cb10-50"></a>    ax.imshow(image, cmap<span class="op">=</span>plt.cm.gray_r, interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
+<span id="cb10-51"><a href="MlAlgoSvm.html#cb10-51"></a>    ax.set_title(<span class="st">&#39;Prediction: </span><span class="sc">%i</span><span class="st">&#39;</span> <span class="op">%</span> prediction)</span>
+<span id="cb10-52"><a href="MlAlgoSvm.html#cb10-52"></a></span>
+<span id="cb10-53"><a href="MlAlgoSvm.html#cb10-53"></a><span class="bu">print</span>(<span class="st">&quot;Classification report for classifier </span><span class="sc">%s</span><span class="st">:</span><span class="ch">\n</span><span class="sc">%s</span><span class="ch">\n</span><span class="st">&quot;</span></span>
+<span id="cb10-54"><a href="MlAlgoSvm.html#cb10-54"></a>      <span class="op">%</span> (classifier, metrics.classification_report(y_test, predicted)))</span>
+<span id="cb10-55"><a href="MlAlgoSvm.html#cb10-55"></a>disp <span class="op">=</span> metrics.plot_confusion_matrix(classifier, X_test, y_test)</span>
+<span id="cb10-56"><a href="MlAlgoSvm.html#cb10-56"></a>disp.figure_.suptitle(<span class="st">&quot;Confusion Matrix&quot;</span>)</span>
+<span id="cb10-57"><a href="MlAlgoSvm.html#cb10-57"></a><span class="bu">print</span>(<span class="st">&quot;Confusion matrix:</span><span class="ch">\n</span><span class="sc">%s</span><span class="st">&quot;</span> <span class="op">%</span> disp.confusion_matrix)</span>
+<span id="cb10-58"><a href="MlAlgoSvm.html#cb10-58"></a></span>
+<span id="cb10-59"><a href="MlAlgoSvm.html#cb10-59"></a>plt.show()</span></code></pre></div>
 </div>
 </div>
 </div>

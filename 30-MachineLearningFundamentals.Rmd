@@ -754,7 +754,10 @@ Sometimes even the best models have less than useful predictive performance. Thi
 
 <div class="rmdtip">
 
-- Transformation of a predictor
+<p>Key relationships that are not directly available: <img src="images/search.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
+
+- Transformation of a predictor 
 - Interaction of two or more predictors such as a product or ratio
 - Functional relationship among predictors
 - Equivalent re-representation of a predictor
@@ -774,6 +777,7 @@ Since there are different faculties which work on machine learning (staticians, 
 ```{block2 echo=TRUE, type='rmdtip'}
 
 - <p>Predictors<img src="images/In.png" alt="Smiley face" align="right" style="width:10%;"></p>
+  
 - Features
 - Independent variables
 
@@ -785,6 +789,7 @@ Quantity being modeled called:
 ```{block2 echo=TRUE, type='rmdtip'}
 
 - <p>Prediction<img src="images/Out.png" alt="Smiley face" align="right" style="width:10%;"></p>
+  
 - Outcome
 - Response
 - Dependent variable
@@ -804,15 +809,18 @@ $$\hat{Y} = \hat{f}(X)$$
 </div>
 
 
-For numerical features it is straight forward for them to be fed into a model, but how can categorical data be handled?
+
 
 ###  Encoding Categorical Predictors
 
 Categorical features are not quantitative nature but **qualitative data**, i.e. discrete values in an ordered relationship
+For numerical features it is straight forward to feed them into a model, but how can categorical data be handled?
 
 <div class="rmdtip">
 
-Categorical features: 
+<p>Categorical features: <img src="images/mail.svg" alt="Smiley face" align="right" style="width:15%;"></p>
+
+
 
 - Gender
 - Breeds of dogs
@@ -824,9 +832,9 @@ Categorical features:
 Ordered categorical features have a clear progression of values
 
 <div class="rmdtip">
+<p>Ordered categorical features:<img src="images/badGood.png" alt="Smiley face" align="right" style="width:30%;"></p>
 
-Ordered categorical features: 
-
+ 
 - Bad
 - Good
 - Better
@@ -839,7 +847,9 @@ Not all models need a special treatment for categorical data
 
 <div class="rmdtip">
 
-Models that can deal with categorical features: 
+
+<p>Models that can deal with categorical features:<img src="images/tree.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
 
 - Tree based models
 - Naive Bayes models
@@ -866,8 +876,9 @@ Features with continuous, real number values might need some pre-processing befo
 
 
 <div class="rmdtip">
+<p>Model dependent pre-processing:<img src="images/SkewedDistribution.png" alt="Smiley face" align="right" style="width:30%;"></p>
 
-Model dependent pre-processing:
+
 
 - Skewed distribution
      - No problem for:
@@ -890,13 +901,13 @@ Model dependent pre-processing:
 Commonly occurring issues for numerical features and the counter measures are treated in this chapter
 
 <div class="rmdtip">
+<p>Commonly occurring issues:<img src="images/issues.svg" alt="Smiley face" align="right" style="width:20%;"></p>
 
-Commonly occurring issues:
 
 - Vastly different scales
 - Skewed distribution
 - Small number of extreme values
-- Are clipped at on the low/or high end of range
+- Values clipped at on the low/or high end of range
 - Complex relationship with response
 - Redundant information
 
@@ -908,7 +919,9 @@ Those problems are addressed by various methods in the next chapters
     
 <div class="rmdtip">
 
-Remedies to commonly occurring issues:
+<p>Remedies to commonly occurring issues:<img src="images/remedies.png" alt="Smiley face" align="right" style="width:20%;"></p>
+
+
 
 - Transform individual feature's distribution in chapter \@ref(Transformations)
     - avoid skewed distribution
@@ -920,7 +933,7 @@ Remedies to commonly occurring issues:
 </div>
 
 
-#### Transformations {#Transformations}
+#### 1:1 Transformations {#Transformations}
 
 There are plenty of methods to transform a feature, first focus is on distribution shaping
 
@@ -930,11 +943,11 @@ Box-Cox transformation
 
 </div>
 
-Apply the Box-Cox transformation the skewed distribution below
+Apply the Box-Cox transformation the **skewed distribution below**
 
 ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/SkewedDistribution.png){width=80% .external}
 
-can be shaped to be closely normally distributed as shown below.
+can be shaped by Box-Cox transformation to be almost normally distributed as shown below.
 
 ![Figure from  [@FeatureEngineeringKuhnWebsite]](images/BoxCoxShapedDistribution.png){width=80% .external}
 
@@ -947,8 +960,11 @@ Box-Cox transformation  equation:
 
 $$x^{*}=\left\{\begin{array}{ll}{\frac{x^{\lambda}-1}{\lambda \bar{x}^{\lambda-1}},} & {\lambda \neq 0} \\ {\tilde{x} \log x,} & {\lambda=0}\end{array}\right.$$
 
-where
-$\tilde{x} $ is geometric mean
+--- 
+
+where  
+
+$\tilde{x}$ is geometric mean $\bar{x}=\sqrt[n]{\prod_{i=1}^{n} x_{i}}=\sqrt[n]{x_{1} \cdot x_{2} \cdots x_{n}}$
 
 </div>
 
@@ -1007,7 +1023,9 @@ Many to many transformation can solve  a variety of issues
 
 <div class="rmdtip">
 
-Many to many transformations help to:
+
+<p>Many to many transformations help to:<img src="images/outlier.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
 
 - Deal with 
     -  outliers
@@ -1020,7 +1038,8 @@ Contrary to intuition more features are not always beneficial
 
 <div class="rmdtip">
 
-Considering irrelevant features leads to:
+<p>Considering irrelevant features leads to:<img src="images/compEffort.png" alt="Smiley face" align="right" style="width:20%;"></p>
+
 
 - Increasing computational effort for model training
 - Decrease predictive  performance
@@ -1033,7 +1052,10 @@ Considering irrelevant features leads to:
 There are several dimension reduction algorithms
 
 <div class="rmdtip">
-Dimension reduction algorithms:
+
+<p>Dimension reduction algorithms:<img src="images/supervised.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
+
 
 - Unsupervised
     - principle component analysis (PCA)
@@ -1054,12 +1076,18 @@ Below a PCA of the Word2Vec 200 dimensional space onto three dimensions, the wor
 ![Figure from http://projector.tensorflow.org ](images/projectorPlayground.png){width=100% .external}
 A few more details on some of the above mentioned algorithms
 
-![Figure from <a href="//commons.wikimedia.org/wiki/User:Nicoguaro" title="User:Nicoguaro">Nicoguaro</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0">CC BY 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=46871195">Link</a> [@FeatureEngineeringKuhnWebsite]](images/GaussianScatterPCA.svg){width=60% .external}
+
+<div class="HeadingNoNumber">
+
+Principle component analysis (PCA)
+
+</div>
 
 
 <div class="rmdtip">
 
-Principle component analysis (PCA):
+<p>Principle component analysis (PCA):<img src="images/irsisPca.png" alt="Smiley face" align="right" style="width:20%;"></p>
+
 
 - Linear orthogonal transformation
 - Possibly correlated variables
@@ -1068,9 +1096,52 @@ Principle component analysis (PCA):
 
 </div>
 
-
+PCA maps a higher dimensional space to a lower dimensional space by linear orthogonal transformations. The orthogonality results from the condition that principle components are not correlated. Each principle component explains as much variance as possible. The principle components are weighted combinations of the independent variables. More on PCA can be found at Wikipedia https://en.wikipedia.org/wiki/Principal_component_analysis
  
+A PCA of the irsis data set is given at https://scikit-learn.org/stable/auto_examples/decomposition/plot_pca_iris.html#sphx-glr-auto-examples-decomposition-plot-pca-iris-py, it creates the graph below.
 
+---
+
+![](images/irsisPca.png){width=80% .external}
+
+---
+
+A minimal PCA Python example is given below, source https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
+
+
+
+```python
+
+>>> import numpy as np
+>>> from sklearn.decomposition import IncrementalPCA
+>>> X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
+>>> print(X)
+array([[-1.38340578, -0.2935787 ],
+       [-2.22189802,  0.25133484],
+       [-3.6053038 , -0.04224385],
+       [ 1.38340578,  0.2935787 ],
+       [ 2.22189802, -0.25133484],
+       [ 3.6053038 ,  0.04224385]])
+>>> ipca = IncrementalPCA(n_components=2, batch_size=3)
+>>> ipca.fit(X)
+IncrementalPCA(batch_size=3, n_components=2)
+>>> ipca.transform(X) 
+[[-1 -1]
+ [-2 -1]
+ [-3 -2]
+ [ 1  1]
+ [ 2  1]
+ [ 3  2]]
+
+```
+
+<div class="HeadingNoNumber">
+
+t-distributed stochastic neighbor embedding (t-SNE)
+
+</div>
+
+The next algorithm is t-distributed stochastic neighbor embedding **t-SNE** which focuses more on the distance of samples than on variance. The main concept is that samples which are nearby in high dimensional space are also nearby in the lower dimensional space.
 
 <div class="rmdtip">
 
@@ -1081,10 +1152,20 @@ Principle component analysis (PCA):
 - Nonlinear dimensionality reduction
 - Similar object modeled by nearby points
 
+</div>
+
+The t-SNE algorithm has important hyperparameter which need to be set with some insight. More on those hyperparameter and their settings can be found at https://distill.pub/2016/misread-tsne/ and in Laurens van der Maaten's original paper on t-SNE [@maaten2008visualizing]
+
+<div class="HeadingNoNumber">
+
+Independent component analysis (ICA)
 
 </div>
 
+ICA is used in signal processing to differentiate different sources of signal, i.e. suppress in an audio signal the background noise which can be very helpful when using a phone in an loud environment.
+
 <div class="rmdtip">
+
 
 Independent component analysis (ICA):
 
@@ -1094,6 +1175,138 @@ Independent component analysis (ICA):
 
 </div>
 
+The ability to separate signal sources can be seen in the following example. Whereas PCA picks up the variance ICA assigns signals to the sources. 
+
+---
+
+![](images/icaPca.png){width=80% .external}
+
+---
+
+The code is from at https://scikit-learn.org/stable/auto_examples/decomposition/plot_ica_vs_pca.html#sphx-glr-auto-examples-decomposition-plot-ica-vs-pca-py
+
+```python
+"""
+==========================
+FastICA on 2D point clouds
+==========================
+
+This example illustrates visually in the feature space a comparison by
+results using two different component analysis techniques.
+
+:ref:`ICA` vs :ref:`PCA`.
+
+Representing ICA in the feature space gives the view of 'geometric ICA':
+ICA is an algorithm that finds directions in the feature space
+corresponding to projections with high non-Gaussianity. These directions
+need not be orthogonal in the original feature space, but they are
+orthogonal in the whitened feature space, in which all directions
+correspond to the same variance.
+
+PCA, on the other hand, finds orthogonal directions in the raw feature
+space that correspond to directions accounting for maximum variance.
+
+Here we simulate independent sources using a highly non-Gaussian
+process, 2 student T with a low number of degrees of freedom (top left
+figure). We mix them to create observations (top right figure).
+In this raw observation space, directions identified by PCA are
+represented by orange vectors. We represent the signal in the PCA space,
+after whitening by the variance corresponding to the PCA vectors (lower
+left). Running ICA corresponds to finding a rotation in this space to
+identify the directions of largest non-Gaussianity (lower right).
+"""
+print(__doc__)
+
+# Authors: Alexandre Gramfort, Gael Varoquaux
+# License: BSD 3 clause
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.decomposition import PCA, FastICA
+
+# #############################################################################
+# Generate sample data
+rng = np.random.RandomState(42)
+S = rng.standard_t(1.5, size=(20000, 2))
+S[:, 0] *= 2.
+
+# Mix data
+A = np.array([[1, 1], [0, 2]])  # Mixing matrix
+
+X = np.dot(S, A.T)  # Generate observations
+
+pca = PCA()
+S_pca_ = pca.fit(X).transform(X)
+
+ica = FastICA(random_state=rng)
+S_ica_ = ica.fit(X).transform(X)  # Estimate the sources
+
+S_ica_ /= S_ica_.std(axis=0)
+
+
+# #############################################################################
+# Plot results
+
+def plot_samples(S, axis_list=None):
+    plt.scatter(S[:, 0], S[:, 1], s=2, marker='o', zorder=10,
+                color='steelblue', alpha=0.5)
+    if axis_list is not None:
+        colors = ['orange', 'red']
+        for color, axis in zip(colors, axis_list):
+            axis /= axis.std()
+            x_axis, y_axis = axis
+            # Trick to get legend to work
+            plt.plot(0.1 * x_axis, 0.1 * y_axis, linewidth=2, color=color)
+            plt.quiver(0, 0, x_axis, y_axis, zorder=11, width=0.01, scale=6,
+                       color=color)
+
+    plt.hlines(0, -3, 3)
+    plt.vlines(0, -3, 3)
+    plt.xlim(-3, 3)
+    plt.ylim(-3, 3)
+    plt.xlabel('x')
+    plt.ylabel('y')
+
+plt.figure()
+plt.subplot(2, 2, 1)
+plot_samples(S / S.std())
+plt.title('True Independent Sources')
+
+axis_list = [pca.components_.T, ica.mixing_]
+plt.subplot(2, 2, 2)
+plot_samples(X / np.std(X), axis_list=axis_list)
+legend = plt.legend(['PCA', 'ICA'], loc='upper right')
+legend.set_zorder(100)
+
+plt.title('Observations')
+
+plt.subplot(2, 2, 3)
+plot_samples(S_pca_ / np.std(S_pca_, axis=0))
+plt.title('PCA recovered signals')
+
+plt.subplot(2, 2, 4)
+plot_samples(S_ica_ / np.std(S_ica_))
+plt.title('ICA recovered signals')
+
+plt.subplots_adjust(0.09, 0.04, 0.94, 0.94, 0.26, 0.36)
+plt.show()
+
+
+```
+
+
+
+
+<div class="HeadingNoNumber">
+
+Autoencoders
+
+</div>
+
+Autoencoders learn a latent representation of data by feeding them through a neural network with a bottleneck, i.e. a layer with less width than the input layer. Training an autoencoder is unsupervised since the training task is to create an output as similar to the input as possible.
+
+Further explanation is given in an example implemented in Keras at https://towardsdatascience.com/autoencoders-made-simple-6f59e2ab37ef
 
 <div class="rmdtip">
 
@@ -1116,22 +1329,155 @@ Autoencoders:
 
 ### Feature importance {#featureImportance}
 
-https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html 
+After creating features the next step is to find out which features are helpful for the model. First, two methods are compared
 
-================================================================
-Permutation Importance vs Random Forest Feature Importance (MDI)
-================================================================
-/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/permutationImportance.py 
 
-=================================================================
+<div class="rmdtip">
+<p>Feature importance analysis methods:<img src="images/permutation.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
+
+- Permutation Importance 
+    - permute one feature
+    - calculate the change in prediction performance
+    - the bigger the drop in prediction performance $\implies$ more important feature
+- Random Forest Feature Importance 
+    - during training compute decrease of impurity
+    - average for decrease for all features
+    - ranking according to decrease $\implies$ ranking of feature importance
+
+</div>
+
+An example shows strength and weakness of the algorithms. The example *"Permutation Importance vs Random Forest Feature Importance"* can be found at the Scikit-Learn [@scikit-learn] site https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html 
+
+Comparing test and training accuracy give an indication that the **model might have overfitted**
+
+
+<div class="rmdtip">
+
+Model might be overfitted:
+
+RF train accuracy: 1.000  
+RF test accuracy: 0.817
+</div>
+
+---
+
+
+![](images/rfImportanceTitanic.png){width=80% .external}
+
+
+---
+
+The most important feature is **random_num** which is totally random numeric feature which the model has used to memorize the training data set but is useless to predict anything. The wrong importance measure results from two causes 
+
+
+<div class="rmdtip">
+
+Causes of wrong feature importance:
+
+- impurity-based importances are biased towards high cardinality features
+- impurity-based importances
+    - computed on training set statistics 
+    -  do not reflect the ability of feature to be useful to make predictions that generalize to the test set 
+</div>
+
+
+<div class="HeadingNoNumber">
+
+Permutation importance 
+</div>
+
+
+Computing the permutation importance no a held out test data shows that the low cardinality categorical feature ***sex** has highest importance.
+
+
+---
+
+
+
+
+![](images/PermutationImportanceTitanicTest.png){width=80% .external}
+
+
+---
+
+<div class="rmdtip">
+
+
+<p>Permutation importance:<img src="images/Gender.svg" alt="Smiley face" align="right" style="width:15%;"></p>
+
+- Most important feature: sex
+- Random features low importance
+
+
+</div>
+
+
+Computing the permutation importance on the training data shows that the random features get significantly higher importance ranking than when computed on the test set.
+
+---
+
+
+![](images/PermutationImportanceTitanicTrain.png){width=80% .external}
+
+
+---
+
+<div class="HeadingNoNumber">
+
 Permutation Importance with Multicollinear or Correlated Features
-=================================================================
 
-/Users/uwesterr/CloudProjectsUnderWork/ProjectsUnderWork/MlVhs2020/Python/plot_permutation_importance_multicollinear.py
+</div>
 
-[@scikit-learn]
+Another example investigates the problem of multicollinear or correlated features. The example *"Permutation Importance with Multicollinear or Correlated Features"* can be found at the Scikit-Learn [@scikit-learn] site https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html
 
 
+<div class="rmdtip">
+
+Facts of example:
+
+- Wisconsin breast cancer datase
+- RandomForestClassifier  97% accuracy on a test data set
+- Contains multicollinear features
+
+</div>
+
+The permutation importance plot shows that permuting a feature drops the accuracy by at most 0.012, which suggests taht none of the features are important.
+
+
+---
+
+
+![](images/rfImportance.png){width=100%}
+
+
+---
+
+<div class="rmdtip">
+
+Permutation importance:
+
+- highest drop = 0.012 $\implies$ no feature is important
+- when features collinear
+    - permuting one feature will have little effect
+- how to handle collinear features
+    -  performing hierarchical clustering on the Spearman rank-order correlations ^[The Spearman rank-order correlation coefficient (Spearman's correlation, for short) is a nonparametric measure of the strength and direction of association that exists between two variables measured on at least an ordinal scale.]
+    - pick threshold
+        - in graph below = 2.0
+    - keep single feature from each cluster
+        - in graph below 8 cluster $\implies$ 8 features
+
+</div>
+
+---
+
+
+![](images/clusterSpearman.png){width=100%}
+
+
+---
+
+If threshold 1.0 is chosen than accuracy stays at 0.97 with 14 features instead of 30
 
 
 ## Model fit

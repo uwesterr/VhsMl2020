@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-18" />
+<meta name="date" content="2020-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -683,16 +683,16 @@ var goRightAction = 4;<br />
 </div>
 
 <p>The learn function is as follows</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="reinforcement-learning.html#cb1-1"></a></span>
-<span id="cb1-2"><a href="reinforcement-learning.html#cb1-2"></a>learn <span class="op">=</span> function (state, lastReward) {</span>
-<span id="cb1-3"><a href="reinforcement-learning.html#cb1-3"></a>    brain.backward(lastReward)<span class="op">;</span></span>
-<span id="cb1-4"><a href="reinforcement-learning.html#cb1-4"></a>    var action <span class="op">=</span> brain.forward(state)<span class="op">;</span></span>
-<span id="cb1-5"><a href="reinforcement-learning.html#cb1-5"></a> </span>
-<span id="cb1-6"><a href="reinforcement-learning.html#cb1-6"></a>    draw_net()<span class="op">;</span></span>
-<span id="cb1-7"><a href="reinforcement-learning.html#cb1-7"></a>    draw_stats()<span class="op">;</span></span>
-<span id="cb1-8"><a href="reinforcement-learning.html#cb1-8"></a> </span>
-<span id="cb1-9"><a href="reinforcement-learning.html#cb1-9"></a>    <span class="cf">return</span> action<span class="op">;</span></span>
-<span id="cb1-10"><a href="reinforcement-learning.html#cb1-10"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="reinforcement-learning.html#cb3-1"></a></span>
+<span id="cb3-2"><a href="reinforcement-learning.html#cb3-2"></a>learn <span class="op">=</span> function (state, lastReward) {</span>
+<span id="cb3-3"><a href="reinforcement-learning.html#cb3-3"></a>    brain.backward(lastReward)<span class="op">;</span></span>
+<span id="cb3-4"><a href="reinforcement-learning.html#cb3-4"></a>    var action <span class="op">=</span> brain.forward(state)<span class="op">;</span></span>
+<span id="cb3-5"><a href="reinforcement-learning.html#cb3-5"></a> </span>
+<span id="cb3-6"><a href="reinforcement-learning.html#cb3-6"></a>    draw_net()<span class="op">;</span></span>
+<span id="cb3-7"><a href="reinforcement-learning.html#cb3-7"></a>    draw_stats()<span class="op">;</span></span>
+<span id="cb3-8"><a href="reinforcement-learning.html#cb3-8"></a> </span>
+<span id="cb3-9"><a href="reinforcement-learning.html#cb3-9"></a>    <span class="cf">return</span> action<span class="op">;</span></span>
+<span id="cb3-10"><a href="reinforcement-learning.html#cb3-10"></a>}</span></code></pre></div>
 <p>An overview of the most important variables is given below</p>
 <p><img src="images/sdcVariables.png" style="width:100.0%" /></p>
 <div id="crowdsourced-hyperparmeter-tuning" class="section level4">

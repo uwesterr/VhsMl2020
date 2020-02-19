@@ -341,7 +341,10 @@ The following plot shows survey participants education level. Very few participa
 Helpful skills for ML:
 
 - Coding experience
-- Statistical knowledge  
+- Statistical knowledge 
+- Youngest Kaggle Grandmaster at age of 16
+    - Mikel Bober-Irizar 
+    - No formal education needed
 
 
 </div>
