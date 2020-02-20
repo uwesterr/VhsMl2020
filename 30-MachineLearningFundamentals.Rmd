@@ -1069,7 +1069,7 @@ There are several dimension reduction algorithms
     - reduced predictor space is optimally associated with the response
 </div>
 
-The embedding projector of TensorFlow at http://projector.tensorflow.org gives great insight into PCA and t-SNE 
+The +*embedding projector of TensorFlow** at http://projector.tensorflow.org gives great insight into PCA and t-SNE 
 Below a PCA of the Word2Vec 200 dimensional space onto three dimensions, the word *"neural"* and points close by are marked.
 
 
@@ -1115,23 +1115,10 @@ A minimal PCA Python example is given below, source https://scikit-learn.org/sta
 >>> import numpy as np
 >>> from sklearn.decomposition import IncrementalPCA
 >>> X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
->>> print(X)
-array([[-1.38340578, -0.2935787 ],
-       [-2.22189802,  0.25133484],
-       [-3.6053038 , -0.04224385],
-       [ 1.38340578,  0.2935787 ],
-       [ 2.22189802, -0.25133484],
-       [ 3.6053038 ,  0.04224385]])
 >>> ipca = IncrementalPCA(n_components=2, batch_size=3)
 >>> ipca.fit(X)
 IncrementalPCA(batch_size=3, n_components=2)
 >>> ipca.transform(X) 
-[[-1 -1]
- [-2 -1]
- [-3 -2]
- [ 1  1]
- [ 2  1]
- [ 3  2]]
 
 ```
 
@@ -1461,7 +1448,7 @@ Permutation importance:
 - when features collinear
     - permuting one feature will have little effect
 - how to handle collinear features
-    -  performing hierarchical clustering on the Spearman rank-order correlations ^[The Spearman rank-order correlation coefficient (Spearman's correlation, for short) is a nonparametric measure of the strength and direction of association that exists between two variables measured on at least an ordinal scale.]
+    -  performing hierarchical clustering on the Spearman rank-order correlations ^[https://statistics.laerd.com/spss-tutorials/spearmans-rank-order-correlation-using-spss-statistics.php: The Spearman rank-order correlation coefficient (Spearman's correlation, for short) is a nonparametric measure of the strength and direction of association that exists between two variables measured on at least an ordinal scale.]
     - pick threshold
         - in graph below = 2.0
     - keep single feature from each cluster

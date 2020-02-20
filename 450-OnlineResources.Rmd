@@ -2,17 +2,218 @@
 
 ```{r setupMlResources, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(gganimate)
-library(SimilarityMeasures) # for frechet and dtw
-library(tidyverse)
-library(DT)
-library(tidyverse)
-library(grid)
-library(animation)
-library(gridExtra)
-library(knitr)
-library(kableExtra)
+
 ```
+
+
+# ML online courses {#MlMooc}
+
+Online courses are a very good opportunity to learn self paced with world class teachers. In the next chapters the most successful once are introduced. They offer hundreds of different courses, some together with universities or companies, sometimes one can achieve a certificate from a university.
+
+<div class="rmdtip">
+
+<p>Online courses:<img src="images/mooc.png" alt="Smiley face" align="right" style="width:40%;"></p>
+
+- World class teachers
+- Self paced
+- University certificates available
+- Many are free
+- Low cost compared to face to face courses
+- Local face to face communities
+- Discussions
+    - online forums
+    - local face to face meetups
+
+
+</div>
+
+
+##	Coursera
+
+Coursera https://www.coursera.org was founded 2012 by Stanford computer science professors Andrew Ng and Daphne Koller. The Headquarter is in Mountain View in the US. By 2020 Coursera reached more than 48million people and 2200 businesses around the world
+
+
+
+
+<div class="rmdtip">
+
+ 
+<p>Coursera facts:<img src="images/courseraLoga.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
+- Founded 2012
+    - two Standford computer science professors
+    - Andrew Ng
+    - Daphne Koller
+-  Costs of courses
+    - free courses
+    - monthly charges (i.e 43€ for "Spezialisierung Deep Learning")
+    - MSc ML and data science Imperial College London: **£28,000** 
+- List of ML courses https://www.coursera.org/browse/data-science/machine-learning  
+
+</div>
+
+There are are course on art, health, social science, physics. Coursera offers a wide range of learning programs from free courses with a optional certificate to a full university diploma.
+
+<div class="rmdtip">
+
+<p>Coursera learning programs:<img src="images/diploma.svg" alt="Smiley face" align="right" style="width:30%;"></p>
+
+
+
+- Course
+    - recorded auto-graded and peer-reviewed assignments
+    - video lectures
+    - community discussion forums
+    - course certificate for small fee
+    
+- Specialization   
+    - series of rigorous courses
+    - hands-on projects
+    - specialization certificate
+    
+- Professional certificate
+    - become job ready
+    - learn from top companies and universities
+    - hands-on projects
+    - earn career credentials
+    
+    
+- Mastertrack certificate
+    - portions of Master's programs split into online modules
+    - earn university-issued career credentials
+    - real world projects
+    - live expert instructions
+    
+- Degree
+    - earn credit by completing course assignments
+    - some credentials as on campus students
+
+</div>
+
+For ML there are courses in cooperation with companies and universities. 
+
+<div class="rmdtip">
+
+ 
+ML course partners:
+
+- Universities
+    - University of London
+    - Imperial College London
+    - Standford University
+    - Arizona State University
+
+- Companies
+    - deeplearning.ai
+    - IBM
+
+
+</div>
+
+
+##	Udemy
+
+Udemy https://www.udemy.comwas founded 2011 by Eren Bali, Gagan Biyani and Oktay Caglar. In January 2020 Udemy has 50Mio students and 57,000 instructors from 190+ countries
+
+
+<div class="rmdtip">
+
+ 
+<p>Udemy facts:<img src="images/udemyLogo.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
+- Founded 2011
+    - Eren Bali, Gagan Biyani and Oktay Caglar
+-  > 150,000 courses online    
+-  Costs of courses
+    - no free courses for ML
+- List of ML courses https://www.udemy.com/courses/search/?q=machine%20learning&src=sac&kw=machine
+
+</div>
+
+There are are course on lifestyle, health, music and engineering. Udemy
+
+
+
+
+
+	
+##	DataCamp
+
+DataCamp https://www.datacamp.com was founded 2014 by Martijn Theuwissen, Jonathan Cornelissen, Dieter De Mesmaeker
+
+
+<div class="rmdtip">
+
+ 
+<p>DataCamp facts:<img src="images/datacampLogo.png" alt="Smiley face" align="right" style="width:20%;"></p>
+
+- Founded 2014
+    - Martijn Theuwissen, Jonathan Cornelissen, Dieter De Mesmaeker
+-  Costs of courses for individuals https://www.datacamp.com/pricing?variant=individual
+    - first chapter of each course free
+    - monthly payment
+        - $25 for limited selection of courses (Basic)
+        - $33.25 for all 325 courses (Premium as of Feb 2020)
+- Costs for courses for business
+    - $300 per user per year (Professional)
+        - limited access to course material
+    - $499 per user per year (Enterprise)  
+        - full access to course material
+        - plenty of service 
+- Certificates are not available
+    - provide Statements of Accomplishment at no charge
+
+- List of ML courses https://www.datacamp.com/search?q=machine%20learning
+
+</div>
+
+
+##	Udacity
+
+
+	
+##	Fast.ai
+
+## FastAI
+
+	
+##	Kaggle Courses
+
+
+Kaggle https://www.kaggle.com/learn/overview added courses to the data science platfrom 
+
+<div class="rmdtip">
+
+ 
+<p>Coursera facts:<img src="images/courseraLoga.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+
+- Founded 2010
+    - key personal was
+    -  Anthony Goldbloom
+    - Jeremy Howard
+-  Costs of courses
+    - free courses
+
+- List of ML courses https://www.kaggle.com/learn/overview
+
+</div>
+
+The choice on courses is small and ML centered. All course work is in Python and is run in hosted notebooks.
+
+<div class="rmdtip">
+
+ 
+Course characteristics:
+
+- Small selection
+- ML or data science topics
+- Course work in Python run in hosted notebooks
+    - no software installation necessary
+    
+</div>
+
+https://course.fast.ai
+
 
 
 # ML online  resources {#MlResources}
@@ -25,8 +226,6 @@ https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours
 
 This book provides an introduction to statistical learning methods.  
 http://faculty.marshall.usc.edu/gareth-james/ISL/
-
-
 
 ## The learning machine
 
@@ -68,9 +267,7 @@ MIT's official introductory course on deep learning methods with applications in
 
 http://introtodeeplearning.com
 
-## FastAI
 
-https://course.fast.ai
 
 
 ## Embedding Projector

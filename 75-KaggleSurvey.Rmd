@@ -110,7 +110,7 @@ short$country <-  plyr::revalue(short$country, c("United States of America"="USA
 
 # Kaggle survey introduction {#KaggleSurvey}
 
-Kaggle is a subsidiary of Google LLC online community of data scientists machine learners with more than 1Mio members.  
+Kaggle was founded 2010 and is a subsidiary of Google LLC online community of data scientists machine learners with more than 1Mio members.  
 
 It offers data sets, a no-setup, customizable, Jupyter Notebooks environment, machine learning competitions and access free GPUs and a huge repository of community published data & code.
 
