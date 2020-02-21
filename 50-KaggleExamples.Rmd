@@ -32,7 +32,7 @@ Same facts about Kaggle
 
 Kinds of competitions
 
-```Markdown
+<div class="rmdtip">
 - Featured
     - generally commercially-purposed prediction problems
     - with up to $1.5 mio price money
@@ -74,7 +74,7 @@ Kinds of competitions
     - 6 (Feb 2020)
         - 0 active
 
-```
+</div>
 
 
 More details on how competitions are conducted can be found at https://www.kaggle.com/docs/competitions  
@@ -229,7 +229,7 @@ Model 2 used **XGB algorithm** and 336 features
 336 features:
 
 - relative log power as described above
-    -with the addition of various measures
+    - with the addition of various measures
         -mean
         - min
         - max
@@ -1550,6 +1550,23 @@ learner.callbacks.extend([
 
 
 # Local examples
+
+## Master Autonomous Driving
+
+Master course organized by Hochschulföderation SüdWest (HfSW), a consortium of the universities of applied science of Aalen, Esslingen, Heilbronn, Mannheim, Ravensburg-Weingarten, Reutlingen and Hochschule der Medien Stuttgart. More information on https://www.graduatecampus.de/en/masterstudiengaenge/master.html
+
+Facts of Master Autonomous Driving:
+
+- 4 semesters
+- 18,000 € tuition fees
+- attendance 10.5h per week
+    - Fridays from 15:30 to 20:30
+    - Saturdays from 09:30 to 16:45
+- Course contents https://www.graduatecampus.de/fileadmin/50_redaktion/08_Sonstige_PDF/HfSW/Modulhandbuch_Autonomes_Fahren.pdf
+    - path planning
+    - sensor fusion
+    - Robot Operating System (ROS)
+
 
 
 

@@ -123,7 +123,7 @@ Udemy https://www.udemy.comwas founded 2011 by Eren Bali, Gagan Biyani and Oktay
 
 - Founded 2011
     - Eren Bali, Gagan Biyani and Oktay Caglar
--  > 150,000 courses online    
+-  more than 150,000 courses online    
 -  Costs of courses
     - no free courses for ML
 - List of ML courses https://www.udemy.com/courses/search/?q=machine%20learning&src=sac&kw=machine
@@ -296,3 +296,44 @@ Tinker With a Neural Network Right Here in Your Browser.
 Don’t Worry, You Can’t Break It. We Promise.
 
 https://playground.tensorflow.org
+
+## Empowering companies to jumpstart AI and generate real-world value
+Anrew Ng
+
+Google speech first, than google maps finding house numbers 
+https://landing.ai
+
+
+# ML online books
+
+A good source for learning are online books, a few examples are given below-
+
+## Neural Networks and Deep Learning
+
+The book covers different aspects of NN from first principles to applications. It is hosted at http://neuralnetworksanddeeplearning.com/ 
+
+<div class="rmdtip">
+
+Main topics of book:
+
+- A visual proof that neural nets can compute any function
+- Why are deep neural networks hard to train?
+</div>
+
+## Deep Learning
+
+The book on deep learning from Ian Goodfellow  [@Goodfellow-et-al-2016] the research scientist who pioneered generative adversarial networks (GANs) a book which goes deep into theory. The book is hosted at http://www.deeplearningbook.org/
+
+<div class="rmdtip">
+<p>Main topics of book:<img src="images/deepLerningCover.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+
+- Applied Math and Machine Learning Basics
+- Modern Practical Deep Networks
+- Deep Learning Research
+</div>
+
+
+
+
+

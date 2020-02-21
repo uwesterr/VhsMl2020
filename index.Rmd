@@ -61,26 +61,5 @@ https://www.enbw.com/infrastruktur/sicherheitsinfrastruktur/geschaeftskunden/pro
 
 
 
-## Want to meet ML people from academia and industrie
 
-- Machine Learning User Group Stuttgart MLUGS  
-    - Technically oriented
-    - 419 members
-    - https://www.meetup.com/Machine-Learning-UserGroup-Stuttgart/
-    
-
-- Build selfdrving RoboCar  
-    - hands on, build a real world system
-    - 153 members
-    - https://www.meetup.com/Esslingen-Makerspace/
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AFHtBDaqQqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-    
-- Stuttgart AI
-    - More concepts and industrie presenting themself
-    - 979 members
-    - https://www.meetup.com/StuttgartAI/
-    
 

@@ -303,6 +303,8 @@ Especially image classification models have shown to be susceptible to attacks w
 ```{block2 echo=TRUE, type='rmdwarning'}
 
 - Traffic sign misclassification
+    - targeted attack $\implies$ force a certain prediction
+    - untargeted attack $\implies$ force misclassification, but not a particular predcition
 - Avoiding face detection
 ```
 
@@ -327,18 +329,18 @@ Which statement is correct?
 
 ---
 
-### Is this a picture of a real person? {-}
+
+<div class="HeadingNoNumber">
+Is this a picture of a real person? 
+
+</div>
 
 Look at the picture below, is it a real person or an animation?
 
-
+--- 
 
  ![Figure from https://commons.wikimedia.org/wiki/File:Woman_1.jpg (Image Credit: Owlsmcgee [Public domain] )](images/GanWomen.png){width=60% .external}
  
- 
-
---- 
-
 
 The image is create using a generative adversarial network (GAN), see below for the principle, for detailed description see https://medium.com/ai-society/gans-from-scratch-1-a-deep-introduction-with-code-in-pytorch-and-tensorflow-cb03cdcdba0f 
 
@@ -349,6 +351,36 @@ knitr::include_graphics('images/GanPrincipleAndSteps.png')
 ```
 
 ---
+
+
+### Model Hacking ADAS to Pave Safer Roads for Autonomous Vehicles
+
+A McAfee Advanced Threat Research (ATR) hack which caused cars to drive 50 miles faster than the speed limit by tricking the camera using a piece of tape on the traffic sign. This simple attack tricked the Advanced Driver Assist Systems (ADAS) to drive the car at 85mph instead of 35mph. A detailed description of the hack can be found at https://www.mcafee.com/blogs/other-blogs/mcafee-labs/model-hacking-adas-to-pave-safer-roads-for-autonomous-vehicles/
+
+
+
+<div class="rmdtip">
+<p>Facts about ATR hack:<img src="images/blackTakeAttack.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+- McAfee Advanced Threat Research (ATR)
+- MobilEye camera system
+     - utilized by over 40Mio vehicles (incl. Tesla Harware Pack 1)
+- MobileEye reads a 35mph sign as 85mph sign    
+
+</div>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4uGV_fRj0UA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+As a look forward Steve Povolny, Head of McAfee Advanced Threat Research wrote:
+
+<blockquote>
+In order to drive success in this key industry and shift the perception that machine learning systems are secure, we need to accelerate discussions and awareness of the problems and steer the direction and development of next-generation technologies. Puns intended.  
+
+Steve Povolny, Head of McAfee Advanced Threat Research
+</blockquote>
+
 
 
 # Outlook
@@ -513,8 +545,77 @@ Economists interpret economy as data processing system
     - more decisions by single processor, namely government
     
 
+# Discussion points
+
+There are concerns about if and how AI shall be regularized, a few angles to look at the issue are given below as starting point for further thoughts
+
+## Researcher stops his work due to ethical concerns
+
+Joe Redmon, the creator of You Only Look Once (YOLO) with a huge impact on modern object detection stopped doing any computer vision research due to ethical concerns.
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">This is huge.<br><br>The creator of the YOLO algorithms, which (along with SSD) set much of the path of modern object detection, has stopped doing any computer vision research due to ethical concerns.<br><br>I&#39;ve never seen anything quite like this before. <a href="https://t.co/jzu1p4my5V">https://t.co/jzu1p4my5V</a></p>&mdash; Jeremy Howard (@jeremyphoward) <a href="https://twitter.com/jeremyphoward/status/1230610470991589376?ref_src=twsrc%5Etfw">February 20, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+YOLO is a state-of-the-art, real time object detection system.
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/MPU2HistivI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Career: Oxford seeks AI ethics professor
 
+The question is, who should or should not be involved in the decisions about the faith of AI?
 
+
+<div class="rmdtip">
 - Associate Professorship or Professorship in Philosophy
--  Apply for [University of Oxford - Faculty of Philosophy (Ethics in AI)](https://www.jobs.ac.uk/job/BYC826/associate-professorship-or-professorship-in-philosophy)
+- Apply for [University of Oxford - Faculty of Philosophy (Ethics in AI)](https://www.jobs.ac.uk/job/BYC826/associate-professorship-or-professorship-in-philosophy)
+</div>
+
+## Shaping Europe's digital future: Commission presents strategies for data and Artificial Intelligence
+
+On February 19th 2020 the EU commission presented its strategies for data and AI. https://ec.europa.eu/commission/presscorner/detail/en/ip_20_273
+
+
+
+<blockquote>
+Today we are presenting our ambition to shape Europe's digital future. It covers everything from cybersecurity to critical infrastructures, digital education to skills, democracy to media. I want that digital Europe reflects the best of Europe – open, fair, diverse, democratic, and confident.  
+
+Ursula von der Leyen, President of the Commission
+</blockquote>
+
+
+As key objectives in digital technologies over the next five years the commission will focus on three areas
+
+
+<div class="rmdtip">
+<p>Key objectives in digital technologies:<img src="images/euCommission.svg" alt="Smiley face" align="right" style="width:40%;"></p>
+
+- Technology that works for people
+- Fair and competitive economy
+- Open, democratic and sustainable society
+
+</div>
+
+Furthermore the commission wants the EU to be the trustworthy leader of AI as well as in the data economy
+
+        
+<div class="rmdtip">
+
+- Europe as a leader in trustworthy Artificial Intelligence
+    - excellent research centers
+    - accelerate deployment of AI
+        - smaller and medium-sized enterprises
+    - attract and keep talent    
+    - rules
+        - need to address high-risk AI systems 
+        - without putting too much burden on less risky ones
+- Europe as a leader in the data economy
+    - European data space
+        - single market
+    -  Commission propose to establish right regulatory framework regarding data governance
+    
+    - Commission will invest in data spaces and cloud infrastructures
+        - efficient
+        - trustworthy
+        
+</div>        
