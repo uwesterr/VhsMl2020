@@ -170,6 +170,64 @@ DataCamp https://www.datacamp.com was founded 2014 by Martijn Theuwissen, Jonath
 
 ##	Udacity
 
+DataCamp https://www.udacity.com was founded 2014 by Sebastian Thrun, David Stavens, Mike Sokolsky. Thrun was a Google VP and a Professor of computer science at Stanford University and Carnegie Mellon University. At Google he found teh Google's self-driving car team.  
+Udacity offers courses in data science, machine learning, artificial intelligence, cloud computing, and autonomous systems
+
+
+
+<div class="rmdtip">
+
+ 
+<p>Udacity facts:<img src="images/udacityLogo.png" alt="Smiley face" align="right" style="width:40%;"></p>
+
+- Founded 2011
+    - Sebastian Thrun
+    - David Stavens
+    - Mike Sokolsky
+-  Costs of courses depends on course
+     - monthly basis
+     - per course
+         - self driving car: €179/month
+         - roughly 6 months at 15hrs/weeks
+- Programs
+    - data science
+    - machine learning
+    - artificial intelligence
+    - cloud computing
+    - autonomous systems
+- Certificate
+     - nanodegree
+     - accepted by industry
+     
+
+- List of ML courses https://www.udacity.com/school-of-ai
+
+</div>
+
+### Example for self-driving car course project
+
+
+During the course there are a number of projects which have to be finished successfully before going to the next stage. 
+
+<div class="rmdtip">
+
+Example project: 
+
+Model predictive control:
+
+- Drive car around track
+- Combine
+    - neural network
+    - model predictive controller 
+- Including 100ms latency between actuations commands    
+
+</div>
+<video width="80%" loop controls>
+  <source src="images/MPCforReviewWeb.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 
 	
 ##	Fast.ai
@@ -180,7 +238,7 @@ DataCamp https://www.datacamp.com was founded 2014 by Martijn Theuwissen, Jonath
 ##	Kaggle Courses
 
 
-Kaggle https://www.kaggle.com/learn/overview added courses to the data science platfrom 
+Kaggle https://www.kaggle.com/learn/overview added courses to the data science platform 
 
 <div class="rmdtip">
 

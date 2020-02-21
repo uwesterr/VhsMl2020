@@ -48,13 +48,9 @@ https://www.enbw.com/infrastruktur/sicherheitsinfrastruktur/geschaeftskunden/pro
  type="application/pdf">
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gG6WnMb9Fho?start=1946" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4MOx2_e5tug" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-
-<video width="320" height="240" loop controls>
+<video width="80%" loop controls>
   <source src="images/VaihingenTubMovieV3WithSteeringAndSalient.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
