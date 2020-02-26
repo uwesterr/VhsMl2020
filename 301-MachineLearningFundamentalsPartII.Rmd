@@ -1050,7 +1050,7 @@ plt.show()
 
 ```
 
-## Neural networks
+## Neural networks {#MlAlgoNN}
 
 non linear
 
@@ -1269,6 +1269,12 @@ Attention Is All You Need https://arxiv.org/abs/1706.03762
 
 [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
 
+
+### Example transformer for time series forecasting
+
+Deep Transformer Models for Time Series Forecasting: The Influenza Prevalence Case
+
+[@wu2020deep]
 
 # Food for the algorithms: Data
 

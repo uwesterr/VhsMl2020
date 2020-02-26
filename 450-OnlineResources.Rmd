@@ -219,14 +219,20 @@ Model predictive control:
 - Combine
     - neural network
     - model predictive controller 
-- Including 100ms latency between actuations commands    
+- Including 100ms latency between actuation commands    
 
 </div>
+
+The resulting driving performance can be seen in the following video
+
+---
+
 <video width="80%" loop controls>
   <source src="images/MPCforReviewWeb.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
+---
 
 
 	

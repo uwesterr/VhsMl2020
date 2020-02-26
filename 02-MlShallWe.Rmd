@@ -381,8 +381,32 @@ In order to drive success in this key industry and shift the perception that mac
 Steve Povolny, Head of McAfee Advanced Threat Research
 </blockquote>
 
+#### Press coverage
+
+Interesting was to see the coverage of the media
 
 
+<blockquote>
+TESLA CARS TRICKED INTO AUTONOMOUSLY ACCELERATING 50 MPH USING SPEED SIGN ALTERED WITH SMALL PIECE OF TAPE
+[Newsweek](https://www.newsweek.com/tesla-model-x-model-s-mcafee-research-tricks-acceleration-speed-limit-signs-1487956)
+</blockquote>
+
+<blockquote>
+
+Tesla in Autopilot mode tricked into speeding using terrifying hack
+[The Telegraph](https://www.telegraph.co.uk/technology/2020/02/19/self-driving-tesla-tricked-speeding-using-terrifying-hack/)
+</blockquote>
+
+
+
+
+
+
+
+
+<blockquote>
+
+</blockquote>
 # Outlook
 
 What will the future bring for society?
