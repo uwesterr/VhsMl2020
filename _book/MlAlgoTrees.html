@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.3 Tree based methods TBD | Machine learning orientation</title>
+  <title>8.3 Tree based methods | Machine learning orientation</title>
   <meta name="description" content="A guide to machine learning" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.3 Tree based methods TBD | Machine learning orientation" />
+  <meta property="og:title" content="8.3 Tree based methods | Machine learning orientation" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.3 Tree based methods TBD | Machine learning orientation" />
+  <meta name="twitter:title" content="8.3 Tree based methods | Machine learning orientation" />
   
   <meta name="twitter:description" content="A guide to machine learning" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Uwe Sterr" />
 
 
-<meta name="date" content="2020-02-26" />
+<meta name="date" content="2020-02-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,13 +201,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4.3" data-path="featureEngineering.html"><a href="featureEngineering.html#featureImportance"><i class="fa fa-check"></i><b>6.4.3</b> Feature importance</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="MlProjectProcessModelFit.html"><a href="MlProjectProcessModelFit.html"><i class="fa fa-check"></i><b>6.5</b> Model fit</a></li>
-<li class="chapter" data-level="6.6" data-path="tuneHyperparameter.html"><a href="tuneHyperparameter.html"><i class="fa fa-check"></i><b>6.6</b> Model tuning</a></li>
+<li class="chapter" data-level="6.6" data-path="tuneHyperparameter.html"><a href="tuneHyperparameter.html"><i class="fa fa-check"></i><b>6.6</b> Model tuning</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="tuneHyperparameter.html"><a href="tuneHyperparameter.html#metrics"><i class="fa fa-check"></i><b>6.6.1</b> Metrics</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="machineLearningClasses.html"><a href="machineLearningClasses.html"><i class="fa fa-check"></i><b>7</b> Machine learning types</a><ul>
 <li class="chapter" data-level="7.1" data-path="supervised-learning.html"><a href="supervised-learning.html"><i class="fa fa-check"></i><b>7.1</b> Supervised learning</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="supervised-learning.html"><a href="supervised-learning.html#MlSelfSupvervised"><i class="fa fa-check"></i><b>7.1.1</b> Self supervised learning</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>7.2</b> Unsupervised learning</a></li>
+<li class="chapter" data-level="7.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>7.2</b> Unsupervised learning</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#discovering-clusters"><i class="fa fa-check"></i><b>7.2.1</b> Discovering clusters</a></li>
+<li class="chapter" data-level="7.2.2" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html#discovering-latent-factors"><i class="fa fa-check"></i><b>7.2.2</b> Discovering latent factors</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="reinforcement-learning.html"><a href="reinforcement-learning.html"><i class="fa fa-check"></i><b>7.3</b> Reinforcement learning</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="reinforcement-learning.html"><a href="reinforcement-learning.html#elements-of-reinforcement-learning"><i class="fa fa-check"></i><b>7.3.1</b> Elements of reinforcement learning</a></li>
 <li class="chapter" data-level="7.3.2" data-path="reinforcement-learning.html"><a href="reinforcement-learning.html#rl-algorithms"><i class="fa fa-check"></i><b>7.3.2</b> RL algorithms</a></li>
@@ -215,17 +220,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="MlAlgorithm.html"><a href="MlAlgorithm.html"><i class="fa fa-check"></i><b>8</b> ML algorithms</a><ul>
-<li class="chapter" data-level="8.1" data-path="MlAlgoLinReg.html"><a href="MlAlgoLinReg.html"><i class="fa fa-check"></i><b>8.1</b> Linear regression TBD</a><ul>
+<li class="chapter" data-level="8.1" data-path="MlAlgoLinReg.html"><a href="MlAlgoLinReg.html"><i class="fa fa-check"></i><b>8.1</b> Linear regression</a><ul>
 <li class="chapter" data-level="8.1.1" data-path="MlAlgoLinReg.html"><a href="MlAlgoLinReg.html#example-for-linear-regression"><i class="fa fa-check"></i><b>8.1.1</b> Example for linear regression</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="MlAlgoLogReg.html"><a href="MlAlgoLogReg.html"><i class="fa fa-check"></i><b>8.2</b> Logistic regression</a><ul>
 <li class="chapter" data-level="8.2.1" data-path="MlAlgoLogReg.html"><a href="MlAlgoLogReg.html#python-example-logistic-regression"><i class="fa fa-check"></i><b>8.2.1</b> Python example logistic regression</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html"><i class="fa fa-check"></i><b>8.3</b> Tree based methods TBD</a><ul>
+<li class="chapter" data-level="8.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html"><i class="fa fa-check"></i><b>8.3</b> Tree based methods</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#splitting-metrics"><i class="fa fa-check"></i><b>8.3.1</b> Splitting metrics</a></li>
 <li class="chapter" data-level="8.3.2" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#ensembles"><i class="fa fa-check"></i><b>8.3.2</b> Ensembles</a></li>
-<li class="chapter" data-level="8.3.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesRandomForest"><i class="fa fa-check"></i><b>8.3.3</b> Random forest TBD</a></li>
-<li class="chapter" data-level="8.3.4" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesGBM"><i class="fa fa-check"></i><b>8.3.4</b> Boosted trees TBD</a></li>
+<li class="chapter" data-level="8.3.3" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesRandomForest"><i class="fa fa-check"></i><b>8.3.3</b> Random forest</a></li>
+<li class="chapter" data-level="8.3.4" data-path="MlAlgoTrees.html"><a href="MlAlgoTrees.html#MlAlgoTreesGBM"><i class="fa fa-check"></i><b>8.3.4</b> Boosted trees</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="MlAlgoSvm.html"><a href="MlAlgoSvm.html"><i class="fa fa-check"></i><b>8.4</b> Support Vector Machine (SVM) TBD</a><ul>
 <li class="chapter" data-level="8.4.1" data-path="MlAlgoSvm.html"><a href="MlAlgoSvm.html#kernels"><i class="fa fa-check"></i><b>8.4.1</b> Kernels</a></li>
@@ -368,12 +373,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="23.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html"><i class="fa fa-check"></i><b>23.3</b> Algorithm selection</a><ul>
 <li class="chapter" data-level="23.3.1" data-path="algorithm-selection.html"><a href="algorithm-selection.html#logistic-regression"><i class="fa fa-check"></i><b>23.3.1</b> Logistic regression</a></li>
-<li class="chapter" data-level="23.3.2" data-path="algorithm-selection.html"><a href="algorithm-selection.html#tree-based-tbd"><i class="fa fa-check"></i><b>23.3.2</b> Tree based TBD</a></li>
+<li class="chapter" data-level="23.3.2" data-path="algorithm-selection.html"><a href="algorithm-selection.html#tree-based"><i class="fa fa-check"></i><b>23.3.2</b> Tree based</a></li>
 <li class="chapter" data-level="23.3.3" data-path="algorithm-selection.html"><a href="algorithm-selection.html#support-vector-machine-svm-tbd"><i class="fa fa-check"></i><b>23.3.3</b> Support Vector Machine (SVM) TBD</a></li>
 </ul></li>
-<li class="chapter" data-level="23.4" data-path="performance-measurement.html"><a href="performance-measurement.html"><i class="fa fa-check"></i><b>23.4</b> Performance measurement</a><ul>
-<li class="chapter" data-level="23.4.1" data-path="performance-measurement.html"><a href="performance-measurement.html#sensitivity-and-specificity"><i class="fa fa-check"></i><b>23.4.1</b> Sensitivity and specificity</a></li>
-<li class="chapter" data-level="23.4.2" data-path="performance-measurement.html"><a href="performance-measurement.html#receiver-operating-characteristic-roc"><i class="fa fa-check"></i><b>23.4.2</b> Receiver operating characteristic (ROC)</a></li>
+<li class="chapter" data-level="23.4" data-path="ConfusionMatrixRocAuc.html"><a href="ConfusionMatrixRocAuc.html"><i class="fa fa-check"></i><b>23.4</b> Performance measurement</a><ul>
+<li class="chapter" data-level="23.4.1" data-path="ConfusionMatrixRocAuc.html"><a href="ConfusionMatrixRocAuc.html#sensitivity-and-specificity"><i class="fa fa-check"></i><b>23.4.1</b> Sensitivity and specificity</a></li>
+<li class="chapter" data-level="23.4.2" data-path="ConfusionMatrixRocAuc.html"><a href="ConfusionMatrixRocAuc.html#RocExplanation"><i class="fa fa-check"></i><b>23.4.2</b> Receiver operating characteristic (ROC)</a></li>
 </ul></li>
 <li class="chapter" data-level="23.5" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html"><i class="fa fa-check"></i><b>23.5</b> Confusion matrix and ROC for pulse</a><ul>
 <li class="chapter" data-level="23.5.1" data-path="confusion-matrix-and-roc-for-pulse.html"><a href="confusion-matrix-and-roc-for-pulse.html#r-plots"><i class="fa fa-check"></i><b>23.5.1</b> R Plots</a></li>
@@ -448,7 +453,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="MlAlgoTrees" class="section level2">
-<h2><span class="header-section-number">8.3</span> Tree based methods TBD</h2>
+<h2><span class="header-section-number">8.3</span> Tree based methods</h2>
 <p>Tree based methods can be used for different predictions:</p>
 
 <div class="rmdtip">
@@ -515,60 +520,60 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>An example on how the gini value changes
 <img src="images/giniTreeExample.png" style="width:100.0%" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="MlAlgoTrees.html#cb5-1"></a><span class="co"># source: https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html#sphx-glr-auto-examples-tree-plot-iris-dtc-py</span></span>
-<span id="cb5-2"><a href="MlAlgoTrees.html#cb5-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-3"><a href="MlAlgoTrees.html#cb5-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-4"><a href="MlAlgoTrees.html#cb5-4"></a></span>
-<span id="cb5-5"><a href="MlAlgoTrees.html#cb5-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
-<span id="cb5-6"><a href="MlAlgoTrees.html#cb5-6"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
-<span id="cb5-7"><a href="MlAlgoTrees.html#cb5-7"></a></span>
-<span id="cb5-8"><a href="MlAlgoTrees.html#cb5-8"></a><span class="co"># Parameters</span></span>
-<span id="cb5-9"><a href="MlAlgoTrees.html#cb5-9"></a>n_classes <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb5-10"><a href="MlAlgoTrees.html#cb5-10"></a>plot_colors <span class="op">=</span> <span class="st">&quot;ryb&quot;</span></span>
-<span id="cb5-11"><a href="MlAlgoTrees.html#cb5-11"></a>plot_step <span class="op">=</span> <span class="fl">0.02</span></span>
-<span id="cb5-12"><a href="MlAlgoTrees.html#cb5-12"></a></span>
-<span id="cb5-13"><a href="MlAlgoTrees.html#cb5-13"></a><span class="co"># Load data</span></span>
-<span id="cb5-14"><a href="MlAlgoTrees.html#cb5-14"></a>iris <span class="op">=</span> load_iris()</span>
-<span id="cb5-15"><a href="MlAlgoTrees.html#cb5-15"></a></span>
-<span id="cb5-16"><a href="MlAlgoTrees.html#cb5-16"></a><span class="cf">for</span> pairidx, pair <span class="kw">in</span> <span class="bu">enumerate</span>([[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">3</span>],</span>
-<span id="cb5-17"><a href="MlAlgoTrees.html#cb5-17"></a>                                [<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">3</span>]]):</span>
-<span id="cb5-18"><a href="MlAlgoTrees.html#cb5-18"></a>    <span class="co"># We only take the two corresponding features</span></span>
-<span id="cb5-19"><a href="MlAlgoTrees.html#cb5-19"></a>    X <span class="op">=</span> iris.data[:, pair]</span>
-<span id="cb5-20"><a href="MlAlgoTrees.html#cb5-20"></a>    y <span class="op">=</span> iris.target</span>
-<span id="cb5-21"><a href="MlAlgoTrees.html#cb5-21"></a></span>
-<span id="cb5-22"><a href="MlAlgoTrees.html#cb5-22"></a>    <span class="co"># Train</span></span>
-<span id="cb5-23"><a href="MlAlgoTrees.html#cb5-23"></a>    clf <span class="op">=</span> DecisionTreeClassifier().fit(X, y)</span>
-<span id="cb5-24"><a href="MlAlgoTrees.html#cb5-24"></a></span>
-<span id="cb5-25"><a href="MlAlgoTrees.html#cb5-25"></a>    <span class="co"># Plot the decision boundary</span></span>
-<span id="cb5-26"><a href="MlAlgoTrees.html#cb5-26"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">3</span>, pairidx <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb5-27"><a href="MlAlgoTrees.html#cb5-27"></a></span>
-<span id="cb5-28"><a href="MlAlgoTrees.html#cb5-28"></a>    x_min, x_max <span class="op">=</span> X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb5-29"><a href="MlAlgoTrees.html#cb5-29"></a>    y_min, y_max <span class="op">=</span> X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb5-30"><a href="MlAlgoTrees.html#cb5-30"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.arange(x_min, x_max, plot_step),</span>
-<span id="cb5-31"><a href="MlAlgoTrees.html#cb5-31"></a>                         np.arange(y_min, y_max, plot_step))</span>
-<span id="cb5-32"><a href="MlAlgoTrees.html#cb5-32"></a>    plt.tight_layout(h_pad<span class="op">=</span><span class="fl">0.5</span>, w_pad<span class="op">=</span><span class="fl">0.5</span>, pad<span class="op">=</span><span class="fl">2.5</span>)</span>
-<span id="cb5-33"><a href="MlAlgoTrees.html#cb5-33"></a></span>
-<span id="cb5-34"><a href="MlAlgoTrees.html#cb5-34"></a>    Z <span class="op">=</span> clf.predict(np.c_[xx.ravel(), yy.ravel()])</span>
-<span id="cb5-35"><a href="MlAlgoTrees.html#cb5-35"></a>    Z <span class="op">=</span> Z.reshape(xx.shape)</span>
-<span id="cb5-36"><a href="MlAlgoTrees.html#cb5-36"></a>    cs <span class="op">=</span> plt.contourf(xx, yy, Z, cmap<span class="op">=</span>plt.cm.RdYlBu)</span>
-<span id="cb5-37"><a href="MlAlgoTrees.html#cb5-37"></a></span>
-<span id="cb5-38"><a href="MlAlgoTrees.html#cb5-38"></a>    plt.xlabel(iris.feature_names[pair[<span class="dv">0</span>]])</span>
-<span id="cb5-39"><a href="MlAlgoTrees.html#cb5-39"></a>    plt.ylabel(iris.feature_names[pair[<span class="dv">1</span>]])</span>
-<span id="cb5-40"><a href="MlAlgoTrees.html#cb5-40"></a></span>
-<span id="cb5-41"><a href="MlAlgoTrees.html#cb5-41"></a>    <span class="co"># Plot the training points</span></span>
-<span id="cb5-42"><a href="MlAlgoTrees.html#cb5-42"></a>    <span class="cf">for</span> i, color <span class="kw">in</span> <span class="bu">zip</span>(<span class="bu">range</span>(n_classes), plot_colors):</span>
-<span id="cb5-43"><a href="MlAlgoTrees.html#cb5-43"></a>        idx <span class="op">=</span> np.where(y <span class="op">==</span> i)</span>
-<span id="cb5-44"><a href="MlAlgoTrees.html#cb5-44"></a>        plt.scatter(X[idx, <span class="dv">0</span>], X[idx, <span class="dv">1</span>], c<span class="op">=</span>color, label<span class="op">=</span>iris.target_names[i],</span>
-<span id="cb5-45"><a href="MlAlgoTrees.html#cb5-45"></a>                    cmap<span class="op">=</span>plt.cm.RdYlBu, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, s<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb5-46"><a href="MlAlgoTrees.html#cb5-46"></a></span>
-<span id="cb5-47"><a href="MlAlgoTrees.html#cb5-47"></a>plt.suptitle(<span class="st">&quot;Decision surface of a decision tree using paired features&quot;</span>)</span>
-<span id="cb5-48"><a href="MlAlgoTrees.html#cb5-48"></a>plt.legend(loc<span class="op">=</span><span class="st">&#39;lower right&#39;</span>, borderpad<span class="op">=</span><span class="dv">0</span>, handletextpad<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-49"><a href="MlAlgoTrees.html#cb5-49"></a>plt.axis(<span class="st">&quot;tight&quot;</span>)</span>
-<span id="cb5-50"><a href="MlAlgoTrees.html#cb5-50"></a></span>
-<span id="cb5-51"><a href="MlAlgoTrees.html#cb5-51"></a>plt.figure(dpi <span class="op">=</span> <span class="dv">300</span>) <span class="co"># Uwe Sterr added dpi argument for better readability of plot</span></span>
-<span id="cb5-52"><a href="MlAlgoTrees.html#cb5-52"></a>clf <span class="op">=</span> DecisionTreeClassifier().fit(iris.data, iris.target)</span>
-<span id="cb5-53"><a href="MlAlgoTrees.html#cb5-53"></a>plot_tree(clf, filled<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-54"><a href="MlAlgoTrees.html#cb5-54"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="MlAlgoTrees.html#cb6-1"></a><span class="co"># source: https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html#sphx-glr-auto-examples-tree-plot-iris-dtc-py</span></span>
+<span id="cb6-2"><a href="MlAlgoTrees.html#cb6-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="MlAlgoTrees.html#cb6-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-4"><a href="MlAlgoTrees.html#cb6-4"></a></span>
+<span id="cb6-5"><a href="MlAlgoTrees.html#cb6-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb6-6"><a href="MlAlgoTrees.html#cb6-6"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
+<span id="cb6-7"><a href="MlAlgoTrees.html#cb6-7"></a></span>
+<span id="cb6-8"><a href="MlAlgoTrees.html#cb6-8"></a><span class="co"># Parameters</span></span>
+<span id="cb6-9"><a href="MlAlgoTrees.html#cb6-9"></a>n_classes <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb6-10"><a href="MlAlgoTrees.html#cb6-10"></a>plot_colors <span class="op">=</span> <span class="st">&quot;ryb&quot;</span></span>
+<span id="cb6-11"><a href="MlAlgoTrees.html#cb6-11"></a>plot_step <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb6-12"><a href="MlAlgoTrees.html#cb6-12"></a></span>
+<span id="cb6-13"><a href="MlAlgoTrees.html#cb6-13"></a><span class="co"># Load data</span></span>
+<span id="cb6-14"><a href="MlAlgoTrees.html#cb6-14"></a>iris <span class="op">=</span> load_iris()</span>
+<span id="cb6-15"><a href="MlAlgoTrees.html#cb6-15"></a></span>
+<span id="cb6-16"><a href="MlAlgoTrees.html#cb6-16"></a><span class="cf">for</span> pairidx, pair <span class="kw">in</span> <span class="bu">enumerate</span>([[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">3</span>],</span>
+<span id="cb6-17"><a href="MlAlgoTrees.html#cb6-17"></a>                                [<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">3</span>]]):</span>
+<span id="cb6-18"><a href="MlAlgoTrees.html#cb6-18"></a>    <span class="co"># We only take the two corresponding features</span></span>
+<span id="cb6-19"><a href="MlAlgoTrees.html#cb6-19"></a>    X <span class="op">=</span> iris.data[:, pair]</span>
+<span id="cb6-20"><a href="MlAlgoTrees.html#cb6-20"></a>    y <span class="op">=</span> iris.target</span>
+<span id="cb6-21"><a href="MlAlgoTrees.html#cb6-21"></a></span>
+<span id="cb6-22"><a href="MlAlgoTrees.html#cb6-22"></a>    <span class="co"># Train</span></span>
+<span id="cb6-23"><a href="MlAlgoTrees.html#cb6-23"></a>    clf <span class="op">=</span> DecisionTreeClassifier().fit(X, y)</span>
+<span id="cb6-24"><a href="MlAlgoTrees.html#cb6-24"></a></span>
+<span id="cb6-25"><a href="MlAlgoTrees.html#cb6-25"></a>    <span class="co"># Plot the decision boundary</span></span>
+<span id="cb6-26"><a href="MlAlgoTrees.html#cb6-26"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">3</span>, pairidx <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb6-27"><a href="MlAlgoTrees.html#cb6-27"></a></span>
+<span id="cb6-28"><a href="MlAlgoTrees.html#cb6-28"></a>    x_min, x_max <span class="op">=</span> X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-29"><a href="MlAlgoTrees.html#cb6-29"></a>    y_min, y_max <span class="op">=</span> X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-30"><a href="MlAlgoTrees.html#cb6-30"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.arange(x_min, x_max, plot_step),</span>
+<span id="cb6-31"><a href="MlAlgoTrees.html#cb6-31"></a>                         np.arange(y_min, y_max, plot_step))</span>
+<span id="cb6-32"><a href="MlAlgoTrees.html#cb6-32"></a>    plt.tight_layout(h_pad<span class="op">=</span><span class="fl">0.5</span>, w_pad<span class="op">=</span><span class="fl">0.5</span>, pad<span class="op">=</span><span class="fl">2.5</span>)</span>
+<span id="cb6-33"><a href="MlAlgoTrees.html#cb6-33"></a></span>
+<span id="cb6-34"><a href="MlAlgoTrees.html#cb6-34"></a>    Z <span class="op">=</span> clf.predict(np.c_[xx.ravel(), yy.ravel()])</span>
+<span id="cb6-35"><a href="MlAlgoTrees.html#cb6-35"></a>    Z <span class="op">=</span> Z.reshape(xx.shape)</span>
+<span id="cb6-36"><a href="MlAlgoTrees.html#cb6-36"></a>    cs <span class="op">=</span> plt.contourf(xx, yy, Z, cmap<span class="op">=</span>plt.cm.RdYlBu)</span>
+<span id="cb6-37"><a href="MlAlgoTrees.html#cb6-37"></a></span>
+<span id="cb6-38"><a href="MlAlgoTrees.html#cb6-38"></a>    plt.xlabel(iris.feature_names[pair[<span class="dv">0</span>]])</span>
+<span id="cb6-39"><a href="MlAlgoTrees.html#cb6-39"></a>    plt.ylabel(iris.feature_names[pair[<span class="dv">1</span>]])</span>
+<span id="cb6-40"><a href="MlAlgoTrees.html#cb6-40"></a></span>
+<span id="cb6-41"><a href="MlAlgoTrees.html#cb6-41"></a>    <span class="co"># Plot the training points</span></span>
+<span id="cb6-42"><a href="MlAlgoTrees.html#cb6-42"></a>    <span class="cf">for</span> i, color <span class="kw">in</span> <span class="bu">zip</span>(<span class="bu">range</span>(n_classes), plot_colors):</span>
+<span id="cb6-43"><a href="MlAlgoTrees.html#cb6-43"></a>        idx <span class="op">=</span> np.where(y <span class="op">==</span> i)</span>
+<span id="cb6-44"><a href="MlAlgoTrees.html#cb6-44"></a>        plt.scatter(X[idx, <span class="dv">0</span>], X[idx, <span class="dv">1</span>], c<span class="op">=</span>color, label<span class="op">=</span>iris.target_names[i],</span>
+<span id="cb6-45"><a href="MlAlgoTrees.html#cb6-45"></a>                    cmap<span class="op">=</span>plt.cm.RdYlBu, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, s<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb6-46"><a href="MlAlgoTrees.html#cb6-46"></a></span>
+<span id="cb6-47"><a href="MlAlgoTrees.html#cb6-47"></a>plt.suptitle(<span class="st">&quot;Decision surface of a decision tree using paired features&quot;</span>)</span>
+<span id="cb6-48"><a href="MlAlgoTrees.html#cb6-48"></a>plt.legend(loc<span class="op">=</span><span class="st">&#39;lower right&#39;</span>, borderpad<span class="op">=</span><span class="dv">0</span>, handletextpad<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-49"><a href="MlAlgoTrees.html#cb6-49"></a>plt.axis(<span class="st">&quot;tight&quot;</span>)</span>
+<span id="cb6-50"><a href="MlAlgoTrees.html#cb6-50"></a></span>
+<span id="cb6-51"><a href="MlAlgoTrees.html#cb6-51"></a>plt.figure(dpi <span class="op">=</span> <span class="dv">300</span>) <span class="co"># Uwe Sterr added dpi argument for better readability of plot</span></span>
+<span id="cb6-52"><a href="MlAlgoTrees.html#cb6-52"></a>clf <span class="op">=</span> DecisionTreeClassifier().fit(iris.data, iris.target)</span>
+<span id="cb6-53"><a href="MlAlgoTrees.html#cb6-53"></a>plot_tree(clf, filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-54"><a href="MlAlgoTrees.html#cb6-54"></a>plt.show()</span></code></pre></div>
 </div>
 <div id="ensembles" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> Ensembles</h3>
@@ -638,7 +643,7 @@ An example on how boosting works for tree is given in chapter <a href="MlAlgoTre
 </div>
 </div>
 <div id="MlAlgoTreesRandomForest" class="section level3">
-<h3><span class="header-section-number">8.3.3</span> Random forest TBD</h3>
+<h3><span class="header-section-number">8.3.3</span> Random forest</h3>
 <p>Random forest has its name from the randomly selected predictors at each split. The Algorithm is described in <span class="citation">(Kuhn and Johnson <a href="#ref-kuhn2013applied" role="doc-biblioref">2013</a>)</span> p. 200:</p>
 
 <div class="rmdtip">
@@ -685,23 +690,23 @@ An example on how boosting works for tree is given in chapter <a href="MlAlgoTre
 <h4><span class="header-section-number">8.3.3.1</span> Python example for random forest</h4>
 <p>The sample code for a random forest classifier produces a ROC image as shown below</p>
 <p><img src="images/rocRfPython.png" style="width:60.0%" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="MlAlgoTrees.html#cb6-1"></a></span>
-<span id="cb6-2"><a href="MlAlgoTrees.html#cb6-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-3"><a href="MlAlgoTrees.html#cb6-3"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb6-4"><a href="MlAlgoTrees.html#cb6-4"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> plot_roc_curve</span>
-<span id="cb6-5"><a href="MlAlgoTrees.html#cb6-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_wine</span>
-<span id="cb6-6"><a href="MlAlgoTrees.html#cb6-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb6-7"><a href="MlAlgoTrees.html#cb6-7"></a></span>
-<span id="cb6-8"><a href="MlAlgoTrees.html#cb6-8"></a>X, y <span class="op">=</span> load_wine(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-9"><a href="MlAlgoTrees.html#cb6-9"></a>y <span class="op">=</span> y <span class="op">==</span> <span class="dv">2</span></span>
-<span id="cb6-10"><a href="MlAlgoTrees.html#cb6-10"></a></span>
-<span id="cb6-11"><a href="MlAlgoTrees.html#cb6-11"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb6-12"><a href="MlAlgoTrees.html#cb6-12"></a></span>
-<span id="cb6-13"><a href="MlAlgoTrees.html#cb6-13"></a>rfc <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb6-14"><a href="MlAlgoTrees.html#cb6-14"></a>rfc.fit(X_train, y_train)</span>
-<span id="cb6-15"><a href="MlAlgoTrees.html#cb6-15"></a>ax <span class="op">=</span> plt.gca()</span>
-<span id="cb6-16"><a href="MlAlgoTrees.html#cb6-16"></a>rfc_disp <span class="op">=</span> plot_roc_curve(rfc, X_test, y_test, ax<span class="op">=</span>ax, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb6-17"><a href="MlAlgoTrees.html#cb6-17"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="MlAlgoTrees.html#cb7-1"></a></span>
+<span id="cb7-2"><a href="MlAlgoTrees.html#cb7-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="MlAlgoTrees.html#cb7-3"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb7-4"><a href="MlAlgoTrees.html#cb7-4"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> plot_roc_curve</span>
+<span id="cb7-5"><a href="MlAlgoTrees.html#cb7-5"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_wine</span>
+<span id="cb7-6"><a href="MlAlgoTrees.html#cb7-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb7-7"><a href="MlAlgoTrees.html#cb7-7"></a></span>
+<span id="cb7-8"><a href="MlAlgoTrees.html#cb7-8"></a>X, y <span class="op">=</span> load_wine(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-9"><a href="MlAlgoTrees.html#cb7-9"></a>y <span class="op">=</span> y <span class="op">==</span> <span class="dv">2</span></span>
+<span id="cb7-10"><a href="MlAlgoTrees.html#cb7-10"></a></span>
+<span id="cb7-11"><a href="MlAlgoTrees.html#cb7-11"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb7-12"><a href="MlAlgoTrees.html#cb7-12"></a></span>
+<span id="cb7-13"><a href="MlAlgoTrees.html#cb7-13"></a>rfc <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb7-14"><a href="MlAlgoTrees.html#cb7-14"></a>rfc.fit(X_train, y_train)</span>
+<span id="cb7-15"><a href="MlAlgoTrees.html#cb7-15"></a>ax <span class="op">=</span> plt.gca()</span>
+<span id="cb7-16"><a href="MlAlgoTrees.html#cb7-16"></a>rfc_disp <span class="op">=</span> plot_roc_curve(rfc, X_test, y_test, ax<span class="op">=</span>ax, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb7-17"><a href="MlAlgoTrees.html#cb7-17"></a>plt.show()</span></code></pre></div>
 </div>
 <div id="parameters-for-random-forest" class="section level4">
 <h4><span class="header-section-number">8.3.3.2</span> Parameters for random forest</h4>
@@ -1064,7 +1069,7 @@ If float, then draw <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <div id="MlAlgoTreesGBM" class="section level3">
-<h3><span class="header-section-number">8.3.4</span> Boosted trees TBD</h3>
+<h3><span class="header-section-number">8.3.4</span> Boosted trees</h3>
 <p>Boosted trees are an ensemble of weak learners where each learner is build on the knowledge gained by all previous learners.</p>
 <p>The following image depicts the algorithm which can be summarized:</p>
 
@@ -1124,86 +1129,86 @@ If float, then draw <code class="docutils literal notranslate"><span class="pre"
 <p>A popular library for boosted trees in Python is <strong>XGBoost</strong>, the documentation is hosted at <a href="https://xgboost.readthedocs.io/en/latest/" class="uri">https://xgboost.readthedocs.io/en/latest/</a>.<br />
 Plenty of examples are on the GitHub page <a href="https://github.com/dmlc/xgboost/tree/master/demo/guide-python" class="uri">https://github.com/dmlc/xgboost/tree/master/demo/guide-python</a>.</p>
 <p>The example script <strong>basic_walkthrough.py</strong> is shown below</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="MlAlgoTrees.html#cb7-1"></a><span class="co">#!/usr/bin/python</span></span>
-<span id="cb7-2"><a href="MlAlgoTrees.html#cb7-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-3"><a href="MlAlgoTrees.html#cb7-3"></a><span class="im">import</span> scipy.sparse</span>
-<span id="cb7-4"><a href="MlAlgoTrees.html#cb7-4"></a><span class="im">import</span> pickle</span>
-<span id="cb7-5"><a href="MlAlgoTrees.html#cb7-5"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
-<span id="cb7-6"><a href="MlAlgoTrees.html#cb7-6"></a></span>
-<span id="cb7-7"><a href="MlAlgoTrees.html#cb7-7"></a><span class="co">### simple example</span></span>
-<span id="cb7-8"><a href="MlAlgoTrees.html#cb7-8"></a><span class="co"># load file from text file, also binary buffer generated by xgboost</span></span>
-<span id="cb7-9"><a href="MlAlgoTrees.html#cb7-9"></a>dtrain <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>)</span>
-<span id="cb7-10"><a href="MlAlgoTrees.html#cb7-10"></a>dtest <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.test&#39;</span>)</span>
-<span id="cb7-11"><a href="MlAlgoTrees.html#cb7-11"></a></span>
-<span id="cb7-12"><a href="MlAlgoTrees.html#cb7-12"></a><span class="co"># specify parameters via map, definition are same as c++ version</span></span>
-<span id="cb7-13"><a href="MlAlgoTrees.html#cb7-13"></a>param <span class="op">=</span> {<span class="st">&#39;max_depth&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;eta&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;silent&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;objective&#39;</span>:<span class="st">&#39;binary:logistic&#39;</span>}</span>
-<span id="cb7-14"><a href="MlAlgoTrees.html#cb7-14"></a></span>
-<span id="cb7-15"><a href="MlAlgoTrees.html#cb7-15"></a><span class="co"># specify validations set to watch performance</span></span>
-<span id="cb7-16"><a href="MlAlgoTrees.html#cb7-16"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb7-17"><a href="MlAlgoTrees.html#cb7-17"></a>num_round <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb7-18"><a href="MlAlgoTrees.html#cb7-18"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
-<span id="cb7-19"><a href="MlAlgoTrees.html#cb7-19"></a></span>
-<span id="cb7-20"><a href="MlAlgoTrees.html#cb7-20"></a><span class="co"># this is prediction</span></span>
-<span id="cb7-21"><a href="MlAlgoTrees.html#cb7-21"></a>preds <span class="op">=</span> bst.predict(dtest)</span>
-<span id="cb7-22"><a href="MlAlgoTrees.html#cb7-22"></a>labels <span class="op">=</span> dtest.get_label()</span>
-<span id="cb7-23"><a href="MlAlgoTrees.html#cb7-23"></a><span class="bu">print</span>(<span class="st">&#39;error=</span><span class="sc">%f</span><span class="st">&#39;</span> <span class="op">%</span> (<span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(preds)) <span class="cf">if</span> <span class="bu">int</span>(preds[i] <span class="op">&gt;</span> <span class="fl">0.5</span>) <span class="op">!=</span> labels[i]) <span class="op">/</span> <span class="bu">float</span>(<span class="bu">len</span>(preds))))</span>
-<span id="cb7-24"><a href="MlAlgoTrees.html#cb7-24"></a>bst.save_model(<span class="st">&#39;0001.model&#39;</span>)</span>
-<span id="cb7-25"><a href="MlAlgoTrees.html#cb7-25"></a><span class="co"># dump model</span></span>
-<span id="cb7-26"><a href="MlAlgoTrees.html#cb7-26"></a>bst.dump_model(<span class="st">&#39;dump.raw.txt&#39;</span>)</span>
-<span id="cb7-27"><a href="MlAlgoTrees.html#cb7-27"></a><span class="co"># dump model with feature map</span></span>
-<span id="cb7-28"><a href="MlAlgoTrees.html#cb7-28"></a>bst.dump_model(<span class="st">&#39;dump.nice.txt&#39;</span>, <span class="st">&#39;../data/featmap.txt&#39;</span>)</span>
-<span id="cb7-29"><a href="MlAlgoTrees.html#cb7-29"></a></span>
-<span id="cb7-30"><a href="MlAlgoTrees.html#cb7-30"></a><span class="co"># save dmatrix into binary buffer</span></span>
-<span id="cb7-31"><a href="MlAlgoTrees.html#cb7-31"></a>dtest.save_binary(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
-<span id="cb7-32"><a href="MlAlgoTrees.html#cb7-32"></a><span class="co"># save model</span></span>
-<span id="cb7-33"><a href="MlAlgoTrees.html#cb7-33"></a>bst.save_model(<span class="st">&#39;xgb.model&#39;</span>)</span>
-<span id="cb7-34"><a href="MlAlgoTrees.html#cb7-34"></a><span class="co"># load model and data in</span></span>
-<span id="cb7-35"><a href="MlAlgoTrees.html#cb7-35"></a>bst2 <span class="op">=</span> xgb.Booster(model_file<span class="op">=</span><span class="st">&#39;xgb.model&#39;</span>)</span>
-<span id="cb7-36"><a href="MlAlgoTrees.html#cb7-36"></a>dtest2 <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
-<span id="cb7-37"><a href="MlAlgoTrees.html#cb7-37"></a>preds2 <span class="op">=</span> bst2.predict(dtest2)</span>
-<span id="cb7-38"><a href="MlAlgoTrees.html#cb7-38"></a><span class="co"># assert they are the same</span></span>
-<span id="cb7-39"><a href="MlAlgoTrees.html#cb7-39"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds2 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb7-40"><a href="MlAlgoTrees.html#cb7-40"></a></span>
-<span id="cb7-41"><a href="MlAlgoTrees.html#cb7-41"></a><span class="co"># alternatively, you can pickle the booster</span></span>
-<span id="cb7-42"><a href="MlAlgoTrees.html#cb7-42"></a>pks <span class="op">=</span> pickle.dumps(bst2)</span>
-<span id="cb7-43"><a href="MlAlgoTrees.html#cb7-43"></a><span class="co"># load model and data in</span></span>
-<span id="cb7-44"><a href="MlAlgoTrees.html#cb7-44"></a>bst3 <span class="op">=</span> pickle.loads(pks)</span>
-<span id="cb7-45"><a href="MlAlgoTrees.html#cb7-45"></a>preds3 <span class="op">=</span> bst3.predict(dtest2)</span>
-<span id="cb7-46"><a href="MlAlgoTrees.html#cb7-46"></a><span class="co"># assert they are the same</span></span>
-<span id="cb7-47"><a href="MlAlgoTrees.html#cb7-47"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds3 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb7-48"><a href="MlAlgoTrees.html#cb7-48"></a></span>
-<span id="cb7-49"><a href="MlAlgoTrees.html#cb7-49"></a><span class="co">###</span></span>
-<span id="cb7-50"><a href="MlAlgoTrees.html#cb7-50"></a><span class="co"># build dmatrix from scipy.sparse</span></span>
-<span id="cb7-51"><a href="MlAlgoTrees.html#cb7-51"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSR Matrix&#39;</span>)</span>
-<span id="cb7-52"><a href="MlAlgoTrees.html#cb7-52"></a>labels <span class="op">=</span> []</span>
-<span id="cb7-53"><a href="MlAlgoTrees.html#cb7-53"></a>row <span class="op">=</span> []<span class="op">;</span> col <span class="op">=</span> []<span class="op">;</span> dat <span class="op">=</span> []</span>
-<span id="cb7-54"><a href="MlAlgoTrees.html#cb7-54"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-55"><a href="MlAlgoTrees.html#cb7-55"></a><span class="cf">for</span> l <span class="kw">in</span> <span class="bu">open</span>(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>):</span>
-<span id="cb7-56"><a href="MlAlgoTrees.html#cb7-56"></a>    arr <span class="op">=</span> l.split()</span>
-<span id="cb7-57"><a href="MlAlgoTrees.html#cb7-57"></a>    labels.append(<span class="bu">int</span>(arr[<span class="dv">0</span>]))</span>
-<span id="cb7-58"><a href="MlAlgoTrees.html#cb7-58"></a>    <span class="cf">for</span> it <span class="kw">in</span> arr[<span class="dv">1</span>:]:</span>
-<span id="cb7-59"><a href="MlAlgoTrees.html#cb7-59"></a>        k,v <span class="op">=</span> it.split(<span class="st">&#39;:&#39;</span>)</span>
-<span id="cb7-60"><a href="MlAlgoTrees.html#cb7-60"></a>        row.append(i)<span class="op">;</span> col.append(<span class="bu">int</span>(k))<span class="op">;</span> dat.append(<span class="bu">float</span>(v))</span>
-<span id="cb7-61"><a href="MlAlgoTrees.html#cb7-61"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb7-62"><a href="MlAlgoTrees.html#cb7-62"></a>csr <span class="op">=</span> scipy.sparse.csr_matrix((dat, (row, col)))</span>
-<span id="cb7-63"><a href="MlAlgoTrees.html#cb7-63"></a>dtrain <span class="op">=</span> xgb.DMatrix(csr, label<span class="op">=</span>labels)</span>
-<span id="cb7-64"><a href="MlAlgoTrees.html#cb7-64"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb7-65"><a href="MlAlgoTrees.html#cb7-65"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
-<span id="cb7-66"><a href="MlAlgoTrees.html#cb7-66"></a></span>
-<span id="cb7-67"><a href="MlAlgoTrees.html#cb7-67"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSC Matrix&#39;</span>)</span>
-<span id="cb7-68"><a href="MlAlgoTrees.html#cb7-68"></a><span class="co"># we can also construct from csc matrix</span></span>
-<span id="cb7-69"><a href="MlAlgoTrees.html#cb7-69"></a>csc <span class="op">=</span> scipy.sparse.csc_matrix((dat, (row, col)))</span>
-<span id="cb7-70"><a href="MlAlgoTrees.html#cb7-70"></a>dtrain <span class="op">=</span> xgb.DMatrix(csc, label<span class="op">=</span>labels)</span>
-<span id="cb7-71"><a href="MlAlgoTrees.html#cb7-71"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb7-72"><a href="MlAlgoTrees.html#cb7-72"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
-<span id="cb7-73"><a href="MlAlgoTrees.html#cb7-73"></a></span>
-<span id="cb7-74"><a href="MlAlgoTrees.html#cb7-74"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from numpy array&#39;</span>)</span>
-<span id="cb7-75"><a href="MlAlgoTrees.html#cb7-75"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: npymat is numpy array, we will convert it into scipy.sparse.csr_matrix in internal implementation</span></span>
-<span id="cb7-76"><a href="MlAlgoTrees.html#cb7-76"></a><span class="co"># then convert to DMatrix</span></span>
-<span id="cb7-77"><a href="MlAlgoTrees.html#cb7-77"></a>npymat <span class="op">=</span> csr.todense()</span>
-<span id="cb7-78"><a href="MlAlgoTrees.html#cb7-78"></a>dtrain <span class="op">=</span> xgb.DMatrix(npymat, label<span class="op">=</span>labels)</span>
-<span id="cb7-79"><a href="MlAlgoTrees.html#cb7-79"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
-<span id="cb7-80"><a href="MlAlgoTrees.html#cb7-80"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="MlAlgoTrees.html#cb8-1"></a><span class="co">#!/usr/bin/python</span></span>
+<span id="cb8-2"><a href="MlAlgoTrees.html#cb8-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="MlAlgoTrees.html#cb8-3"></a><span class="im">import</span> scipy.sparse</span>
+<span id="cb8-4"><a href="MlAlgoTrees.html#cb8-4"></a><span class="im">import</span> pickle</span>
+<span id="cb8-5"><a href="MlAlgoTrees.html#cb8-5"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
+<span id="cb8-6"><a href="MlAlgoTrees.html#cb8-6"></a></span>
+<span id="cb8-7"><a href="MlAlgoTrees.html#cb8-7"></a><span class="co">### simple example</span></span>
+<span id="cb8-8"><a href="MlAlgoTrees.html#cb8-8"></a><span class="co"># load file from text file, also binary buffer generated by xgboost</span></span>
+<span id="cb8-9"><a href="MlAlgoTrees.html#cb8-9"></a>dtrain <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>)</span>
+<span id="cb8-10"><a href="MlAlgoTrees.html#cb8-10"></a>dtest <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;../data/agaricus.txt.test&#39;</span>)</span>
+<span id="cb8-11"><a href="MlAlgoTrees.html#cb8-11"></a></span>
+<span id="cb8-12"><a href="MlAlgoTrees.html#cb8-12"></a><span class="co"># specify parameters via map, definition are same as c++ version</span></span>
+<span id="cb8-13"><a href="MlAlgoTrees.html#cb8-13"></a>param <span class="op">=</span> {<span class="st">&#39;max_depth&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;eta&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;silent&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;objective&#39;</span>:<span class="st">&#39;binary:logistic&#39;</span>}</span>
+<span id="cb8-14"><a href="MlAlgoTrees.html#cb8-14"></a></span>
+<span id="cb8-15"><a href="MlAlgoTrees.html#cb8-15"></a><span class="co"># specify validations set to watch performance</span></span>
+<span id="cb8-16"><a href="MlAlgoTrees.html#cb8-16"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb8-17"><a href="MlAlgoTrees.html#cb8-17"></a>num_round <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb8-18"><a href="MlAlgoTrees.html#cb8-18"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb8-19"><a href="MlAlgoTrees.html#cb8-19"></a></span>
+<span id="cb8-20"><a href="MlAlgoTrees.html#cb8-20"></a><span class="co"># this is prediction</span></span>
+<span id="cb8-21"><a href="MlAlgoTrees.html#cb8-21"></a>preds <span class="op">=</span> bst.predict(dtest)</span>
+<span id="cb8-22"><a href="MlAlgoTrees.html#cb8-22"></a>labels <span class="op">=</span> dtest.get_label()</span>
+<span id="cb8-23"><a href="MlAlgoTrees.html#cb8-23"></a><span class="bu">print</span>(<span class="st">&#39;error=</span><span class="sc">%f</span><span class="st">&#39;</span> <span class="op">%</span> (<span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(preds)) <span class="cf">if</span> <span class="bu">int</span>(preds[i] <span class="op">&gt;</span> <span class="fl">0.5</span>) <span class="op">!=</span> labels[i]) <span class="op">/</span> <span class="bu">float</span>(<span class="bu">len</span>(preds))))</span>
+<span id="cb8-24"><a href="MlAlgoTrees.html#cb8-24"></a>bst.save_model(<span class="st">&#39;0001.model&#39;</span>)</span>
+<span id="cb8-25"><a href="MlAlgoTrees.html#cb8-25"></a><span class="co"># dump model</span></span>
+<span id="cb8-26"><a href="MlAlgoTrees.html#cb8-26"></a>bst.dump_model(<span class="st">&#39;dump.raw.txt&#39;</span>)</span>
+<span id="cb8-27"><a href="MlAlgoTrees.html#cb8-27"></a><span class="co"># dump model with feature map</span></span>
+<span id="cb8-28"><a href="MlAlgoTrees.html#cb8-28"></a>bst.dump_model(<span class="st">&#39;dump.nice.txt&#39;</span>, <span class="st">&#39;../data/featmap.txt&#39;</span>)</span>
+<span id="cb8-29"><a href="MlAlgoTrees.html#cb8-29"></a></span>
+<span id="cb8-30"><a href="MlAlgoTrees.html#cb8-30"></a><span class="co"># save dmatrix into binary buffer</span></span>
+<span id="cb8-31"><a href="MlAlgoTrees.html#cb8-31"></a>dtest.save_binary(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
+<span id="cb8-32"><a href="MlAlgoTrees.html#cb8-32"></a><span class="co"># save model</span></span>
+<span id="cb8-33"><a href="MlAlgoTrees.html#cb8-33"></a>bst.save_model(<span class="st">&#39;xgb.model&#39;</span>)</span>
+<span id="cb8-34"><a href="MlAlgoTrees.html#cb8-34"></a><span class="co"># load model and data in</span></span>
+<span id="cb8-35"><a href="MlAlgoTrees.html#cb8-35"></a>bst2 <span class="op">=</span> xgb.Booster(model_file<span class="op">=</span><span class="st">&#39;xgb.model&#39;</span>)</span>
+<span id="cb8-36"><a href="MlAlgoTrees.html#cb8-36"></a>dtest2 <span class="op">=</span> xgb.DMatrix(<span class="st">&#39;dtest.buffer&#39;</span>)</span>
+<span id="cb8-37"><a href="MlAlgoTrees.html#cb8-37"></a>preds2 <span class="op">=</span> bst2.predict(dtest2)</span>
+<span id="cb8-38"><a href="MlAlgoTrees.html#cb8-38"></a><span class="co"># assert they are the same</span></span>
+<span id="cb8-39"><a href="MlAlgoTrees.html#cb8-39"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds2 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb8-40"><a href="MlAlgoTrees.html#cb8-40"></a></span>
+<span id="cb8-41"><a href="MlAlgoTrees.html#cb8-41"></a><span class="co"># alternatively, you can pickle the booster</span></span>
+<span id="cb8-42"><a href="MlAlgoTrees.html#cb8-42"></a>pks <span class="op">=</span> pickle.dumps(bst2)</span>
+<span id="cb8-43"><a href="MlAlgoTrees.html#cb8-43"></a><span class="co"># load model and data in</span></span>
+<span id="cb8-44"><a href="MlAlgoTrees.html#cb8-44"></a>bst3 <span class="op">=</span> pickle.loads(pks)</span>
+<span id="cb8-45"><a href="MlAlgoTrees.html#cb8-45"></a>preds3 <span class="op">=</span> bst3.predict(dtest2)</span>
+<span id="cb8-46"><a href="MlAlgoTrees.html#cb8-46"></a><span class="co"># assert they are the same</span></span>
+<span id="cb8-47"><a href="MlAlgoTrees.html#cb8-47"></a><span class="cf">assert</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(preds3 <span class="op">-</span> preds)) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb8-48"><a href="MlAlgoTrees.html#cb8-48"></a></span>
+<span id="cb8-49"><a href="MlAlgoTrees.html#cb8-49"></a><span class="co">###</span></span>
+<span id="cb8-50"><a href="MlAlgoTrees.html#cb8-50"></a><span class="co"># build dmatrix from scipy.sparse</span></span>
+<span id="cb8-51"><a href="MlAlgoTrees.html#cb8-51"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSR Matrix&#39;</span>)</span>
+<span id="cb8-52"><a href="MlAlgoTrees.html#cb8-52"></a>labels <span class="op">=</span> []</span>
+<span id="cb8-53"><a href="MlAlgoTrees.html#cb8-53"></a>row <span class="op">=</span> []<span class="op">;</span> col <span class="op">=</span> []<span class="op">;</span> dat <span class="op">=</span> []</span>
+<span id="cb8-54"><a href="MlAlgoTrees.html#cb8-54"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-55"><a href="MlAlgoTrees.html#cb8-55"></a><span class="cf">for</span> l <span class="kw">in</span> <span class="bu">open</span>(<span class="st">&#39;../data/agaricus.txt.train&#39;</span>):</span>
+<span id="cb8-56"><a href="MlAlgoTrees.html#cb8-56"></a>    arr <span class="op">=</span> l.split()</span>
+<span id="cb8-57"><a href="MlAlgoTrees.html#cb8-57"></a>    labels.append(<span class="bu">int</span>(arr[<span class="dv">0</span>]))</span>
+<span id="cb8-58"><a href="MlAlgoTrees.html#cb8-58"></a>    <span class="cf">for</span> it <span class="kw">in</span> arr[<span class="dv">1</span>:]:</span>
+<span id="cb8-59"><a href="MlAlgoTrees.html#cb8-59"></a>        k,v <span class="op">=</span> it.split(<span class="st">&#39;:&#39;</span>)</span>
+<span id="cb8-60"><a href="MlAlgoTrees.html#cb8-60"></a>        row.append(i)<span class="op">;</span> col.append(<span class="bu">int</span>(k))<span class="op">;</span> dat.append(<span class="bu">float</span>(v))</span>
+<span id="cb8-61"><a href="MlAlgoTrees.html#cb8-61"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-62"><a href="MlAlgoTrees.html#cb8-62"></a>csr <span class="op">=</span> scipy.sparse.csr_matrix((dat, (row, col)))</span>
+<span id="cb8-63"><a href="MlAlgoTrees.html#cb8-63"></a>dtrain <span class="op">=</span> xgb.DMatrix(csr, label<span class="op">=</span>labels)</span>
+<span id="cb8-64"><a href="MlAlgoTrees.html#cb8-64"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb8-65"><a href="MlAlgoTrees.html#cb8-65"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb8-66"><a href="MlAlgoTrees.html#cb8-66"></a></span>
+<span id="cb8-67"><a href="MlAlgoTrees.html#cb8-67"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from scipy.sparse CSC Matrix&#39;</span>)</span>
+<span id="cb8-68"><a href="MlAlgoTrees.html#cb8-68"></a><span class="co"># we can also construct from csc matrix</span></span>
+<span id="cb8-69"><a href="MlAlgoTrees.html#cb8-69"></a>csc <span class="op">=</span> scipy.sparse.csc_matrix((dat, (row, col)))</span>
+<span id="cb8-70"><a href="MlAlgoTrees.html#cb8-70"></a>dtrain <span class="op">=</span> xgb.DMatrix(csc, label<span class="op">=</span>labels)</span>
+<span id="cb8-71"><a href="MlAlgoTrees.html#cb8-71"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb8-72"><a href="MlAlgoTrees.html#cb8-72"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span>
+<span id="cb8-73"><a href="MlAlgoTrees.html#cb8-73"></a></span>
+<span id="cb8-74"><a href="MlAlgoTrees.html#cb8-74"></a><span class="bu">print</span>(<span class="st">&#39;start running example of build DMatrix from numpy array&#39;</span>)</span>
+<span id="cb8-75"><a href="MlAlgoTrees.html#cb8-75"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: npymat is numpy array, we will convert it into scipy.sparse.csr_matrix in internal implementation</span></span>
+<span id="cb8-76"><a href="MlAlgoTrees.html#cb8-76"></a><span class="co"># then convert to DMatrix</span></span>
+<span id="cb8-77"><a href="MlAlgoTrees.html#cb8-77"></a>npymat <span class="op">=</span> csr.todense()</span>
+<span id="cb8-78"><a href="MlAlgoTrees.html#cb8-78"></a>dtrain <span class="op">=</span> xgb.DMatrix(npymat, label<span class="op">=</span>labels)</span>
+<span id="cb8-79"><a href="MlAlgoTrees.html#cb8-79"></a>watchlist <span class="op">=</span> [(dtest, <span class="st">&#39;eval&#39;</span>), (dtrain, <span class="st">&#39;train&#39;</span>)]</span>
+<span id="cb8-80"><a href="MlAlgoTrees.html#cb8-80"></a>bst <span class="op">=</span> xgb.train(param, dtrain, num_round, watchlist)</span></code></pre></div>
 <p>The parameters below are from their webpage <a href="https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters" class="uri">https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters</a></p>
 <div id="learning-task-parameters" class="section">
 <h2>

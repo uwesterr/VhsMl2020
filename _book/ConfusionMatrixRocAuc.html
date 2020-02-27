@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12.3 DeepAI: The front page of A.I. | Machine learning orientation</title>
+  <title>23.4 Performance measurement | Machine learning orientation</title>
   <meta name="description" content="A guide to machine learning" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12.3 DeepAI: The front page of A.I. | Machine learning orientation" />
+  <meta property="og:title" content="23.4 Performance measurement | Machine learning orientation" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.3 DeepAI: The front page of A.I. | Machine learning orientation" />
+  <meta name="twitter:title" content="23.4 Performance measurement | Machine learning orientation" />
   
   <meta name="twitter:description" content="A guide to machine learning" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-learning-machine.html"/>
-<link rel="next" href="tensorflow-tutorials.html"/>
+<link rel="prev" href="algorithm-selection.html"/>
+<link rel="next" href="confusion-matrix-and-roc-for-pulse.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -452,19 +452,87 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="deepai-the-front-page-of-a.i." class="section level2">
-<h2><span class="header-section-number">12.3</span> DeepAI: The front page of A.I.</h2>
-<p><a href="https://deepai.org" class="uri">https://deepai.org</a></p>
-<p>The most popular research, guides, news
-and more in artificial intelligence</p>
+<div id="ConfusionMatrixRocAuc" class="section level2">
+<h2><span class="header-section-number">23.4</span> Performance measurement</h2>
+<p>The performance for a classification task is measured with a confusion matrix</p>
+<p><img src="images/ConfusionMatrix.png" style="width:90.0%" /></p>
+
+<div class="rmdtip">
+<p>For more serios scenarios the false predictions can have severe impact:</p>
+<ul>
+<li>FP: False prediction
+<ul>
+<li>Healthy person is unesseary troubled</li>
+</ul></li>
+<li>FN: False negative
+<ul>
+<li>Ill person does not get necessary treatment</li>
+</ul></li>
+</ul>
+</div>
+
+<p>Based on the four elements of the confusion matrix <strong>various metrics are defined</strong>, for details check <a href="https://en.wikipedia.org/wiki/Confusion_matrix" class="uri">https://en.wikipedia.org/wiki/Confusion_matrix</a></p>
+<div id="sensitivity-and-specificity" class="section level3">
+<h3><span class="header-section-number">23.4.1</span> Sensitivity and specificity</h3>
+<p>Two metrics which are derived from the confusion matrix are:</p>
+<p><strong>Sensitivity</strong> is the proportion of cats which have been identified as cats, or the proportion of people with the illness that have been identified as being ill. It is therefore also called <strong>probability of detection</strong></p>
+
+<div class="rmdmath">
+<p><strong>Sensitivity</strong> =&gt; P(cat predicted | cat given)</p>
+<hr />
+<p><span class="math display">\[
+\
+Sensitivity = \frac
+{\text{Sample with cat and predicted cat}}
+{\text{Samples having cat}} = \frac{TP}{TP+FN}
+\]</span></p>
+</div>
+
+<p><strong>Specificity</strong> is the proportion of non-cats which have been identified as non-cats, or the proportion of healthy people which have been identified as healthy.</p>
+
+<div class="rmdmath">
+<p><strong>Specificity</strong> =&gt; P(non-cat predicted | non-cat observed)</p>
+<hr />
+<p><span class="math display">\[
+\
+Specificity = \frac
+{\text{Sample with non-cat and predicted as non-cat}}
+{\text{Samples with non-cat}} = \frac{TN}{TN+FP}
+\]</span></p>
+</div>
+
+</div>
+<div id="RocExplanation" class="section level3">
+<h3><span class="header-section-number">23.4.2</span> Receiver operating characteristic (ROC)</h3>
+<p>The result of a classification with two classes (binary classification) is given as a percentage value of how sure the algorithm is that the sample belongs to a class. Depending on the the overall project target the threshold upon which the class is rated as identified is set. If a false positive is to be avoided than the threshold for classifying a positive is set high.</p>
+
+<div class="rmdtip">
+<ul>
+<li>Used to set the probability threshold of detection</li>
+<li>Visual representation of confusion matrix</li>
+<li>Includes for various probability thresholds
+<ul>
+<li>Sensitivity</li>
+<li>Specificity</li>
+</ul></li>
+<li>AUC =&gt; area under curve
+<ul>
+<li>The higher the better</li>
+<li>0 &lt; AUC &lt; 1</li>
+</ul></li>
+</ul>
+</div>
+
+<p><img src="Figs/rocImage-1.png" width="1920" /></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="the-learning-machine.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tensorflow-tutorials.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="algorithm-selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="confusion-matrix-and-roc-for-pulse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

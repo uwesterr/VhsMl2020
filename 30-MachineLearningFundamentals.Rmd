@@ -1082,7 +1082,7 @@ There are several dimension reduction algorithms
     - reduced predictor space is optimally associated with the response
 </div>
 
-The +*embedding projector of TensorFlow** at http://projector.tensorflow.org gives great insight into PCA and t-SNE 
+The **embedding projector of TensorFlow** at http://projector.tensorflow.org gives great insight into PCA and t-SNE 
 Below a PCA of the Word2Vec 200 dimensional space onto three dimensions, the word *"neural"* and points close by are marked.
 
 
@@ -1296,7 +1296,204 @@ plt.show()
 ```
 
 
+<div class="HeadingNoNumber">
 
+Partial least squares 
+</div>
+
+Since PCA does not take into consideration any of the response information. PLS is a supervised version of PCA which reduced dimensions are optimally related to the response [@stone1990continuum]. 
+
+<div class="rmdtip">
+
+Partial least square (PLS) facts:
+
+- Supervised technique
+- Objective
+    - find linear functions (latent factors)
+    - with optimal covariance with response
+    - each new dimension is uncorrelated
+- Less PLS  than PCA dimensions are needed for same performance
+
+</div>
+
+
+---
+
+The following example is from https://scikit-learn.org/stable/auto_examples/cross_decomposition/plot_compare_cross_decomposition.html#sphx-glr-auto-examples-cross-decomposition-plot-compare-cross-decomposition-py and shows the **PLS components of two multivariate covarying two-dimensional datasets, X, and Y.**
+
+The scatterplot shows:
+
+- components 1 in dataset X and dataset Y are maximally correlated
+- components 2 in dataset X and dataset Y are maximally correlated
+- correlation across datasets for different components is weak
+
+![](images/plsScatterplot.png){width=100% .external}
+
+---
+
+The code of the example is given below.
+
+```python
+"""
+===================================
+Compare cross decomposition methods
+===================================
+
+Simple usage of various cross decomposition algorithms:
+- PLSCanonical
+- PLSRegression, with multivariate response, a.k.a. PLS2
+- PLSRegression, with univariate response, a.k.a. PLS1
+- CCA
+
+Given 2 multivariate covarying two-dimensional datasets, X, and Y,
+PLS extracts the 'directions of covariance', i.e. the components of each
+datasets that explain the most shared variance between both datasets.
+This is apparent on the **scatterplot matrix** display: components 1 in
+dataset X and dataset Y are maximally correlated (points lie around the
+first diagonal). This is also true for components 2 in both dataset,
+however, the correlation across datasets for different components is
+weak: the point cloud is very spherical.
+"""
+print(__doc__)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cross_decomposition import PLSCanonical, PLSRegression, CCA
+
+# #############################################################################
+# Dataset based latent variables model
+
+n = 500
+# 2 latents vars:
+l1 = np.random.normal(size=n)
+l2 = np.random.normal(size=n)
+
+latents = np.array([l1, l1, l2, l2]).T
+X = latents + np.random.normal(size=4 * n).reshape((n, 4))
+Y = latents + np.random.normal(size=4 * n).reshape((n, 4))
+
+X_train = X[:n // 2]
+Y_train = Y[:n // 2]
+X_test = X[n // 2:]
+Y_test = Y[n // 2:]
+
+print("Corr(X)")
+print(np.round(np.corrcoef(X.T), 2))
+print("Corr(Y)")
+print(np.round(np.corrcoef(Y.T), 2))
+
+# #############################################################################
+# Canonical (symmetric) PLS
+
+# Transform data
+# ~~~~~~~~~~~~~~
+plsca = PLSCanonical(n_components=2)
+plsca.fit(X_train, Y_train)
+X_train_r, Y_train_r = plsca.transform(X_train, Y_train)
+X_test_r, Y_test_r = plsca.transform(X_test, Y_test)
+
+# Scatter plot of scores
+# ~~~~~~~~~~~~~~~~~~~~~~
+# 1) On diagonal plot X vs Y scores on each components
+plt.figure(figsize=(12, 8))
+plt.subplot(221)
+plt.scatter(X_train_r[:, 0], Y_train_r[:, 0], label="train",
+            marker="o", c="b", s=25)
+plt.scatter(X_test_r[:, 0], Y_test_r[:, 0], label="test",
+            marker="o", c="r", s=25)
+plt.xlabel("x scores")
+plt.ylabel("y scores")
+plt.title('Comp. 1: X vs Y (test corr = %.2f)' %
+          np.corrcoef(X_test_r[:, 0], Y_test_r[:, 0])[0, 1])
+plt.xticks(())
+plt.yticks(())
+plt.legend(loc="best")
+
+plt.subplot(224)
+plt.scatter(X_train_r[:, 1], Y_train_r[:, 1], label="train",
+            marker="o", c="b", s=25)
+plt.scatter(X_test_r[:, 1], Y_test_r[:, 1], label="test",
+            marker="o", c="r", s=25)
+plt.xlabel("x scores")
+plt.ylabel("y scores")
+plt.title('Comp. 2: X vs Y (test corr = %.2f)' %
+          np.corrcoef(X_test_r[:, 1], Y_test_r[:, 1])[0, 1])
+plt.xticks(())
+plt.yticks(())
+plt.legend(loc="best")
+
+# 2) Off diagonal plot components 1 vs 2 for X and Y
+plt.subplot(222)
+plt.scatter(X_train_r[:, 0], X_train_r[:, 1], label="train",
+            marker="*", c="b", s=50)
+plt.scatter(X_test_r[:, 0], X_test_r[:, 1], label="test",
+            marker="*", c="r", s=50)
+plt.xlabel("X comp. 1")
+plt.ylabel("X comp. 2")
+plt.title('X comp. 1 vs X comp. 2 (test corr = %.2f)'
+          % np.corrcoef(X_test_r[:, 0], X_test_r[:, 1])[0, 1])
+plt.legend(loc="best")
+plt.xticks(())
+plt.yticks(())
+
+plt.subplot(223)
+plt.scatter(Y_train_r[:, 0], Y_train_r[:, 1], label="train",
+            marker="*", c="b", s=50)
+plt.scatter(Y_test_r[:, 0], Y_test_r[:, 1], label="test",
+            marker="*", c="r", s=50)
+plt.xlabel("Y comp. 1")
+plt.ylabel("Y comp. 2")
+plt.title('Y comp. 1 vs Y comp. 2 , (test corr = %.2f)'
+          % np.corrcoef(Y_test_r[:, 0], Y_test_r[:, 1])[0, 1])
+plt.legend(loc="best")
+plt.xticks(())
+plt.yticks(())
+plt.show()
+
+# #############################################################################
+# PLS regression, with multivariate response, a.k.a. PLS2
+
+n = 1000
+q = 3
+p = 10
+X = np.random.normal(size=n * p).reshape((n, p))
+B = np.array([[1, 2] + [0] * (p - 2)] * q).T
+# each Yj = 1*X1 + 2*X2 + noize
+Y = np.dot(X, B) + np.random.normal(size=n * q).reshape((n, q)) + 5
+
+pls2 = PLSRegression(n_components=3)
+pls2.fit(X, Y)
+print("True B (such that: Y = XB + Err)")
+print(B)
+# compare pls2.coef_ with B
+print("Estimated B")
+print(np.round(pls2.coef_, 1))
+pls2.predict(X)
+
+# PLS regression, with univariate response, a.k.a. PLS1
+
+n = 1000
+p = 10
+X = np.random.normal(size=n * p).reshape((n, p))
+y = X[:, 0] + 2 * X[:, 1] + np.random.normal(size=n * 1) + 5
+pls1 = PLSRegression(n_components=3)
+pls1.fit(X, y)
+# note that the number of components exceeds 1 (the dimension of y)
+print("Estimated betas")
+print(np.round(pls1.coef_, 1))
+
+# #############################################################################
+# CCA (PLS mode B with symmetric deflation)
+
+cca = CCA(n_components=2)
+cca.fit(X_train, Y_train)
+X_train_r, Y_train_r = cca.transform(X_train, Y_train)
+X_test_r, Y_test_r = cca.transform(X_test, Y_test)
+
+```
+
+
+---
 
 <div class="HeadingNoNumber">
 
@@ -1471,6 +1668,9 @@ Permutation importance:
 
 ---
 
+In the image below a dendrogram of the hierarchical cluster on the left hand side is derived of the correlation matrix on the right hand side.
+
+--- 
 
 ![](images/clusterSpearman.png){width=100%}
 
@@ -1538,6 +1738,239 @@ hyperparameters define specifics of the model, e.g. the number of trees for rand
 </div>
 
 
+There are may different metrics for which the model can be optimized 
+
+### Metrics
+
+Metrics express how well suited a model is for a given task. Depending on what is needed from the model different metrics can be employed. 
+For classification and regression models different metrics are defined.
+
+#### Metrics for classification
+
+Metrics for classification express how well the model assigns classes to the samples
+
+<div class="HeadingNoNumber">
+Accuracy 
+</div>
+
+
+Is the **ratio of correct predictions to total number of predictions** for classification problems. For unbalanced data sets the accuracy is not very well suited
+
+<div class="rmdtip">
+Accuracy:
+
+- Ratio of correct to total predictions
+- Not suited for unbalanced data set
+    - Two class problem
+    - 98% class A, 2% class B
+    - Predict always class A 
+    - $\implies$ accuracy = 98%
+
+</div>
+
+<div class="rmdmath">
+
+$\text{Accuracy} = \frac{\text{Number of Correct predictions}}{\text{Total number of predictions made}}$
+
+</div>
+
+<div class="HeadingNoNumber">
+Log Loss
+</div>
+
+
+Logarithmic Loss or Log Loss becomes high if a sample is **misclassified and therefore penalizes them.**
+
+<div class="rmdtip">
+
+<p>Logarithmic Loss:<img src="images/log_loss.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+- penalizes misclassifications
+- log loss near 0 $\implies$ accuracy $\Uparrow$
+
+</div>
+
+
+<div class="rmdmath">
+
+$$\text{Logarithmic Loss}=\frac{-1}{N} \sum_{i=1}^{N} \sum_{j=1}^{M} y_{i j} * \log \left(p_{i j}\right)$$
+
+---
+
+where:  
+
+- $y_{i j}$: indicates whether sample $i$ belongs to class $j$ or not
+- $p_{i j}$: indicates probability of sample $i$ belongs to class $j$ 
+
+</div>
+
+---
+
+![Figure from  https://conorsdatablog.wordpress.com/2018/03/03/log-loss-a-short-note/](images/log_loss.png){width=80% .external}
+
+---
+
+
+
+
+<div class="HeadingNoNumber">
+Receiver operating characteristic (ROC)
+</div>
+
+
+
+The result of a classification with two classes (binary classification) is given as a percentage value of how sure the algorithm is that the sample belongs to a class. Depending on the the overall project target the threshold upon which the class is rated as identified is set. If a false positive is to be avoided than the threshold for classifying a positive is set high.
+
+ROC is a graphical representation of how the chosen threshold affects the specificity and sensitivity of the model.
+
+
+<div class="rmdtip">
+
+<p>Receiver operating characteristic (ROC):<img src="images/rocAnimation.gif" alt="Smiley face" align="right" style="width:40%;"></p>
+
+- Result of classification is probability of belonging to class
+- Thresholds divides classes
+- Selection of threshold changes
+    - sensitivity
+    - specific
+-  ROC is graphical representation of threshold variation  
+    
+
+</div>
+
+
+A detailed explanation is given in chapter \@ref(RocExplanation)
+
+<div class="HeadingNoNumber">
+Area under curve (AUC)
+</div>
+
+The area under the Receiver operating characteristic (ROC) curve is called AUC. Since it is a numerical value it is suited to act as a metric to optimize a model. The value is in the range of  $0\leq AUC \geq 1$, the better the algorithm predicts the classes the higher the value. If all samples are predicted correctly the AUC = 1
+
+<div class="rmdtip">
+
+Area under curve (AUC):
+
+
+- Numeric value
+    - can be used to optimize hyperparameters
+- Value range $0\leq AUC \geq 1$
+- The better the model the higher AUC
+    perfect model $\implies$ AUC = 1
+    
+
+</div>
+
+
+<div class="HeadingNoNumber">
+Confusion matrix 
+</div>
+
+Confusion matrix is a matrix which contains the number of all combinations of predicted and true labels. It is a powerful metric but needs some practice to read.
+
+
+<div class="rmdtip">
+<p>Confusion matrix:<img src="images/ConfusionMatrix.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+
+- Matrix of all combinations of predicted and true labels
+    - true positives (TP)
+    - true negatives (TP)
+    - false positives (FP)
+    - false negatives (FN)
+- All correct predictions are on diagonal of matrix
+</div>
+
+ A detailed explanation is given in chapter \@ref(ConfusionMatrixRocAuc)
+ 
+<div class="HeadingNoNumber">
+Precision
+</div>
+
+Precision is the ratio between correct positive predicted and all positive predicted samples
+
+<div class="rmdmath">
+
+Precision \(=\frac{\text { True Positives }}{\text { True Positives }+\text { False Positives }}\)
+
+</div>
+
+
+<div class="HeadingNoNumber">
+Recall
+</div>
+
+Recall is the ratio between correct positive labels and all samples whit positive label. The **metric is also called sensitivity**
+
+<div class="rmdmath">
+Recall \(=\frac{\text {True Positives}}{\text {True Positives }+\text { False Negatives}}\)
+</div>
+
+<div class="HeadingNoNumber">
+F1 score
+</div>
+
+The F1 score is a combination of precision and recall. The range is $0\leq F1 \geq 1$ with **better models have higher F1 scores.**
+
+<div class="rmdtip">
+F1 score:
+- Combining
+    - precision
+    - recall
+- Better models have higher value
+    - value range $0\leq F1 \geq 1$ 
+</div>
+
+<div class="rmdmath">
+$$F 1=2 * \frac{1}{\frac{1}{\text { precision }}+\frac{1}{\text { recall }}}$$
+</div>
+
+<div class="HeadingNoNumber">
+Entropy
+</div>
+
+<div class="rmdmath">
+\(H(p, q)=-\sum_{x} p(x) \log q(x)\)
+</div>
+
+
+
+<div class="HeadingNoNumber">
+Softmax
+</div>
+
+
+
+
+#### Metrics for regression
+
+
+<div class="HeadingNoNumber">
+Mean Absolute Error (MAE)
+</div>
+
+Mean Absolute Error\(=\frac{1}{N} \sum_{j=1}^{N}\left|y_{j}-\hat{y}_{j}\right|\)
+
+<div class="HeadingNoNumber">
+Mean Squared Error(MSE) 
+</div>
+
+MeanSquaredError\(=\frac{1}{N} \sum_{j=1}^{N}\left(y_{j}-\hat{y}_{j}\right)^{2}\)
+
+
+<div class="HeadingNoNumber">
+RMS
+</div>
+
+
+<div class="HeadingNoNumber">
+Mean Absolute Error
+</div>
+
+
+
+
+
 
 
 
@@ -1564,6 +1997,7 @@ There are three major types of ML
 In the following chapters each type will be introduced and examples given
 
 ## Supervised learning
+
 
 Supervised learning is the most widely used ML type in practice. The task of supervised learning is to learn how to map an input to an output, for example the picture of a cat to the category of *"cat"*
 
@@ -1773,6 +2207,57 @@ The results achieved by BERT for SQuAD v1.1 is shown in image below
 
 
 ## Unsupervised learning
+
+Unsupervised learning tries to **discover interesting structure** in data with no labels, this is also called **knowledge discovery**. Unsupervised learning is arguably more typical of human and animal learning.
+
+<blockquote>
+When we're learning to see, nobody's telling us what the right answers are — we just look. Every so often, your mother says 'that's a dog,' but that's very little information. You'd be lucky if you got a few bits of information—even one bit per second—that way. The brain's visual system requires 10 14 [neural] connections. And you only live for 10 9 seconds. So it's no use learning one bit per second. You need more like 10 5 bits per second. And there's only one place you can get that much information—from the input itself.  
+- Geoffrey Hinton, ML professor at University of Toronto  
+</blockquote>
+
+
+---
+
+Unsupervised learning wants to find structure in data, which data belongs to which category, in a mathematically way that is 
+
+
+
+### Discovering clusters 
+
+
+In the image below a dendrogram of the hierarchical cluster on the left hand side is derived of the correlation matrix on the right hand side.
+
+
+![](images/clusterSpearman.png){width=80% .external}
+
+---
+
+
+Real world examples:
+
+- New type of stars were discovered by Cheeseman at al with the autoclass system [@cheeseman1988autoclass].
+- Grouping customers in e-commerce into clusters based on purchasing or web-surfing behavior [@berkhin2006survey].
+
+### Discovering latent factors
+
+If data is high dimensional it is often useful to reduce dimensionality. If data appear to be high dimensional there may be s small number of degrees of variability, those are called **latent ^[german: verborgen] factors**.
+
+Those latent factors can be found with methods such as principle component analysis (PCA), t-SNE, autoencoders.
+
+<div class="rmdtip">
+<p>Latent factors:<img src="images/latentFactor.png" alt="Smiley face" align="right" style="width:30%;"></p>
+
+- Latent factors are low dimensional representation of data
+    - given: height, weight, age, body temperature, EKG measurement
+    - latent factor $\implies$ healthy
+- Algorithms to discover latent factors
+    - principle component analysis (PCA)
+    - t-SNE
+    - autoencoders
+    - see chapter  \@ref(ManytoManyTransformations) for details of the algorithms
+</div>
+
+
 
 ## Reinforcement learning
 
@@ -2237,7 +2722,7 @@ https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_com
 
  ![](images/classificationCompare.png){width=120% }
 
-## Linear regression TBD {#MlAlgoLinReg}
+## Linear regression {#MlAlgoLinReg}
 
 A linear regression is a regression analysis, a statistical method, at which a dependent variable is explained through several independent variables.
 
@@ -2340,14 +2825,13 @@ A graphical representation of SGD is given below. In this example the loss funct
 
 ## Logistic regression {#MlAlgoLogReg}
 
-Logistic regression is similar to linear regression, however, the value range of the dependent variable y is limited to:
+Logistic regression is similar to linear regression, however, the value range of the dependent variable y is limited to: $0\leq y \geq 1$
 
-$$0\leq y \geq 1$$
-
-Logistic regression is a algorithm with the low computational complexity TBD
+Logistic regression is a algorithm with the low computational complexity 
 
 ```{block2 echo=TRUE, type='rmdtip'}
-
+Logistic regression: 
+  
 - Low computational complexity
 - y limited range of values $0\leq y \geq 1$
 - maps x on y ($y \leftarrow x$) using the [logisit function](https://en.wikipedia.org/wiki/Logistic_function)  

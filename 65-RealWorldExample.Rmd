@@ -175,7 +175,7 @@ where:
 
 ```
 
-### Tree based TBD
+### Tree based 
 
 Two dominant concepts are used for tree based algorithms:
 
@@ -183,10 +183,11 @@ Two dominant concepts are used for tree based algorithms:
 
  ![](images/TreeAlogo.png){width=90% }
 
-Details on the algorithms are given at
+Details on the algorithms are given at: 
 
 ```{block2 echo=TRUE, type='rmdtip'}
-
+Details on the algorithms: 
+  
 - Random forest in chapter \@ref(MlAlgoTreesRandomForest)
 - Gradient boosted trees in chapter \@ref(MlAlgoTreesGBM)
 
@@ -214,7 +215,7 @@ for all \(i=1, \dots, N\)$$
 $〖  𝑅〗_𝑡=∑_(𝑖=𝑡)^∞▒〖γ^𝑖 𝑟_𝑖 〗=γ^𝑡 𝑟_𝑡+γ^(𝑡+1) 𝑟_(𝑡+1)…+γ^(𝑡+𝑛) 𝑟_(𝑡+𝑛)+ …$
 
 
-## Performance measurement
+## Performance measurement {#ConfusionMatrixRocAuc}
 
 The performance for a classification task is measured with a confusion matrix
 
@@ -275,9 +276,9 @@ $$
 
 ```
 
-### Receiver operating characteristic (ROC)
+### Receiver operating characteristic (ROC) {#RocExplanation}
 
-The result of a classification with two classes (binary classification) is given as a percentage value of how sure the algorithm is that the sample belongs to a class. Depending on the the overall project  target the threshold upon which the class is rated as identified is set. If a false positive is to be avoided than the threshold for classifying a positive is set high
+The result of a classification with two classes (binary classification) is given as a percentage value of how sure the algorithm is that the sample belongs to a class. Depending on the the overall project  target the threshold upon which the class is rated as identified is set. If a false positive is to be avoided than the threshold for classifying a positive is set high.
 
 ```{block2 echo=TRUE, type='rmdtip'}
 

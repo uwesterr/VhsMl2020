@@ -1,5 +1,5 @@
 
-## Tree based methods TBD {#MlAlgoTrees} 
+## Tree based methods {#MlAlgoTrees} 
 
 Tree based methods can be used for different predictions:
 
@@ -203,7 +203,7 @@ Two dominant concepts used for ensemble trees are described at:
 - Gradient boosted trees in chapter \@ref(MlAlgoTreesGBM) 
 
 
-### Random forest TBD {#MlAlgoTreesRandomForest} 
+### Random forest {#MlAlgoTreesRandomForest} 
 
 Random forest has its name from the randomly selected predictors at each split. The Algorithm is described in [@kuhn2013applied] p. 200:
 
@@ -431,7 +431,7 @@ to train each base estimator.</p>
 </dd>
 
 
-### Boosted trees TBD {#MlAlgoTreesGBM} 
+### Boosted trees {#MlAlgoTreesGBM} 
 
 Boosted trees are an ensemble of weak learners where each learner is build on the knowledge gained by all previous learners. 
 
@@ -668,90 +668,13 @@ A good explanation of the theory behind SVMs is given in [@9781461471370]
 
 The support vector machine (SVM) is an extension of the support vector classifier that results from enlarging the feature space in a specific way, using kernels. We will now discuss this extension, the details of which are somewhat complex and are beyond the scope of this report. The main idea is to enlarge the feature space in order to accommodate a non-linear boundary between the classes. The kernel approach that we describe here is simply an efficient computational approach for enacting this idea.
 
-The solution to the support vector classifier problem involves only the inner products of the observations (as opposed to the observations themselves). The inner product of two r-vectors *a* and *b* is defined as $\langle a, b\rangle=\sum_{i=1}^{r} a_{i} b_{i}$;. Thus the inner product of two observations $x_{i}, x_{i^{\prime}}$ is given by
-
-
-\begin{equation} 
-\left\langle x_{i}, x_{i^{\prime}}\right\rangle=\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}
-  (\#eq:9-17)
-\end{equation} 
-
-It can be shown that  
-- The linear support vector classifier can be represented as:
-
-\begin{equation} 
-f(x)=\beta_{0}+\sum_{i=1}^{n} \alpha_{i}\left\langle x, x_{i}\right\rangle
-  (\#eq:9-18)
-\end{equation} 
-
-where there are *n* parameters $\alpha_{i}, \quad i=1, \dots, n$, one per training observation.
-
-- To estimate the parameters $\alpha_{1}, \ldots, \alpha_{n} \text { and } \beta_{0}$, all we need are the $\left( \begin{array}{l}{n} \\ {2}\end{array}\right)$ inner products $\left\langle x_{i}, x_{i^{\prime}}\right\rangle$ between all pairs of training observations. The notation  $\left( \begin{array}{c}{n} \\ {2}\end{array}\right)$  means $n(n-1) / 2$ and gives the number of pairs among a set of $n$ items.
-
-Notice that in \@ref(eq:9-18), in order to evaluate the function f(x), we need to compute the inner product between the new point *x* and each of the training points $x_i$. However, it turns out that $α_i$ is nonzero only for the support vectors in the solution—that is, if a training observation is not a support vector, then its $α_i$ equals zero. So if *S* is the collection of indices of these support points, we can rewrite any solution function of the form \@ref(eq:9-18) as
-
-\begin{equation} 
-f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i}\left\langle x, x_{i}\right\rangle
-  (\#eq:9-19)
-\end{equation}
-which typically involves far fewer terms than in \@ref(eq:9-18)
 
 ### Kernels
 
-To summarize, in representing the linear classifier $f (x)$, and in computing its coefficients, all we need are inner products. Now suppose that every time the inner product \@ref(eq:9-17) appears in the representation \@ref(eq:9-18), or in a calculation of the solution for the support vector classifier, we replace it with a generalization of the inner product of the form
-
-
-\begin{equation} 
-K\left(x_{i}, x_{i^{\prime}}\right)  
-  (\#eq:9-20)
-\end{equation} 
-
-where *K* is some function that we will refer to as a kernel. A kernel is a function that quantifies the similarity of two observations. For instance, we could simply take
-
-
-\begin{equation} 
-K\left(x_{i}, x_{i^{\prime}}\right)=\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}
-(\#eq:9-21)
-\end{equation} 
-
-which would just give us back the support vector classifier. Equation \@ref(eq:9-21) is known as a linear kernel because the support vector classifier is linear in the features; the linear kernel essentially quantifies the similarity of a pair of observations using Pearson (standard) correlation. 
-
 #### Polynomial Kernel  
 
-But one could instead choose another form for \@ref(eq:9-20). For instance, one could replace every instance of $\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}$ with the quantity
-
-\begin{equation} 
-K\left(x_{i}, x_{i^{\prime}}\right)=\left(1+\sum_{j=1}^{p} x_{i j} x_{i^{\prime} j}\right)^{d}
-  (\#eq:9-22)
-\end{equation} 
-
-This is known as a polynomial kernel of degree *d*, where *d* is a positive integer. Using such a kernel with *d* > 1, instead of the standard linear kernel \@ref(eq:9-21), in the support vector classifier algorithm leads to a much more flexible decision boundary. It essentially amounts to fitting a support vector classifier in a higher-dimensional space involving polynomials of degree *d*, rather than in the original feature space. When the support vector classifier is combined with a non-linear kernel such as \@ref(eq:9-22), the resulting classifier is known as a support vector machine. Note that in this case the (non-linear) function has the form
-
-\begin{equation} 
-f(x)=\beta_{0}+\sum_{i \in \mathcal{S}} \alpha_{i} K\left(x, x_{i}\right)
-  (\#eq:9-23)
-\end{equation} 
-
-The polynomial kernel shown in \@ref(eq:9-22) is one example of a possible non-linear kernel, but alternatives abound. 
 
 #### Radial Kernel  
-Another popular choice is the *radial kernel*, which takes the form
-
-\begin{equation} 
-K\left(x_{i}, x_{i^{\prime}}\right)=\exp \left(-\gamma \sum_{j=1}^{p}\left(x_{i j}-x_{i^{\prime} j}\right)^{2}\right)
-  (\#eq:9-24)
-\end{equation} 
-
-In \@ref(eq:9-24), γ is a positive constant.
-
-How does the radial kernel \@ref(eq:9-24) actually work? If a given test observation $x^{*}=\left(x_{1}^{*} \ldots x_{p}^{*}\right)^{T}$ is far from a training observation $x_i$ in terms of Euclidean distance, then $\sum_{j=1}^{p}\left(x_{j}^{*}-x_{i j}\right)^{2}$ will be large, and so  $K\left(x_{i}, x_{i^{\prime}}\right)={\exp \left(-\gamma \sum_{j=1}^{p}\left(x_{j}^{*}-x_{i j}\right)^{2}\right)}$ will be very tiny. This means that in \@ref(eq:9-23), $x_{i}$ will play virtually no role in $f\left(x^{*}\right)$. Recall that the predicted class label for the test observation $x^{*}$ is based on the sign of $f\left(x^{*}\right)$. In other words, training observations that are far from $x^{*}$ will play essentially no role in the predicted class label for $x^{*}$. This means that the radial kernel has very local behaviour, in the sense that only nearby training observations have an effect on the class label of a test observation.
-What is the advantage of using a kernel rather than simply enlarging the feature space using functions of the original features? One
-advantage is computational, and it amounts to the fact that using kernels, one need only compute $K\left(x_{i}, x_{i^{\prime}}\right)$ for $\left( \begin{array}{l}{n} \\ {2}\end{array}\right)$  distinct pairs $i$, $i^{\prime}$.This can be
-done without explicitly working in the enlarged feature space. This is im- portant because in many applications of SVMs, the enlarged feature space is so large that computations are intractable. For some kernels, such as the radial kernel \@ref(eq:9-24), the feature space is *implicit* and infinite-dimensional, so we could never do the computations there anyway! 
- 
- 
- 
-
 
 ### Python example for SVM
  
@@ -1269,6 +1192,7 @@ Attention Is All You Need https://arxiv.org/abs/1706.03762
 
 [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
 
+[The Annotated Transformer.ipynb](https://github.com/harvardnlp/annotated-transformer/blob/master/The%20Annotated%20Transformer.ipynb)
 
 ### Example transformer for time series forecasting
 
