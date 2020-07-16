@@ -212,7 +212,7 @@ for all \(i=1, \dots, N\)$$
  ![Figure from Alisneaky, svg version by User:Zirguezi [CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)]](images/2880px-Kernel_Machine.svg.png){width=100% .external}
 
 
-$〖  𝑅〗_𝑡=∑_(𝑖=𝑡)^∞▒〖γ^𝑖 𝑟_𝑖 〗=γ^𝑡 𝑟_𝑡+γ^(𝑡+1) 𝑟_(𝑡+1)…+γ^(𝑡+𝑛) 𝑟_(𝑡+𝑛)+ …$
+$  𝑅〗_𝑡=∑_(𝑖=𝑡)^∞▒〖γ^𝑖 𝑟_𝑖 〗=γ^𝑡 𝑟_𝑡+γ^(𝑡+1) 𝑟_(𝑡+1)…+γ^(𝑡+𝑛) 𝑟_(𝑡+𝑛)+ …$
 
 
 ## Performance measurement {#ConfusionMatrixRocAuc}
@@ -420,7 +420,7 @@ plotErrorDistr(threshold = 0.43, noHitMean = 0.4, noHitSd = 0.1, HitMean = 0.6, 
 ```
 
 
-## Confusion matrix and ROC for pulse
+## Confusion matrix and receiver operating characterstic (ROC) for pulse
 
 ```{r echo=FALSE, fig.height=13, fig.width=20, message=FALSE, warning=FALSE, comment='#'}
 
@@ -548,7 +548,7 @@ plotErrorDistr(threshold = 0.43, noHitMean = 0.4, noHitSd = 0.1, HitMean = 0.6, 
 ```
 
 
-### R Plots
+### Receiver operating characterstic (ROC) and probability density plots
 
  ![](images/rocAnimation.gif){width=100%}
 
@@ -669,18 +669,85 @@ Determination which algorithm is best suited depends on
  ![](images/Snr18GlmRoc.png){width=100%}  
 
 
-Depending on ROC characteristic choosing the threshold value which leads to the **highest available profit** is not easy
+
+
+## Calculation of return of invest (ROI) {#ROIcalculation}
+
+To calculate the ROI we need to calculate the profit as well as the invest.
+The following numbers are, for obvious reasons, not the real numbers.
+
+<div class="rmdtip">
+**Calculation of ROI:**  
+
+- Calculate invest
+- Calculate profit
+- $ROI =  \frac{Profit}{Invest}$
+
+</div>
+
+
+
+### Calculation of ML project invest
+ 
+To calculate the project invest the different phases of the ML project have to be considered
+
+<div class="rmdtip">
+**Phases of ML project:**
+
+- Development
+- Deployment
+- Maintenance 
+</div> 
+ 
+---
+ 
+  ![](images/investMl.png){width=100%}  
+  
+---
+  
+  
+### Calculation of ML profit
+
+For a given ROC the **highest available profit** can be calculated by assigning a price tag to the elements of the confusion matrix. The profit calculated is per day.
+
+<div class="rmdtip">
+**Calculation of ML profit:**
+
+- Assign price tag to elements of confusion matrix
+    - e.g. $Profit=TP Rate *1000€ - FP Rate *5000€)$
+- Determine maximum profit per day
+
+</div> 
+
+--- 
 
  ![](images/ProfitAninmation.gif){width=100%}  
 
 
- ![](images/ProfitAninmation.gif){width=100%}  
+---
+
+Choosing the probability threshold for maximum profit yields to a **profit of 386.25€/d.**
+
+
+
+### Resulting ROI
+
+The resulting ROI is given for the years 2017-2019 in the following table:
+
+
+ ![](images/ROITable.png){width=100%}  
+ 
+The analysis shows that the ML algorithm not only improves the technical capability of the system but also would have an impressive ROI.
 
 ## Compare models for SNR = 18dB
 
 - **ROC, Sensitivity and Specificity** for gradient boosted trees (GBM) and logistic regression (LogReg) and support vector machine (SVM) vs cross validation
 
- ![](images/ModelCompBoxPlot.png){width=100%}  
+
+
+
+---
+
 
 ## Optimize ML hyper parameter
 

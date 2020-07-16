@@ -1,3 +1,239 @@
+# ML algorithms {#MlAlgorithm}
+
+
+
+<blockquote>
+
+A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this example is to illustrate the nature of decision boundaries of different classifiers. This should be taken with a grain of salt, as the intuition conveyed by these examples does not necessarily carry over to real datasets.
+
+Particularly in high-dimensional spaces, data can more easily be separated linearly and the simplicity of classifiers such as naive Bayes and linear SVMs might lead to better generalization than is achieved by other classifiers.
+
+The plots show training points in solid colors and testing points semi-transparent. The lower right shows the classification accuracy on the test set.
+
+https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html#sphx-glr-auto-examples-classification-plot-classifier-comparison-py
+</blockquote>
+
+
+ ![](images/classificationCompare.png){width=120% }
+
+## Linear regression {#MlAlgoLinReg}
+
+A linear regression is a regression analysis, a statistical method, at which a dependent variable is explained through several independent variables.
+
+- Simple linear regression
+    - Only one independent variable
+- Multiple linear regression
+    - more than one independent variables
+    
+
+
+Linear regression algorithm is one of the **fundamental supervised learning algorithms**.
+
+### Example for linear regression
+
+In this example the procedure of a linear regression is described
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+Data
+
+```
+
+Given is a set of data created by a linear expression plus some noise
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+
+$$y = 3*x+2+n$$
+where $n$ is noise
+
+```
+
+
+The data can be depicted as below. It is easy to be seen that we are looking at a linear function with superimposed noise.
+
+![](images/LrData.png){width=50%}
+
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+Model
+
+```
+
+The task is to find the value for $w_0$ and $w_1$ of a model which is as close as possible to the original function
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+$$\hat{y} = w_0*x+w_1$$
+
+```
+
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+Loss function
+
+```
+
+The metric to define how good the model fits the data is defined as **mean squared error (MSE)**
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+$$L=(\hat{y}-y)^2$$
+
+```
+
+```{block2 echo=TRUE, type='HeadingNoNumber'}
+Minimise loss function
+
+```
+
+
+The difference between $\hat{y}$ and $y$ shall be small **stochastic gradient descent (SGD)** can be applied. 
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+SGD:
+
+- Iteratively updating values of $w_0, w_1$ using
+    - gradient
+    - learning rate $\eta$
+
+```
+
+In maths terms this can be written as:
+
+
+```{block2 echo=TRUE, type='rmdmath'}
+
+$$ w_{new} = w_{current} - \eta \frac{\partial L}{\partial w_{current}}$$
+```
+
+
+A graphical representation of SGD is given below. In this example the loss function can be depicted as a 3D plot. In the current case the surface is flat which makes it easy to find the **global optimum**
+
+--- 
+
+ ![Figure from https://nbviewer.jupyter.org/gist/joshfp/85d96f07aaa5f4d2c9eb47956ccdcc88/lesson2-sgd-in-action.ipynb](images/sgdAnimation.gif){width=90%  .external}
+
+---
+
+
+## Logistic regression {#MlAlgoLogReg}
+
+Logistic regression is similar to linear regression, however, the value range of the dependent variable y is limited to: $0\leq y \geq 1$
+
+Logistic regression is a algorithm with the low computational complexity 
+
+```{block2 echo=TRUE, type='rmdtip'}
+Logistic regression: 
+  
+- Low computational complexity
+- y limited range of values $0\leq y \geq 1$
+- maps x on y ($y \leftarrow x$) using the [logisit function](https://en.wikipedia.org/wiki/Logistic_function)  
+- Used of classification 
+
+```
+
+
+The logistic function is depicted in the graph below
+
+
+```{r logsiticFuncitonMlAlgo, echo=FALSE, fig.height=5, message=FALSE, warning=FALSE, out.width= "60%"}
+library(ggplot2)
+eq = function(x) {
+  
+  1/(1+exp(-x))
+}
+
+ggplot(data.frame(x=c(-6,6)), aes(x=x)) + stat_function(fun=eq, geom = "line") + xlab(expression(eta)) + ylab(expression(logsitic(eta)))
+```
+
+The logistic function is defined as:
+
+```{block2 echo=TRUE, type='rmdmath'}
+
+Logistic function: 
+$$logistic(\eta) = \frac{1}{1+exp^{-\eta}}$$
+
+$$P(Y = 1 \vert X_i = x_i) = \frac{1}{1+exp^{-(\beta_0 + \beta_1X_1+ \dots \beta_n X_n)}}$$
+
+  
+where:
+
+- $\beta_n$ are the coeffcients we are searching
+- $X_n$ are the features
+
+```
+
+The second equation reads: The probability of $Y=1$ given the value $X=x_i$ which is exactly the result needed for a classification problem.
+
+### Python example logistic regression
+
+An example of scikit-learn is given at https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py and emphasises on the difference between linear and logistic regression. The synthetic data set has values either 0 or 1. This can be modeled quite well with logisitc regression, but not at all with linear regression.
+
+ ![](images/logRegPython.png){width=70% }
+
+The python code is given below
+
+```python
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn import linear_model
+from scipy.special import expit
+
+# General a toy dataset:s it's just a straight line with some Gaussian noise:
+xmin, xmax = -5, 5
+n_samples = 100
+np.random.seed(0)
+X = np.random.normal(size=n_samples)
+y = (X > 0).astype(np.float)
+X[X > 0] *= 4
+X += .3 * np.random.normal(size=n_samples)
+
+X = X[:, np.newaxis]
+
+# Fit the classifier
+clf = linear_model.LogisticRegression(C=1e5)
+clf.fit(X, y)
+
+# and plot the result
+plt.figure(1, figsize=(4, 3))
+plt.clf()
+plt.scatter(X.ravel(), y, color='black', zorder=20)
+X_test = np.linspace(-5, 10, 300)
+
+loss = expit(X_test * clf.coef_ + clf.intercept_).ravel()
+plt.plot(X_test, loss, color='red', linewidth=3)
+
+ols = linear_model.LinearRegression()
+ols.fit(X, y)
+plt.plot(X_test, ols.coef_ * X_test + ols.intercept_, linewidth=1)
+plt.axhline(.5, color='.5')
+
+plt.ylabel('y')
+plt.xlabel('X')
+plt.xticks(range(-5, 10))
+plt.yticks([0, 0.5, 1])
+plt.ylim(-.25, 1.25)
+plt.xlim(-4, 10)
+plt.legend(('Logistic Regression Model', 'Linear Regression Model'),
+           loc="lower right", fontsize='small')
+plt.tight_layout()
+plt.show()
+
+```
+
+
+
+
+
+
+
+
+
+
+
 
 ## Tree based methods {#MlAlgoTrees} 
 

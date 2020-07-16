@@ -236,7 +236,6 @@ The resulting driving performance can be seen in the following video
 
 
 	
-##	Fast.ai
 
 ## FastAI
 
@@ -249,7 +248,7 @@ Kaggle https://www.kaggle.com/learn/overview added courses to the data science p
 <div class="rmdtip">
 
  
-<p>Coursera facts:<img src="images/courseraLoga.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+<p>Coursera facts:<img src="images/kaggleLogo.png" alt="Smiley face" align="right" style="width:20%;"></p>
 
 - Founded 2010
     - key personal was
@@ -277,6 +276,22 @@ Course characteristics:
 </div>
 
 https://course.fast.ai
+
+
+
+## Full Stack Deep Learning
+
+https://course.fullstackdeeplearning.com
+
+Since 2012, deep learning has lead to remarkable progress across a variety of challenging computing tasks, from image recognition to speech recognition, robotics, and audio synthesis. Deep learning has the potential to enable a new set of previously infeasible technologies like autonomous vehicles, real-time translation, and voice assistants and help reinvent existing software categories.
+There are many great courses to learn how to train deep neural networks. However, training the model is just one part of shipping a deep learning project. This course teaches full-stack production deep learning:   
+
+- Formulating the problem and estimating project cost  
+- Finding, cleaning, labeling, and augmenting data  
+- Picking the right framework and compute infrastructure  
+- Troubleshooting training and ensuring reproducibility  
+- Deploying the model at scale  
+
 
 
 
@@ -330,7 +345,6 @@ Example include
 MIT's official introductory course on deep learning methods with applications in game play, and more!
 
 http://introtodeeplearning.com
-
 
 
 

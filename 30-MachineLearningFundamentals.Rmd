@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 <blockquote>
- “If intelligence was a cake, unsupervised learning would be the cake, supervised learning would be the icing, and reinforcement learning would be the carry.” 
+ “If intelligence was a cake, unsupervised learning would be the cake, supervised learning would be the icing, and reinforcement learning would be the cherry” 
  Yann LeCun
 </blockquote>
 
@@ -106,7 +106,7 @@ Make sure that the **most suitable** solution for the need is found, **not the f
 
 ## Gather data
 
-Gathering data is one of the key aspects of an ML project with two main questions:
+Gathering data is one of the key aspects of an ML project with three main questions:
 
 ```{block2 echo=TRUE, type='rmdquestion'}
 
@@ -114,10 +114,153 @@ Two fundamental questions:
 
 - How much data is necessary?
 - Which data is useful?
-
+- What kind of data can be used?
+  
 ```
 
 For the first question there are no clear answers, for the second the are plenty of methods to decide whether data is useful or not.
+
+As for the question about the kind of data which can be used, lets get some inspiration in the next section
+
+
+--- 
+
+### What kind of data can be used?
+
+
+
+```{r networkTypesOfData, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+
+nodes1 <-  tribble(
+  ~id,                                      ~label,                  ~color,     
+                     
+  "Data",                                       "Data Types",                            "#00cc99",
+  "Image Data",                                 "Image Data",                            "#00cc99",
+  "Facial recognition",                         "Facial recognition",                    "#00cc99",
+  "Action recognition",                         "Action recognition",                    "#00cc99",
+  "Object detection and recognition",           "Object detection and recognition",      "#00cc99",    
+  "Handwriting and character recognition",      "Handwriting and character recognition", "#00cc99",         
+  "Satellite images",                           "Satellite images",                      "#00cc99",
+  "Other images",                               "Other images",                           "#00cc99",
+  
+  "Text Data",                                   "Text Data",                  "#00ccff",
+	"Reviews",                                  	"Reviews",                     "#00ccff",
+	"News articles",                            	"News articles",               "#00ccff",
+	"Messages",                                 	"Messages",                    "#00ccff",
+	"Twitter and tweets",                        	"Twitter and tweets",          "#00ccff",
+	"Dialogues",                                	"Dialogues",                   "#00ccff",
+	"Other text",                               	"Other text",                  "#00ccff",
+  
+  "Sound Data",                                 "Sound Data",                  "#33ccff",
+  "Speech",                                     "Speech",                      "#33ccff",
+  "Music",                                      "Music",                       "#33ccff",
+  "Vibration Noise",                            "Vibration Noise",             "#33ccff",
+  "Other sounds",                               "Other sounds",                "#33ccff",
+  
+  "Signal Data",                     "Signal Data",                "#66ccff",
+  "Electrical",                      "Electrical",                 "#66ccff",
+  "Motion-tracking",                 "Motion-tracking",            "#66ccff",
+  "Other signals",                   "Other signals",              "#66ccff",
+  
+  
+  
+  "Physical Data",                   "Physical Data",              "#66ffff",
+  "High-energy physics",             "High-energy physics",        "#66ffff",
+  "Systems",                         "Systems",                    "#66ffff",
+  "Astronomy",                       "Astronomy",                  "#66ffff",
+  "Earth science",                   "Earth science",              "#66ffff",
+  "Other physical",                  "Other physical",             "#66ffff",
+
+  
+  "Biological Data",                 "Biological Data",            "#00ffff",
+  "Human",                           "Human",                      "#00ffff",
+  "Animal",                          "Animal",                     "#00ffff",
+  "Plant",                           "Plant",                      "#00ffff",
+  "Microbe",                         "Microbe",                    "#00ffff",
+  "Drug Discovery",                  "Drug Discovery",             "#00ffff",
+  
+  
+  
+  
+  "Multivariant Data",                "Multivariant Data",          "#00ffcc",
+  "Financial",                        "Financial",                  "#00ffcc",
+  "Weather",                          "Weather",                    "#00ffcc",
+  "Census",                           "Census",                     "#00ffcc",
+  "Transit",                          "Transit",                    "#00ffcc",
+  "Internet",                         "Internet",                   "#00ffcc",
+  "Games",                            "Games",                      "#00ffcc",
+  "Other multivariate",               "Other multivariate",         "#00ffcc"
+  
+) %>% arrange(id)
+
+
+edges <- tribble(
+  
+  ~from,                      ~to,        
+  
+  "Data",     "Image Data", 
+  
+  "Image Data", "Facial recognition",                   
+  "Image Data", "Action recognition",                   
+  "Image Data", "Object detection and recognition",     
+  "Image Data", "Handwriting and character recognition",
+  "Image Data", "Satellite images",                     
+  "Image Data", "Other images",                         
+
+  "Data",  "Text Data",   
+  "Text Data",  "Reviews",            
+  "Text Data",  "News articles",      
+  "Text Data",  "Messages",           
+  "Text Data",  "Twitter and tweets", 
+  "Text Data",  "Dialogues",          
+  "Text Data",  "Other text",         
+ 
+  "Data",  "Sound Data",    
+  "Sound Data",      "Speech",        
+  "Sound Data",    "Music",           
+  "Sound Data",    "Vibration Noise", 
+  "Sound Data",    "Other sounds",    
+ 
+ 
+  "Data",  "Signal Data",     
+  "Signal Data",  "Electrical",     
+  "Signal Data",  "Motion-tracking",
+  "Signal Data",  "Other signals",  
+  
+  "Data",  "Physical Data",  
+   "Physical Data", "High-energy physics", 
+   "Physical Data", "Systems",             
+   "Physical Data", "Astronomy",           
+   "Physical Data", "Earth science",       
+   "Physical Data", "Other physical",      
+
+  
+  "Data",  "Biological Data", 
+  "Biological Data",     "Human",          
+  "Biological Data",     "Animal",         
+  "Biological Data",     "Plant",          
+  "Biological Data",     "Microbe",        
+  "Biological Data",     "Drug Discovery", 
+ 
+  
+  "Data",  "Multivariant Data",
+  "Multivariant Data",      "Financial",        
+  "Multivariant Data",    "Weather",           
+  "Multivariant Data",    "Census",            
+  "Multivariant Data",    "Transit",           
+  "Multivariant Data",    "Internet",          
+  "Multivariant Data",    "Games",             
+  "Multivariant Data",    "Other multivariate"
+  
+)
+
+
+visNetwork(nodes1, edges, width = "100%") %>%  visOptions(highlightNearest = list(enabled =TRUE, degree = 1), nodesIdSelection = TRUE) %>% visNodes(shape = "circles") %>% 
+    visInteraction(navigationButtons = TRUE)  
+
+```
 
 
 ### How much data is necessary?
@@ -1585,7 +1728,7 @@ Permutation importance
 </div>
 
 
-Computing the permutation importance no a held out test data shows that the low cardinality categorical feature ***sex** has highest importance.
+Computing the permutation importance on held out test data shows that the low cardinality categorical feature ***sex** has highest importance.
 
 
 ---
@@ -1639,7 +1782,7 @@ Facts of example:
 
 </div>
 
-The permutation importance plot shows that permuting a feature drops the accuracy by at most 0.012, which suggests taht none of the features are important.
+The permutation importance plot shows that permuting a feature drops the accuracy by at most 0.012, which suggests that none of the features are important.
 
 
 ---
@@ -1813,9 +1956,9 @@ where:
 
 
 
-<div class="HeadingNoNumber">
-Receiver operating characteristic (ROC)
-</div>
+
+##### Receiver operating characteristic (ROC) {#ROCexp}
+
 
 
 
@@ -1832,7 +1975,7 @@ ROC is a graphical representation of how the chosen threshold affects the specif
 - Thresholds divides classes
 - Selection of threshold changes
     - sensitivity
-    - specific
+    - specificity 
 -  ROC is graphical representation of threshold variation  
     
 
@@ -1929,7 +2072,10 @@ $$F 1=2 * \frac{1}{\frac{1}{\text { precision }}+\frac{1}{\text { recall }}}$$
 Entropy
 </div>
 
+
+
 <div class="rmdmath">
+<p><img src="images/entropy.png" alt="Smiley face" align="right" style="width:30%;"></p>
 \(H(p, q)=-\sum_{x} p(x) \log q(x)\)
 </div>
 
@@ -1982,6 +2128,8 @@ Mean Absolute Error
 
 # Machine learning types {#machineLearningClasses} 
 
+https://en.wikipedia.org/wiki/Outline_of_machine_learning 
+
 There are three major types of ML
 
 - Supervised learning
@@ -1992,9 +2140,97 @@ There are three major types of ML
 
  ![](images/classesOfLearningProblems.png){width=100% } 
 
+
 ---
 
-In the following chapters each type will be introduced and examples given
+A closer look at types of machine learning and their applications is given in the graph below:
+
+
+```{r networkTypesOfML}
+require(visNetwork, quietly = TRUE)
+library(tidyverse)
+
+
+
+
+nodes1 <-  tribble(
+  ~id,                                      ~label,                  ~color,     
+                     
+  "Machine Learning",                "Machine Learning Types",     "#E9C579",
+  "Unsupervised Learning" ,          "Unsupervised Learning",      "#4A9EAF",
+  "Clustering",                      "Clustering",                 "#53A8DD",
+  "Customer Segmentation",           "Customer Segmentation",      "#53A8DD",          
+  "Targetted Marketing",             "Targetted Marketing",        "#53A8DD",
+  "Recommender Systems",             "Recommender Systems",        "#53A8DD",
+  "Dimensionality Reduction",        "Dimensionality Reduction",   "#53A8DD",
+  "Big data Visuatlisation",         "Big data Visuatlisation",    "#53A8DD",
+  "Meaningful Compression",          "Meaningful Compression",     "#53A8DD",
+  "Structure Discovery",             "Structure Discovery",        "#53A8DD",
+  "Feature Elictation",              "Feature Elictation",         "#53A8DD",
+  "Supervised Learning",             "Supervised Learning",        "#D33A53",
+  "Classification",                  "Classification",             "#DE675A",
+  "Identiy Fraud Detection",         "Identiy Fraud Detection",    "#E06658",
+  "Image Classification",            "Image Classification",       "#E06658",
+  "Customer Retention",              "Customer Retention",         "#E06658",
+  "Medical Diagnostics",             "Medical Diagnostics",        "#E06658",
+  "Regression",                      "Regression",                 "#DE675A",
+  "Next Epileptic Fit",              "Next Epileptic Fit",         "#E06658",
+  "Market forcasting",               "Market forcasting",          "#E06658",
+  "Weather forcasting",              "Weather forcasting",         "#E06658",
+  "Reinforcement Learning",          "Reinforcement Learning",     "#E2823B",
+  "Real time decisions",             "Real time decisions",        "#E2823B",  
+  "Robot navigation",                "Robot navigation",           "#E2823B",
+  "Learning tasks",                  "Learning tasks",             "#E2823B",
+  "Skill Acquisition",               "Skill Acquisition",          "#E2823B",    
+  "Game AI",                         "Game AI",                    "#E2823B"
+) %>% arrange(id)
+
+edges <- tribble(
+  
+  ~from,                      ~to,        
+  
+  "Machine Learning",          "Unsupervised Learning",
+  "Machine Learning",          "Supervised Learning",
+  "Machine Learning",          "Reinforcement Learning",
+  "Unsupervised Learning",     "Clustering",
+  "Clustering",                "Customer Segmentation",
+  "Clustering",                "Targetted Marketing", 
+  "Clustering",                "Recommender Systems",
+  "Unsupervised Learning",     "Dimensionality Reduction",
+  "Dimensionality Reduction",  "Big data Visuatlisation", 
+  "Dimensionality Reduction",  "Meaningful Compression",
+  "Dimensionality Reduction",  "Structure Discovery", 
+  "Dimensionality Reduction",  "Feature Elictation", 
+  "Supervised Learning",       "Classification",
+  "Classification",            "Identiy Fraud Detection",
+  "Classification",            "Image Classification", 
+  "Classification",            "Customer Retention",   
+  "Classification",            "Medical Diagnostics", 
+  "Supervised Learning",       "Regression",
+  "Regression",                "Next Epileptic Fit", 
+  "Regression",                "Market forcasting", 
+  "Regression",                "Weather forcasting", 
+  "Reinforcement Learning",    "Real time decisions",  
+  "Reinforcement Learning",    "Robot navigation",  
+  "Reinforcement Learning",    "Learning tasks", 
+  "Reinforcement Learning",    "Skill Acquisition",  
+  "Reinforcement Learning",    "Game AI",
+  
+)
+
+
+visNetwork(nodes1, edges, width = "100%")  %>%   visOptions(manipulation = TRUE) %>%  visOptions(highlightNearest = list(enabled =TRUE, degree = 1), selectedBy = "Machine Learning Types", nodesIdSelection = TRUE) %>% visNodes(shape = "circles") %>% 
+    visInteraction(navigationButtons = TRUE) 
+
+```
+
+
+
+
+
+---
+
+In the following chapters each type will be introduced and examples are given.
 
 ## Supervised learning
 
@@ -2211,7 +2447,7 @@ The results achieved by BERT for SQuAD v1.1 is shown in image below
 Unsupervised learning tries to **discover interesting structure** in data with no labels, this is also called **knowledge discovery**. Unsupervised learning is arguably more typical of human and animal learning.
 
 <blockquote>
-When we're learning to see, nobody's telling us what the right answers are — we just look. Every so often, your mother says 'that's a dog,' but that's very little information. You'd be lucky if you got a few bits of information—even one bit per second—that way. The brain's visual system requires 10 14 [neural] connections. And you only live for 10 9 seconds. So it's no use learning one bit per second. You need more like 10 5 bits per second. And there's only one place you can get that much information—from the input itself.  
+When we're learning to see, nobody's telling us what the right answers are — we just look. Every so often, your mother says 'that's a dog,' but that's very little information. You'd be lucky if you got a few bits of information—even one bit per second—that way. The brain's visual system requires $10^{14}$ [neural] connections. And you only live for $10^9$ seconds. So it's no use learning one bit per second. You need more like $10^5$ bits per second. And there's only one place you can get that much information—from the input itself.  
 - Geoffrey Hinton, ML professor at University of Toronto  
 </blockquote>
 
@@ -2704,231 +2940,269 @@ To find a rule out of the parameters analysed a t-SNE mapping of the following p
 
 The figure shows spots with high average speed, those patches can be used as basis for further improvement.
 
-# ML algorithms {#MlAlgorithm}
+
+# ML application examples
+
+In the following sections examples of ML applications from a wider field of industries are given. Those applications might inspire new projects by showcasing ideas and approaches which might not be straight forward. Sometimes processes need be thought the other way round to achieve faster solutions.
+
+
+
+## AI translation by DeepL
+
+A good example to show that even small companies can be successful in areas where large companies seem to have an unassailable lead. When it comes to language, few would deny that Google has the largest data set available, but it seems that DeepL has an advantage over them.
+
+<blockquote>
+
+Tech giants Google, Microsoft and Facebook are all applying the lessons of machine learning to translation, but a small company called DeepL has outdone them all and raised the bar for the field.
+Its translation tool is just as quick as the outsized competition, but more accurate and nuanced than any we’ve tried.  
+TechCrunchUSA
+</blockquote>
+
+Text translation service by DeepL
+<div class="rmdtip">
+
+- Launch of DeepL Translator in August 2017
+- Headquarter in Cologne 
+- more than 500 Mio users
+- Uses neural network
+- Up to 5000 characters for free
+
+</div>
+
+![Figure from https://www.deepl.com/en/blog/20200206.html](images/deepLQuality.png){width=80% .external}
+
+<blockquote>
+
+
+
+119 paragraphs from different domains were translated by the various systems. External professional translators were hired to review the translations - without information about which system produced which translation. The graph displays how often each system’s translations were rated better than all other translations. Not shown are cases where several systems produced the best translation. The tests were performed in January 2020.
+
+</blockquote>
+
+
+
+## Artificial intelligence detects myocardial infarctions in the ECG more reliably than cardiologistsn
+
+The Deutsche Gesellschaft für Kardiologie - Herz- und Kreislaufforschung e.V.(DKG) developed an algorithm for machine learning that, with the help of ECG interpretation, can detect a myocardial infarction that has occurred within the last 3 months more reliably than a cardiologist.
+
+
+![Figure from  [@makimotokunstliche]](images/infarktDkg.png){width=80% .external}
+
+<div class="rmdtip">
+
+**Project details:**
+- Used deep learning
+- Train to answer the following question:
+    - Is this an ECG of a patient who's had an Myocardial infarction in the last three months?
+- Compared with 9 cardiologist.
+- Explainability of ML prediction was addressed
+
+</div>
+
+To better understand how the ML algorithm deducted the prediction a heatmap of the ECG was produced. The red areas show the focus of the ML algorithm.
+
+
+
+![Heatmap of ECG shows the focus of ML algorithm, figure from  [@makimotokunstliche]](images/heatmapEKG.png){width=50% .external}
+
+
+
+### First in Germany: Artificial intelligence recognizes COVID-19 in clinical routine
+
+Another application using ML in for diagnostic is to detect COVID-19, details can be found at https://www.uniklinikum-jena.de/Uniklinikum+Jena/Aktuelles/Pressemitteilungen/Erstmals+in+Deutschland_+Künstliche+Intelligenz+erkennt+COVID_19+in+der+klinischen+Routine-pos-3-p-24500.html
+
+## A Deep Learning Approach to Antibiotic Discovery
+
+A trained deep neural network predicts antibiotic activity in molecules that are structurally different from known antibiotics, among which Halicin exhibits efficacy against broad-spectrum bacterial infections in mice. More details can be found at [@stokes2020deep]
+
+
+![Figure from [@stokes2020deep]](images/MlForPharmacy.png){width=80% .external}
+
+<div class="rmdtip">
+
+- A deep learning model is trained to predict antibiotics based on structure
+- Halicin is predicted as an antibacterial molecule from the Drug Repurposing Hub
+- Halicin shows broad-spectrum antibiotic activities in mice 
+- More antibiotics with distinct structures are predicted from
+the ZINC15 database
+
+</div>
+
+
+
+## BBC: Artificial intelligence-created medicine to be used on humans for first time
+
+<blockquote>
+This year was the first to have an AI-designed drug but by the end of the decade all new drugs could potentially be created by AI  
+Prof Andrew Hopkins, Exscienta chief executive
+</blockquote>
+
+
+The drug will be used to treat patients who have obsessive-compulsive disorder (OCD).
+
+<div class="rmdtip">
+- Created by 
+    - British start-up Exscientia
+    - Japanese pharmaceutical firm Sumitomo Dainippon Pharma
+- Treat patients who have obsessive-compulsive disorder (OCD).
+- Time to get to trial
+    - Typically about five years
+    - AI  took just 12 months.
+</div>
+
+
+## Disease outbreak risk software 
+
+The company BlueDot employs ML to predict outbreaks and spread of diseases. 
+
+<blockquote>
+
+It notified its clients on 31st of December about the Covid threat, 9 days prior to the first WHO statement   [aerzteblatt](https://www.aerzteblatt.de/nachrichten/109037/Kuenstliche-Intelligenz-sagte-Krankheitsausbruch-in-Wuhan-voraus).  
+
+</blockquote>
+
+
+## Neural networks enable autonomous navigation of catheters
+
+The Fraunhofer-Institut für Produktionstechnik und Automatisierung IPA presented this project at MEDICA 2019.
+
+<div class="rmdtip">
+
+**Project details:**  
+
+- Using deep reinforcement learning
+- Trained on computer simulation
+- The project is scheduled to run until September 2020
+- Enables faster navigation
+
+</div>
+
 
 
 
 <blockquote>
-
-A comparison of a several classifiers in scikit-learn on synthetic datasets. The point of this example is to illustrate the nature of decision boundaries of different classifiers. This should be taken with a grain of salt, as the intuition conveyed by these examples does not necessarily carry over to real datasets.
-
-Particularly in high-dimensional spaces, data can more easily be separated linearly and the simplicity of classifiers such as naive Bayes and linear SVMs might lead to better generalization than is achieved by other classifiers.
-
-The plots show training points in solid colors and testing points semi-transparent. The lower right shows the classification accuracy on the test set.
-
-https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html#sphx-glr-auto-examples-classification-plot-classifier-comparison-py
+The operation itself, i.e. the removal of the blood clot using the stent retriever, is still performed by the doctor.   
+Johannes Horsch, scientist in the project group.
 </blockquote>
 
-
- ![](images/classificationCompare.png){width=120% }
-
-## Linear regression {#MlAlgoLinReg}
-
-A linear regression is a regression analysis, a statistical method, at which a dependent variable is explained through several independent variables.
-
-- Simple linear regression
-    - Only one independent variable
-- Multiple linear regression
-    - more than one independent variables
-    
+Further details at https://www.fraunhofer.de/de/presse/presseinformationen/2019/november/neuronale-netze-ermoeglichen-autonome-steuerung-von-kathetern.html 
 
 
-Linear regression algorithm is one of the **fundamental supervised learning algorithms**.
 
-### Example for linear regression
+## Fundamental limits from chaos on instability time predictions in compact planetary systems
 
-In this example the procedure of a linear regression is described
+New paper "Predicting the long-term stability of compact multiplanet systems" TBC
 
-```{block2 echo=TRUE, type='HeadingNoNumber'}
-Data
+Astrophysics is a science which has a long history of handling huge amount of data, no wonder that there are also ML applications in this field. This application helps to determine whether or not a planetary system will be stable. Until now the stability is determined by calculating an astonishing $10^9$ orbits. Reducing simulation time by factor of 10,000 by combining analytical understanding of resonant dynamics in two-planet systems with machine learning was accomplished.
 
-```
+<div class="rmdtip">
 
-Given is a set of data created by a linear expression plus some noise
+**Reducing simulation time:**
 
+- Combine
+    - analytical understanding
+    - machine learning (XGBoost)
+    - calculation of only $10^4$ orbits instead of 1$0^9$
 
-```{block2 echo=TRUE, type='rmdmath'}
+</div>
 
-$$y = 3*x+2+n$$
-where $n$ is noise
+The following graph shows the flow of computation and the utilization of machine learning to reduce the number of necessary simulations.
 
-```
+---
 
-
-The data can be depicted as below. It is easy to be seen that we are looking at a linear function with superimposed noise.
-
-![](images/LrData.png){width=50%}
-
-
-```{block2 echo=TRUE, type='HeadingNoNumber'}
-Model
-
-```
-
-The task is to find the value for $w_0$ and $w_1$ of a model which is as close as possible to the original function
-
-
-```{block2 echo=TRUE, type='rmdmath'}
-$$\hat{y} = w_0*x+w_1$$
-
-```
-
-
-```{block2 echo=TRUE, type='HeadingNoNumber'}
-Loss function
-
-```
-
-The metric to define how good the model fits the data is defined as **mean squared error (MSE)**
-
-
-```{block2 echo=TRUE, type='rmdmath'}
-$$L=(\hat{y}-y)^2$$
-
-```
-
-```{block2 echo=TRUE, type='HeadingNoNumber'}
-Minimise loss function
-
-```
-
-
-The difference between $\hat{y}$ and $y$ shall be small **stochastic gradient descent (SGD)** can be applied. 
-
-
-```{block2 echo=TRUE, type='rmdtip'}
-SGD:
-
-- Iteratively updating values of $w_0, w_1$ using
-    - gradient
-    - learning rate $\eta$
-
-```
-
-In maths terms this can be written as:
-
-
-```{block2 echo=TRUE, type='rmdmath'}
-
-$$ w_{new} = w_{current} - \eta \frac{\partial L}{\partial w_{current}}$$
-```
-
-
-A graphical representation of SGD is given below. In this example the loss function can be depicted as a 3D plot. In the current case the surface is flat which makes it easy to find the **global optimum**
-
---- 
-
- ![Figure from https://nbviewer.jupyter.org/gist/joshfp/85d96f07aaa5f4d2c9eb47956ccdcc88/lesson2-sgd-in-action.ipynb](images/sgdAnimation.gif){width=90%  .external}
+![Figure from [@hussain2020fundamental]](images/spock.png){width=100% .external}
 
 ---
 
 
-## Logistic regression {#MlAlgoLogReg}
+<div class="rmdtip">
 
-Logistic regression is similar to linear regression, however, the value range of the dependent variable y is limited to: $0\leq y \geq 1$
+**Training the model:**
 
-Logistic regression is a algorithm with the low computational complexity 
+- simulate 100,000 initial conditions simulated
+    - 80% training set
+     - 20% test set
+    - machine learning (XGBoost)
 
-```{block2 echo=TRUE, type='rmdtip'}
-Logistic regression: 
+</div>
+
+
+
+
+TBD : get citation
+arXiv:2007.06521v1
+
+
+
+### Comparison between SPOCK and previous models
+
+The comparison between SPOCK and previous models are shown below. At an FPR of 10%, SPOCK correctly classifies 85% of stable systems. According to the shown results SPOCK is a huge advance from previous models.
   
-- Low computational complexity
-- y limited range of values $0\leq y \geq 1$
-- maps x on y ($y \leftarrow x$) using the [logisit function](https://en.wikipedia.org/wiki/Logistic_function)  
-- Used of classification 
-
-```
 
 
-The logistic function is depicted in the graph below
+<div class="rmdtip">
+
+**Comparison between SPOCK and previous models:**
+
+- At a false positive rate: 10% SPOCK has
+    - True positive rate: 85%
+
+</div>
 
 
-```{r logsiticFuncitonMlAlgo, echo=FALSE, fig.height=5, message=FALSE, warning=FALSE, out.width= "60%"}
-library(ggplot2)
-eq = function(x) {
-  
-  1/(1+exp(-x))
-}
+--- 
 
-ggplot(data.frame(x=c(-6,6)), aes(x=x)) + stat_function(fun=eq, geom = "line") + xlab(expression(eta)) + ylab(expression(logsitic(eta)))
-```
 
-The logistic function is defined as:
+![Figure from [@hussain2020fundamental]](images/spockROC.png){width=60% .external}
 
-```{block2 echo=TRUE, type='rmdmath'}
+---
+ 
+ An explanation of ROC is given at chapter \@ref(ROCexp)  
+ 
+## Machine Learning Algorithms and Global Optimization Methods for SPICE Model Parameter Extraction
 
-Logistic function: 
-$$logistic(\eta) = \frac{1}{1+exp^{-\eta}}$$
+Another interesting approach is to substitute a lengthy parameter search for a simulation model by reversing the task. Instead of matching simulation to measurement results by tuning the simulation parameter, extract simulation parameter from measurement results. The goal is to find simulation parameters for a semiconductor (BSIM4 MOSFET model)
 
-$$P(Y = 1 \vert X_i = x_i) = \frac{1}{1+exp^{-(\beta_0 + \beta_1X_1+ \dots \beta_n X_n)}}$$
+<div class="rmdtip">
 
-  
-where:
+**Project details:**
 
-- $\beta_n$ are the coeffcients we are searching
-- $X_n$ are the features
+- Previous method:
+    - match simulation to measurement results by tuning simulation parameters
+    - 34 different optimization steps
+    - tuned by skilled workers (PhD)
+- ML method:
+    - extract simulation parameters from measurement results
+    - training data can be generated by running simulations
+    - simulation run time was short 
+    - 10s of thousands of training data could be generated
+    - validation of predictions by simulation
+        - use predicted simulation parameters for simulation
+        - compare simulation to measurement results
 
-```
+</div>
 
-The second equation reads: The probability of $Y=1$ given the value $X=x_i$ which is exactly the result needed for a classification problem.
 
-### Python example logistic regression
 
-An example of scikit-learn is given at https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py and emphasises on the difference between linear and logistic regression. The synthetic data set has values either 0 or 1. This can be modeled quite well with logisitc regression, but not at all with linear regression.
+The previous method required a educated comparison of simulation and measurement results, based on the comparison the simulation parameter were tuned. 
 
- ![](images/logRegPython.png){width=70% }
+---
 
-The python code is given below
 
-```python
+![Previous method, figure from https://www.iee.et.tu-dresden.de/iee/eb/forsch/AK-Bipo/2018/3__MachineLearningParameterExtraction_Pieper.pdf ](images/infinionOldApproach.png){width=80% .external}
 
-import numpy as np
-import matplotlib.pyplot as plt
+---
 
-from sklearn import linear_model
-from scipy.special import expit
 
-# General a toy dataset:s it's just a straight line with some Gaussian noise:
-xmin, xmax = -5, 5
-n_samples = 100
-np.random.seed(0)
-X = np.random.normal(size=n_samples)
-y = (X > 0).astype(np.float)
-X[X > 0] *= 4
-X += .3 * np.random.normal(size=n_samples)
 
-X = X[:, np.newaxis]
+In the ML method measurement data are converted to a set of feature which are then used as input of the machine model. The simulation parameters can then be calculated in one step. Validation of the result can be achieved by running the simulation with the predicted simulation parameters.
 
-# Fit the classifier
-clf = linear_model.LogisticRegression(C=1e5)
-clf.fit(X, y)
+---
 
-# and plot the result
-plt.figure(1, figsize=(4, 3))
-plt.clf()
-plt.scatter(X.ravel(), y, color='black', zorder=20)
-X_test = np.linspace(-5, 10, 300)
 
-loss = expit(X_test * clf.coef_ + clf.intercept_).ravel()
-plt.plot(X_test, loss, color='red', linewidth=3)
+![ML method, figure from https://www.iee.et.tu-dresden.de/iee/eb/forsch/AK-Bipo/2018/3__MachineLearningParameterExtraction_Pieper.pdf ](images/infinionMlApproach.png){width=80% .external}
 
-ols = linear_model.LinearRegression()
-ols.fit(X, y)
-plt.plot(X_test, ols.coef_ * X_test + ols.intercept_, linewidth=1)
-plt.axhline(.5, color='.5')
-
-plt.ylabel('y')
-plt.xlabel('X')
-plt.xticks(range(-5, 10))
-plt.yticks([0, 0.5, 1])
-plt.ylim(-.25, 1.25)
-plt.xlim(-4, 10)
-plt.legend(('Logistic Regression Model', 'Linear Regression Model'),
-           loc="lower right", fontsize='small')
-plt.tight_layout()
-plt.show()
-
-```
+---
 
 
 
@@ -2936,5 +3210,29 @@ plt.show()
 
 
 
+## Master Autonomous Driving
+
+Master course organized by Hochschulföderation SüdWest (HfSW), a consortium of the universities of applied science of Aalen, Esslingen, Heilbronn, Mannheim, Ravensburg-Weingarten, Reutlingen and Hochschule der Medien Stuttgart. More information on https://www.graduatecampus.de/en/masterstudiengaenge/master.html
+
+Facts of Master Autonomous Driving:
+
+- 4 semesters
+- 18,000 € tuition fees
+- attendance 10.5h per week
+    - Fridays from 15:30 to 20:30
+    - Saturdays from 09:30 to 16:45
+- Course contents https://www.graduatecampus.de/fileadmin/50_redaktion/08_Sonstige_PDF/HfSW/Modulhandbuch_Autonomes_Fahren.pdf
+    - path planning
+    - sensor fusion
+    - Robot Operating System (ROS)
 
 
+
+
+## University Suttgart: Indoor-Ortung mit Mobilfunk
+
+- University Stuttgart Institute of Telecommunications
+- Leveraging 5G Infrastructure for a Robust Positioning System
+- Using neural networks
+
+More information on the work can be found in [@widmaier2019towards]

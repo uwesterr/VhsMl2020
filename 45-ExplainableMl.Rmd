@@ -1,12 +1,139 @@
 # (PART) Explainable ML  {-} 
 
 # Explainable ML tbd {#ExplainableMl}
-adfdasf
+ML algorithms can be quite complex and therefore not easy to analyze how they come to the result presented to the user, the term **black box** is used often when referring to this matter. Obviously a ML algorithm is not a black box since the algorithm is nothing but basic math operations, but of those there are a lot so that it is difficult to understand for humans to comprehend how the algorithms works. For example a neural net which is quite popular for natural language processing in 2020 is **BERT** which has in its base version **110 million** parameters, and in its large version an astonishing **340 million** parameters.
 
-## Lime tbd
+Due to different reasons it might be nice or necessary to understand how the algorithm works. In case of a movie recommendation system it is not as important as for algorithms which work in autonomous driving cars were they are safety relevant.
 
-First paper on **LIME** was [@tulio2016should]
+Also biased algorithms can be problematic as as discussed in \@ref(ModelsWithBias) because they discriminate certain groups of people.
 
+ <div class="rmdtip">
+ 
+ <p>Benefits of explainable ML:<img src="images/Gender.svg" alt="Smiley face" align="right" style="width:25%;"></p>
+
+ 
+
+
+- Increase safety of systems using ML
+- Avoid discrimination
+    - human resources recruitment system
+- Model improvement
+    - find artifacts
+
+
+</div>
+
+
+In the following chapters a description of methods and tools are given as well as a real world example.
+
+
+ <div class="rmdtip">
+ 
+ Next chapters:
+ 
+ - Methods
+ - Tools
+ - Real world example
+
+
+</div>
+
+## Method: Layer-Wise Relevance Propagation
+
+Developed by Fraunhofer Heinrich-Hertz-Institute and TU Berlin is well known method in explainable ML. A detailed description is given in the paper 
+"On Pixel-wise Explanations for Non-Linear Classifier Decisions by Layer-wise Relevance Propagation" [@bach2015pixel].
+
+First watch the Layer-Wise Relevance Propagation (LRP) at work in the interactive demo of the Fraunhofer Heinrich-Hertz-Institute [Explaining Artificial Intelligence](https://lrpserver.hhi.fraunhofer.de/image-classification), best to be viewed in **Chrome Browser**
+
+ <div class="rmdtip">
+ 
+Purpose of LRP:
+ 
+ - Provide explanation of any neural net in domain of input
+ - Example
+    - Cancer prediction explanation by LPR
+    - which pixel contributes to what extend
+- Demo [Explaining Artificial Intelligence](https://lrpserver.hhi.fraunhofer.de/image-classification) (best viewed in Chrome browser)    
+- Method can be applied on already trained classifiers    
+    
+</div>
+
+The method can be used on images as well as on text or any other data fed to a neural network. The concept is best shown using an image example as below:
+
+---
+
+![Figure from  [@bach2015pixel]](images/lrpExample.png){width=100% .external}
+
+---
+
+ <div class="rmdtip">
+ 
+Basics of LRP:
+ 
+- Uses weights and and neural activations
+- Created by forward-pass (i.e. prediction, not training)
+- Go back from prediction to input
+- Visualize image pixels which caused high activation  
+- Drawback
+    - only one sample explained
+    - considering several samples $\implies$ see chapter \@ref(SpRay) 
+    
+</div>
+
+
+
+
+## Method: SpRay {#SpRay}
+
+An international cooperation investigated recent ML successes in order to find whether or not the models deliver reliably for the problems they are trained for [@lapuschkin2019unmasking]
+
+ <div class="rmdtip">
+ 
+Basics of SpRay:
+ 
+- Identifies and quantifies decision-making behaviors
+- Finds undesirable decisions in vast data sets
+    
+</div>
+ 
+
+Lets examine a model which classifies horses
+
+---
+
+![Figure from  [@lapuschkin2019unmasking]](images/sprayExample.png){width=100% .external}
+
+
+---  
+
+
+SpRay identifies 4 different prediction strategies for classifying images as "horse"
+
+ <div class="rmdtip">
+ 
+Detected prediction strategies:
+ 
+- b $\implies$ detect a horse (and rider)  
+- c $\implies$ detect a source tag in portrait oriented images  
+- d $\implies$ detect wooden hurdles and other contextual elements of horseback riding  
+- e $\implies$ detect a source tag in landscape-oriented images  
+    
+</div>
+
+
+
+
+## Method: Lime tbd
+Very well-known technique Local **Interpretable Model-agnostic Explanations (LIME)** explains prediction for specific input. Details are given in the original paper **“Why Should I Trust You?” Explaining the Predictions of Any Classifier** [@tulio2016should].
+
+
+
+
+---
+
+![Figure from  [@tulio2016should]](images/limeExample.png){width=100% .external}
+
+---
 
 ## alibi  tbd
 https://github.com/SeldonIO/alibi

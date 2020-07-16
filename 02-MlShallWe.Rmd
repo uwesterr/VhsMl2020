@@ -30,7 +30,7 @@ knitr::include_graphics('images/MachineLearning.png')
 
 > "Learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E
 >
->--- Tom Mitchell ^[professor of Computer Science and Machine Learning at Carnegie Mellon http://www.cs.cmu.edu/~tom/] 
+>--- Tom Mitchell ^[Professor of Computer Science and Machine Learning at Carnegie Mellon http://www.cs.cmu.edu/~tom/] 
 
 
 
@@ -46,7 +46,7 @@ Alfred Binet, a french psychologist who invented first practical IQ test defined
 
 >Judgment, otherwise called "good sense", "practical sense", "initiative", the faculty of adapting one's self to circumstances
 
-And Albert Einstein said  
+And Albert Einstein said:  
 
 >The measure of intelligence is the ability to change.
 
@@ -238,7 +238,7 @@ At the end of the training Alpha Zero achieved the following performance:
  >The implications go far beyond my beloved chessboard... Not only do these self-taught expert machines perform incredibly well, but we can actually learn from the new knowledge they produce."
  
     
-## ML models with bias
+## ML models with bias {#ModelsWithBias}
 
 Models might end up biased, why is that?
 
