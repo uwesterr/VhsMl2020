@@ -236,9 +236,31 @@ The resulting driving performance can be seen in the following video
 
 
 	
+## fast.ai
 
-## FastAI
+Deep learning is transforming the world. fast.ai making deep learning easier to use and getting more people from all backgrounds involved through their:
 
+- free courses for coders
+- software library
+- cutting-edge research
+- community
+
+The world needs everyone involved with AI, no matter how unlikely your background.
+
+The fast.ai slogan
+
+<blockquote>
+
+
+Being cool is about being exclusive, and that’s the opposite of what we want. We want to make deep learning as accessible as possible– including to people using uncool languages like C#, uncool operating systems like Windows (which is used by the majority of the world), uncool datasets (way smaller than anything at Google, and in domain areas you’d consider obscure), and with uncool backgrounds (maybe you didn’t go to Stanford).
+</blockquote>
+
+
+### fast.ai Book
+
+
+The  notebooks cover an introduction to deep learning, fastai, and PyTorch. fastai is a layered API for deep learning; for more information, see the [fastai paper](https://www.mdpi.com/2078-2489/11/2/108). Everything in this repo is copyright Jeremy Howard and Sylvain Gugger, 2020 onwards.
+https://github.com/fastai/fastbook 
 	
 ##	Kaggle Courses
 
@@ -381,6 +403,28 @@ Anrew Ng
 Google speech first, than google maps finding house numbers 
 https://landing.ai
 
+## TensorFlow, Keras and deep learning, without a PhD
+
+
+https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/#0 
+
+
+
+## Neural Networks and Deep Learning
+
+
+Neural Networks and Deep Learning is a free online book. The book will teach you about:
+
+- Neural networks, a beautiful biologically-inspired programming paradigm which enables a computer to learn from observational data
+- Deep learning, a powerful set of techniques for learning in neural networks
+http://neuralnetworksanddeeplearning.com
+
+
+## Platform.ai: produce high-quality labels
+
+https://platform.ai
+
+Platform allows domain experts to produce high-quality labels for AI applications in minutes in a visual, interactive fashion.
 
 # ML online books
 

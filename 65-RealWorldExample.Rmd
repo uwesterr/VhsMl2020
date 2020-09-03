@@ -17,9 +17,28 @@ library(kableExtra)
 
 # Real world example {#RealWorld}
 
-This ESA funded project was conducted in 2018/19. 
-The question asked was: **How can the system be made faster and more reliable?**
+This real world example demonstrates all the steps from defining the goal of the project to to calculate the ROI. It aims to bridge also the gap between different roles in an ML project by addressing the that different roles think in their domains and how a common language can be found.
 
+<div class="rmdtip">
+
+**Content of chapter**
+
+- Subject of the project
+    - The question asked was: **How can the system create more revenue?**
+- Overview of project phases
+- Algorithm selection
+- Performance measurement
+- Data gathering
+- ROI calculation
+
+
+</div>
+
+
+---
+
+
+ ![](images/SlidingWindow.gif){width=100%} 
 
 
 
@@ -124,7 +143,23 @@ $$\hat{Y} = \hat{f}(X)$$
 
 ## Algorithm selection
 
-The following algorithms were meant to be investigated following the rule to start with the least complex one. This is even more important since the algorithm was to be run on a satellite which where computing power is more limited than on earth
+The following algorithms were meant to be investigated following the rule to start with the least complex one. 
+
+
+```{block2 echo=TRUE, type='rmdtip'}
+**Determination which algorithm is best suited depends on: **
+  
+- Start with simplest algorithm to get a baseline
+    - doesn't have to be a machine learning algorithm
+
+- Use simple algorithm for feature engineering
+
+- Use more complex algorithm if result is unsatisfactory
+
+```
+
+
+This is even more important since the algorithm was to be run on a satellite which where computing power is more limited than on earth
 
 
  ![](images/AlgorithmSubset.png){width=90% }
@@ -199,21 +234,26 @@ Details on the algorithms:
 
 - Support vector machine in chapter \@ref(MlAlgoSvm)
 
-
-$$maximize \(M\) \(\beta_{0}, \beta_{1}, \ldots, \beta_{p}\)
-subject to \(\sum_{j=1}^{p} \beta_{j}^{2}=1\)
-\(y_{i}\left(\beta_{0}+\beta_{1} x_{i 1}+\ldots+\beta_{p} x_{i p}\right) \geq M\)
-for all \(i=1, \dots, N\)$$ 
-
-
 ---
 
 
  ![Figure from Alisneaky, svg version by User:Zirguezi [CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)]](images/2880px-Kernel_Machine.svg.png){width=100% .external}
 
+---
 
-$  𝑅〗_𝑡=∑_(𝑖=𝑡)^∞▒〖γ^𝑖 𝑟_𝑖 〗=γ^𝑡 𝑟_𝑡+γ^(𝑡+1) 𝑟_(𝑡+1)…+γ^(𝑡+𝑛) 𝑟_(𝑡+𝑛)+ …$
 
+```{block2 echo=TRUE, type='rmdmath'}
+**Constrained optimization problem**
+
+$$\max_{\\beta_{1}, \ldots, \beta_{p}} M$$
+
+
+$$\textrm{subject to} \sum_{j=1}^{p} \beta_{j}^{2}=1$$
+
+$$y_{i}\left(\beta_{0}+\beta_{1} x_{i 1}+\ldots+\beta_{p} x_{i p}\right) \geq M$$
+for all i=1, $\ldots$, N.
+
+```
 
 ## Performance measurement {#ConfusionMatrixRocAuc}
 
@@ -607,20 +647,7 @@ On the left hand side are the pulses which have to be detected amid noise as sho
 
  ![](images/windowingDtw-1.gif){width=100%}  
 
-## Algorithm
 
-
-Determination which algorithm is best suited depends on 
-
-```{block2 echo=TRUE, type='rmdtip'}
-
-- Start with simplest algorithm
-
-- Use simple algorithm for feature engineering
-
-- Use more complex algorithm if result is unsatisfactory
-
-```
 
 
 ## Confusion matrix results logistic regression for measured data
@@ -699,9 +726,72 @@ To calculate the project invest the different phases of the ML project have to b
 - Maintenance 
 </div> 
  
+ 
+Estimating the invest is a bit tricky for ML projects because often there is not the same amount of heritage as for other software projects. Also the amount of effort to make the data available and accessible is difficult to estimate early in the project.
+As a rule of thumb the effort to gather the data and pre-process is about 80% of the total effort to develop a ML model.
+
+<div class="rmdtip">
+**Estimate development cost:**
+
+- Due to low heritage vague
+- Cost related with data
+    - making them available
+    - making them accessible (e.g. data might be hand written)
+    - necessary data might only become clear during project
+- Data handling could be 80% of development effort
+    - accessing data
+    - pre-processing data
+    
+</div> 
+ 
+ 
+ 
+The deployment of a ML algorithm can be simple but might also be an elaborated effort. In the example here the deployment costs are effort is considerable because software which runs on a satellite has to fulfill special requirements. 
+
+Deployment might happen in different stages, it might be deployed only for certain regions a certain kinds of customers. There might be the need for a feedback mechanism to improve the algorithm over time. Also the implementation might be such that it is easily scalable in case the use of the model increases potentially within a short time.
+
+
+<div class="rmdtip">
+**Estimate deployment cost:**
+
+- Deployment might happen in different stages
+    - regional
+    - certain groups of customer
+- Might need feedback mechanism
+    - to improve algorithm
+    - to report issues
+        - fault
+        - bias
+        - unwanted behavior 
+- Scalability  
+    - in case of demand increase
+    - increase might be sudden
+    
+</div> 
+
+
+Maintaining the ML algorithm shall ensure that the algorithm's performance does not deteriorate over time and might even be increased, also that the algorithm runs safely and works in a maybe changing IT environment.
+
+<div class="rmdtip">
+**Estimate maintenance cost:**
+
+- Ensure safety
+    - IT environment might change
+    - new operating system version
+- Ensure performance
+    - maybe include feedback
+    - could involve human intervention
+    
+    
+</div> 
+
+
+
+Below the numbers for the previously described project are given. Please note that for confidential reasons the figures are not the real figures, but are in the right ballpark.
+ 
 ---
  
-  ![](images/investMl.png){width=100%}  
+  ![The numbers are not the exact numbers of the project, but are in the right ballpark](images/investMl.png){width=100%}  
   
 ---
   
@@ -721,7 +811,7 @@ For a given ROC the **highest available profit** can be calculated by assigning 
 
 --- 
 
- ![](images/ProfitAninmation.gif){width=100%}  
+ ![Dummy profit numbers, exemplary graph](images/ProfitAninmation.gif){width=100%}  
 
 
 ---
@@ -735,7 +825,7 @@ Choosing the probability threshold for maximum profit yields to a **profit of 38
 The resulting ROI is given for the years 2017-2019 in the following table:
 
 
- ![](images/ROITable.png){width=100%}  
+ ![Dummy numbers, exemplary graph](images/ROITable.png){width=100%}  
  
 The analysis shows that the ML algorithm not only improves the technical capability of the system but also would have an impressive ROI.
 

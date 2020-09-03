@@ -19,33 +19,32 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
 
 # Introduction
 
-This document gives on overview of
+This site gives on orientation to approach machine learning from the question **shall we do ML to coding examples** for ML algorithms. The site is organized in a way that it covers first the basics in the main chapters and goes into detail in the sub chapters.  
+The site is a living document, i.e. there are TBDs and TBCs where work is ongoing.
+
+To find help on how to navigate the site please press the "i" icon on top of the page.
 
 ```{block2 echo=TRUE, type='rmdtip'}
-- Machine learing: Shall we? in chapter \@ref(whatML)
-- Analysis of the 2019 Kaggle member survey in chapter \@ref(KaggleSurvey)
+- Machine learning: Shall we? in chapter \@ref(whatML)
 - Machine learning fundamentals in chapter \@ref(MachineLearningFundamentals)
+- ML examples in chapter \@ref(mlAplicationExamples)
+- Real world example on signal detection in chapter \@ref(RealWorld) 
+- Further examples from Kaggle  in chapter \@ref(KaggleExamples) 
+- Explainable machine learing in chapter \@ref(ExplainableMl)
 - Overview online courses in chapter \@ref(MlMooc)
 - Overview online information resources in chapter \@ref(MlResources)
-- Real world example on signal detection in chapter \@ref(RealWorld) 
-- How to understand ML models: Explainable machine learing in chapter \@ref(ExplainableMl)
-- Further examples from Kaggle  in chapter \@ref(KaggleExamples) 
-- ML examples in the area
-
-vialytics
-https://vialytics.de 
-
-enbw
-https://www.enbw.com/infrastruktur/sicherheitsinfrastruktur/geschaeftskunden/produkte/safeplaces 
-
+- Analysis of the 2019 Kaggle member survey in chapter \@ref(KaggleSurvey)
 - How to get quickly started with cloud based machine learning platforms in chapter \@ref(CloudBasedMl) 
 
 
 ```
 
-
+```{r eval=FALSE, include=FALSE}
 <embed src="../MachineLearningOrientierung.pdf" width="800" height="875" 
  type="application/pdf">
+```
+
+
 
 
 

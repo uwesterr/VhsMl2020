@@ -114,7 +114,11 @@ A graphical representation of SGD is given below. In this example the loss funct
 
  ![Figure from https://nbviewer.jupyter.org/gist/joshfp/85d96f07aaa5f4d2c9eb47956ccdcc88/lesson2-sgd-in-action.ipynb](images/sgdAnimation.gif){width=90%  .external}
 
+
+
+
 ---
+
 
 
 ## Logistic regression {#MlAlgoLogReg}
@@ -1220,6 +1224,62 @@ softmax
 fully connected
 
 
+
+
+###  Geometric Intuition for Training Neural Networks
+
+The [YouTube video](https://www.youtube.com/watch?v=Z_MA8CWKxFU&feature=youtu.be&t=331) by Leo Dirac gives are very intuitive explanation of how to a loss function is calculated in a 2-D example and also gives an introduction on Stochastic Weight Averaging (SWA). Leo also discusses minima in high dimensional space.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z_MA8CWKxFU?start=332" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<div class="rmdtip">
+**Stochastic Weight Averaging (SWA):**
+
+- Details at https://pytorch.org/blog/stochastic-weight-averaging-in-pytorch/
+- High dimensional function have
+    - plenty of saddle points
+    - only one minima
+        - minima is wide
+        - train and test error surfaces are not perfectly aligned in the weight space
+        - therefore solution in middle of minima is better in terms of generalization 
+    - what seems to be seperated minma are connected via one of the many dimensions
+- SWA has been shown to significantly improve generalization in computer vision tasks
+- SWA is shown to improve the stability of training as well as the final average rewards of policy-gradient methods in deep reinforcement learning
+- SWA is suited for low precision training
+
+
+</div>
+
+Leo states his experience on twitter as follows: 
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Stochastic Weight Averaging (SWA) is totally magic! It takes me days to train my validation score down from 2.40 to 2.30, but just taking the mean of a bunch of checkpoints I have lying around and I&#39;m down to 2.07. Thanks <a href="https://twitter.com/andrewgwils?ref_src=twsrc%5Etfw">@andrewgwils</a> and team for figuring this stuff out.</p>&mdash; Leo Dirac (@leopd) <a href="https://twitter.com/leopd/status/1285969855062192129?ref_src=twsrc%5Etfw">July 22, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+---
+
+An implementation in PyTorch is shown below
+
+```python
+
+from torchcontrib.optim import SWA
+
+...
+...
+
+# training loop
+base_opt = torch.optim.SGD(model.parameters(), lr=0.1)
+opt = torchcontrib.optim.SWA(base_opt, swa_start=10, swa_freq=5, swa_lr=0.05)
+for _ in range(100):
+     opt.zero_grad()
+     loss_fn(model(input), target).backward()
+     opt.step()
+opt.swap_swa_sgd()
+
+```
+
+
+
 ### Convolutional Neural Network (CNN) TBD
  A Convolutional Neural Network is an neural network are mainly used to analyze image and audio data.
 
@@ -1361,7 +1421,8 @@ https://medium.com/ai-society/gans-from-scratch-1-a-deep-introduction-with-code-
 
 ---
 
-<img src="images/GanExamples.png"  style="width:100%;">
+
+![](images/GanExamples.png){width=100%}
 
 
 ---

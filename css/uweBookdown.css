@@ -39,17 +39,16 @@ div.rmdtip:hover, div.rmdcaution:hover, div.rmdimportant:hover, div.rmdnote:hove
 
 
 
-div.HeadingNoNumber {
+.HeadingNoNumber {
   font-weight: bold;
   color: blue;
   font-size: 1.175em;
-  font-weight: bold;
   margin-top: 3%;
   margin-bottom: 2%;
 
 }
 
-p.caption {
+.caption {
   color: #777;
   margin-top: 10px;
 }
@@ -63,15 +62,18 @@ pre {
 pre code {
   white-space: inherit;
 }
-p.flushright {
+.flushright {
   text-align: right;
 }
-blockquote > p:last-child {
-  text-align: right;
+
+
+blockquote {
+  text-align: justify; /* For Edge */
+  -moz-text-align-last: right; /* For Firefox prior 58.0 */
+  text-align-last: right;
 }
-blockquote > p:first-child {
-  text-align: inherit;
-}
+  
+  
 .header-section-number {
   padding-right: .2em;
   font-weight: 500;

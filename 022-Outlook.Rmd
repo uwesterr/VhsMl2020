@@ -1,0 +1,163 @@
+
+
+
+# Outlook {#Outlook}
+
+What will the future bring for society?
+
+
+<blockquote>
+The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom. 
+
+Isaac Asimov
+</blockquote>
+
+
+## Development of life
+
+Tegmark in "Life 3.0: Being human in the age of artificial intelligence" [@tegmark2017life] p. 23. **classifies life into three stages** and shows the two existing stages of life and the third stage which might be ahead.
+
+---
+
+<img src="images/threeStagesOfLife.png"  style="width:100%;" >
+
+---
+
+
+The three stages of life have overlapping skills, **but only life 3.0 has all skills** and is able to design its hardware and therefore might be able to have unlimited skills
+
+
+<img src="images/life3_0ThreeStagesOfLife.png"  style="width:130%;">
+
+---
+
+### When will superhuman AI come, and will it be good?
+
+Several opinions about when and if superhuman AI will appear and if it will be a good thing or not exists. Those opinions can be grouped as shown in the following graph.
+
+<img src="images/WillSuperhumanAi.png"  style="width:130%;">
+
+Luddite => A person opposed to new technology or ways of working
+
+Please cast your vote at https://pingo.coactum.de/157678 ^[Pingo question: Ihre Position zur AGI? https://pingo.coactum.de/questions]
+
+
+### AI aftermath scenario
+
+To be prepared we might want to ask yourselves:
+
+1. Do you want there to be superintelligence?   
+2. Do you want humans to still exist, be replaced, cyborgized and/or uploaded/simulated?   
+1. Do you want humans or machines in control?  
+1. Do you want AIs to be conscious or not?  
+1. Do you want to maximize positive experiences, minimize suffering or leave this to sort itself out?  
+1. Do you want life spreading into the cosmos?   
+1. Do you want a civilization striving toward a greater purpose that you sympathize with, or are you OK with future life forms that appear content?
+
+Depending on your answers this might lead to one of the following scenario
+
+---
+
+```{r AIAftermathTableII}
+AiAftermath <- tribble(
+  ~ Scenario, ~ SuperinteligenceExists, ~ HumansExitst, ~ HumansInControl, ~ HumansSafe, ~ HumansHappy, ~ ConsciousnessExists,
+"Libertarian utopia", "Yes", "Yes", "No", "No", "Mixed", "Yes",
+"Benevolent dictator", "Yes", "Yes", "No", "Yes", "Mixed", "Yes",
+"Egalitarian utopia", "No", "Yes", "Yes?", "Yes", "Yes?", "Yes",
+"Gatekeeper", "Yes", "Yes", "Partially", "Potentially", "Mixed", "Yes",
+"Protector god", "Yes", "Yes", "Partially", "Potentially", "Mixed", "Yes",
+"Enslaved god", "Yes", "Yes", "Yes", "Potentially", "Mixed", "Yes",
+"Conquerors", "Yes", "No", "-", "-", "-", "?",
+"Descendants", "Yes", "No", "-", "-", "-", "?",
+"Zookeeper", "Yes", "Yes", "No", "Yes", "No", "Yes",
+"1984", "No", "Yes", "Yes", "Potentially", "Mixed", "Yes",
+"Reversion", "No", "Yes", "Yes", "No", "Mixed", "Yes",
+"Self-destruction", "No", "No", "-", "-", "-", "No"
+)
+
+datatable(data = AiAftermath, rownames = FALSE, filter = "top", colnames = c("Scenario", "Superinteligence exists?",  "Humans exist?",  "Humans in Control?", "Humans safe?",  "Humans happy?",  "Consciousness exists?"),  options = list(
+  pageLength = 12, autoWidth = FALSE
+)) %>% formatStyle('HumansExitst',
+  backgroundColor = styleEqual(c("No"), c('red')))
+
+```
+
+---
+
+A verbal description of the scenarios is given below, type the name of the scenario into the left field, if you want more scenarios to be shown increase the "Show entries" entry
+
+---
+
+```{r SuperHumanAiII}
+
+SuperHumanAi <- tribble(
+  ~ Name, ~ Definition,
+"Conquerors"," AI takes control, decides that humans are a threat/nuisance/waste of resources, and gets rid of us by a method that we don’t even understand",
+"Libertarian utopia",
+"Humans, cyborgs, uploads and superintelligences coexist peacefully thanks to property rights",
+"Benevolent dictator"," Everybody knows that the AI runs society and enforces strict rules, but most people view this as a good thing",
+"Egalitarian utopia", " Humans, cyborgs and uploads coexist peacefully thanks to property abolition and guaranteed income",
+"Gatekeeper", "A superintelligent AI is created with the goal of interfering as little as necessary to prevent the creation of another superintelligence. As a result, helper robots with slightly subhuman intelligence abound, and human-machine cyborgs exist, but technological progress is forever stymied",
+"Protector god", "Essentially omniscient and omnipotent AI maximizes human happiness by intervening only in ways that preserve our feeling of control of our own destiny and hides well enough that many humans even doubt the AI’s existence",
+"Enslaved god"," A superintelligent AI is confined by humans, who use it to produce unimaginable technology and wealth that can be used for good or bad depending on the human controllers",
+"Descendants", "AIs replace humans, but give us a graceful exit, making us view them as our worthy descendants, much as parents feel happy and proud to have a child who’s smarter than them, who learns from them and then accomplishes what they could only dream of—even if they can’t live to see it all",
+"Zookeeper", "An omnipotent AI keeps some humans around, who feel treated like zoo animals and lament their fate",
+"1984"," Technological progress toward superintelligence is permanently curtailed not by an AI but by a human-led Orwellian surveillance state where certain kinds of AI research are banned",
+"Reversion"," Technological progress toward superintelligence is prevented by reverting to a pre-technological society in the style of the Amish",
+"Self-destruction"," Superintelligence is never created because humanity drives itself extinct by other means (say nuclear and/or biotech)")
+
+datatable(data = SuperHumanAi, rownames = FALSE, filter = "top", colnames = c("Name", "Definition"),  options = list(
+  pageLength = 1, autoWidth = FALSE
+))
+
+```
+
+
+## Data religion: Dataism
+
+A data based religion called **Dataism** is a concept described by Harari in Homo Deus: A brief history of tomorrow [@harari2016homo] and says:
+
+- Universe consists of data flow
+- Value of entity determined by contribution to data processing
+- Collapses barrier between animals and machines ^["Dataism was born from the explosive confluence of two scientific tidal waves. In the 150 years since Charles Darwin published On the Origin of Species, the life sciences have come to see organisms as biochemical algorithms. Simultaneously, in the eight decades since Alan Turing formulated the idea of a Turing Machine, computer scientists have learned to engineer increasingly sophisticated electronic algorithms. Dataism puts the two together, pointing out that exactly the same mathematical laws apply to both biochemical and electronic algorithms. Dataism thereby collapses the barrier between animals and machines, and expects electronic algorithms to eventually decipher and outperform biochemical algorithms." Harari, Yuval Noah. Homo Deus: A Brief History of Tomorrow . HarperCollins. Kindle Edition. ]
+    - electronic algorithms eventually outperform biochemical algorithms
+    
+---
+
+In data we trust
+
+
+
+- <p>Humans supposed to distill <img src="images/DataToWisdom.png" alt="Smiley face" align="right" style="width:60%;"></p>
+    - data => information
+    - information => knowledge
+    - knowledge => wisdom
+- Dataists
+    - believe humans can not cope with immense flow of data
+    - put there trust in Big Data and computer algorithms
+    
+
+---
+
+
+Dataism: only wild fantasy?
+
+- <p>Dataism entrenched in<img src="images/biology.svg" alt="Smiley face" align="right" style="width:20%;"></p>
+    - computer science
+    - biology
+        - giraffes, tomatoes and human beings are just different methods for processing data
+        - that is current scientific dogma
+    
+ ---
+ 
+Economists interpret economy as data processing system
+
+
+
+- Gathering data about desires and abilities
+- Turning data into decisions
+    - Capitalism => distributed processing
+    - Communism => centralized processing
+- Capitalists against high taxes
+    - capital accumulates at state 
+    - more decisions by single processor, namely government
