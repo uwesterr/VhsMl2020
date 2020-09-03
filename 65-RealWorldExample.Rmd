@@ -829,28 +829,3 @@ The resulting ROI is given for the years 2017-2019 in the following table:
  
 The analysis shows that the ML algorithm not only improves the technical capability of the system but also would have an impressive ROI.
 
-## Compare models for SNR = 18dB
-
-- **ROC, Sensitivity and Specificity** for gradient boosted trees (GBM) and logistic regression (LogReg) and support vector machine (SVM) vs cross validation
-
-
-
-
----
-
-
-## Optimize ML hyper parameter
-
-
- ![](images/OptHyperPara.png){width=80%}  
-
-
-
-
-
-
-```{block2 echo=TRUE, type='rmdtip'}
-
-
-
-```

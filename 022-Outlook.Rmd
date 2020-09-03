@@ -1,7 +1,5 @@
 
-
-
-# Outlook {#Outlook}
+# Outlook of ML future {#Outlook}
 
 What will the future bring for society?
 
@@ -11,6 +9,14 @@ The saddest aspect of life right now is that science gathers knowledge faster th
 
 Isaac Asimov
 </blockquote>
+
+
+
+
+```{r}
+library(tidyverse)
+library(DT)
+```
 
 
 ## Development of life

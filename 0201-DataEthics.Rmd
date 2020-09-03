@@ -28,6 +28,9 @@ Ethics is complicated and context-dependent. The following definition has theref
 As a company there is the need to develop an ethical standard for the company. In times of demand for fair trade, green investment and anti-racism the topic of corporate ethics gains more and more significance to maintain a better connection with stakeholders of the company. Many major corporations promote their commitment to non-economic values in the frame of their ethics codes.
 
 
+![](images/dataEthics.png){width=100% .external}
+
+
 ## Topics in data ethics
 
 Data ethics is a wide field with many aspects, this section is meant to be an introduction into the field and therefore focuses on a few topics which are of high relevance.

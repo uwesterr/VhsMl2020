@@ -221,7 +221,7 @@ an informed decision about whether to trust the model’s prediction. Figure fro
 
 
 
-## Tool: tf-explain tbd
+## Tool: tf-explain
 
 tf-explain implements interpretability methods as Tensorflow 2.x callbacks to ease neural network's understanding. See [Introducing tf-explain, Interpretability for Tensorflow 2.0](https://blog.sicara.com/tf-explain-interpretability-tensorflow-2-9438b5846e35)
 
@@ -304,7 +304,7 @@ Visualize an average of the gradients along the construction of the input toward
 
 https://arxiv.org/abs/1611.05418 
 
-## Tool: alibi  
+## Tool: alibi  TBD
 https://github.com/SeldonIO/alibi
 
 https://docs.seldon.io/projects/alibi/en/stable/overview/algorithms.html

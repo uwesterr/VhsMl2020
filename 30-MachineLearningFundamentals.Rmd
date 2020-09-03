@@ -1,5 +1,5 @@
 
-# (PART) Machine learning fundamentals {-} 
+# (PART) Machine learning fundamentals  {-} 
 
 
 ```{r setupMlFunda, include=FALSE}
@@ -7,13 +7,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-# Machine learning fundamentals {#MachineLearningFundamentals}
-
-
-<blockquote>
- “If intelligence was a cake, unsupervised learning would be the cake, supervised learning would be the icing, and reinforcement learning would be the cherry” 
- Yann LeCun
-</blockquote>
 
 
 # ML project process
@@ -372,9 +365,9 @@ Finding the importance of a feature falls into the scope of **feature engineerin
 
 
 
-## Exploratory and quantitative data analysis {#eda}
+## Data analysis {#eda}
 
-Before starting to build any model it is good practice to analyze the data. Exploratory and quantitative data analysis are interlinked and therefore can be viewed together.
+Before starting to build any model it is good practice to analyze the data. Data analysis is done in two inter-linked steps, exploratory and quantitative data analysis and therefore can be viewed together.
 
 
 
@@ -2115,15 +2108,46 @@ Mean Absolute Error
 
 
 
-## Deploy model
+## Model deployment
 
-https://github.com/fastai/fastbook/blob/master/02_production.ipynb
+
+
+The deployment of a ML algorithm can be simple but might also be an elaborated effort. In the example here the deployment costs are effort is considerable because software which runs on a satellite has to fulfill special requirements. 
+
+Deployment might happen in different stages, it might be deployed only for certain regions a certain kinds of customers. There might be the need for a feedback mechanism to improve the algorithm over time. Also the implementation might be such that it is easily scalable in case the use of the model increases potentially within a short time.
+
+
+<div class="rmdtip">
+**Estimate deployment cost:**
+
+- Deployment might happen in different stages
+    - regional
+    - certain groups of customer
+- Might need feedback mechanism
+    - to improve algorithm
+    - to report issues
+        - fault
+        - bias
+        - unwanted behavior 
+- Scalability  
+    - in case of demand increase
+    - increase might be sudden
+    
+</div> 
+
 
 
 
 # Machine learning types {#machineLearningClasses} 
 
-https://en.wikipedia.org/wiki/Outline_of_machine_learning 
+
+<blockquote>
+ “If intelligence was a cake, unsupervised learning would be the cake, supervised learning would be the icing, and reinforcement learning would be the cherry” 
+ Yann LeCun
+</blockquote>
+
+Three main ML types are defined based on the way the work. There are also algorithms which are a mixture between supervised and unsupervised learning which are called self-supervised algorithms. For example in natural language processing (NLP) text can be used to train models by omitting one word and train the algorithm to predict the omitted word.
+
 
 <div class="rmdtip">
 **There are three major types of ML**

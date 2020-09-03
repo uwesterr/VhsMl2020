@@ -240,12 +240,19 @@ The resulting driving performance can be seen in the following video
 
 Deep learning is transforming the world. fast.ai making deep learning easier to use and getting more people from all backgrounds involved through their:
 
+
+<div class="rmdtip">
+
 - free courses for coders
 - software library
 - cutting-edge research
 - community
+</div>
 
-The world needs everyone involved with AI, no matter how unlikely your background.
+
+
+
+The course can be found at https://course.fast.ai 
 
 The fast.ai slogan
 
@@ -259,8 +266,9 @@ Being cool is about being exclusive, and that’s the opposite of what we want. 
 ### fast.ai Book
 
 
-The  notebooks cover an introduction to deep learning, fastai, and PyTorch. fastai is a layered API for deep learning; for more information, see the [fastai paper](https://www.mdpi.com/2078-2489/11/2/108). Everything in this repo is copyright Jeremy Howard and Sylvain Gugger, 2020 onwards.
-https://github.com/fastai/fastbook 
+The  [notebooks](https://github.com/fastai/fastbook) cover an introduction to deep learning, fastai, and PyTorch. fastai is a layered API for deep learning; for more information, see the [fastai paper](https://www.mdpi.com/2078-2489/11/2/108). Everything in this repo is copyright Jeremy Howard and Sylvain Gugger, 2020 onwards.
+
+
 	
 ##	Kaggle Courses
 
@@ -270,7 +278,7 @@ Kaggle https://www.kaggle.com/learn/overview added courses to the data science p
 <div class="rmdtip">
 
  
-<p>Coursera facts:<img src="images/kaggleLogo.png" alt="Smiley face" align="right" style="width:20%;"></p>
+<p>**Coursera facts:**<img src="images/kaggleLogo.png" alt="Smiley face" align="right" style="width:20%;"></p>
 
 - Founded 2010
     - key personal was
@@ -288,7 +296,7 @@ The choice on courses is small and ML centered. All course work is in Python and
 <div class="rmdtip">
 
  
-Course characteristics:
+**Course characteristics:** https://course.fast.ai
 
 - Small selection
 - ML or data science topics
@@ -297,7 +305,7 @@ Course characteristics:
     
 </div>
 
-https://course.fast.ai
+
 
 
 
