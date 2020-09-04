@@ -4,9 +4,18 @@
 
 In the following sections examples of ML applications from a wider field of industries are given. Those applications might inspire new projects by showcasing ideas and approaches which might not be straight forward. Sometimes processes need be thought the other way round to achieve faster solutions.
 
+Also as the example DeepL in chapter \@ref(deepl) shows, it might be possible to stand up to the tech giants from overseas event though all odds seems to be against the idea of taken them on.
 
 
-## AI translation by DeepL
+---
+
+
+![Figure from  [@makimotokunstliche]](images/infarktDkg.png){width=100% .external}
+
+---
+
+
+## AI translation by DeepL {#deepl}
 
 A good example to show that even small companies can be successful in areas where large companies seem to have an unassailable lead. When it comes to language, few would deny that Google has the largest data set available, but it seems that DeepL has an advantage over them.
 
@@ -294,6 +303,67 @@ https://www.boschsecurity.com/xc/en/solutions/video-systems/solutions/flexidome-
 
 Example recognize available parking slot https://www.bosch.com/stories/intelligent-security-cameras/
  
+
+
+## Demonstration of computer vision system "thumbs up" {#thumbsUp}
+
+
+The demonstration of how to use a pre-trained Resnet-18 neural net to detect 👍 or 👎 in a video stream using Nvidia’s Jetson Nano is based on the Nvidia course [Getting Started with AI on Jetson Nano](https://courses.nvidia.com/courses/course-v1:DLI+C-RX-02+V1/about)
+
+
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0bAcBntstUM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+The Jetson Nano is a small and powerful computer for a wide range of ML applications
+
+</div>
+
+The choice on courses is small and ML centered. All course work is in Python and is run in hosted notebooks.
+
+<div class="rmdtip">
+
+ 
+**ML applications for Jetson Nano:** 
+
+- image classification
+- object detection
+- segmentation
+- speech processing
+    
+</div>
+
+Despite the low price of €99 and the size of 69 mm x 45 mm, the technical specification is quite impressive
+
+
+
+<div class="rmdtip">
+
+**Jetson Nano technical specification:**
+
+- GPU: 128-core Maxwell
+- CPU	Quad-core ARM A57 @ 1.43 GHz
+- Memory	4 GB 64-bit LPDDR4 25.6 GB/s
+- Camera	2x MIPI CSI-2 DPHY lanes
+    
+</div>
+
+### Run demonstration on Jetson Nano 
+
+To run the demonstration ssh into the Jetson Nano using its IP address, start jupyter notebook which opens a window in the browser from which you can select the demonstration.
+
+```bash
+ssh dlinano@192.x.x.x
+jupyter notebook
+
+# open in browser on port 8888
+http://192.x.x.x:8888/lab?
+
+
+```
+
 
 
 

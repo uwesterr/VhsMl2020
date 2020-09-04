@@ -25,8 +25,9 @@ The site is a living document, i.e. there are TBDs and TBCs where work is ongoin
 To find help on how to navigate the site please press the "i" icon on top of the page.
 
 ```{block2 echo=TRUE, type='rmdtip'}
+**Example topics:**
+  
 - Machine learning: Shall we? in chapter \@ref(whatML)
-- Machine learning fundamentals in chapter \@ref(MachineLearningFundamentals)
 - ML examples in chapter \@ref(mlAplicationExamples)
 - Real world example on signal detection in chapter \@ref(RealWorld) 
 - Further examples from Kaggle  in chapter \@ref(KaggleExamples) 

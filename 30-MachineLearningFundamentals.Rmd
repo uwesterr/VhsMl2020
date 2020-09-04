@@ -2268,6 +2268,32 @@ visNetwork(nodes1, edges, width = "100%")  %>%   visOptions(manipulation = TRUE)
 
 ---
 
+### Machine learning types by data type
+
+It is also possible to look at the ML types from the perspective of data types. There are a variety of data types for in- and output. The output type does not have to be the same as the input type. For example image as input can have text or speech as output.
+
+---
+
+ ![](images/mlTypesByData.png){width=100% } 
+
+
+---
+
+### Machine learning types by data content
+
+Another perspective of the ML types is the view on the data content. It might be advantageous to create a heatmap of mouse movements during a credit application and use that heatmap as one indicator to decide about the application. Another example is to convert sound to short time frequency plots to determine what the sound represents.
+
+
+---
+
+ ![](images/mlTypesByDataContent.png){width=100% } 
+
+
+---
+
+
+
+
 In the following chapters each type will be introduced and examples are given.
 
 ## Supervised learning
